@@ -5,7 +5,7 @@ import { test } from "node:test";
 import { devices, entities, FEEDER_OPTIONS, states } from "../scripts/mock-states.mjs";
 import { load } from "./load.mjs";
 
-const { resolve, findDevices, feedSpec, feedDefault, feedListSpec, feedDualSpec, PetCard, PetMiniCard } = load("pet-card.js", [
+const { resolve, findDevices, feedSpec, feedDefault, feedListSpec, feedDualSpec, PetCard, PetMiniCard, PetCardEditor, PetMiniCardEditor, STRINGS } = load("pet-card.js", [
   "resolve",
   "findDevices",
   "feedSpec",
@@ -14,6 +14,9 @@ const { resolve, findDevices, feedSpec, feedDefault, feedListSpec, feedDualSpec,
   "feedDualSpec",
   "PetCard",
   "PetMiniCard",
+  "PetCardEditor",
+  "PetMiniCardEditor",
+  "STRINGS",
 ]);
 
 const hassWith = (overrides = {}) => {
@@ -131,6 +134,21 @@ test("render: options hide the figures and the buttons", () => {
   assert.ok(!html.includes('class="tiles"'));
   assert.ok(!html.includes('data-action="feed"'));
   assert.ok(!html.includes('data-action="power"'));
+});
+
+test("editor: the mini card offers the full card's options its detail view uses, labelled in every language", () => {
+  const mini = PetMiniCardEditor.toggles.map(([name]) => name);
+  for (const [name, def] of PetCardEditor.toggles) {
+    assert.ok(mini.includes(name), name);
+    assert.equal(PetMiniCardEditor.toggles.find(([n]) => n === name)[1], def, name);
+  }
+  assert.ok(mini.includes("zoom"));
+  for (const [code, strings] of Object.entries(STRINGS)) for (const name of mini) assert.ok(strings[name], `${code}: ${name}`);
+  const zoomed = card(PetMiniCard, { show_stats: false, show_controls: false });
+  zoomed._zoomed = true;
+  const html = zoomed._render();
+  assert.ok(!html.includes('class="tiles"'));
+  assert.ok(!html.includes('data-action="feed"'));
 });
 
 test("feed: select options, picked then dispensed", async () => {

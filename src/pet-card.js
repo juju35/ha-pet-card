@@ -2855,6 +2855,10 @@ class PetMiniCardEditor extends PetEditorBase {
     return [
       ["show_title", true],
       ["show_subtitle", true],
+      // Used by the full card the detail button switches to.
+      ["show_stats", true],
+      ["show_controls", true],
+      ["show_camera", true],
       ["zoom", true],
     ];
   }

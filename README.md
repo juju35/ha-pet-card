@@ -43,7 +43,7 @@ Entities are **discovered automatically**, you don't have to pick them one by on
 - Filter and desiccant reset buttons, with a confirmation, once you have replaced them
 - Status chip per device and for the whole card: *Food low*, *Low water*, *Replace filter*, *Replace desiccant*, *Battery low*, *Offline*, the feeder's own error message
 - Click any value to open its Home Assistant history (more-info dialog)
-- Detail button at the top right of the mini card: it switches to the full card and back; a click anywhere outside the card brings the compact view back
+- Detail button at the top right of the mini card: it switches to the full card and back; a click anywhere outside the card brings the compact view back (the full card's options, `show_stats`, `show_controls` and `show_camera`, are set on the mini card too, in its visual editor as well)
 - Visual editor in the dashboard UI for both cards (no YAML needed)
 - Light and dark mode; English, French, German, Spanish, Serbian (Cyrillic and Latin), Italian, Dutch, European Portuguese, Polish, Romanian, Danish, Swedish, Bulgarian, Russian, Ukrainian, Hungarian, Slovak, Czech, Slovenian, Latvian and Greek
 - Single file, no external dependency
@@ -125,6 +125,9 @@ devices:
   - Kitchen feeder
   - Living room fountain
 title: Pets
+show_stats: true
+show_controls: true
+show_camera: true
 zoom: true
 language: fr
 ```
@@ -137,10 +140,10 @@ language: fr
 | `title` | both | `Pets` (translated) | Card title |
 | `show_title` | both | `true` | Show the title in the header (e.g. `false` under a section heading of your own) |
 | `show_subtitle` | both | `true` | Show the subtitle (the devices' names) under the title |
-| `show_stats` | full | `true` | Today's figures: dispensed, meals, eaten, in the bowl, desiccant; purified water and energy for the fountains |
-| `show_controls` | full | `true` | Buttons: feed, call pet, power, mode, light, do not disturb, filter and desiccant resets |
-| `show_camera` | full | `true` | The feeder camera's latest picture (YumShare feeders, Jezza34000's integration); a click opens the live stream |
-| `zoom` | mini | `true` | Detail button at the top right: switches to the full card and back (`false` removes it) |
+| `show_stats` | both | `true` | Today's figures: dispensed, meals, eaten, in the bowl, desiccant; purified water and energy for the fountains |
+| `show_controls` | both | `true` | Buttons: feed, call pet, power, mode, light, do not disturb, filter and desiccant resets |
+| `show_camera` | both | `true` | The feeder camera's latest picture (YumShare feeders, Jezza34000's integration); a click opens the live stream |
+| `zoom` | mini | `true` | Detail button at the top right: switches to the full card and back (`false` removes it). The full card shown follows `show_stats`, `show_controls` and `show_camera`, also set on the mini card |
 | `language` | both | Auto | Force language: `en`, `fr`, `de`, `es`, `sr`, `sr-Latn`, `it`, `nl`, `pt`, `pl`, `ro`, `da`, `sv`, `bg`, `ru`, `uk`, `hu`, `sk`, `cs`, `sl`, `lv` or `el` (auto-detects from HA settings) |
 
 ## PetKit
