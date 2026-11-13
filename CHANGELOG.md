@@ -1,5 +1,10 @@
 # Changelog
 
+## 1.1.1 - 2026-11-14
+
+### Fixes
+- The mini card's visual editor now offers `show_stats`, `show_controls` and `show_camera`: the full card its detail button switches to reads them, and they could only be set in YAML.
+
 ## 1.1.0 - 2026-11-13
 
 ### Features
