@@ -8,6 +8,10 @@
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://github.com/juju35/ha-pet-card/blob/main/LICENSE)
 [![Buy Me a Coffee](https://img.shields.io/badge/Buy%20Me%20a%20Coffee-FFDD00?logo=buymeacoffee&logoColor=black)](https://buymeacoffee.com/julienstep9)
 
+<p align="center">
+  <img src="https://raw.githubusercontent.com/juju35/ha-pet-card/main/images/petkit.png" alt="PetKit" width="64">
+</p>
+
 Lovelace cards for Home Assistant to keep an eye on smart pet devices: food and water levels, filter and desiccant, today's meals, and a manual feed in two taps.
 
 Supported integrations:
@@ -44,7 +48,7 @@ Entities are **discovered automatically**, you don't have to pick them one by on
 
 | Integration | What the cards show |
 |---|---|
-| [PetKit](https://github.com/RobertD502/home-assistant-petkit) (Marketplace) | Feeders: food level or hoppers, status, error, dispensed / planned today, meals, eaten, food in bowl, desiccant with reset, battery, manual feed, call pet. Fountains: water level, filter with reset, mode, purified water, energy, power, light and do not disturb. Details in [PetKit](#petkit) |
+| <img src="https://raw.githubusercontent.com/juju35/ha-pet-card/main/images/petkit.png" alt="" width="16"> [PetKit](https://github.com/RobertD502/home-assistant-petkit) (Marketplace) | Feeders: food level or hoppers, status, error, dispensed / planned today, meals, eaten, food in bowl, desiccant with reset, battery, manual feed, call pet. Fountains: water level, filter with reset, mode, purified water, energy, power, light and do not disturb. Details in [PetKit](#petkit) |
 
 PetKit litter boxes and purifiers are left out for now: they are not shown, and do not get in the way.
 
