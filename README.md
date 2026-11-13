@@ -18,12 +18,13 @@ Lovelace cards for Home Assistant to keep an eye on smart pet devices: food and 
 
 Supported integrations:
 
-- [PetKit](https://github.com/RobertD502/home-assistant-petkit) — PetKit feeders (Fresh Element Infinity, Solo, Gemini, Mini Pro) and Eversweet water fountains.
+- [PetKit](https://github.com/RobertD502/home-assistant-petkit) (RobertD502) — PetKit feeders (Fresh Element Infinity, Solo, Gemini, Mini Pro) and Eversweet water fountains.
+- [Petkit](https://github.com/Jezza34000/homeassistant_petkit) (Jezza34000) — PetKit feeders, including the YumShare dual-hopper feeder with camera (D4SH), and Eversweet water fountains, including the Eversweet Max Cordless (CTW3).
 
 Entities are **discovered automatically**, you don't have to pick them one by one, and it works whatever your Home Assistant language.
 
 > [!IMPORTANT]
-> **Not tested on real hardware yet.** The cards were built from the PetKit integration's source code (its entities, their translation keys and states) and checked against mock data only. If something shows wrong on your devices, please [open an issue](https://github.com/juju35/ha-pet-card/issues) with your device model and the entities the integration created.
+> **Not tested on real hardware yet.** The cards were built from the PetKit integrations' source code (their entities, translation keys and states) and checked against mock data only. If something shows wrong on your devices, please [open an issue](https://github.com/juju35/ha-pet-card/issues) with your device model and the entities the integration created.
 
 [![Open your Home Assistant instance and open a repository inside the Marketplace.](https://my.home-assistant.io/badges/hacs_repository.svg)](https://my.home-assistant.io/redirect/marketplace_repository/?owner=juju35&repository=ha-pet-card&category=plugin)
 
@@ -35,9 +36,10 @@ Entities are **discovered automatically**, you don't have to pick them one by on
 
 - Two cards: a full **Pet Card** and a compact **Pet Mini Card**
 - Automatic discovery of the PetKit feeders and water fountains (all of them by default, or the ones you pick)
-- Feeders: food level (or each hopper of a Gemini), status, errors, food dispensed today against the planned amount, meals today and the time of the last one, amount eaten and food left in the bowl when the feeder reports them, desiccant days left
-- **Manual feed** in an in-card popup: the feeder's fixed amounts (Solo, Mini Pro), a gram stepper (Infinity, Fresh Element) or one portion stepper per hopper (Gemini)
-- Water fountains: water level, filter left, mode (normal / smart), water purified and energy used today, power, light and do not disturb switches
+- Feeders: food level (or each hopper of a dual-hopper feeder), status, errors, food dispensed today against the planned amount, meals today and the time of the last one, amount eaten and food left in the bowl when the feeder reports them, desiccant days left, battery level while on batteries
+- Feeder camera (YumShare feeders): the latest picture, a click opens the live stream
+- **Manual feed** in an in-card popup: the feeder's fixed amounts (Solo, Mini Pro, single-hopper feeders), a gram stepper (Infinity, Fresh Element) or one portion stepper per hopper (Gemini, YumShare dual-hopper)
+- Water fountains: water level, filter left, mode (normal / smart), pump, water purified and energy used today, battery, power, light and do not disturb switches
 - Filter and desiccant reset buttons, with a confirmation, once you have replaced them
 - Status chip per device and for the whole card: *Food low*, *Low water*, *Replace filter*, *Replace desiccant*, *Battery low*, *Offline*, the feeder's own error message
 - Click any value to open its Home Assistant history (more-info dialog)
@@ -50,13 +52,14 @@ Entities are **discovered automatically**, you don't have to pick them one by on
 
 | Integration | What the cards show |
 |---|---|
-| <img src="https://raw.githubusercontent.com/juju35/ha-pet-card/main/images/petkit.png" alt="" width="16"> [PetKit](https://github.com/RobertD502/home-assistant-petkit) (Marketplace) | Feeders: food level or hoppers, status, error, dispensed / planned today, meals, eaten, food in bowl, desiccant with reset, battery, manual feed, call pet. Fountains: water level, filter with reset, mode, purified water, energy, power, light and do not disturb. Details in [PetKit](#petkit) |
+| <img src="https://raw.githubusercontent.com/juju35/ha-pet-card/main/images/petkit.png" alt="" width="16"> [PetKit](https://github.com/RobertD502/home-assistant-petkit) by RobertD502 (Marketplace) | Feeders: food level or hoppers, status, error, dispensed / planned today, meals, eaten, food in bowl, desiccant with reset, battery, manual feed, call pet. Fountains: water level, filter with reset, mode, purified water, energy, power, light and do not disturb. Details in [PetKit](#petkit) |
+| <img src="https://raw.githubusercontent.com/juju35/ha-pet-card/main/images/petkit.png" alt="" width="16"> [Petkit](https://github.com/Jezza34000/homeassistant_petkit) by Jezza34000 (Marketplace) | Feeders: food level or each hopper (YumShare dual-hopper D4SH, Gemini D4S), camera picture, status, error, power type and battery, dispensed / planned today (per hopper on dual-hopper feeders), meals, eaten, bowl fill, desiccant with reset, manual feed (one text per hopper, or the feeder's amounts). Fountains (Eversweet Max Cordless CTW3…): water shortage, filter (% and days) with reset, pump, purified water, energy, battery, power, indicator light and do not disturb. Details in [PetKit](#petkit) |
 
-PetKit litter boxes and purifiers are left out for now: they are not shown, and do not get in the way.
+Both integrations use the `petkit` domain: install one of them, not both. PetKit litter boxes, purifiers and pets are left out for now: they are not shown, and do not get in the way.
 
 ## Prerequisites
 
-Home Assistant 2024.8 or later, and the [PetKit integration](https://github.com/RobertD502/home-assistant-petkit) (available in the Marketplace), installed and configured with your PetKit account.
+Home Assistant 2024.8 or later, and one of the PetKit integrations (both available in the Marketplace), [RobertD502's](https://github.com/RobertD502/home-assistant-petkit) or [Jezza34000's](https://github.com/Jezza34000/homeassistant_petkit), installed and configured with your PetKit account.
 
 ## Installation
 
@@ -112,6 +115,7 @@ show_title: true
 show_subtitle: true
 show_stats: true
 show_controls: true
+show_camera: true
 language: fr
 ```
 
@@ -135,28 +139,33 @@ language: fr
 | `show_subtitle` | both | `true` | Show the subtitle (the devices' names) under the title |
 | `show_stats` | full | `true` | Today's figures: dispensed, meals, eaten, in the bowl, desiccant; purified water and energy for the fountains |
 | `show_controls` | full | `true` | Buttons: feed, call pet, power, mode, light, do not disturb, filter and desiccant resets |
+| `show_camera` | full | `true` | The feeder camera's latest picture (YumShare feeders, Jezza34000's integration); a click opens the live stream |
 | `zoom` | mini | `true` | Detail button at the top right: switches to the full card and back (`false` removes it) |
 | `language` | both | Auto | Force language: `en`, `fr`, `de`, `es`, `sr`, `sr-Latn`, `it`, `nl`, `pt`, `pl`, `ro`, `da`, `sv`, `bg`, `ru`, `uk`, `hu`, `sk`, `cs`, `sl`, `lv` or `el` (auto-detects from HA settings) |
 
 ## PetKit
 
-The cards read the entities of the [PetKit integration](https://github.com/RobertD502/home-assistant-petkit) through the Home Assistant registries (`platform: petkit`, the entity's `translation_key` and its device), whatever their entity ids or language. A device is a feeder when it has a food level, a feeder status or a desiccant sensor, and a fountain when it has a water level, a filter or a purified water sensor.
+The cards read the entities of the PetKit integrations, [RobertD502's](https://github.com/RobertD502/home-assistant-petkit) and [Jezza34000's](https://github.com/Jezza34000/homeassistant_petkit), through the Home Assistant registries (`platform: petkit`, the entity's `translation_key` and its device), whatever their entity ids or language. Both use the `petkit` domain; each role below lists RobertD502's key, then Jezza34000's. A device is a feeder when it has a food level, a feeder status, a desiccant sensor or a manual feed text, and a fountain when it has a water level or shortage, a filter or a purified water sensor.
 
-| Card | PetKit entity (`translation_key`) |
-|---|---|
-| Food level | `food_left` (%) when the feeder reports it, else `food_level` (binary, *on* = low); `food_level_hopper_one` / `_two` on a Gemini |
-| Status chip | `feeder_status` (*offline*, *on_batteries*), `error` (any message but *no_error*), `battery_status` (*low*) |
-| Dispensed today | `dispensed`, against `planned` |
-| Meals today | `times_dispensed`; *last meal* is when that count last changed |
-| Eaten today / In the bowl | `amount_eaten`, `food_in_bowl` (feeders that weigh the bowl) |
-| Desiccant | `desiccant_days_remaining` (orange from 5 days, red at 0), reset with `reset_desiccant` |
-| Manual feed | `manual_feed`: a `select` of amounts (Solo, Mini Pro), a `number` in grams (Infinity, Fresh Element) or a `text` of portions per hopper `a,b` (Gemini) |
-| Call pet | `call_pet` (Solo) |
-| Water | `water_level` (binary, *on* = low) |
-| Filter | `filter` (%, orange from 20 %, red from 5 %), reset with `reset_filter` |
-| Mode | `mode` (*normal*, *smart*) |
-| Purified today / Energy today | `purified_water_today`, `energy_usage` |
-| Power, Light, Do not disturb | `power`, `light`, `do_not_disturb` switches |
+| Card | RobertD502 (`translation_key`) | Jezza34000 (`translation_key`) |
+|---|---|---|
+| Food level | `food_left` (%) when the feeder reports it, else `food_level` (binary, *on* = low); `food_level_hopper_one` / `_two` on a Gemini | `food_left` (%), else `food_level` (binary, *on* = empty); `food_level_1` / `_2` on dual-hopper feeders (D4S, D4SH), shown instead of `food_left` |
+| Camera | — | `camera` (camera entity, YumShare D4H / D4SH), hidden while the `camera` switch is off |
+| Status chip | `feeder_status` (*offline*, *on_batteries*), `error` (any message but *no_error*), `battery_status` (*low*) | `device_status` (*offline*, *online_battery*), `error_message` (any message but *No error*), `power_type` (*on_battery*, *on_battery_low*) |
+| Dispensed today | `dispensed`, against `planned` | `total_dispensed`, against `total_planned`; per hopper `total_dispensed_hopper_1` / `_2` against `total_planned_hopper_1` / `_2` (portions) |
+| Meals today | `times_dispensed`; *last meal* is when that count last changed | `times_dispensed`, same |
+| Eaten today / In the bowl | `amount_eaten`, `food_in_bowl` (feeders that weigh the bowl) | `amount_eaten`, `food_in_bowl`, else `food_bowl_percentage` (%) |
+| Desiccant | `desiccant_days_remaining` (orange from 5 days, red at 0), reset with `reset_desiccant` | `desiccant_left_days`, reset with `reset_desiccant` |
+| Battery (feeder) | — | `battery_level` (%, only while on batteries) |
+| Manual feed | `manual_feed`: a `select` of amounts (Solo, Mini Pro), a `number` in grams (Infinity, Fresh Element) or a `text` of portions per hopper `a,b` (Gemini) | `manual_feed_dual_h1` / `_h2`: a `text` per hopper, in portions (D4S, D4SH: one feed per hopper with portions); `manual_feed_single`: a `text` taking one of the amounts of its pattern (grams above 10, else portions) |
+| Call pet | `call_pet` (Solo) | `call_pet` (D3) |
+| Water | `water_level` (binary, *on* = low) | `lack_warning` (binary, *on* = low) |
+| Filter | `filter` (%, orange from 20 %, red from 5 %), reset with `reset_filter` | `filter_percent` (%), `filter_left_days`, `replace_filter` (binary), reset with `reset_filter` |
+| Mode | `mode` (*normal*, *smart*) | `working_mode` (W5 only; the CTW3 has none) |
+| Pump | — | `pump_running` (binary) |
+| Purified today / Energy today | `purified_water_today`, `energy_usage` | `purified_water`, `today_pump_run_time` (kWh) |
+| Battery (fountain) | — | `battery` (%), `low_battery` (binary) |
+| Power, Light, Do not disturb | `power`, `light`, `do_not_disturb` switches | `power`, `indicator_light`, `do_not_disturb` switches |
 
 Turning a fountain off and resetting a filter or a desiccant ask for a confirmation first; turning it on, the mode, the light and do not disturb act at once.
 
@@ -178,6 +187,12 @@ The **Feed** button opens a popup at the top of the card with the amounts the fe
 | <img src="https://raw.githubusercontent.com/juju35/ha-pet-card/main/screenshots/card.png" alt="card" width="400"> | <img src="https://raw.githubusercontent.com/juju35/ha-pet-card/main/screenshots/card-dark.png" alt="card dark" width="400"> |
 | <img src="https://raw.githubusercontent.com/juju35/ha-pet-card/main/screenshots/mini-card.png" alt="mini card" width="400"> | <img src="https://raw.githubusercontent.com/juju35/ha-pet-card/main/screenshots/mini-card-dark.png" alt="mini card dark" width="400"> |
 | <img src="https://raw.githubusercontent.com/juju35/ha-pet-card/main/screenshots/mini-card-zoom.png" alt="mini card zoomed in" width="400"> | <img src="https://raw.githubusercontent.com/juju35/ha-pet-card/main/screenshots/mini-card-zoom-dark.png" alt="mini card zoomed in dark" width="400"> |
+
+YumShare Dual-hopper with Camera (D4SH) and Eversweet Max Cordless (CTW3), with Jezza34000's integration: the camera picture, each hopper, the portions dispensed per hopper, the fountain's pump, filter days and battery:
+
+| Light | Dark |
+|---|---|
+| <img src="https://raw.githubusercontent.com/juju35/ha-pet-card/main/screenshots/card-yumshare.png" alt="YumShare feeder and Eversweet Max fountain" width="400"> | <img src="https://raw.githubusercontent.com/juju35/ha-pet-card/main/screenshots/card-yumshare-dark.png" alt="YumShare feeder and Eversweet Max fountain dark" width="400"> |
 
 Fresh Element Gemini, two hoppers (the second one low), with the amount eaten and the food left in the bowl:
 
@@ -220,6 +235,7 @@ The mini card's detail button: the full card, then back to the compact view.
 | Filter | 20 % and less | 5 % and less |
 | Desiccant | 5 days and less | 0 days |
 | Feeder | on batteries, battery low | offline, error |
+| Battery | 25 % and less | 10 % and less |
 
 ## Development
 
@@ -276,7 +292,7 @@ Contributions for additional languages are welcome!
 
 ## Credits
 
-PetKit devices are made by [PetKit](https://www.petkit.com); their Home Assistant integration is a project by [RobertD502](https://github.com/RobertD502/home-assistant-petkit). This card is not affiliated with PetKit.
+PetKit devices are made by [PetKit](https://www.petkit.com); their Home Assistant integrations are projects by [RobertD502](https://github.com/RobertD502/home-assistant-petkit) and [Jezza34000](https://github.com/Jezza34000/homeassistant_petkit). This card is not affiliated with PetKit.
 
 ## License
 

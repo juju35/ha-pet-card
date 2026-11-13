@@ -14,6 +14,7 @@ const alerts = {
 const lightShots = [
   { file: "card", type: "pet-card", theme: "light", width: 460, config: { devices: pair } },
   { file: "card-gemini", type: "pet-card", theme: "light", width: 460, config: { devices: ["gemini"] } },
+  { file: "card-yumshare", type: "pet-card", theme: "light", width: 460, config: { devices: ["d4sh", "ctw3"] } },
   { file: "card-alerts", type: "pet-card", theme: "light", width: 460, config: { devices: pair }, states: alerts },
   { file: "card-feed", type: "pet-card", theme: "light", width: 460, config: { devices: pair }, clicks: ['[data-action="feed"]'] },
   { file: "card-feed-gemini", type: "pet-card", theme: "light", width: 460, config: { devices: ["gemini"] }, clicks: ['[data-action="feed"]'] },
