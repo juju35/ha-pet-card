@@ -25,6 +25,9 @@ export const load = (file, names) => {
     CustomEvent: class {},
     Intl,
     Date,
+    // connectedCallback starts the "2 hours ago" timer (cleared again by disconnectedCallback in the tests).
+    setInterval,
+    clearInterval,
   };
   vm.createContext(context);
   return vm.runInContext(`${src}\n;({ ${names.join(", ")} })`, context);

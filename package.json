@@ -1,6 +1,6 @@
 {
   "name": "ha-pet-card",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Lovelace cards for Home Assistant to monitor and control smart pet devices (Petkit feeders and water fountains).",
   "private": true,
   "type": "module",
