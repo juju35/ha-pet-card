@@ -215,3 +215,35 @@ test("a value without an action opens more-info", () => {
   click(c, { entity: "sensor.fontaine_salon_filtre" });
   assert.equal(events.length, 1);
 });
+
+test("folding: a tap elsewhere (pointer) closes the popup, not a press in the card released outside; leaving the page closes it too", () => {
+  const c = card(PetCard, { devices: ["fountain"] });
+  c._render();
+  c.connectedCallback();
+  const outside = { composedPath: () => [{ tagName: "DIV" }] };
+  click(c, { action: "power", device: "fountain", entity: "switch.fontaine_salon_alimentation" });
+  assert.ok(c._dialog);
+  // Pressed in the card and released outside: the popup stays.
+  c._onOutsideWatch.tap({ composedPath: () => [c] });
+  assert.ok(c._dialog);
+  // A tap on a spot that sends no click (iOS): the pointer alone closes it.
+  c._onOutsideWatch.tap(outside);
+  assert.equal(c._dialog, null);
+  // Left with the popup open and back on the page: closed.
+  click(c, { action: "power", device: "fountain", entity: "switch.fontaine_salon_alimentation" });
+  c.disconnectedCallback();
+  c.connectedCallback();
+  assert.equal(c._dialog, null);
+  c.disconnectedCallback();
+  // The mini card comes back compact.
+  const m = card(PetMiniCard);
+  m.connectedCallback();
+  m._setZoom(true);
+  m._onUnzoomWatch.tap(outside);
+  assert.equal(m._zoomed, false);
+  m._setZoom(true);
+  m.disconnectedCallback();
+  m.connectedCallback();
+  assert.equal(m._zoomed, false);
+  m.disconnectedCallback();
+});
