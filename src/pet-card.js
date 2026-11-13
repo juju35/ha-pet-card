@@ -2,8 +2,9 @@
  * Pet Card for Home Assistant
  * https://github.com/juju35/ha-pet-card
  *
- * Lovelace cards for smart pet devices: feeders and water fountains of the PetKit integration
- * (https://github.com/RobertD502/home-assistant-petkit). Entities are found through the entity and device
+ * Lovelace cards for smart pet devices: feeders and water fountains of the PetKit integrations
+ * (https://github.com/RobertD502/home-assistant-petkit and https://github.com/Jezza34000/homeassistant_petkit,
+ * both on the `petkit` domain). Entities are found through the entity and device
  * registries (platform, translation_key, device), so they work whatever the Home Assistant language or entity
  * ids. Each integration is an adapter (PLATFORMS below): its device kinds and the entity of each role.
  */
@@ -55,7 +56,9 @@ const STRINGS = {
     replace_filter: "Replace filter",
     replace_desiccant: "Replace desiccant",
     battery_low: "Battery low",
+    battery: "Battery",
     running: "Running",
+    pump: "Pump",
     off: "Off",
     unavailable: "Unavailable",
     food: "Food",
@@ -89,6 +92,7 @@ const STRINGS = {
     confirm_off: "Turn off {name}?",
     cancel: "Cancel",
     call_pet: "Call pet",
+    camera: "Camera",
     zoom_in: "Show the full card",
     zoom_out: "Back to the compact view",
     no_devices: "No pet device found. Is the PetKit integration installed?",
@@ -100,6 +104,7 @@ const STRINGS = {
     show_subtitle: "Show subtitle",
     show_stats: "Show today's figures",
     show_controls: "Show buttons (feed, power, resets)",
+    show_camera: "Show the camera picture",
     zoom: "Detail button",
     zoom_helper: "Switches the mini card to the full card and back",
     language: "Language",
@@ -118,7 +123,9 @@ const STRINGS = {
     replace_filter: "Filtre à changer",
     replace_desiccant: "Déshydratant à changer",
     battery_low: "Piles faibles",
+    battery: "Batterie",
     running: "En marche",
+    pump: "Pompe",
     off: "Éteinte",
     unavailable: "Indisponible",
     food: "Croquettes",
@@ -152,6 +159,7 @@ const STRINGS = {
     confirm_off: "Éteindre {name} ?",
     cancel: "Annuler",
     call_pet: "Appeler l'animal",
+    camera: "Caméra",
     zoom_in: "Afficher la carte complète",
     zoom_out: "Revenir à la vue compacte",
     no_devices: "Aucun appareil pour animaux trouvé. L'intégration PetKit est-elle installée ?",
@@ -163,6 +171,7 @@ const STRINGS = {
     show_subtitle: "Afficher le sous-titre",
     show_stats: "Afficher les chiffres du jour",
     show_controls: "Afficher les boutons (nourrir, marche, réinitialisations)",
+    show_camera: "Afficher l'image de la caméra",
     zoom: "Bouton de détail",
     zoom_helper: "Bascule la mini-carte vers la carte complète et inversement",
     language: "Langue",
@@ -181,7 +190,9 @@ const STRINGS = {
     replace_filter: "Filter wechseln",
     replace_desiccant: "Trockenmittel wechseln",
     battery_low: "Batterie schwach",
+    battery: "Akku",
     running: "In Betrieb",
+    pump: "Pumpe",
     off: "Aus",
     unavailable: "Nicht verfügbar",
     food: "Futter",
@@ -215,6 +226,7 @@ const STRINGS = {
     confirm_off: "{name} ausschalten?",
     cancel: "Abbrechen",
     call_pet: "Tier rufen",
+    camera: "Kamera",
     zoom_in: "Vollständige Karte anzeigen",
     zoom_out: "Zurück zur kompakten Ansicht",
     no_devices: "Kein Haustiergerät gefunden. Ist die PetKit-Integration installiert?",
@@ -226,6 +238,7 @@ const STRINGS = {
     show_subtitle: "Untertitel anzeigen",
     show_stats: "Tageswerte anzeigen",
     show_controls: "Schaltflächen anzeigen (Füttern, Ein/Aus, Zurücksetzen)",
+    show_camera: "Kamerabild anzeigen",
     zoom: "Detailschaltfläche",
     zoom_helper: "Schaltet die Mini-Karte auf die vollständige Karte um und zurück",
     language: "Sprache",
@@ -244,7 +257,9 @@ const STRINGS = {
     replace_filter: "Cambiar el filtro",
     replace_desiccant: "Cambiar el desecante",
     battery_low: "Pilas bajas",
+    battery: "Batería",
     running: "En marcha",
+    pump: "Bomba",
     off: "Apagada",
     unavailable: "No disponible",
     food: "Pienso",
@@ -278,6 +293,7 @@ const STRINGS = {
     confirm_off: "¿Apagar {name}?",
     cancel: "Cancelar",
     call_pet: "Llamar a la mascota",
+    camera: "Cámara",
     zoom_in: "Mostrar la tarjeta completa",
     zoom_out: "Volver a la vista compacta",
     no_devices: "No se ha encontrado ningún dispositivo para mascotas. ¿Está instalada la integración PetKit?",
@@ -289,6 +305,7 @@ const STRINGS = {
     show_subtitle: "Mostrar el subtítulo",
     show_stats: "Mostrar las cifras del día",
     show_controls: "Mostrar los botones (comida, encendido, restablecimientos)",
+    show_camera: "Mostrar la imagen de la cámara",
     zoom: "Botón de detalle",
     zoom_helper: "Cambia la minitarjeta a la tarjeta completa y viceversa",
     language: "Idioma",
@@ -307,7 +324,9 @@ const STRINGS = {
     replace_filter: "Замените филтер",
     replace_desiccant: "Замените сушач",
     battery_low: "Слаба батерија",
+    battery: "Батерија",
     running: "Ради",
+    pump: "Пумпа",
     off: "Искључено",
     unavailable: "Недоступно",
     food: "Храна",
@@ -341,6 +360,7 @@ const STRINGS = {
     confirm_off: "Искључити {name}?",
     cancel: "Откажи",
     call_pet: "Позови љубимца",
+    camera: "Камера",
     zoom_in: "Прикажи целу картицу",
     zoom_out: "Назад на сажети приказ",
     no_devices: "Није пронађен ниједан уређај за љубимце. Да ли је интеграција PetKit инсталирана?",
@@ -352,6 +372,7 @@ const STRINGS = {
     show_subtitle: "Прикажи поднаслов",
     show_stats: "Прикажи данашње вредности",
     show_controls: "Прикажи дугмад (храњење, укључивање, ресетовања)",
+    show_camera: "Прикажи слику камере",
     zoom: "Дугме за детаље",
     zoom_helper: "Пребацује мини картицу на целу картицу и назад",
     language: "Језик",
@@ -370,7 +391,9 @@ const STRINGS = {
     replace_filter: "Zamenite filter",
     replace_desiccant: "Zamenite sušač",
     battery_low: "Slaba baterija",
+    battery: "Baterija",
     running: "Radi",
+    pump: "Pumpa",
     off: "Isključeno",
     unavailable: "Nedostupno",
     food: "Hrana",
@@ -404,6 +427,7 @@ const STRINGS = {
     confirm_off: "Isključiti {name}?",
     cancel: "Otkaži",
     call_pet: "Pozovi ljubimca",
+    camera: "Kamera",
     zoom_in: "Prikaži celu karticu",
     zoom_out: "Nazad na sažeti prikaz",
     no_devices: "Nije pronađen nijedan uređaj za ljubimce. Da li je integracija PetKit instalirana?",
@@ -415,6 +439,7 @@ const STRINGS = {
     show_subtitle: "Prikaži podnaslov",
     show_stats: "Prikaži današnje vrednosti",
     show_controls: "Prikaži dugmad (hranjenje, uključivanje, resetovanja)",
+    show_camera: "Prikaži sliku kamere",
     zoom: "Dugme za detalje",
     zoom_helper: "Prebacuje mini karticu na celu karticu i nazad",
     language: "Jezik",
@@ -433,7 +458,9 @@ const STRINGS = {
     replace_filter: "Sostituire il filtro",
     replace_desiccant: "Sostituire l'essiccante",
     battery_low: "Batterie scariche",
+    battery: "Batteria",
     running: "In funzione",
+    pump: "Pompa",
     off: "Spenta",
     unavailable: "Non disponibile",
     food: "Crocchette",
@@ -467,6 +494,7 @@ const STRINGS = {
     confirm_off: "Spegnere {name}?",
     cancel: "Annulla",
     call_pet: "Chiama l'animale",
+    camera: "Telecamera",
     zoom_in: "Mostra la scheda completa",
     zoom_out: "Torna alla vista compatta",
     no_devices: "Nessun dispositivo per animali trovato. L'integrazione PetKit è installata?",
@@ -478,6 +506,7 @@ const STRINGS = {
     show_subtitle: "Mostra il sottotitolo",
     show_stats: "Mostra i valori di oggi",
     show_controls: "Mostra i pulsanti (pasto, accensione, azzeramenti)",
+    show_camera: "Mostra l'immagine della telecamera",
     zoom: "Pulsante dettagli",
     zoom_helper: "Passa dalla mini scheda alla scheda completa e viceversa",
     language: "Lingua",
@@ -496,7 +525,9 @@ const STRINGS = {
     replace_filter: "Filter vervangen",
     replace_desiccant: "Droogmiddel vervangen",
     battery_low: "Batterij bijna leeg",
+    battery: "Batterij",
     running: "In werking",
+    pump: "Pomp",
     off: "Uit",
     unavailable: "Niet beschikbaar",
     food: "Voer",
@@ -530,6 +561,7 @@ const STRINGS = {
     confirm_off: "{name} uitzetten?",
     cancel: "Annuleren",
     call_pet: "Huisdier roepen",
+    camera: "Camera",
     zoom_in: "Volledige kaart tonen",
     zoom_out: "Terug naar de compacte weergave",
     no_devices: "Geen huisdierapparaat gevonden. Is de PetKit-integratie geïnstalleerd?",
@@ -541,6 +573,7 @@ const STRINGS = {
     show_subtitle: "Ondertitel tonen",
     show_stats: "Cijfers van vandaag tonen",
     show_controls: "Knoppen tonen (voeren, aan/uit, resetten)",
+    show_camera: "Camerabeeld tonen",
     zoom: "Detailknop",
     zoom_helper: "Schakelt de minikaart naar de volledige kaart en terug",
     language: "Taal",
@@ -559,7 +592,9 @@ const STRINGS = {
     replace_filter: "Substituir o filtro",
     replace_desiccant: "Substituir o dessecante",
     battery_low: "Pilhas fracas",
+    battery: "Bateria",
     running: "A funcionar",
+    pump: "Bomba",
     off: "Desligada",
     unavailable: "Indisponível",
     food: "Ração",
@@ -593,6 +628,7 @@ const STRINGS = {
     confirm_off: "Desligar {name}?",
     cancel: "Cancelar",
     call_pet: "Chamar o animal",
+    camera: "Câmara",
     zoom_in: "Mostrar o cartão completo",
     zoom_out: "Voltar à vista compacta",
     no_devices: "Nenhum dispositivo para animais encontrado. A integração PetKit está instalada?",
@@ -604,6 +640,7 @@ const STRINGS = {
     show_subtitle: "Mostrar o subtítulo",
     show_stats: "Mostrar os valores de hoje",
     show_controls: "Mostrar os botões (alimentar, ligar, reposições)",
+    show_camera: "Mostrar a imagem da câmara",
     zoom: "Botão de detalhe",
     zoom_helper: "Alterna o minicartão para o cartão completo e vice-versa",
     language: "Idioma",
@@ -622,7 +659,9 @@ const STRINGS = {
     replace_filter: "Wymień filtr",
     replace_desiccant: "Wymień pochłaniacz wilgoci",
     battery_low: "Słaba bateria",
+    battery: "Bateria",
     running: "Działa",
+    pump: "Pompa",
     off: "Wyłączona",
     unavailable: "Niedostępny",
     food: "Karma",
@@ -656,6 +695,7 @@ const STRINGS = {
     confirm_off: "Wyłączyć {name}?",
     cancel: "Anuluj",
     call_pet: "Zawołaj zwierzę",
+    camera: "Kamera",
     zoom_in: "Pokaż pełną kartę",
     zoom_out: "Wróć do widoku kompaktowego",
     no_devices: "Nie znaleziono urządzenia dla zwierząt. Czy integracja PetKit jest zainstalowana?",
@@ -667,6 +707,7 @@ const STRINGS = {
     show_subtitle: "Pokaż podtytuł",
     show_stats: "Pokaż dzisiejsze wartości",
     show_controls: "Pokaż przyciski (karmienie, zasilanie, resety)",
+    show_camera: "Pokaż obraz z kamery",
     zoom: "Przycisk szczegółów",
     zoom_helper: "Przełącza minikartę na pełną kartę i z powrotem",
     language: "Język",
@@ -685,7 +726,9 @@ const STRINGS = {
     replace_filter: "Înlocuiți filtrul",
     replace_desiccant: "Înlocuiți desicantul",
     battery_low: "Baterii descărcate",
+    battery: "Baterie",
     running: "Pornită",
+    pump: "Pompă",
     off: "Oprită",
     unavailable: "Indisponibil",
     food: "Hrană",
@@ -719,6 +762,7 @@ const STRINGS = {
     confirm_off: "Opriți {name}?",
     cancel: "Anulează",
     call_pet: "Cheamă animalul",
+    camera: "Cameră",
     zoom_in: "Afișează cardul complet",
     zoom_out: "Înapoi la vizualizarea compactă",
     no_devices: "Niciun dispozitiv pentru animale găsit. Este instalată integrarea PetKit?",
@@ -730,6 +774,7 @@ const STRINGS = {
     show_subtitle: "Afișează subtitlul",
     show_stats: "Afișează valorile de azi",
     show_controls: "Afișează butoanele (hrănire, pornire, resetări)",
+    show_camera: "Afișează imaginea camerei",
     zoom: "Buton de detalii",
     zoom_helper: "Comută minicardul la cardul complet și înapoi",
     language: "Limbă",
@@ -748,7 +793,9 @@ const STRINGS = {
     replace_filter: "Skift filteret",
     replace_desiccant: "Skift tørremidlet",
     battery_low: "Lavt batteri",
+    battery: "Batteri",
     running: "Kører",
+    pump: "Pumpe",
     off: "Slukket",
     unavailable: "Utilgængelig",
     food: "Foder",
@@ -782,6 +829,7 @@ const STRINGS = {
     confirm_off: "Sluk {name}?",
     cancel: "Annuller",
     call_pet: "Kald på kæledyret",
+    camera: "Kamera",
     zoom_in: "Vis hele kortet",
     zoom_out: "Tilbage til den kompakte visning",
     no_devices: "Ingen kæledyrsenhed fundet. Er PetKit-integrationen installeret?",
@@ -793,6 +841,7 @@ const STRINGS = {
     show_subtitle: "Vis undertitel",
     show_stats: "Vis dagens tal",
     show_controls: "Vis knapper (fodring, tænd/sluk, nulstillinger)",
+    show_camera: "Vis kamerabilledet",
     zoom: "Detaljeknap",
     zoom_helper: "Skifter minikortet til hele kortet og tilbage",
     language: "Sprog",
@@ -811,7 +860,9 @@ const STRINGS = {
     replace_filter: "Byt filtret",
     replace_desiccant: "Byt torkmedlet",
     battery_low: "Svagt batteri",
+    battery: "Batteri",
     running: "I drift",
+    pump: "Pump",
     off: "Av",
     unavailable: "Inte tillgänglig",
     food: "Foder",
@@ -845,6 +896,7 @@ const STRINGS = {
     confirm_off: "Stänga av {name}?",
     cancel: "Avbryt",
     call_pet: "Kalla på husdjuret",
+    camera: "Kamera",
     zoom_in: "Visa hela kortet",
     zoom_out: "Tillbaka till kompakt vy",
     no_devices: "Ingen husdjursenhet hittades. Är PetKit-integrationen installerad?",
@@ -856,6 +908,7 @@ const STRINGS = {
     show_subtitle: "Visa undertitel",
     show_stats: "Visa dagens siffror",
     show_controls: "Visa knappar (matning, ström, återställningar)",
+    show_camera: "Visa kamerabilden",
     zoom: "Detaljknapp",
     zoom_helper: "Växlar minikortet till hela kortet och tillbaka",
     language: "Språk",
@@ -874,7 +927,9 @@ const STRINGS = {
     replace_filter: "Сменете филтъра",
     replace_desiccant: "Сменете сушителя",
     battery_low: "Слаба батерия",
+    battery: "Батерия",
     running: "Работи",
+    pump: "Помпа",
     off: "Изключена",
     unavailable: "Недостъпно",
     food: "Храна",
@@ -908,6 +963,7 @@ const STRINGS = {
     confirm_off: "Изключване на {name}?",
     cancel: "Отказ",
     call_pet: "Повикай любимеца",
+    camera: "Камера",
     zoom_in: "Покажи цялата карта",
     zoom_out: "Обратно към компактния изглед",
     no_devices: "Не е намерено устройство за любимци. Инсталирана ли е интеграцията PetKit?",
@@ -919,6 +975,7 @@ const STRINGS = {
     show_subtitle: "Показвай подзаглавието",
     show_stats: "Показвай днешните стойности",
     show_controls: "Показвай бутоните (хранене, включване, нулирания)",
+    show_camera: "Показване на изображението от камерата",
     zoom: "Бутон за подробности",
     zoom_helper: "Превключва мини картата към цялата карта и обратно",
     language: "Език",
@@ -937,7 +994,9 @@ const STRINGS = {
     replace_filter: "Замените фильтр",
     replace_desiccant: "Замените влагопоглотитель",
     battery_low: "Батарея разряжена",
+    battery: "Батарея",
     running: "Работает",
+    pump: "Насос",
     off: "Выключен",
     unavailable: "Недоступно",
     food: "Корм",
@@ -971,6 +1030,7 @@ const STRINGS = {
     confirm_off: "Выключить {name}?",
     cancel: "Отмена",
     call_pet: "Позвать питомца",
+    camera: "Камера",
     zoom_in: "Показать полную карточку",
     zoom_out: "Назад к компактному виду",
     no_devices: "Устройства для питомцев не найдены. Установлена ли интеграция PetKit?",
@@ -982,6 +1042,7 @@ const STRINGS = {
     show_subtitle: "Показывать подзаголовок",
     show_stats: "Показывать данные за сегодня",
     show_controls: "Показывать кнопки (кормление, питание, сбросы)",
+    show_camera: "Показывать изображение с камеры",
     zoom: "Кнопка подробностей",
     zoom_helper: "Переключает мини-карточку на полную и обратно",
     language: "Язык",
@@ -1000,7 +1061,9 @@ const STRINGS = {
     replace_filter: "Замініть фільтр",
     replace_desiccant: "Замініть вологопоглинач",
     battery_low: "Батарея розряджена",
+    battery: "Батарея",
     running: "Працює",
+    pump: "Насос",
     off: "Вимкнено",
     unavailable: "Недоступно",
     food: "Корм",
@@ -1034,6 +1097,7 @@ const STRINGS = {
     confirm_off: "Вимкнути {name}?",
     cancel: "Скасувати",
     call_pet: "Покликати улюбленця",
+    camera: "Камера",
     zoom_in: "Показати повну картку",
     zoom_out: "Назад до компактного вигляду",
     no_devices: "Пристроїв для улюбленців не знайдено. Чи встановлено інтеграцію PetKit?",
@@ -1045,6 +1109,7 @@ const STRINGS = {
     show_subtitle: "Показувати підзаголовок",
     show_stats: "Показувати дані за сьогодні",
     show_controls: "Показувати кнопки (годування, живлення, скидання)",
+    show_camera: "Показувати зображення з камери",
     zoom: "Кнопка деталей",
     zoom_helper: "Перемикає міні-картку на повну і назад",
     language: "Мова",
@@ -1063,7 +1128,9 @@ const STRINGS = {
     replace_filter: "Cserélje a szűrőt",
     replace_desiccant: "Cserélje a nedvszívót",
     battery_low: "Gyenge elem",
+    battery: "Akkumulátor",
     running: "Működik",
+    pump: "Szivattyú",
     off: "Kikapcsolva",
     unavailable: "Nem elérhető",
     food: "Táp",
@@ -1097,6 +1164,7 @@ const STRINGS = {
     confirm_off: "Kikapcsolja: {name}?",
     cancel: "Mégse",
     call_pet: "Állat hívása",
+    camera: "Kamera",
     zoom_in: "Teljes kártya megjelenítése",
     zoom_out: "Vissza a kompakt nézethez",
     no_devices: "Nem található háziállat-eszköz. Telepítve van a PetKit integráció?",
@@ -1108,6 +1176,7 @@ const STRINGS = {
     show_subtitle: "Alcím megjelenítése",
     show_stats: "Mai értékek megjelenítése",
     show_controls: "Gombok megjelenítése (etetés, bekapcsolás, visszaállítások)",
+    show_camera: "Kamerakép megjelenítése",
     zoom: "Részletek gomb",
     zoom_helper: "A mini kártyát a teljes kártyára váltja és vissza",
     language: "Nyelv",
@@ -1126,7 +1195,9 @@ const STRINGS = {
     replace_filter: "Vymeňte filter",
     replace_desiccant: "Vymeňte vysúšadlo",
     battery_low: "Slabá batéria",
+    battery: "Batéria",
     running: "V prevádzke",
+    pump: "Čerpadlo",
     off: "Vypnutá",
     unavailable: "Nedostupné",
     food: "Krmivo",
@@ -1160,6 +1231,7 @@ const STRINGS = {
     confirm_off: "Vypnúť {name}?",
     cancel: "Zrušiť",
     call_pet: "Zavolať zviera",
+    camera: "Kamera",
     zoom_in: "Zobraziť celú kartu",
     zoom_out: "Späť na kompaktné zobrazenie",
     no_devices: "Nenašlo sa žiadne zariadenie pre zvieratá. Je nainštalovaná integrácia PetKit?",
@@ -1171,6 +1243,7 @@ const STRINGS = {
     show_subtitle: "Zobraziť podnadpis",
     show_stats: "Zobraziť dnešné hodnoty",
     show_controls: "Zobraziť tlačidlá (kŕmenie, napájanie, resety)",
+    show_camera: "Zobraziť obraz z kamery",
     zoom: "Tlačidlo podrobností",
     zoom_helper: "Prepne minikartu na celú kartu a späť",
     language: "Jazyk",
@@ -1189,7 +1262,9 @@ const STRINGS = {
     replace_filter: "Vyměňte filtr",
     replace_desiccant: "Vyměňte vysoušedlo",
     battery_low: "Slabá baterie",
+    battery: "Baterie",
     running: "V provozu",
+    pump: "Čerpadlo",
     off: "Vypnuto",
     unavailable: "Nedostupné",
     food: "Krmivo",
@@ -1223,6 +1298,7 @@ const STRINGS = {
     confirm_off: "Vypnout {name}?",
     cancel: "Zrušit",
     call_pet: "Zavolat zvíře",
+    camera: "Kamera",
     zoom_in: "Zobrazit celou kartu",
     zoom_out: "Zpět na kompaktní zobrazení",
     no_devices: "Nebylo nalezeno žádné zařízení pro zvířata. Je nainstalována integrace PetKit?",
@@ -1234,6 +1310,7 @@ const STRINGS = {
     show_subtitle: "Zobrazit podnadpis",
     show_stats: "Zobrazit dnešní hodnoty",
     show_controls: "Zobrazit tlačítka (krmení, napájení, resety)",
+    show_camera: "Zobrazit obraz z kamery",
     zoom: "Tlačítko podrobností",
     zoom_helper: "Přepne minikartu na celou kartu a zpět",
     language: "Jazyk",
@@ -1252,7 +1329,9 @@ const STRINGS = {
     replace_filter: "Zamenjajte filter",
     replace_desiccant: "Zamenjajte sušilno sredstvo",
     battery_low: "Šibka baterija",
+    battery: "Baterija",
     running: "Deluje",
+    pump: "Črpalka",
     off: "Izklopljeno",
     unavailable: "Ni na voljo",
     food: "Hrana",
@@ -1286,6 +1365,7 @@ const STRINGS = {
     confirm_off: "Izklopim {name}?",
     cancel: "Prekliči",
     call_pet: "Pokliči ljubljenčka",
+    camera: "Kamera",
     zoom_in: "Prikaži celotno kartico",
     zoom_out: "Nazaj na strnjen prikaz",
     no_devices: "Ni najdene naprave za ljubljenčke. Ali je integracija PetKit nameščena?",
@@ -1297,6 +1377,7 @@ const STRINGS = {
     show_subtitle: "Prikaži podnaslov",
     show_stats: "Prikaži današnje vrednosti",
     show_controls: "Prikaži gumbe (hranjenje, vklop, ponastavitve)",
+    show_camera: "Prikaži sliko kamere",
     zoom: "Gumb za podrobnosti",
     zoom_helper: "Preklopi mini kartico na celotno kartico in nazaj",
     language: "Jezik",
@@ -1315,7 +1396,9 @@ const STRINGS = {
     replace_filter: "Nomainiet filtru",
     replace_desiccant: "Nomainiet mitruma absorbētāju",
     battery_low: "Vāja baterija",
+    battery: "Akumulators",
     running: "Darbojas",
+    pump: "Sūknis",
     off: "Izslēgta",
     unavailable: "Nav pieejams",
     food: "Barība",
@@ -1349,6 +1432,7 @@ const STRINGS = {
     confirm_off: "Izslēgt {name}?",
     cancel: "Atcelt",
     call_pet: "Pasaukt mājdzīvnieku",
+    camera: "Kamera",
     zoom_in: "Rādīt pilno karti",
     zoom_out: "Atpakaļ uz kompakto skatu",
     no_devices: "Nav atrasta neviena mājdzīvnieku ierīce. Vai PetKit integrācija ir instalēta?",
@@ -1360,6 +1444,7 @@ const STRINGS = {
     show_subtitle: "Rādīt apakšvirsrakstu",
     show_stats: "Rādīt šodienas vērtības",
     show_controls: "Rādīt pogas (barošana, ieslēgšana, atiestatīšana)",
+    show_camera: "Rādīt kameras attēlu",
     zoom: "Detaļu poga",
     zoom_helper: "Pārslēdz mini karti uz pilno karti un atpakaļ",
     language: "Valoda",
@@ -1378,7 +1463,9 @@ const STRINGS = {
     replace_filter: "Αλλάξτε το φίλτρο",
     replace_desiccant: "Αλλάξτε το αφυγραντικό",
     battery_low: "Χαμηλή μπαταρία",
+    battery: "Μπαταρία",
     running: "Σε λειτουργία",
+    pump: "Αντλία",
     off: "Σβηστή",
     unavailable: "Μη διαθέσιμο",
     food: "Τροφή",
@@ -1412,6 +1499,7 @@ const STRINGS = {
     confirm_off: "Απενεργοποίηση του {name};",
     cancel: "Άκυρο",
     call_pet: "Κάλεσμα κατοικιδίου",
+    camera: "Κάμερα",
     zoom_in: "Εμφάνιση πλήρους κάρτας",
     zoom_out: "Επιστροφή στη συμπαγή προβολή",
     no_devices: "Δεν βρέθηκε συσκευή για κατοικίδια. Είναι εγκατεστημένη η ενσωμάτωση PetKit;",
@@ -1423,6 +1511,7 @@ const STRINGS = {
     show_subtitle: "Εμφάνιση υπότιτλου",
     show_stats: "Εμφάνιση σημερινών τιμών",
     show_controls: "Εμφάνιση κουμπιών (τάισμα, ενεργοποίηση, επαναφορές)",
+    show_camera: "Εμφάνιση της εικόνας της κάμερας",
     zoom: "Κουμπί λεπτομερειών",
     zoom_helper: "Εναλλάσσει τη μίνι κάρτα στην πλήρη κάρτα και πίσω",
     language: "Γλώσσα",
@@ -1571,6 +1660,9 @@ const morph = (root, html) => {
 // ---------------------------------------------------------------------------
 // Adapters: one per integration. A device kind is recognised by any of its `detect` entities; each role names
 // the entity it reads, as "<domain>:<translation_key>" (a list: the first one present wins).
+// The two PetKit integrations, RobertD502's (https://github.com/RobertD502/home-assistant-petkit) and
+// Jezza34000's (https://github.com/Jezza34000/homeassistant_petkit), share the `petkit` domain: one adapter reads
+// both, with each integration's own translation key for a role.
 // ---------------------------------------------------------------------------
 
 const PLATFORMS = {
@@ -1578,38 +1670,64 @@ const PLATFORMS = {
     name: "PetKit",
     kinds: {
       feeder: {
-        detect: ["binary_sensor:food_level", "binary_sensor:food_level_hopper_one", "sensor:feeder_status", "sensor:desiccant_days_remaining"],
+        detect: [
+          "binary_sensor:food_level",
+          "binary_sensor:food_level_hopper_one",
+          "binary_sensor:food_level_1",
+          "sensor:feeder_status",
+          "sensor:desiccant_days_remaining",
+          "sensor:desiccant_left_days",
+          "text:manual_feed_single",
+          "text:manual_feed_dual_h1",
+        ],
         roles: {
           food: "binary_sensor:food_level",
-          food1: "binary_sensor:food_level_hopper_one",
-          food2: "binary_sensor:food_level_hopper_two",
+          food1: ["binary_sensor:food_level_hopper_one", "binary_sensor:food_level_1"],
+          food2: ["binary_sensor:food_level_hopper_two", "binary_sensor:food_level_2"],
           food_left: "sensor:food_left",
-          status: "sensor:feeder_status",
-          error: "sensor:error",
-          desiccant: "sensor:desiccant_days_remaining",
+          status: ["sensor:feeder_status", "sensor:device_status"],
+          error: ["sensor:error", "sensor:error_message"],
+          desiccant: ["sensor:desiccant_days_remaining", "sensor:desiccant_left_days"],
           battery: "sensor:battery_status",
-          dispensed: "sensor:dispensed",
-          planned: "sensor:planned",
+          power_type: "sensor:power_type",
+          battery_pct: "sensor:battery_level",
+          dispensed: ["sensor:dispensed", "sensor:total_dispensed"],
+          planned: ["sensor:planned", "sensor:total_planned"],
+          dispensed1: "sensor:total_dispensed_hopper_1",
+          dispensed2: "sensor:total_dispensed_hopper_2",
+          planned1: "sensor:total_planned_hopper_1",
+          planned2: "sensor:total_planned_hopper_2",
           times: "sensor:times_dispensed",
           eaten: "sensor:amount_eaten",
           times_eaten: "sensor:times_eaten",
           bowl: "sensor:food_in_bowl",
+          bowl_pct: "sensor:food_bowl_percentage",
           feed: ["select:manual_feed", "number:manual_feed", "text:manual_feed"],
+          feed_one: "text:manual_feed_single",
+          feed1: "text:manual_feed_dual_h1",
+          feed2: "text:manual_feed_dual_h2",
           reset_desiccant: "button:reset_desiccant",
           call_pet: "button:call_pet",
+          camera: "camera:camera",
+          camera_switch: "switch:camera",
         },
       },
       fountain: {
-        detect: ["binary_sensor:water_level", "sensor:filter", "sensor:purified_water_today"],
+        detect: ["binary_sensor:water_level", "binary_sensor:lack_warning", "sensor:filter", "sensor:filter_percent", "sensor:purified_water_today", "sensor:purified_water"],
         roles: {
-          water: "binary_sensor:water_level",
-          filter: "sensor:filter",
-          mode: "select:mode",
+          water: ["binary_sensor:water_level", "binary_sensor:lack_warning"],
+          filter: ["sensor:filter", "sensor:filter_percent"],
+          filter_days: "sensor:filter_left_days",
+          filter_warning: "binary_sensor:replace_filter",
+          mode: ["select:mode", "select:working_mode"],
           power: "switch:power",
-          light: "switch:light",
+          pump: "binary_sensor:pump_running",
+          light: ["switch:light", "switch:indicator_light"],
           dnd: "switch:do_not_disturb",
-          purified: "sensor:purified_water_today",
-          energy: "sensor:energy_usage",
+          purified: ["sensor:purified_water_today", "sensor:purified_water"],
+          energy: ["sensor:energy_usage", "sensor:today_pump_run_time"],
+          battery_pct: "sensor:battery",
+          battery_low: "binary_sensor:low_battery",
           reset_filter: "button:reset_filter",
         },
       },
@@ -1665,6 +1783,7 @@ const findDevices = (hass, config) => {
 // Filter and desiccant levels: orange then red as they run out.
 const filterLevel = (v) => (v === null ? "" : v <= 5 ? "crit" : v <= 20 ? "warn" : "ok");
 const desiccantLevel = (v) => (v === null ? "" : v <= 0 ? "crit" : v <= 5 ? "warn" : "ok");
+const batteryLevel = (v) => (v === null ? "" : v <= 10 ? "crit" : v <= 25 ? "warn" : "");
 
 // Default amount of a manual feed: about 10 g, on the entity's own steps.
 const feedDefault = (min, max, step) => {
@@ -1691,6 +1810,38 @@ const feedSpec = (s) => {
   }
   if (domain === "text") return { domain, hoppers: 2, min: 0, max: 10 };
   return null;
+};
+
+// Amounts a text manual feed of Jezza34000's integration accepts, from its pattern "^(10|20|30|0)$" (0 left out).
+const patternValues = (s) => {
+  const m = /^\^\((.*)\)\$$/.exec(String(s?.attributes?.pattern ?? ""));
+  const values = m ? m[1].split("|").map(Number).filter((v) => Number.isInteger(v) && v > 0) : [];
+  return [...new Set(values)].sort((a, b) => a - b);
+};
+const PORTIONS = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
+
+// Jezza34000's single-hopper feeders: one text entity taking one of its amounts. Up to 10 they are portions
+// (the integration's default list), above they are grams (Fresh Element, Mini, D3, D4, D4H).
+const feedListSpec = (s) => {
+  if (!s) return null;
+  const values = patternValues(s);
+  const list = values.length ? values : PORTIONS;
+  const unit = list[list.length - 1] <= 10 ? "portion" : "gram";
+  return { domain: "list", entity: s.entity_id, values: list, unit, min: 0, max: list.length - 1 };
+};
+
+// Jezza34000's dual-hopper feeders (D4S, D4SH): one text entity per hopper, each taking portions.
+const feedDualSpec = (s1, s2) => {
+  if (!s1 && !s2) return null;
+  const max = Math.max(...[s1, s2].map((s) => patternValues(s).at(-1) ?? 0), 0) || 10;
+  return { domain: "dual", entities: [s1?.entity_id ?? null, s2?.entity_id ?? null], hoppers: 2, min: 0, max };
+};
+
+// The default amount of a list: about 10 g, or one portion.
+const listDefault = (spec) => {
+  if (spec.unit !== "gram") return 0;
+  const i = spec.values.findIndex((v) => v >= 10);
+  return i < 0 ? spec.values.length - 1 : i;
 };
 
 // ---------------------------------------------------------------------------
@@ -1954,24 +2105,35 @@ class PetBase extends HTMLElement {
     const e = dev.entities;
     const alerts = [];
     if (dev.kind === "feeder") {
+      // RobertD502: feeder_status (normal, offline, on_batteries), error (no_error), battery_status (low).
+      // Jezza34000: device_status (offline, online_ac, online_battery), error_message ("No error"),
+      // power_type (main_power, on_battery, on_battery_low).
       const status = known(this._s(e.status));
       const err = known(this._s(e.error));
+      const power = known(this._s(e.power_type));
       if (status === "offline") alerts.push({ cls: "crit", key: "offline" });
-      if (err && err !== "no_error") alerts.push({ cls: "crit", key: "error", title: err });
+      if (err && err.toLowerCase().replace(/\s+/g, "_") !== "no_error") alerts.push({ cls: "crit", key: "error", title: err });
       const left = num(this._s(e.food_left));
-      if ([e.food, e.food1, e.food2].some((id) => this._s(id)?.state === "on") || (left !== null && left <= 10))
+      const hoppers = this._hasHoppers(dev);
+      if ([e.food, e.food1, e.food2].some((id) => this._s(id)?.state === "on") || (!hoppers && left !== null && left <= 10))
         alerts.push({ cls: "warn", key: "food_low" });
       const desiccant = num(this._s(e.desiccant));
       if (desiccant !== null && desiccant <= 0) alerts.push({ cls: "warn", key: "replace_desiccant" });
-      if (known(this._s(e.battery)) === "low") alerts.push({ cls: "warn", key: "battery_low" });
-      if (status === "on_batteries") alerts.push({ cls: "warn", key: "on_batteries" });
+      if (known(this._s(e.battery)) === "low" || power === "on_battery_low") alerts.push({ cls: "warn", key: "battery_low" });
+      if (status === "on_batteries" || status === "online_battery" || power === "on_battery") alerts.push({ cls: "warn", key: "on_batteries" });
       return alerts.length ? { ...alerts[0], alerts } : { cls: "ok", key: "normal", alerts };
     }
     if (this._s(e.water)?.state === "on") alerts.push({ cls: "warn", key: "water_low" });
     const filter = num(this._s(e.filter));
-    if (filter !== null && filter <= 5) alerts.push({ cls: "warn", key: "replace_filter" });
+    if ((filter !== null && filter <= 5) || this._s(e.filter_warning)?.state === "on") alerts.push({ cls: "warn", key: "replace_filter" });
+    if (this._s(e.battery_low)?.state === "on") alerts.push({ cls: "warn", key: "battery_low" });
     if (this._s(e.power)?.state === "off") return { cls: "idle", key: "off", alerts };
     return alerts.length ? { ...alerts[0], alerts } : { cls: "ok", key: "running", alerts };
+  }
+
+  // A feeder with two hoppers shows each of them (and not food_left, which is one level for the whole feeder).
+  _hasHoppers(dev) {
+    return !!(this._s(dev.entities.food1) || this._s(dev.entities.food2));
   }
 
   // Overall status of the shown devices: the header chip and icon.
@@ -2082,16 +2244,26 @@ class PetBase extends HTMLElement {
     }
   }
 
+  // The manual feed of a device and its entities' states: RobertD502's one entity (select, number or "a,b" text),
+  // or Jezza34000's text of amounts (one hopper) or one text per hopper.
+  _feedOf(dev) {
+    const e = dev?.entities || {};
+    if (e.feed1 || e.feed2) return { spec: feedDualSpec(this._s(e.feed1), this._s(e.feed2)), states: [this._s(e.feed1), this._s(e.feed2)] };
+    if (e.feed) return { spec: feedSpec(this._s(e.feed)), states: [this._s(e.feed)] };
+    if (e.feed_one) return { spec: feedListSpec(this._s(e.feed_one)), states: [this._s(e.feed_one)] };
+    return { spec: null, states: [] };
+  }
+
   // Manual feed popup: the amount to dispense, then Feed. Built from the entity: options (select), a gram
-  // stepper (number) or one portion stepper per hopper (text, "a,b").
+  // stepper (number), one portion stepper per hopper (text "a,b", or one text per hopper) or a list of amounts.
   _openFeed(dev, from) {
-    const s = this._s(dev?.entities.feed);
-    const spec = feedSpec(s);
+    const { spec, states } = this._feedOf(dev);
     if (!spec) return;
-    const feed = { entity: s.entity_id, spec };
+    const feed = { entity: states[0]?.entity_id, spec };
     if (spec.domain === "select") feed.option = spec.options[0];
     else if (spec.domain === "number") feed.values = [feedDefault(spec.min, spec.max, spec.step)];
-    else feed.values = [1, 0];
+    else if (spec.domain === "list") feed.values = [listDefault(spec)];
+    else feed.values = spec.entities && !spec.entities[0] ? [0, 1] : [1, 0];
     this._openDialog(
       {
         feed,
@@ -2100,6 +2272,12 @@ class PetBase extends HTMLElement {
         run: () => {
           if (spec.domain === "select") return this._call("select", "select_option", { entity_id: feed.entity, option: feed.option });
           if (spec.domain === "number") return this._call("number", "set_value", { entity_id: feed.entity, value: feed.values[0] });
+          if (spec.domain === "list") return this._call("text", "set_value", { entity_id: spec.entity, value: String(spec.values[feed.values[0]]) });
+          // One feed per hopper, each with its own entity (the integration sends the other hopper's amount as 0).
+          if (spec.domain === "dual")
+            return Promise.all(
+              feed.values.map((v, i) => (v > 0 && spec.entities[i] ? this._call("text", "set_value", { entity_id: spec.entities[i], value: String(v) }) : null))
+            );
           return this._call("text", "set_value", { entity_id: feed.entity, value: feed.values.join(",") });
         },
       },
@@ -2144,12 +2322,22 @@ class PetBase extends HTMLElement {
     const loc = this._loc();
     if (spec.domain === "number")
       return this._stepper(this._t("food"), 0, spec.step, spec.unit === "g" ? fmtUnit(f.values[0], "gram", loc) : `${fmtNum(f.values[0], loc, 1)} ${spec.unit}`);
-    return f.values.map((v, i) => this._stepper(`${this._t("hopper", { n: i + 1 })} · ${this._t("portions")}`, i, 1, fmtNum(v, loc))).join("");
+    if (spec.domain === "list") {
+      const v = spec.values[f.values[0]];
+      return spec.unit === "gram"
+        ? this._stepper(this._t("food"), 0, 1, fmtUnit(v, "gram", loc))
+        : this._stepper(`${this._t("food")} · ${this._t("portions")}`, 0, 1, fmtNum(v, loc));
+    }
+    // A hopper without its own feed entity keeps its stepper out.
+    return f.values
+      .map((v, i) => (spec.entities && !spec.entities[i] ? "" : this._stepper(`${this._t("hopper", { n: i + 1 })} · ${this._t("portions")}`, i, 1, fmtNum(v, loc))))
+      .join("");
   }
 
   _dialogHtml() {
     const c = this._dialog;
-    const blocked = c.feed?.values?.every((v) => v <= 0);
+    // Nothing to dispense (every hopper at 0); a list always holds an amount.
+    const blocked = c.feed && c.feed.spec.domain !== "list" && c.feed.values?.every((v) => v <= 0);
     return `<div class="backdrop" data-action="confirm_backdrop">
       <div class="modal" role="dialog" aria-modal="true" aria-labelledby="confirm-msg">
         <div class="msg" id="confirm-msg">${esc(c.text)}</div>
@@ -2203,6 +2391,8 @@ const FULL_STYLE = `
   .tile .act { position: absolute; top: 6px; right: 6px; height: 24px; width: 24px; }
   .tile .act .icon { width: 14px; height: 14px; }
   .toggles { display: flex; flex-wrap: wrap; gap: 6px; }
+  .cam { border-radius: 10px; overflow: hidden; aspect-ratio: 16 / 9; background: var(--secondary-background-color, rgba(127,127,127,.08)); }
+  .cam img { display: block; width: 100%; height: 100%; object-fit: cover; }
 `;
 
 class PetCard extends PetBase {
@@ -2244,6 +2434,31 @@ class PetCard extends PetBase {
     return v === null ? "—" : fmtUnit(v, "gram", this._loc());
   }
 
+  // An amount of food: grams, or portions when the entity has no unit (Jezza34000's per-hopper sensors).
+  _amount(s) {
+    const v = num(s);
+    if (v === null) return "—";
+    const unit = s.attributes?.unit_of_measurement;
+    return unit === "g" ? fmtUnit(v, "gram", this._loc()) : `${fmtNum(v, this._loc())} ${unit || this._t("portions")}`;
+  }
+
+  _dispensedTile(id, plannedId, label) {
+    const planned = this._s(plannedId);
+    return this._tile(id, label, this._amount(this._s(id)), { sub: num(planned) ? this._t("planned", { v: this._amount(planned) }) : label === this._t("dispensed") ? "" : this._t("dispensed") });
+  }
+
+  // The feeder's camera (Jezza34000's integration, YumShare feeders): its latest picture, a click opens the stream.
+  // Left out while the camera is switched off or unavailable, and with show_camera: false.
+  _camera(dev) {
+    const e = dev.entities;
+    const s = this._s(e.camera);
+    const pic = s?.attributes?.entity_picture;
+    if (this._config.show_camera === false || !pic || !known(s) || this._s(e.camera_switch)?.state === "off") return "";
+    return `<div class="cam clickable" role="button" tabindex="0" data-key="${esc(e.camera)}" data-entity="${esc(e.camera)}" aria-label="${esc(`${this._t("camera")} ${dev.name}`)}">
+      <img src="${esc(pic)}" alt="">
+    </div>`;
+  }
+
   _devHead(dev, st, acts) {
     const icon = dev.kind === "feeder" ? ICONS.bowl : ICONS.fountain;
     const title = st.alerts.map((a) => a.title || this._t(a.key)).join(" · ");
@@ -2261,54 +2476,71 @@ class PetCard extends PetBase {
     const st = this._status(dev);
     const loc = this._loc();
     const controls = c.show_controls !== false;
-    // A PetKit manual feed select always reads "" (nothing picked): only an unavailable entity blocks it.
-    const feedState = this._s(e.feed);
-    const feedable = feedSpec(feedState) && feedState.state !== "unavailable";
+    // A PetKit manual feed always reads "" or "0" (nothing picked): only an unavailable entity blocks it.
+    const { spec: feedSpecOf, states: feedStates } = this._feedOf(dev);
+    const feedEntity = e.feed || e.feed_one || e.feed1 || e.feed2;
+    const feedable = feedSpecOf && feedStates.some((s) => s && s.state !== "unavailable");
     const acts = controls
       ? [
           e.call_pet
             ? `<button type="button" class="act round" data-action="press" data-entity="${esc(e.call_pet)}" data-device="${esc(dev.id)}" title="${esc(this._t("call_pet"))}" aria-label="${esc(this._t("call_pet"))}">${svgIcon(ICONS.call)}</button>`
             : "",
-          e.feed
-            ? `<button type="button" class="act" data-action="feed" data-device="${esc(dev.id)}" data-entity="${esc(e.feed)}" title="${esc(this._t("feed"))}"${feedable ? "" : ' aria-disabled="true"'}>${svgIcon(ICONS.feed)}<span class="lbl">${esc(this._t("feed"))}</span></button>`
+          feedEntity
+            ? `<button type="button" class="act" data-action="feed" data-device="${esc(dev.id)}" data-entity="${esc(feedEntity)}" title="${esc(this._t("feed"))}"${feedable ? "" : ' aria-disabled="true"'}>${svgIcon(ICONS.feed)}<span class="lbl">${esc(this._t("feed"))}</span></button>`
             : "",
         ].join("")
       : "";
     const rows = [];
     const left = num(this._s(e.food_left));
-    if (left !== null) rows.push(this._level(e.food_left, ICONS.bowl, this._t("food"), left, fmtPct(left, loc), left <= 10 ? "warn" : "ok"));
-    else if (e.food1 || e.food2) {
+    if (this._hasHoppers(dev)) {
       rows.push(this._foodRow(e.food1, this._t("hopper", { n: 1 })));
       rows.push(this._foodRow(e.food2, this._t("hopper", { n: 2 })));
-    } else rows.push(this._foodRow(e.food, this._t("food")));
+    } else if (left !== null) rows.push(this._level(e.food_left, ICONS.bowl, this._t("food"), left, fmtPct(left, loc), left <= 10 ? "warn" : "ok"));
+    else rows.push(this._foodRow(e.food, this._t("food")));
     let tiles = "";
     if (c.show_stats !== false) {
-      const planned = num(this._s(e.planned));
       const times = this._s(e.times);
       const last = num(times) ? fmtAgo(times.last_changed, loc) : null;
       const desiccant = num(this._s(e.desiccant));
+      const battery = num(this._s(e.battery_pct));
       const reset =
         controls && e.reset_desiccant
           ? `<button type="button" class="act round" data-action="reset_desiccant" data-entity="${esc(e.reset_desiccant)}" data-device="${esc(dev.id)}" title="${esc(this._t("reset"))}" aria-label="${esc(this._t("reset"))}">${svgIcon(ICONS.reset)}</button>`
           : "";
+      // Dispensed today: in grams for the whole feeder, else per hopper (Jezza34000's dual-hopper feeders: "Hopper 1",
+      // "3 portions", "of 4 portions planned").
+      const dispensed = e.dispensed
+        ? [this._dispensedTile(e.dispensed, e.planned, this._t("dispensed"))]
+        : [1, 2].map((n) => this._dispensedTile(e[`dispensed${n}`], e[`planned${n}`], this._t("hopper", { n })));
+      const bowlPct = num(this._s(e.bowl_pct));
       tiles = [
-        this._tile(e.dispensed, this._t("dispensed"), this._grams(this._s(e.dispensed)), {
-          sub: planned ? this._t("planned", { v: fmtUnit(planned, "gram", loc) }) : "",
-        }),
+        ...dispensed,
         this._tile(e.times, this._t("meals"), num(times) === null ? "—" : fmtNum(num(times), loc), { sub: last ? `${this._t("last_meal")} ${last}` : "" }),
         this._tile(e.eaten, this._t("eaten"), this._grams(this._s(e.eaten))),
-        this._tile(e.bowl, this._t("in_bowl"), this._grams(this._s(e.bowl))),
+        e.bowl
+          ? this._tile(e.bowl, this._t("in_bowl"), this._grams(this._s(e.bowl)))
+          : this._tile(e.bowl_pct, this._t("in_bowl"), bowlPct === null ? "—" : fmtPct(bowlPct, loc)),
         this._tile(e.desiccant, this._t("desiccant"), desiccant === null ? "—" : fmtUnit(desiccant, "day", loc), {
           cls: desiccantLevel(desiccant),
           act: reset,
         }),
+        // Battery level: only reported while the feeder runs on its batteries.
+        battery === null ? "" : this._tile(e.battery_pct, this._t("battery"), fmtPct(battery, loc), { cls: batteryLevel(battery) }),
       ].join("");
     }
     return `<div class="dev" data-key="${esc(dev.id)}">
       ${this._devHead(dev, st, acts)}
+      ${this._camera(dev)}
       ${rows.join("")}
       ${tiles ? `<div class="tiles">${tiles}</div>` : ""}
     </div>`;
+  }
+
+  // A fountain mode in the card's language: "normal" / "smart" (RobertD502), "Normal" / "Smart" (Jezza34000's
+  // W5); any other one (Pause…) as the integration names it.
+  _mode(o) {
+    const k = `mode_${String(o).toLowerCase()}`;
+    return STRINGS.en[k] ? this._t(k) : o;
   }
 
   _fountain(dev) {
@@ -2341,11 +2573,17 @@ class PetCard extends PetBase {
       const mode = known(this._s(e.mode));
       const purified = num(this._s(e.purified));
       const energy = num(this._s(e.energy));
+      const days = num(this._s(e.filter_days));
+      const battery = num(this._s(e.battery_pct));
+      const pump = this._s(e.pump);
       tiles = [
         // With the buttons, the mode is shown (and picked) by the mode buttons below.
-        controls ? "" : this._tile(e.mode, this._t("mode"), mode ? (STRINGS.en[`mode_${mode}`] ? this._t(`mode_${mode}`) : mode) : "—"),
+        controls ? "" : this._tile(e.mode, this._t("mode"), mode ? this._mode(mode) : "—"),
+        this._tile(e.pump, this._t("pump"), known(pump) ? this._t(pump.state === "on" ? "running" : "off") : "—"),
+        this._tile(e.filter_days, this._t("filter"), days === null ? "—" : fmtUnit(days, "day", loc), { cls: days === null ? "" : days <= 3 ? "warn" : "" }),
         this._tile(e.purified, this._t("purified"), purified === null ? "—" : `${fmtNum(purified, loc)}×`),
         this._tile(e.energy, this._t("energy"), energy === null ? "—" : `${fmtNum(energy, loc, 3)} kWh`),
+        this._tile(e.battery_pct, this._t("battery"), battery === null ? "—" : fmtPct(battery, loc), { cls: batteryLevel(battery) }),
       ].join("");
     }
     const toggles = [];
@@ -2353,7 +2591,7 @@ class PetCard extends PetBase {
       const modeS = this._s(e.mode);
       for (const o of modeS?.attributes?.options || [])
         toggles.push(
-          `<button type="button" class="act" data-action="mode" data-entity="${esc(e.mode)}" data-device="${esc(dev.id)}" data-option="${esc(o)}" aria-pressed="${modeS.state === o}">${svgIcon(ICONS.mode)}${esc(STRINGS.en[`mode_${o}`] ? this._t(`mode_${o}`) : o)}</button>`
+          `<button type="button" class="act" data-action="mode" data-entity="${esc(e.mode)}" data-device="${esc(dev.id)}" data-option="${esc(o)}" aria-pressed="${modeS.state === o}">${svgIcon(ICONS.mode)}${esc(this._mode(o))}</button>`
         );
       for (const [role, icon] of [
         ["light", ICONS.light],
@@ -2477,7 +2715,7 @@ class PetMiniCard extends PetCard {
     let value = "—";
     let cls = st.cls === "ok" ? "ok" : st.cls;
     if (dev.kind === "feeder") {
-      const left = num(this._s(e.food_left));
+      const left = this._hasHoppers(dev) ? null : num(this._s(e.food_left));
       const foods = [e.food, e.food1, e.food2].filter((x) => this._s(x));
       id = left !== null ? e.food_left : foods[0];
       if (left !== null) {
@@ -2607,6 +2845,7 @@ class PetCardEditor extends PetEditorBase {
       ["show_subtitle", true],
       ["show_stats", true],
       ["show_controls", true],
+      ["show_camera", true],
     ];
   }
 }

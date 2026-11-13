@@ -1,5 +1,15 @@
 # Changelog
 
+## 1.1.0 - 2026-11-13
+
+### Features
+- Support for [Jezza34000's PetKit integration](https://github.com/Jezza34000/homeassistant_petkit), next to RobertD502's: both use the `petkit` domain, and the cards read each one's own translation keys. Built from the integration's source, not tested on real devices yet ([#4](https://github.com/juju35/ha-pet-card/issues/4), suggested by @mielikki33).
+- Dual-hopper feeders (YumShare Dual-hopper with Camera D4SH, Fresh Element Gemini D4S): each hopper's food level, food dispensed today against the plan per hopper (in portions), and a manual feed with one portion stepper per hopper, sent to each hopper's own entity.
+- Single-hopper feeders of that integration: manual feed through the amounts the feeder accepts (grams, or portions up to 10).
+- Feeder camera (YumShare feeders): its latest picture at the top of the feeder, a click opens the live stream; hidden while the camera is switched off, or with the new `show_camera: false` option (also in the visual editor).
+- Feeder status from that integration's device status, error message and power type (offline, on batteries, battery low), the bowl fill and the battery level while on batteries.
+- Fountains of that integration (Eversweet Max Cordless CTW3 and its other Eversweet fountains): water shortage, filter left (% and days) with its own *replace filter* warning, pump running, purified water and energy today, battery level and low battery, power, indicator light and do not disturb; the working mode of the W5 when it has one.
+
 ## 1.0.1 - 2026-11-13
 
 ### Fixes
