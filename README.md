@@ -1,3 +1,283 @@
 # ha-pet-card
 
-Lovelace cards for Home Assistant for smart pet devices (PetKit feeders and water fountains).
+[![Marketplace](https://img.shields.io/badge/Marketplace-Custom-41BDF5.svg)](https://www.home-assistant.io/integrations/marketplace/)
+[![HACS Validation](https://github.com/juju35/ha-pet-card/actions/workflows/hacs.yml/badge.svg)](https://github.com/juju35/ha-pet-card/actions/workflows/hacs.yml)
+[![Validate](https://github.com/juju35/ha-pet-card/actions/workflows/validate.yml/badge.svg)](https://github.com/juju35/ha-pet-card/actions/workflows/validate.yml)
+[![Lint](https://github.com/juju35/ha-pet-card/actions/workflows/lint.yml/badge.svg)](https://github.com/juju35/ha-pet-card/actions/workflows/lint.yml)
+[![Release](https://img.shields.io/github/v/release/juju35/ha-pet-card)](https://github.com/juju35/ha-pet-card/releases/latest)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://github.com/juju35/ha-pet-card/blob/main/LICENSE)
+[![Buy Me a Coffee](https://img.shields.io/badge/Buy%20Me%20a%20Coffee-FFDD00?logo=buymeacoffee&logoColor=black)](https://buymeacoffee.com/julienstep9)
+
+Lovelace cards for Home Assistant to keep an eye on smart pet devices: food and water levels, filter and desiccant, today's meals, and a manual feed in two taps.
+
+Supported integrations:
+
+- [PetKit](https://github.com/RobertD502/home-assistant-petkit) — PetKit feeders (Fresh Element Infinity, Solo, Gemini, Mini Pro) and Eversweet water fountains.
+
+Entities are **discovered automatically**, you don't have to pick them one by one, and it works whatever your Home Assistant language.
+
+> [!IMPORTANT]
+> **Not tested on real hardware yet.** The cards were built from the PetKit integration's source code (its entities, their translation keys and states) and checked against mock data only. If something shows wrong on your devices, please [open an issue](https://github.com/juju35/ha-pet-card/issues) with your device model and the entities the integration created.
+
+[![Open your Home Assistant instance and open a repository inside the Marketplace.](https://my.home-assistant.io/badges/hacs_repository.svg)](https://my.home-assistant.io/redirect/marketplace_repository/?owner=juju35&repository=ha-pet-card&category=plugin)
+
+| Pet Card | Pet Mini Card |
+|---|---|
+| <img src="https://raw.githubusercontent.com/juju35/ha-pet-card/main/screenshots/card.png" alt="pet-card" width="400"> | <img src="https://raw.githubusercontent.com/juju35/ha-pet-card/main/screenshots/mini-card.png" alt="pet-mini-card" width="400"> |
+
+## Features
+
+- Two cards: a full **Pet Card** and a compact **Pet Mini Card**
+- Automatic discovery of the PetKit feeders and water fountains (all of them by default, or the ones you pick)
+- Feeders: food level (or each hopper of a Gemini), status, errors, food dispensed today against the planned amount, meals today and the time of the last one, amount eaten and food left in the bowl when the feeder reports them, desiccant days left
+- **Manual feed** in an in-card popup: the feeder's fixed amounts (Solo, Mini Pro), a gram stepper (Infinity, Fresh Element) or one portion stepper per hopper (Gemini)
+- Water fountains: water level, filter left, mode (normal / smart), water purified and energy used today, power, light and do not disturb switches
+- Filter and desiccant reset buttons, with a confirmation, once you have replaced them
+- Status chip per device and for the whole card: *Food low*, *Low water*, *Replace filter*, *Replace desiccant*, *Battery low*, *Offline*, the feeder's own error message
+- Click any value to open its Home Assistant history (more-info dialog)
+- Detail button at the top right of the mini card: it switches to the full card and back; a click anywhere outside the card brings the compact view back
+- Visual editor in the dashboard UI for both cards (no YAML needed)
+- Light and dark mode; English, French, German, Spanish, Serbian (Cyrillic and Latin), Italian, Dutch, European Portuguese, Polish, Romanian, Danish, Swedish, Bulgarian, Russian, Ukrainian, Hungarian, Slovak, Czech, Slovenian, Latvian and Greek
+- Single file, no external dependency
+
+## Supported integrations
+
+| Integration | What the cards show |
+|---|---|
+| [PetKit](https://github.com/RobertD502/home-assistant-petkit) (Marketplace) | Feeders: food level or hoppers, status, error, dispensed / planned today, meals, eaten, food in bowl, desiccant with reset, battery, manual feed, call pet. Fountains: water level, filter with reset, mode, purified water, energy, power, light and do not disturb. Details in [PetKit](#petkit) |
+
+PetKit litter boxes and purifiers are left out for now: they are not shown, and do not get in the way.
+
+## Prerequisites
+
+Home Assistant 2024.8 or later, and the [PetKit integration](https://github.com/RobertD502/home-assistant-petkit) (available in the Marketplace), installed and configured with your PetKit account.
+
+## Installation
+
+### Via the Marketplace (recommended)
+
+Click the button below to add the repository directly:
+
+[![Add to the Marketplace](https://my.home-assistant.io/badges/hacs_repository.svg)](https://my.home-assistant.io/redirect/marketplace_repository/?owner=juju35&repository=ha-pet-card&category=plugin)
+
+Then click **Install**, and reload your browser when the Marketplace asks you to.
+
+Or manually:
+
+1. Open **Settings → Marketplace → Add from link** (top right; this needs a GitHub account connected)
+2. Add `https://github.com/juju35/ha-pet-card` — Type: **Dashboard**
+3. Open **Pet Card** and click **Install**
+4. Clear your browser cache and refresh
+
+### Manual
+
+1. Download `pet-card.js` and the `pet-card.i18n.*.js` translation files from the [latest release](https://github.com/juju35/ha-pet-card/releases/latest)
+2. Copy them all to `/config/www/` (without the translation files, the cards show in English)
+3. Go to **Settings → Dashboards → ⋮ → Resources** → Add resource:
+   - URL: `/local/pet-card.js`
+   - Type: **JavaScript Module**
+4. Clear your browser cache and refresh
+
+## Configuration
+
+### Visual editor
+
+Edit a dashboard, click **Add card** and search for **Pet Card** or **Pet Mini Card**. Every feeder and fountain is shown by default; tick the ones you want to keep only those, set an optional title, choose what to display and the language. The preview updates live, and options left at their default are kept out of the generated YAML.
+
+### Minimal
+
+```yaml
+type: custom:pet-card
+```
+
+```yaml
+type: custom:pet-mini-card
+```
+
+### Full options
+
+```yaml
+type: custom:pet-card
+devices:
+  - Kitchen feeder
+  - Living room fountain
+title: Pets
+show_title: true
+show_subtitle: true
+show_stats: true
+show_controls: true
+language: fr
+```
+
+```yaml
+type: custom:pet-mini-card
+devices:
+  - Kitchen feeder
+  - Living room fountain
+title: Pets
+zoom: true
+language: fr
+```
+
+### Options reference
+
+| Option | Card | Default | Description |
+|---|---|---|---|
+| `devices` | both | All | Devices to show, in this order: their name (as in Home Assistant) or their device id (set by the visual editor). Feeders first, then fountains, when left out |
+| `title` | both | `Pets` (translated) | Card title |
+| `show_title` | both | `true` | Show the title in the header (e.g. `false` under a section heading of your own) |
+| `show_subtitle` | both | `true` | Show the subtitle (the devices' names) under the title |
+| `show_stats` | full | `true` | Today's figures: dispensed, meals, eaten, in the bowl, desiccant; purified water and energy for the fountains |
+| `show_controls` | full | `true` | Buttons: feed, call pet, power, mode, light, do not disturb, filter and desiccant resets |
+| `zoom` | mini | `true` | Detail button at the top right: switches to the full card and back (`false` removes it) |
+| `language` | both | Auto | Force language: `en`, `fr`, `de`, `es`, `sr`, `sr-Latn`, `it`, `nl`, `pt`, `pl`, `ro`, `da`, `sv`, `bg`, `ru`, `uk`, `hu`, `sk`, `cs`, `sl`, `lv` or `el` (auto-detects from HA settings) |
+
+## PetKit
+
+The cards read the entities of the [PetKit integration](https://github.com/RobertD502/home-assistant-petkit) through the Home Assistant registries (`platform: petkit`, the entity's `translation_key` and its device), whatever their entity ids or language. A device is a feeder when it has a food level, a feeder status or a desiccant sensor, and a fountain when it has a water level, a filter or a purified water sensor.
+
+| Card | PetKit entity (`translation_key`) |
+|---|---|
+| Food level | `food_left` (%) when the feeder reports it, else `food_level` (binary, *on* = low); `food_level_hopper_one` / `_two` on a Gemini |
+| Status chip | `feeder_status` (*offline*, *on_batteries*), `error` (any message but *no_error*), `battery_status` (*low*) |
+| Dispensed today | `dispensed`, against `planned` |
+| Meals today | `times_dispensed`; *last meal* is when that count last changed |
+| Eaten today / In the bowl | `amount_eaten`, `food_in_bowl` (feeders that weigh the bowl) |
+| Desiccant | `desiccant_days_remaining` (orange from 5 days, red at 0), reset with `reset_desiccant` |
+| Manual feed | `manual_feed`: a `select` of amounts (Solo, Mini Pro), a `number` in grams (Infinity, Fresh Element) or a `text` of portions per hopper `a,b` (Gemini) |
+| Call pet | `call_pet` (Solo) |
+| Water | `water_level` (binary, *on* = low) |
+| Filter | `filter` (%, orange from 20 %, red from 5 %), reset with `reset_filter` |
+| Mode | `mode` (*normal*, *smart*) |
+| Purified today / Energy today | `purified_water_today`, `energy_usage` |
+| Power, Light, Do not disturb | `power`, `light`, `do_not_disturb` switches |
+
+Turning a fountain off and resetting a filter or a desiccant ask for a confirmation first; turning it on, the mode, the light and do not disturb act at once.
+
+**Last meal**: PetKit has no "last meal" sensor, so the card shows when the count of meals of the day last changed. After a Home Assistant restart, that time is the restart until the next meal.
+
+### Manual feed
+
+The **Feed** button opens a popup at the top of the card with the amounts the feeder accepts, then **Feed** dispenses them:
+
+| Light | Dark |
+|---|---|
+| <img src="https://raw.githubusercontent.com/juju35/ha-pet-card/main/screenshots/card-feed.png" alt="feed popup" width="400"> | <img src="https://raw.githubusercontent.com/juju35/ha-pet-card/main/screenshots/card-feed-dark.png" alt="feed popup dark" width="400"> |
+| <img src="https://raw.githubusercontent.com/juju35/ha-pet-card/main/screenshots/card-feed-gemini.png" alt="feed popup, two hoppers" width="400"> | <img src="https://raw.githubusercontent.com/juju35/ha-pet-card/main/screenshots/card-feed-gemini-dark.png" alt="feed popup, two hoppers dark" width="400"> |
+
+## Screenshots
+
+| Light | Dark |
+|---|---|
+| <img src="https://raw.githubusercontent.com/juju35/ha-pet-card/main/screenshots/card.png" alt="card" width="400"> | <img src="https://raw.githubusercontent.com/juju35/ha-pet-card/main/screenshots/card-dark.png" alt="card dark" width="400"> |
+| <img src="https://raw.githubusercontent.com/juju35/ha-pet-card/main/screenshots/mini-card.png" alt="mini card" width="400"> | <img src="https://raw.githubusercontent.com/juju35/ha-pet-card/main/screenshots/mini-card-dark.png" alt="mini card dark" width="400"> |
+| <img src="https://raw.githubusercontent.com/juju35/ha-pet-card/main/screenshots/mini-card-zoom.png" alt="mini card zoomed in" width="400"> | <img src="https://raw.githubusercontent.com/juju35/ha-pet-card/main/screenshots/mini-card-zoom-dark.png" alt="mini card zoomed in dark" width="400"> |
+
+Fresh Element Gemini, two hoppers (the second one low), with the amount eaten and the food left in the bowl:
+
+| Light | Dark |
+|---|---|
+| <img src="https://raw.githubusercontent.com/juju35/ha-pet-card/main/screenshots/card-gemini.png" alt="Gemini feeder" width="400"> | <img src="https://raw.githubusercontent.com/juju35/ha-pet-card/main/screenshots/card-gemini-dark.png" alt="Gemini feeder dark" width="400"> |
+
+Things to do: food low, desiccant to replace, low water and filter to replace:
+
+| Light | Dark |
+|---|---|
+| <img src="https://raw.githubusercontent.com/juju35/ha-pet-card/main/screenshots/card-alerts.png" alt="alerts" width="400"> | <img src="https://raw.githubusercontent.com/juju35/ha-pet-card/main/screenshots/card-alerts-dark.png" alt="alerts dark" width="400"> |
+
+### Animations
+
+The feed popup: an amount is picked, then the popup is cancelled.
+
+| Light | Dark |
+|---|---|
+| <img src="https://raw.githubusercontent.com/juju35/ha-pet-card/main/screenshots/card-feed.gif" alt="feed popup animation" width="400"> | <img src="https://raw.githubusercontent.com/juju35/ha-pet-card/main/screenshots/card-feed-dark.gif" alt="feed popup animation dark" width="400"> |
+
+Levels: the water runs low and the filter runs out, the bars and colours follow, then both are back to normal.
+
+| Light | Dark |
+|---|---|
+| <img src="https://raw.githubusercontent.com/juju35/ha-pet-card/main/screenshots/card-levels.gif" alt="levels animation" width="400"> | <img src="https://raw.githubusercontent.com/juju35/ha-pet-card/main/screenshots/card-levels-dark.gif" alt="levels animation dark" width="400"> |
+
+The mini card's detail button: the full card, then back to the compact view.
+
+| Light | Dark |
+|---|---|
+| <img src="https://raw.githubusercontent.com/juju35/ha-pet-card/main/screenshots/mini-card-zoom.gif" alt="mini card zoom animation" width="400"> | <img src="https://raw.githubusercontent.com/juju35/ha-pet-card/main/screenshots/mini-card-zoom-dark.gif" alt="mini card zoom animation dark" width="400"> |
+
+## Status colours
+
+| Item | Orange | Red |
+|---|---|---|
+| Food | low (or 10 % and less left) | — |
+| Water | low | — |
+| Filter | 20 % and less | 5 % and less |
+| Desiccant | 5 days and less | 0 days |
+| Feeder | on batteries, battery low | offline, error |
+
+## Development
+
+```bash
+npm install
+npm run build        # bundles src/pet-card.js into dist/pet-card.js
+npm run check        # builds and checks the card (run in CI)
+npm test             # unit tests, on the mock PetKit registries
+npm run screenshots  # renders the cards with mock data (scripts/mock-states.mjs) into screenshots/, PNG and animated GIF (needs ffmpeg)
+```
+
+The **Screenshots** workflow re-renders `screenshots/` on every pull request touching `src/`, `scripts/` or `package-lock.json` (a Playwright/Chromium bump changes the rendering) and commits the refreshed captures onto the pull request's branch, so the README always matches the code.
+
+`dist/` is not committed: `npm run build` creates it locally, CI builds it on every push, and the release workflow attaches the built file to the release, which is where the Marketplace installs it from.
+
+Another integration (another brand of feeders or fountains) is an adapter in `PLATFORMS` (`src/pet-card.js`): its device kinds and the entity of each role.
+
+### Releasing
+
+1. Bump `version` in `package.json`
+2. Add a `## <version>` section at the top of [CHANGELOG.md](https://github.com/juju35/ha-pet-card/blob/main/CHANGELOG.md)
+3. Push to `main`: the **Release** workflow builds the card, creates the tag and the GitHub release with the changelog section as notes, and attaches `pet-card.js`
+
+## Translations
+
+The cards auto-detect the language from your Home Assistant settings. Currently supported:
+
+| Language | Code |
+|---|---|
+| English | `en` |
+| Français | `fr` |
+| Deutsch | `de` |
+| Español | `es` |
+| Српски | `sr` |
+| Srpski (latinica) | `sr-Latn` |
+| Italiano | `it` |
+| Nederlands | `nl` |
+| Português (European) | `pt` |
+| Polski | `pl` |
+| Română | `ro` |
+| Dansk | `da` |
+| Svenska | `sv` |
+| Български | `bg` |
+| Русский | `ru` |
+| Українська | `uk` |
+| Magyar | `hu` |
+| Slovenčina | `sk` |
+| Čeština | `cs` |
+| Slovenščina | `sl` |
+| Latviešu | `lv` |
+| Ελληνικά | `el` |
+
+Contributions for additional languages are welcome!
+
+## Credits
+
+PetKit devices are made by [PetKit](https://www.petkit.com); their Home Assistant integration is a project by [RobertD502](https://github.com/RobertD502/home-assistant-petkit). This card is not affiliated with PetKit.
+
+## License
+
+[MIT](https://github.com/juju35/ha-pet-card/blob/main/LICENSE)
+
+## Support
+
+If you find this project useful, you can support its development:
+
+<a href="https://buymeacoffee.com/julienstep9"><img src="https://cdn.buymeacoffee.com/buttons/v2/default-yellow.png" alt="Buy Me a Coffee" height="50"></a>
