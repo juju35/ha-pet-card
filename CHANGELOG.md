@@ -1,5 +1,12 @@
 # Changelog
 
+## 1.2.0 - 2026-11-14
+
+### Features
+- **Animated illustrations** of the devices, next to their levels (new `show_illustration` option, on by default, also in both visual editors): kibbles fall into the bowl while a feeder dispenses, the fountain's water flows and ripples while its pump runs, the litter box's drum turns while it cleans and a cat peeks out while one is inside. The hoppers, the fountain's tank and the litter show their level, a low hopper or a full waste bin blinks and the status LED takes the device's status colour. The drawing follows the model: one or two hoppers, a camera (YumShare feeders, camera litter boxes).
+- **Litter boxes**, with both PetKit integrations (Pura X and Pura MAX with RobertD502's; Pura X, Pura MAX 1 and 2 and Purobot with Jezza34000's): litter level, waste bin, what the box does (cleaning, a cat inside, paused, maintenance), uses today and the last one, the last cat, litter weight, deodorizer days left, the camera picture, and **Clean** and deodorize buttons. Status chip: *Waste bin full*, *Litter low*, *Replace deodorizer*, offline and errors. In the mini card, one row per litter box.
+- Jezza34000's integration: the feeder's `feeding` sensor shows its dispensing, and the fountain's `do_not_disturb_state` stops the illustration's flowing water while the period runs. With RobertD502's, a dispensing is shown for 15 s after a manual feed from the card or when the meals or the amount dispensed today rise.
+
 ## 1.1.1 - 2026-11-14
 
 ### Fixes

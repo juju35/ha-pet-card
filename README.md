@@ -14,12 +14,12 @@
   <img src="https://raw.githubusercontent.com/juju35/ha-pet-card/main/images/petkit.png" alt="PetKit" width="64">
 </p>
 
-Lovelace cards for Home Assistant to keep an eye on smart pet devices: food and water levels, filter and desiccant, today's meals, and a manual feed in two taps.
+Lovelace cards for Home Assistant to keep an eye on smart pet devices: food and water levels, filter and desiccant, the litter box's litter and waste bin, today's meals and visits, and a manual feed in two taps. Each device is drawn and animated by what it does.
 
 Supported integrations:
 
-- [PetKit](https://github.com/RobertD502/home-assistant-petkit) (RobertD502) — PetKit feeders (Fresh Element Infinity, Solo, Gemini, Mini Pro) and Eversweet water fountains.
-- [Petkit](https://github.com/Jezza34000/homeassistant_petkit) (Jezza34000) — PetKit feeders, including the YumShare dual-hopper feeder with camera (D4SH), and Eversweet water fountains, including the Eversweet Max Cordless (CTW3).
+- [PetKit](https://github.com/RobertD502/home-assistant-petkit) (RobertD502) — PetKit feeders (Fresh Element Infinity, Solo, Gemini, Mini Pro), Eversweet water fountains and litter boxes (Pura X, Pura MAX).
+- [Petkit](https://github.com/Jezza34000/homeassistant_petkit) (Jezza34000) — PetKit feeders, including the YumShare dual-hopper feeder with camera (D4SH), Eversweet water fountains, including the Eversweet Max Cordless (CTW3), and litter boxes (Pura X, Pura MAX, Pura MAX 2, Purobot).
 
 Entities are **discovered automatically**, you don't have to pick them one by one, and it works whatever your Home Assistant language.
 
@@ -35,15 +35,17 @@ Entities are **discovered automatically**, you don't have to pick them one by on
 ## Features
 
 - Two cards: a full **Pet Card** and a compact **Pet Mini Card**
-- Automatic discovery of the PetKit feeders and water fountains (all of them by default, or the ones you pick)
+- Automatic discovery of the PetKit feeders, water fountains and litter boxes (all of them by default, or the ones you pick)
+- **Animated illustration** of each device next to its levels: kibbles fall into the bowl while a feeder dispenses, the fountain's water flows while its pump runs, the litter box's drum turns while it cleans and a cat peeks out while one is inside; the hoppers, the tank and the litter show their level, a full waste bin or a low hopper blinks and the LED takes the status colour (one or two hoppers, a camera, from the model)
 - Feeders: food level (or each hopper of a dual-hopper feeder), status, errors, food dispensed today against the planned amount, meals today and the time of the last one, amount eaten and food left in the bowl when the feeder reports them, desiccant days left, battery level while on batteries
 - Feeder camera (YumShare feeders): the latest picture, a click opens the live stream
 - **Manual feed** in an in-card popup: the feeder's fixed amounts (Solo, Mini Pro, single-hopper feeders), a gram stepper (Infinity, Fresh Element) or one portion stepper per hopper (Gemini, YumShare dual-hopper)
 - Water fountains: water level, filter left, mode (normal / smart), pump, water purified and energy used today, battery, power, light and do not disturb switches
+- Litter boxes: litter level, waste bin, what the box does (cleaning, a cat inside, paused, maintenance), uses today and the last one, the last cat, litter weight, deodorizer days left; **Clean** and deodorize buttons
 - Filter and desiccant reset buttons, with a confirmation, once you have replaced them
-- Status chip per device and for the whole card: *Food low*, *Low water*, *Replace filter*, *Replace desiccant*, *Battery low*, *Offline*, the feeder's own error message
+- Status chip per device and for the whole card: *Food low*, *Low water*, *Replace filter*, *Replace desiccant*, *Waste bin full*, *Litter low*, *Replace deodorizer*, *Battery low*, *Offline*, the device's own error message
 - Click any value to open its Home Assistant history (more-info dialog)
-- Detail button at the top right of the mini card: it switches to the full card and back; a click anywhere outside the card brings the compact view back (the full card's options, `show_stats`, `show_controls` and `show_camera`, are set on the mini card too, in its visual editor as well)
+- Detail button at the top right of the mini card: it switches to the full card and back; a click anywhere outside the card brings the compact view back (the full card's options, `show_stats`, `show_controls`, `show_camera` and `show_illustration`, are set on the mini card too, in its visual editor as well)
 - Visual editor in the dashboard UI for both cards (no YAML needed)
 - Light and dark mode; English, French, German, Spanish, Serbian (Cyrillic and Latin), Italian, Dutch, European Portuguese, Polish, Romanian, Danish, Swedish, Bulgarian, Russian, Ukrainian, Hungarian, Slovak, Czech, Slovenian, Latvian and Greek
 - Single file, no external dependency
@@ -52,10 +54,10 @@ Entities are **discovered automatically**, you don't have to pick them one by on
 
 | Integration | What the cards show |
 |---|---|
-| <img src="https://raw.githubusercontent.com/juju35/ha-pet-card/main/images/petkit.png" alt="" width="16"> [PetKit](https://github.com/RobertD502/home-assistant-petkit) by RobertD502 (Marketplace) | Feeders: food level or hoppers, status, error, dispensed / planned today, meals, eaten, food in bowl, desiccant with reset, battery, manual feed, call pet. Fountains: water level, filter with reset, mode, purified water, energy, power, light and do not disturb. Details in [PetKit](#petkit) |
-| <img src="https://raw.githubusercontent.com/juju35/ha-pet-card/main/images/petkit.png" alt="" width="16"> [Petkit](https://github.com/Jezza34000/homeassistant_petkit) by Jezza34000 (Marketplace) | Feeders: food level or each hopper (YumShare dual-hopper D4SH, Gemini D4S), camera picture, status, error, power type and battery, dispensed / planned today (per hopper on dual-hopper feeders), meals, eaten, bowl fill, desiccant with reset, manual feed (one text per hopper, or the feeder's amounts). Fountains (Eversweet Max Cordless CTW3…): water shortage, filter (% and days) with reset, pump, purified water, energy, battery, power, indicator light and do not disturb. Details in [PetKit](#petkit) |
+| <img src="https://raw.githubusercontent.com/juju35/ha-pet-card/main/images/petkit.png" alt="" width="16"> [PetKit](https://github.com/RobertD502/home-assistant-petkit) by RobertD502 (Marketplace) | Feeders: food level or hoppers, status, error, dispensed / planned today, meals, eaten, food in bowl, desiccant with reset, battery, manual feed, call pet. Fountains: water level, filter with reset, mode, purified water, energy, power, light and do not disturb. Litter boxes (Pura X, Pura MAX): work state, litter level and weight, litter low, waste bin, uses today, last cat, deodorizer, clean and deodorize. Details in [PetKit](#petkit) |
+| <img src="https://raw.githubusercontent.com/juju35/ha-pet-card/main/images/petkit.png" alt="" width="16"> [Petkit](https://github.com/Jezza34000/homeassistant_petkit) by Jezza34000 (Marketplace) | Feeders: food level or each hopper (YumShare dual-hopper D4SH, Gemini D4S), camera picture, status, error, power type and battery, dispensed / planned today (per hopper on dual-hopper feeders), meals, eaten, bowl fill, desiccant with reset, manual feed (one text per hopper, or the feeder's amounts). Fountains (Eversweet Max Cordless CTW3…): water shortage, filter (% and days) with reset, pump, purified water, energy, battery, power, indicator light and do not disturb. Litter boxes (Pura X, Pura MAX 1 and 2, Purobot): work state, litter level and weight, sand lack, waste bin, a cat inside, uses today, last cat, deodorizer (N50 / N60), camera picture, clean and deodorize; the feeder's own dispensing sensor drives its animation. Details in [PetKit](#petkit) |
 
-Both integrations use the `petkit` domain: install one of them, not both. PetKit litter boxes, purifiers and pets are left out for now: they are not shown, and do not get in the way.
+Both integrations use the `petkit` domain: install one of them, not both. PetKit purifiers and pets are left out for now: they are not shown, and do not get in the way.
 
 ## Prerequisites
 
@@ -116,6 +118,7 @@ show_subtitle: true
 show_stats: true
 show_controls: true
 show_camera: true
+show_illustration: true
 language: fr
 ```
 
@@ -128,6 +131,7 @@ title: Pets
 show_stats: true
 show_controls: true
 show_camera: true
+show_illustration: true
 zoom: true
 language: fr
 ```
@@ -136,19 +140,20 @@ language: fr
 
 | Option | Card | Default | Description |
 |---|---|---|---|
-| `devices` | both | All | Devices to show, in this order: their name (as in Home Assistant) or their device id (set by the visual editor). Feeders first, then fountains, when left out |
+| `devices` | both | All | Devices to show, in this order: their name (as in Home Assistant) or their device id (set by the visual editor). Feeders first, then fountains, then litter boxes, when left out |
 | `title` | both | `Pets` (translated) | Card title |
 | `show_title` | both | `true` | Show the title in the header (e.g. `false` under a section heading of your own) |
 | `show_subtitle` | both | `true` | Show the subtitle (the devices' names) under the title |
-| `show_stats` | both | `true` | Today's figures: dispensed, meals, eaten, in the bowl, desiccant; purified water and energy for the fountains |
-| `show_controls` | both | `true` | Buttons: feed, call pet, power, mode, light, do not disturb, filter and desiccant resets |
-| `show_camera` | both | `true` | The feeder camera's latest picture (YumShare feeders, Jezza34000's integration); a click opens the live stream |
-| `zoom` | mini | `true` | Detail button at the top right: switches to the full card and back (`false` removes it). The full card shown follows `show_stats`, `show_controls` and `show_camera`, also set on the mini card |
+| `show_stats` | both | `true` | Today's figures: dispensed, meals, eaten, in the bowl, desiccant; purified water and energy for the fountains; uses, last cat, litter weight and deodorizer for the litter boxes |
+| `show_controls` | both | `true` | Buttons: feed, call pet, power, mode, light, do not disturb, filter and desiccant resets, clean and deodorize |
+| `show_camera` | both | `true` | The camera's latest picture (YumShare feeders and camera litter boxes, Jezza34000's integration); a click opens the live stream |
+| `show_illustration` | both | `true` | The animated illustration of each device, next to its levels |
+| `zoom` | mini | `true` | Detail button at the top right: switches to the full card and back (`false` removes it). The full card shown follows `show_stats`, `show_controls`, `show_camera` and `show_illustration`, also set on the mini card |
 | `language` | both | Auto | Force language: `en`, `fr`, `de`, `es`, `sr`, `sr-Latn`, `it`, `nl`, `pt`, `pl`, `ro`, `da`, `sv`, `bg`, `ru`, `uk`, `hu`, `sk`, `cs`, `sl`, `lv` or `el` (auto-detects from HA settings) |
 
 ## PetKit
 
-The cards read the entities of the PetKit integrations, [RobertD502's](https://github.com/RobertD502/home-assistant-petkit) and [Jezza34000's](https://github.com/Jezza34000/homeassistant_petkit), through the Home Assistant registries (`platform: petkit`, the entity's `translation_key` and its device), whatever their entity ids or language. Both use the `petkit` domain; each role below lists RobertD502's key, then Jezza34000's. A device is a feeder when it has a food level, a feeder status, a desiccant sensor or a manual feed text, and a fountain when it has a water level or shortage, a filter or a purified water sensor.
+The cards read the entities of the PetKit integrations, [RobertD502's](https://github.com/RobertD502/home-assistant-petkit) and [Jezza34000's](https://github.com/Jezza34000/homeassistant_petkit), through the Home Assistant registries (`platform: petkit`, the entity's `translation_key` and its device), whatever their entity ids or language. Both use the `petkit` domain; each role below lists RobertD502's key, then Jezza34000's. A device is a feeder when it has a food level, a feeder status, a desiccant sensor or a manual feed text, a fountain when it has a water level or shortage, a filter or a purified water sensor, and a litter box when it has a litter level, a work state, a waste bin or a sand lack sensor.
 
 | Card | RobertD502 (`translation_key`) | Jezza34000 (`translation_key`) |
 |---|---|---|
@@ -168,9 +173,18 @@ The cards read the entities of the PetKit integrations, [RobertD502's](https://g
 | Pump | — | `pump_running` (binary) |
 | Purified today / Energy today | `purified_water_today`, `energy_usage` | `purified_water`, `today_pump_run_time` (kWh) |
 | Battery (fountain) | — | `battery` (%), `low_battery` (binary) |
-| Power, Light, Do not disturb | `power`, `light`, `do_not_disturb` switches | `power`, `indicator_light`, `do_not_disturb` switches |
+| Power, Light, Do not disturb | `power`, `light`, `do_not_disturb` switches | `power`, `indicator_light`, `do_not_disturb` switches; `do_not_disturb_state` (binary) stops the flowing water of the illustration while the period runs |
+| Dispensing (illustration) | — (shown for 15 s after a manual feed from the card, or when `times_dispensed` / `dispensed` rise) | `feeding` (binary), else as RobertD502's |
+| Litter box state | `max_work_state` (Pura MAX): cleaning, dumping, levelling → *Cleaning*; a pet approaching, using or entering → *Cat inside*; paused, maintenance; a system error → *Error* | `litter_state`, same states |
+| Litter | `litter_level` (%, orange from 20 %), `litter` (binary, *on* = low), `litter_weight` | `litter_level` (%), `sand_lack` (binary, *on* = low), `litter_weight` |
+| Waste bin | `wastebin` (binary, *on* = full) | `waste_bin` (binary, *on* = full) |
+| Cat inside | the work state | `toilet_occupied` (binary), and the work state |
+| Uses today, Last cat | `times_used` (*last use* is when it last changed), `last_used_by` | `times_used`, `last_used_by` |
+| Deodorizer | `n50_odor_eliminator` (days, Pura MAX), else `deodorizer_level` (%, Pura X) | `odor_eliminator_n50_left_days`, else `odor_eliminator_n60_left_days` (days) |
+| Status chip (litter box) | `error` (any message but *no_error*) | `device_status` (*offline*), `error_message` (any message but *No error*) |
+| Clean, Deodorize | `start_cleaning`, `odor_removal` buttons | `start_scoop`, `deodorize` buttons |
 
-Turning a fountain off and resetting a filter or a desiccant ask for a confirmation first; turning it on, the mode, the light and do not disturb act at once.
+Turning a fountain off and resetting a filter or a desiccant ask for a confirmation first; turning it on, the mode, the light, do not disturb, clean and deodorize act at once (the litter box itself waits while a cat is inside).
 
 **Last meal**: PetKit has no "last meal" sensor, so the card shows when the count of meals of the day last changed. After a Home Assistant restart, that time is the restart until the next meal.
 
@@ -203,6 +217,12 @@ Fresh Element Gemini, two hoppers (the second one low), with the amount eaten an
 |---|---|
 | <img src="https://raw.githubusercontent.com/juju35/ha-pet-card/main/screenshots/card-gemini.png" alt="Gemini feeder" width="400"> | <img src="https://raw.githubusercontent.com/juju35/ha-pet-card/main/screenshots/card-gemini-dark.png" alt="Gemini feeder dark" width="400"> |
 
+Litter boxes: Pura MAX 2 with Jezza34000's integration (a cat inside) and Pura MAX with RobertD502's, litter level, waste bin, today's uses, the last cat, litter weight and deodorizer:
+
+| Light | Dark |
+|---|---|
+| <img src="https://raw.githubusercontent.com/juju35/ha-pet-card/main/screenshots/card-litter.png" alt="litter boxes" width="400"> | <img src="https://raw.githubusercontent.com/juju35/ha-pet-card/main/screenshots/card-litter-dark.png" alt="litter boxes dark" width="400"> |
+
 Things to do: food low, desiccant to replace, low water and filter to replace:
 
 | Light | Dark |
@@ -211,13 +231,31 @@ Things to do: food low, desiccant to replace, low water and filter to replace:
 
 ### Animations
 
+The illustrations follow what the devices do. A YumShare feeder dispensing: kibbles fall from both hoppers into the bowl, the LED blinks blue:
+
+| Light | Dark |
+|---|---|
+| <img src="https://raw.githubusercontent.com/juju35/ha-pet-card/main/screenshots/card-dispense.gif" alt="feeder dispensing animation" width="400"> | <img src="https://raw.githubusercontent.com/juju35/ha-pet-card/main/screenshots/card-dispense-dark.gif" alt="feeder dispensing animation dark" width="400"> |
+
+A fountain: the water flows and ripples while the pump runs, stops with it, then starts again:
+
+| Light | Dark |
+|---|---|
+| <img src="https://raw.githubusercontent.com/juju35/ha-pet-card/main/screenshots/card-fountain.gif" alt="fountain pump animation" width="400"> | <img src="https://raw.githubusercontent.com/juju35/ha-pet-card/main/screenshots/card-fountain-dark.gif" alt="fountain pump animation dark" width="400"> |
+
+A litter box: its drum turns while it cleans, then a cat comes in (the LED turns orange) and leaves:
+
+| Light | Dark |
+|---|---|
+| <img src="https://raw.githubusercontent.com/juju35/ha-pet-card/main/screenshots/card-litter-clean.gif" alt="litter box cleaning animation" width="400"> | <img src="https://raw.githubusercontent.com/juju35/ha-pet-card/main/screenshots/card-litter-clean-dark.gif" alt="litter box cleaning animation dark" width="400"> |
+
 The feed popup: an amount is picked, then the popup is cancelled.
 
 | Light | Dark |
 |---|---|
 | <img src="https://raw.githubusercontent.com/juju35/ha-pet-card/main/screenshots/card-feed.gif" alt="feed popup animation" width="400"> | <img src="https://raw.githubusercontent.com/juju35/ha-pet-card/main/screenshots/card-feed-dark.gif" alt="feed popup animation dark" width="400"> |
 
-Levels: the water runs low and the filter runs out, the bars and colours follow, then both are back to normal.
+Levels: the water runs low (the fountain's tank empties and its LED blinks red) and the filter runs out, the bars and colours follow, then both are back to normal.
 
 | Light | Dark |
 |---|---|
@@ -238,6 +276,10 @@ The mini card's detail button: the full card, then back to the compact view.
 | Filter | 20 % and less | 5 % and less |
 | Desiccant | 5 days and less | 0 days |
 | Feeder | on batteries, battery low | offline, error |
+| Litter | 20 % and less, or low | — |
+| Waste bin | — | full |
+| Deodorizer | 5 days and less | 0 days |
+| Litter box | — | offline, error |
 | Battery | 25 % and less | 10 % and less |
 
 ## Development
