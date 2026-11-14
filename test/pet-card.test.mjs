@@ -46,7 +46,7 @@ const settle = () => new Promise((r) => setImmediate(r));
 // Values built in the card's own context (other Array / Object prototypes), as plain data.
 const plain = (v) => JSON.parse(JSON.stringify(v));
 
-test("discovery: feeders first, then fountains; unsupported PetKit devices left out", () => {
+test("discovery: feeders first, then fountains, then litter boxes; unsupported PetKit devices left out", () => {
   const list = resolve(hassWith());
   assert.deepEqual(
     plain(list.map((d) => [d.id, d.kind])),
@@ -56,6 +56,10 @@ test("discovery: feeders first, then fountains; unsupported PetKit devices left 
       ["gemini", "feeder"],
       ["ctw3", "fountain"],
       ["fountain", "fountain"],
+      ["t4", "litter"],
+      ["lr3", "litter"],
+      ["lr4", "litter"],
+      ["litter", "litter"],
     ]
   );
   const solo = list[1];
@@ -78,7 +82,7 @@ test("discovery follows the registries, not the entity ids", () => {
 
 test("devices option: ids or names, unknown ones reported", () => {
   const h = hassWith();
-  assert.equal(findDevices(h, {}).devices.length, 5);
+  assert.equal(findDevices(h, {}).devices.length, 9);
   assert.deepEqual(
     plain(findDevices(h, { devices: ["fountain", "kitchen FEEDER"] }).devices.map((d) => d.id)),
     ["fountain", "solo"]
@@ -121,9 +125,9 @@ test("status: a device whose entities are all unavailable is unavailable", () =>
 test("render: full card shows the devices, the mini card one row each and the alerts", () => {
   const full = card(PetCard)._render();
   for (const text of ["Kitchen feeder", "Twin feeder", "Living room fountain", "Hopper 2", "Dispensed today", "of 60 g planned", "72%"]) assert.ok(full.includes(text), text);
-  assert.ok(!full.includes("Litter box"));
+  assert.ok(full.includes("Litter box") && !full.includes("Purifier"));
   const mini = card(PetMiniCard)._render();
-  assert.equal((mini.match(/class="row /g) || []).length, 5);
+  assert.equal((mini.match(/class="row /g) || []).length, 9);
   assert.ok(mini.includes("Twin feeder: Food low"));
   assert.ok(mini.includes('class="zoom"'));
   assert.ok(!card(PetMiniCard, { zoom: false })._render().includes('class="zoom"'));
@@ -300,8 +304,8 @@ test("Jezza34000: discovery of the D4SH and the CTW3 by their own translation ke
   assert.equal(ctw3.entities.purified, "sensor.fontaine_chambre_eau_purifiee");
   assert.equal(ctw3.entities.energy, "sensor.fontaine_chambre_energie");
   assert.equal(ctw3.entities.mode, undefined);
-  // The litter box shares device_status and error_message with the feeders: still left out.
-  assert.equal(byId(h, "litter"), undefined);
+  // The purifier shares device_status and error_message with the feeders: still left out.
+  assert.equal(byId(h, "k2"), undefined);
 });
 
 test("Jezza34000: feeder status from device_status, error_message and power_type", () => {
@@ -439,4 +443,217 @@ test("fountain mode labels: RobertD502's lower case and Jezza34000's capitalised
   assert.equal(c._mode("Pause"), "Pause");
   const fr = card(PetCard, { language: "fr" });
   assert.equal(fr._mode("Smart"), "Intelligent");
+});
+
+// Litter boxes: Pura MAX with RobertD502's integration ("litter") and Pura MAX 2 with Jezza34000's ("t4").
+test("litter boxes: discovered by both integrations' keys", () => {
+  const h = hassWith();
+  const robert = byId(h, "litter").entities;
+  assert.equal(robert.state, "sensor.litiere_etat");
+  assert.equal(robert.litter, "sensor.litiere_niveau");
+  assert.equal(robert.litter_low, "binary_sensor.litiere_manque");
+  assert.equal(robert.bin_full, "binary_sensor.litiere_bac_plein");
+  assert.equal(robert.deodorizer, "sensor.litiere_desodorisant");
+  assert.equal(robert.clean, "button.litiere_nettoyer");
+  assert.equal(robert.deodorize, "button.litiere_desodoriser");
+  const jezza = byId(h, "t4").entities;
+  assert.equal(jezza.state, "sensor.litiere_sdb_etat");
+  assert.equal(jezza.status, "sensor.litiere_sdb_statut");
+  assert.equal(jezza.litter_low, "binary_sensor.litiere_sdb_manque");
+  assert.equal(jezza.bin_full, "binary_sensor.litiere_sdb_bac_plein");
+  assert.equal(jezza.occupied, "binary_sensor.litiere_sdb_occupee");
+  assert.equal(jezza.deodorizer, "sensor.litiere_sdb_desodorisant");
+  assert.equal(jezza.clean, "button.litiere_sdb_nettoyer");
+  assert.equal(jezza.deodorize, "button.litiere_sdb_desodoriser");
+});
+
+test("litter boxes: ready, then alerts first, then what the box does", () => {
+  const st = (overrides, id = "litter") => {
+    const c = card(PetCard, {}, overrides);
+    return c._status(byId(c.hass, id));
+  };
+  assert.equal(st({}).key, "ready");
+  assert.equal(st({}, "t4").key, "ready");
+  assert.equal(st({ "sensor.litiere_etat": { state: "cleaning_litter_box" } }).key, "cleaning");
+  assert.equal(st({ "sensor.litiere_sdb_etat": { state: "dumping" } }, "t4").key, "cleaning");
+  assert.equal(st({ "binary_sensor.litiere_sdb_occupee": { state: "on" } }, "t4").key, "cat_inside");
+  assert.equal(st({ "sensor.litiere_etat": { state: "cleaning_paused_pet_using" } }).key, "cat_inside");
+  assert.equal(st({ "sensor.litiere_sdb_etat": { state: "paused" } }, "t4").cls, "idle");
+  assert.equal(st({ "sensor.litiere_sdb_etat": { state: "maintenance" } }, "t4").key, "maintenance");
+  const alerts = st({
+    "binary_sensor.litiere_bac_plein": { state: "on" },
+    "sensor.litiere_niveau": { state: "12" },
+    "sensor.litiere_desodorisant": { state: "0" },
+    "sensor.litiere_etat": { state: "cleaning_litter_box" },
+  });
+  assert.equal(alerts.key, "bin_full");
+  assert.deepEqual(plain(alerts.alerts.map((a) => a.key)), ["bin_full", "litter_low", "replace_deodorizer"]);
+  assert.equal(st({ "binary_sensor.litiere_sdb_manque": { state: "on" } }, "t4").key, "litter_low");
+  assert.equal(st({ "sensor.litiere_sdb_etat": { state: "cleaning_paused_system_error" } }, "t4").cls, "crit");
+  assert.equal(st({ "sensor.litiere_sdb_statut": { state: "offline" } }, "t4").key, "offline");
+  const err = st({ "sensor.litiere_erreur": { state: "Motor stalled" } });
+  assert.equal(err.key, "error");
+  assert.equal(err.title, "Motor stalled");
+});
+
+test("litter boxes: levels, today's figures and the clean / deodorize buttons", async () => {
+  const c = card(PetCard, { devices: ["litter"] });
+  const html = c._render();
+  for (const text of ["Litter box", "Ready", "Litter", "80%", "Waste bin", "Not full", "Uses today", "Last use", "Cat", "Deodorizer", "Clean"])
+    assert.ok(html.includes(text), text);
+  assert.ok(html.includes('data-entity="button.litiere_nettoyer"') && html.includes('data-entity="button.litiere_desodoriser"'));
+  click(c, { action: "press", device: "litter", entity: "button.litiere_nettoyer" });
+  await settle();
+  assert.deepEqual(plain(c.hass.calls), [["button", "press", { entity_id: "button.litiere_nettoyer" }]]);
+  const full = card(PetCard, { devices: ["t4"] }, { "binary_sensor.litiere_sdb_bac_plein": { state: "on" } })._render();
+  assert.ok(full.includes("Full") && full.includes("Waste bin full"));
+  const mini = card(PetMiniCard, { devices: ["litter", "t4"] }, { "binary_sensor.litiere_sdb_bac_plein": { state: "on" } })._render();
+  assert.ok(mini.includes("Litter 80%"));
+  assert.ok(mini.includes("Bathroom litter box: Waste bin full"));
+});
+
+// Illustrations: the art's classes drive its animations.
+const artOf = (html, key) => {
+  const at = html.indexOf(`data-key="${key}"`);
+  const m = /<div class="art ([^"]*)"/.exec(html.slice(at));
+  return m ? m[1].split(" ") : null;
+};
+
+test("illustrations: one per device with its own ids, none with show_illustration: false", () => {
+  const html = card(PetCard)._render();
+  assert.equal((html.match(/<div class="art /g) || []).length, 9);
+  const clips = [...html.matchAll(/<clipPath id="([^"]+)"/g)].map((m) => m[1]);
+  assert.equal(new Set(clips).size, clips.length);
+  assert.ok(!card(PetCard, { show_illustration: false })._render().includes('class="art '));
+  // The mini card only draws them in its detail view.
+  assert.ok(!card(PetMiniCard)._render().includes('class="art '));
+  // Two hoppers on the Gemini and the YumShare, one on the Solo; a camera on the YumShare.
+  const dual = (key) => (html.slice(html.indexOf(`data-key="${key}"`)).split('<div class="dev"')[0].match(/class="win/g) || []).length;
+  assert.equal(dual("gemini"), 2);
+  assert.equal(dual("solo"), 1);
+  assert.equal(dual("d4sh"), 2);
+});
+
+test("illustrations: a feeder dispenses on Jezza34000's sensor, after a manual feed and when its meals rise", async () => {
+  assert.ok(!artOf(card(PetCard)._render(), "d4sh").includes("feeding"));
+  assert.ok(artOf(card(PetCard, {}, { "binary_sensor.distributeur_couloir_distribution": { state: "on" } })._render(), "d4sh").includes("feeding"));
+  // A rise of the meals counted today (the first value read is only the reference).
+  const c = card(PetCard, { devices: ["solo"] });
+  assert.ok(!artOf(c._render(), "solo").includes("feeding"));
+  c.hass = { ...c.hass, states: { ...c.hass.states, "sensor.distributeur_cuisine_distributions": { ...c.hass.states["sensor.distributeur_cuisine_distributions"], state: "3" } } };
+  assert.ok(artOf(c._render(), "solo").includes("feeding"));
+  clearTimeout(c._redrawTimer);
+  // A manual feed sent from the card.
+  const f = card(PetCard, { devices: ["solo"] });
+  f._render();
+  click(f, { action: "feed", device: "solo", entity: "select.distributeur_cuisine_repas_manuel" });
+  f._dialogClick({ dataset: { action: "confirm_ok" } }, []);
+  await settle();
+  assert.ok(artOf(f._render(), "solo").includes("feeding"));
+  clearTimeout(f._redrawTimer);
+  // Low food: the hopper blinks.
+  const low = card(PetCard, { devices: ["solo"] }, { "binary_sensor.distributeur_cuisine_niveau": { state: "on" } })._render();
+  assert.ok(low.includes('class="win low"'));
+});
+
+test("illustrations: the fountain flows while its pump runs, not when off, dry or in do not disturb", () => {
+  const cls = (overrides, key = "fountain") => artOf(card(PetCard, {}, overrides)._render(), key);
+  assert.ok(cls({}).includes("on"));
+  assert.ok(!cls({ "switch.fontaine_salon_alimentation": { state: "off" } }).includes("on"));
+  const dry = cls({ "binary_sensor.fontaine_salon_niveau_eau": { state: "on" } });
+  assert.ok(dry.includes("dry") && !dry.includes("on"));
+  assert.ok(cls({}, "ctw3").includes("on"));
+  assert.ok(!cls({ "binary_sensor.fontaine_chambre_pompe": { state: "off" } }, "ctw3").includes("on"));
+  assert.ok(!cls({ "binary_sensor.fontaine_chambre_ne_pas_deranger_actif": { state: "on" }, "binary_sensor.fontaine_chambre_pompe": { state: "off" } }, "ctw3").includes("on"));
+});
+
+test("illustrations: the litter box turns while cleaning, shows a cat inside and a full waste bin", () => {
+  const cls = (overrides, key = "t4") => artOf(card(PetCard, {}, overrides)._render(), key);
+  assert.deepEqual(plain(cls({})), ["ok"]);
+  assert.ok(cls({ "sensor.litiere_sdb_etat": { state: "cleaning" } }).includes("cleaning"));
+  const cat = cls({ "binary_sensor.litiere_sdb_occupee": { state: "on" } });
+  assert.ok(cat.includes("cat") && cat.includes("warn"));
+  assert.ok(cls({ "sensor.litiere_etat": { state: "cleaning_paused_pet_approach" } }, "litter").includes("cat"));
+  const full = cls({ "binary_sensor.litiere_sdb_bac_plein": { state: "on" } });
+  assert.ok(full.includes("full") && full.includes("warn"));
+});
+
+// Litter-Robot (Home Assistant core integration): a Litter-Robot 4 ("lr4") and a 3 Connect ("lr3").
+test("Litter-Robot: discovered by its own keys, the Feeder-Robot left out", () => {
+  const h = hassWith();
+  const lr4 = byId(h, "lr4");
+  assert.equal(lr4.kind, "litter");
+  assert.equal(lr4.platform, "litterrobot");
+  const e = lr4.entities;
+  assert.equal(e.vacuum, "vacuum.litter_robot_buanderie");
+  assert.equal(e.status_code, "sensor.litter_robot_buanderie_statut");
+  assert.equal(e.waste, "sensor.litter_robot_buanderie_tiroir");
+  assert.equal(e.litter, "sensor.litter_robot_buanderie_litiere");
+  assert.equal(e.pet_weight, "sensor.litter_robot_buanderie_poids");
+  assert.equal(e.night, "select.litter_robot_buanderie_veilleuse");
+  assert.equal(byId(h, "lr3").entities.night, "switch.litter_robot_garage_veilleuse");
+  assert.equal(byId(h, "feeder_robot"), undefined);
+});
+
+test("Litter-Robot: status from its status code and waste drawer", () => {
+  const st = (overrides, id = "lr4") => {
+    const c = card(PetCard, {}, overrides);
+    return c._status(byId(c.hass, id));
+  };
+  const code = (v) => ({ "sensor.litter_robot_buanderie_statut": { state: v } });
+  assert.equal(st({}).key, "ready");
+  assert.equal(st(code("ccp")).key, "cleaning");
+  assert.equal(st(code("ec")).key, "cleaning");
+  assert.equal(st(code("cd")).key, "cat_inside");
+  assert.equal(st(code("cst")).key, "cat_inside");
+  assert.equal(st(code("p")).key, "paused");
+  assert.equal(st(code("off")).key, "off");
+  assert.equal(st(code("offline")).key, "offline");
+  const fault = st(code("pd"));
+  assert.equal(fault.cls, "crit");
+  assert.equal(fault.key, "error");
+  assert.equal(fault.title, "pd");
+  assert.equal(st(code("dfs")).key, "bin_full");
+  assert.equal(st(code("df1")).key, "bin_almost_full");
+  assert.equal(st({ "sensor.litter_robot_garage_tiroir": { state: "85" } }, "lr3").key, "bin_almost_full");
+  assert.equal(st({ "sensor.litter_robot_buanderie_litiere": { state: "15" } }).key, "litter_low");
+  // Without its status code: the vacuum's state.
+  assert.equal(st({ "sensor.litter_robot_buanderie_statut": { state: "unavailable" }, "vacuum.litter_robot_buanderie": { state: "cleaning" } }).key, "cleaning");
+});
+
+test("Litter-Robot: drawer and litter levels, cat weight, cycles, clean through vacuum.start", async () => {
+  const c = card(PetCard, { devices: ["lr4"] });
+  const html = c._render();
+  for (const text of ["Laundry Litter-Robot", "Ready", "Waste bin", "45%", "Litter", "78%", "Cat weight", "4.6 kg", "Cycles", "14", "Clean"]) assert.ok(html.includes(text), text);
+  click(c, { action: "start", device: "lr4", entity: "vacuum.litter_robot_buanderie" });
+  await settle();
+  assert.deepEqual(plain(c.hass.calls), [["vacuum", "start", { entity_id: "vacuum.litter_robot_buanderie" }]]);
+  const mini = card(PetMiniCard, { devices: ["lr3", "lr4"] }, { "sensor.litter_robot_garage_tiroir": { state: "100" } })._render();
+  assert.ok(mini.includes("Garage Litter-Robot: Waste bin full"));
+  assert.ok(mini.includes("Litter 78%"));
+});
+
+test("Litter-Robot: its own drawing (LR4 black or white, LR3), cycling, cat, full drawer and night light", () => {
+  const html = (config, overrides) => card(PetCard, config, overrides)._render();
+  const lr4 = html({ devices: ["lr4"] });
+  assert.ok(lr4.includes('class="drum lr4"') && lr4.includes("#4c5560") && !lr4.includes("Pura"));
+  assert.ok(html({ devices: ["lr4"], illustration_color: "white" }).includes('stop-color="#ffffff"'));
+  assert.ok(html({ devices: ["lr3"] }).includes('class="drum lr3"'));
+  const cls = (overrides, key = "lr4") => artOf(html({}, overrides), key);
+  assert.deepEqual(plain(cls({})), ["ok"]);
+  assert.ok(cls({ "sensor.litter_robot_buanderie_statut": { state: "ccp" } }).includes("cleaning"));
+  assert.ok(cls({ "sensor.litter_robot_buanderie_statut": { state: "cd" } }).includes("cat"));
+  assert.ok(cls({ "sensor.litter_robot_buanderie_statut": { state: "dfs" } }).includes("full"));
+  assert.ok(cls({ "select.litter_robot_buanderie_veilleuse": { state: "on" } }).includes("night"));
+  assert.ok(!cls({}).includes("night"));
+  assert.ok(cls({ "switch.litter_robot_garage_veilleuse": { state: "on" } }, "lr3").includes("night"));
+});
+
+test("editor: the Litter-Robot colour picker", () => {
+  const ed = new PetCardEditor();
+  ed.hass = hassWith();
+  const schema = ed._schema([]);
+  const color = schema.find((f) => f.name === "illustration_color");
+  assert.deepEqual(plain(color.selector.select.options.map((o) => o.value)), ["auto", "black", "white"]);
+  assert.equal(color.selector.select.options[1].label, "Black");
 });

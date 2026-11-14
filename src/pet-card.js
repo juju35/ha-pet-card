@@ -33,6 +33,10 @@ const ICONS = {
   pump: "M19,14.5C19,14.5 21,16.67 21,18A2,2 0 0,1 19,20A2,2 0 0,1 17,18C17,16.67 19,14.5 19,14.5M5,18V9A2,2 0 0,1 3,7A2,2 0 0,1 5,5V4A2,2 0 0,1 7,2H9A2,2 0 0,1 11,4V5H19A2,2 0 0,1 21,7V9L21,11A1,1 0 0,1 22,12A1,1 0 0,1 21,13H17A1,1 0 0,1 16,12A1,1 0 0,1 17,11V9H11V18H12A2,2 0 0,1 14,20V22H2V20A2,2 0 0,1 4,18H5Z",
   energy: "M11 15H6L13 1V9H18L11 23V15Z",
   feed: "M11,9H9V2H7V9H5V2H3V9C3,11.12 4.66,12.84 6.75,12.97V22H9.25V12.97C11.34,12.84 13,11.12 13,9V2H11V9M16,6V14H18.5V22H21V2C18.24,2 16,4.24 16,6Z",
+  litter: "M15.47 13.79L12.89 12.76L6 15.05L2 13.5V15.61L6 16.95L15.47 13.79M10.57 11.42L8 8H2V11.61L6 12.95L10.57 11.42M6 19.05L2 17.72V22H22L17.03 15.38L6 19.05M17 6V1L12 0L9 2V6L12 8L17 6M18.5 7L16 9V12L18.5 14L23 12V8L18.5 7Z",
+  bin: "M19,4H15.5L14.5,3H9.5L8.5,4H5V6H19M6,19A2,2 0 0,0 8,21H16A2,2 0 0,0 18,19V7H6V19Z",
+  broom: "M19.36,2.72L20.78,4.14L15.06,9.85C16.13,11.39 16.28,13.24 15.38,14.44L9.06,8.12C10.26,7.22 12.11,7.37 13.65,8.44L19.36,2.72M5.93,17.57C3.92,15.56 2.69,13.16 2.35,10.92L7.23,8.83L14.67,16.27L12.58,21.15C10.34,20.81 7.94,19.58 5.93,17.57Z",
+  spray: "M16.72 10.43C14.68 8.39 14.5 4.66 14.5 4H13V6H9V4H7C7 2.9 7.9 2 9 2H16V3C16 3.08 16.04 7.63 17.78 9.37L16.72 10.43M17 2V4H18V2H17M15 12C13 10 13 7 13 7H9V9C9 10 9 10 8 11S7 13 7 13V20C7 21.1 7.9 22 9 22H13C14.1 22 15 21.1 15 20V12Z",
   minus: "M19,13H5V11H19V13Z",
   plus: "M19,13H13V19H11V13H5V11H11V5H13V11H19V13Z",
   mode: "M21.33,12.91C21.42,14.46 20.71,15.95 19.44,16.86L20.21,18.35C20.44,18.8 20.47,19.33 20.27,19.8C20.08,20.27 19.69,20.64 19.21,20.8L18.42,21.05C18.25,21.11 18.06,21.14 17.88,21.14C17.37,21.14 16.89,20.91 16.56,20.5L14.44,18C13.55,17.85 12.71,17.47 12,16.9C11.5,17.05 11,17.13 10.5,17.13C9.62,17.13 8.74,16.86 8,16.34C7.47,16.5 6.93,16.57 6.38,16.56C5.59,16.57 4.81,16.41 4.08,16.11C2.65,15.47 1.7,14.07 1.65,12.5C1.57,11.78 1.69,11.05 2,10.39C1.71,9.64 1.68,8.82 1.93,8.06C2.3,7.11 3,6.32 3.87,5.82C4.45,4.13 6.08,3 7.87,3.12C9.47,1.62 11.92,1.46 13.7,2.75C14.12,2.64 14.56,2.58 15,2.58C16.36,2.55 17.65,3.15 18.5,4.22C20.54,4.75 22,6.57 22.08,8.69C22.13,9.8 21.83,10.89 21.22,11.82C21.29,12.18 21.33,12.54 21.33,12.91M16.33,11.5C16.9,11.57 17.35,12 17.35,12.57A1,1 0 0,1 16.35,13.57H15.72C15.4,14.47 14.84,15.26 14.1,15.86C14.35,15.95 14.61,16 14.87,16.07C20,16 19.4,12.87 19.4,12.82C19.34,11.39 18.14,10.27 16.71,10.33A1,1 0 0,1 15.71,9.33A1,1 0 0,1 16.71,8.33C17.94,8.36 19.12,8.82 20.04,9.63C20.09,9.34 20.12,9.04 20.12,8.74C20.06,7.5 19.5,6.42 17.25,6.21C16,3.25 12.85,4.89 12.85,5.81V5.81C12.82,6.04 13.06,6.53 13.1,6.56A1,1 0 0,1 14.1,7.56C14.1,8.11 13.65,8.56 13.1,8.56V8.56C12.57,8.54 12.07,8.34 11.67,8C11.19,8.31 10.64,8.5 10.07,8.56V8.56C9.5,8.61 9.03,8.21 9,7.66C8.92,7.1 9.33,6.61 9.88,6.56C10.04,6.54 10.82,6.42 10.82,5.79V5.79C10.82,5.13 11.07,4.5 11.5,4C10.58,3.75 9.59,4.08 8.59,5.29C6.75,5 6,5.25 5.45,7.2C4.5,7.67 4,8 3.78,9C4.86,8.78 5.97,8.87 7,9.25C7.5,9.44 7.78,10 7.59,10.54C7.4,11.06 6.82,11.32 6.3,11.13C5.57,10.81 4.75,10.79 4,11.07C3.68,11.34 3.68,11.9 3.68,12.34C3.68,13.08 4.05,13.77 4.68,14.17C5.21,14.44 5.8,14.58 6.39,14.57C6.24,14.31 6.11,14.04 6,13.76C5.81,13.22 6.1,12.63 6.64,12.44C7.18,12.25 7.77,12.54 7.96,13.08C8.36,14.22 9.38,15 10.58,15.13C11.95,15.06 13.17,14.25 13.77,13C14,11.62 15.11,11.5 16.33,11.5M18.33,18.97L17.71,17.67L17,17.83L18,19.08L18.33,18.97M13.68,10.36C13.7,9.83 13.3,9.38 12.77,9.33C12.06,9.29 11.37,9.53 10.84,10C10.27,10.58 9.97,11.38 10,12.19A1,1 0 0,0 11,13.19C11.57,13.19 12,12.74 12,12.19C12,11.92 12.07,11.65 12.23,11.43C12.35,11.33 12.5,11.28 12.66,11.28C13.21,11.31 13.68,10.9 13.68,10.36Z",
@@ -109,6 +113,33 @@ const STRINGS = {
     zoom_helper: "Switches the mini card to the full card and back",
     language: "Language",
     lang_auto: "Automatic",
+    litter: "Litter",
+    waste_bin: "Waste bin",
+    full: "Full",
+    not_full: "Not full",
+    bin_full: "Waste bin full",
+    litter_low: "Litter low",
+    replace_deodorizer: "Replace deodorizer",
+    cleaning: "Cleaning",
+    cat_inside: "Cat inside",
+    paused: "Paused",
+    maintenance: "Maintenance",
+    ready: "Ready",
+    clean: "Clean",
+    deodorize: "Deodorize",
+    uses: "Uses today",
+    last_use: "Last use",
+    last_cat: "Last visit by",
+    litter_weight: "Litter weight",
+    deodorizer: "Deodorizer",
+    show_illustration: "Show the device illustrations",
+    bin_almost_full: "Waste bin almost full",
+    cycles: "Cycles",
+    cat_weight: "Cat weight",
+    illustration_color: "Litter-Robot colour",
+    color_auto: "Automatic",
+    color_black: "Black",
+    color_white: "White",
   },
   fr: {
     title: "Animaux",
@@ -176,6 +207,33 @@ const STRINGS = {
     zoom_helper: "Bascule la mini-carte vers la carte complète et inversement",
     language: "Langue",
     lang_auto: "Automatique",
+    litter: "Litière",
+    waste_bin: "Bac à déchets",
+    full: "Plein",
+    not_full: "Pas plein",
+    bin_full: "Bac à déchets plein",
+    litter_low: "Litière basse",
+    replace_deodorizer: "Désodorisant à changer",
+    cleaning: "Nettoyage",
+    cat_inside: "Chat à l'intérieur",
+    paused: "En pause",
+    maintenance: "Maintenance",
+    ready: "Prête",
+    clean: "Nettoyer",
+    deodorize: "Désodoriser",
+    uses: "Passages aujourd'hui",
+    last_use: "Dernier passage",
+    last_cat: "Dernier visiteur",
+    litter_weight: "Poids de litière",
+    deodorizer: "Désodorisant",
+    show_illustration: "Afficher les illustrations des appareils",
+    bin_almost_full: "Bac à déchets presque plein",
+    cycles: "Cycles",
+    cat_weight: "Poids du chat",
+    illustration_color: "Couleur de la Litter-Robot",
+    color_auto: "Automatique",
+    color_black: "Noire",
+    color_white: "Blanche",
   },
   de: {
     title: "Haustiere",
@@ -243,6 +301,33 @@ const STRINGS = {
     zoom_helper: "Schaltet die Mini-Karte auf die vollständige Karte um und zurück",
     language: "Sprache",
     lang_auto: "Automatisch",
+    litter: "Streu",
+    waste_bin: "Abfallbehälter",
+    full: "Voll",
+    not_full: "Nicht voll",
+    bin_full: "Abfallbehälter voll",
+    litter_low: "Streu niedrig",
+    replace_deodorizer: "Desodorierer ersetzen",
+    cleaning: "Reinigung",
+    cat_inside: "Katze drin",
+    paused: "Pausiert",
+    maintenance: "Wartung",
+    ready: "Bereit",
+    clean: "Reinigen",
+    deodorize: "Desodorieren",
+    uses: "Besuche heute",
+    last_use: "Letzter Besuch",
+    last_cat: "Zuletzt benutzt von",
+    litter_weight: "Streugewicht",
+    deodorizer: "Desodorierer",
+    show_illustration: "Geräteabbildungen anzeigen",
+    bin_almost_full: "Abfallbehälter fast voll",
+    cycles: "Zyklen",
+    cat_weight: "Katzengewicht",
+    illustration_color: "Farbe des Litter-Robot",
+    color_auto: "Automatisch",
+    color_black: "Schwarz",
+    color_white: "Weiß",
   },
   es: {
     title: "Mascotas",
@@ -310,6 +395,33 @@ const STRINGS = {
     zoom_helper: "Cambia la minitarjeta a la tarjeta completa y viceversa",
     language: "Idioma",
     lang_auto: "Automático",
+    litter: "Arena",
+    waste_bin: "Cubo de residuos",
+    full: "Lleno",
+    not_full: "No lleno",
+    bin_full: "Cubo de residuos lleno",
+    litter_low: "Arena baja",
+    replace_deodorizer: "Cambiar desodorizante",
+    cleaning: "Limpiando",
+    cat_inside: "Gato dentro",
+    paused: "En pausa",
+    maintenance: "Mantenimiento",
+    ready: "Lista",
+    clean: "Limpiar",
+    deodorize: "Desodorizar",
+    uses: "Usos hoy",
+    last_use: "Último uso",
+    last_cat: "Último uso por",
+    litter_weight: "Peso de la arena",
+    deodorizer: "Desodorizante",
+    show_illustration: "Mostrar las ilustraciones de los dispositivos",
+    bin_almost_full: "Cubo de residuos casi lleno",
+    cycles: "Ciclos",
+    cat_weight: "Peso del gato",
+    illustration_color: "Color del Litter-Robot",
+    color_auto: "Automático",
+    color_black: "Negro",
+    color_white: "Blanco",
   },
   sr: {
     title: "Љубимци",
@@ -377,6 +489,33 @@ const STRINGS = {
     zoom_helper: "Пребацује мини картицу на целу картицу и назад",
     language: "Језик",
     lang_auto: "Аутоматски",
+    litter: "Посип",
+    waste_bin: "Посуда за отпад",
+    full: "Пуна",
+    not_full: "Није пуна",
+    bin_full: "Посуда за отпад је пуна",
+    litter_low: "Мало посипа",
+    replace_deodorizer: "Замените дезодоранс",
+    cleaning: "Чишћење",
+    cat_inside: "Мачка унутра",
+    paused: "Паузирано",
+    maintenance: "Одржавање",
+    ready: "Спремна",
+    clean: "Очисти",
+    deodorize: "Уклони мирис",
+    uses: "Посете данас",
+    last_use: "Последња посета",
+    last_cat: "Последњи користио",
+    litter_weight: "Тежина посипа",
+    deodorizer: "Дезодоранс",
+    show_illustration: "Прикажи илустрације уређаја",
+    bin_almost_full: "Посуда за отпад је скоро пуна",
+    cycles: "Циклуси",
+    cat_weight: "Тежина мачке",
+    illustration_color: "Боја Litter-Robot-а",
+    color_auto: "Аутоматски",
+    color_black: "Црна",
+    color_white: "Бела",
   },
   "sr-Latn": {
     title: "Ljubimci",
@@ -444,6 +583,33 @@ const STRINGS = {
     zoom_helper: "Prebacuje mini karticu na celu karticu i nazad",
     language: "Jezik",
     lang_auto: "Automatski",
+    litter: "Posip",
+    waste_bin: "Posuda za otpad",
+    full: "Puna",
+    not_full: "Nije puna",
+    bin_full: "Posuda za otpad je puna",
+    litter_low: "Malo posipa",
+    replace_deodorizer: "Zamenite dezodorans",
+    cleaning: "Čišćenje",
+    cat_inside: "Mačka unutra",
+    paused: "Pauzirano",
+    maintenance: "Održavanje",
+    ready: "Spremna",
+    clean: "Očisti",
+    deodorize: "Ukloni miris",
+    uses: "Posete danas",
+    last_use: "Poslednja poseta",
+    last_cat: "Poslednji koristio",
+    litter_weight: "Težina posipa",
+    deodorizer: "Dezodorans",
+    show_illustration: "Prikaži ilustracije uređaja",
+    bin_almost_full: "Posuda za otpad je skoro puna",
+    cycles: "Ciklusi",
+    cat_weight: "Težina mačke",
+    illustration_color: "Boja Litter-Robot-a",
+    color_auto: "Automatski",
+    color_black: "Crna",
+    color_white: "Bela",
   },
   it: {
     title: "Animali",
@@ -511,6 +677,33 @@ const STRINGS = {
     zoom_helper: "Passa dalla mini scheda alla scheda completa e viceversa",
     language: "Lingua",
     lang_auto: "Automatica",
+    litter: "Sabbia",
+    waste_bin: "Cassetto rifiuti",
+    full: "Pieno",
+    not_full: "Non pieno",
+    bin_full: "Cassetto rifiuti pieno",
+    litter_low: "Sabbia bassa",
+    replace_deodorizer: "Sostituire il deodorante",
+    cleaning: "Pulizia in corso",
+    cat_inside: "Gatto dentro",
+    paused: "In pausa",
+    maintenance: "Manutenzione",
+    ready: "Pronta",
+    clean: "Pulisci",
+    deodorize: "Deodora",
+    uses: "Utilizzi oggi",
+    last_use: "Ultimo utilizzo",
+    last_cat: "Ultimo utilizzo da",
+    litter_weight: "Peso della sabbia",
+    deodorizer: "Deodorante",
+    show_illustration: "Mostra le illustrazioni dei dispositivi",
+    bin_almost_full: "Cassetto rifiuti quasi pieno",
+    cycles: "Cicli",
+    cat_weight: "Peso del gatto",
+    illustration_color: "Colore del Litter-Robot",
+    color_auto: "Automatico",
+    color_black: "Nero",
+    color_white: "Bianco",
   },
   nl: {
     title: "Huisdieren",
@@ -578,6 +771,33 @@ const STRINGS = {
     zoom_helper: "Schakelt de minikaart naar de volledige kaart en terug",
     language: "Taal",
     lang_auto: "Automatisch",
+    litter: "Vulling",
+    waste_bin: "Afvalbak",
+    full: "Vol",
+    not_full: "Niet vol",
+    bin_full: "Afvalbak vol",
+    litter_low: "Vulling laag",
+    replace_deodorizer: "Geurverdrijver vervangen",
+    cleaning: "Bezig met reinigen",
+    cat_inside: "Kat binnen",
+    paused: "Gepauzeerd",
+    maintenance: "Onderhoud",
+    ready: "Klaar",
+    clean: "Reinigen",
+    deodorize: "Geur verwijderen",
+    uses: "Bezoeken vandaag",
+    last_use: "Laatste bezoek",
+    last_cat: "Laatst gebruikt door",
+    litter_weight: "Gewicht vulling",
+    deodorizer: "Geurverdrijver",
+    show_illustration: "Apparaatillustraties tonen",
+    bin_almost_full: "Afvalbak bijna vol",
+    cycles: "Cycli",
+    cat_weight: "Gewicht kat",
+    illustration_color: "Kleur van de Litter-Robot",
+    color_auto: "Automatisch",
+    color_black: "Zwart",
+    color_white: "Wit",
   },
   pt: {
     title: "Animais",
@@ -645,6 +865,33 @@ const STRINGS = {
     zoom_helper: "Alterna o minicartão para o cartão completo e vice-versa",
     language: "Idioma",
     lang_auto: "Automático",
+    litter: "Areia",
+    waste_bin: "Recipiente de resíduos",
+    full: "Cheio",
+    not_full: "Não cheio",
+    bin_full: "Recipiente de resíduos cheio",
+    litter_low: "Areia baixa",
+    replace_deodorizer: "Substituir o desodorizante",
+    cleaning: "A limpar",
+    cat_inside: "Gato lá dentro",
+    paused: "Em pausa",
+    maintenance: "Manutenção",
+    ready: "Pronta",
+    clean: "Limpar",
+    deodorize: "Desodorizar",
+    uses: "Utilizações hoje",
+    last_use: "Última utilização",
+    last_cat: "Última utilização por",
+    litter_weight: "Peso da areia",
+    deodorizer: "Desodorizante",
+    show_illustration: "Mostrar as ilustrações dos dispositivos",
+    bin_almost_full: "Recipiente de resíduos quase cheio",
+    cycles: "Ciclos",
+    cat_weight: "Peso do gato",
+    illustration_color: "Cor do Litter-Robot",
+    color_auto: "Automático",
+    color_black: "Preto",
+    color_white: "Branco",
   },
   pl: {
     title: "Zwierzęta",
@@ -712,6 +959,33 @@ const STRINGS = {
     zoom_helper: "Przełącza minikartę na pełną kartę i z powrotem",
     language: "Język",
     lang_auto: "Automatyczny",
+    litter: "Żwirek",
+    waste_bin: "Pojemnik na odpady",
+    full: "Pełny",
+    not_full: "Niepełny",
+    bin_full: "Pojemnik na odpady pełny",
+    litter_low: "Mało żwirku",
+    replace_deodorizer: "Wymień odświeżacz",
+    cleaning: "Czyszczenie",
+    cat_inside: "Kot w środku",
+    paused: "Wstrzymano",
+    maintenance: "Konserwacja",
+    ready: "Gotowa",
+    clean: "Wyczyść",
+    deodorize: "Odśwież",
+    uses: "Wizyty dziś",
+    last_use: "Ostatnia wizyta",
+    last_cat: "Ostatnio używał",
+    litter_weight: "Waga żwirku",
+    deodorizer: "Odświeżacz",
+    show_illustration: "Pokaż ilustracje urządzeń",
+    bin_almost_full: "Pojemnik na odpady prawie pełny",
+    cycles: "Cykle",
+    cat_weight: "Waga kota",
+    illustration_color: "Kolor Litter-Robot",
+    color_auto: "Automatycznie",
+    color_black: "Czarny",
+    color_white: "Biały",
   },
   ro: {
     title: "Animale",
@@ -779,6 +1053,33 @@ const STRINGS = {
     zoom_helper: "Comută minicardul la cardul complet și înapoi",
     language: "Limbă",
     lang_auto: "Automat",
+    litter: "Nisip",
+    waste_bin: "Recipient deșeuri",
+    full: "Plin",
+    not_full: "Nu e plin",
+    bin_full: "Recipient deșeuri plin",
+    litter_low: "Nisip puțin",
+    replace_deodorizer: "Înlocuiți odorizantul",
+    cleaning: "Curățare",
+    cat_inside: "Pisică înăuntru",
+    paused: "În pauză",
+    maintenance: "Întreținere",
+    ready: "Pregătită",
+    clean: "Curăță",
+    deodorize: "Dezodorizează",
+    uses: "Utilizări azi",
+    last_use: "Ultima utilizare",
+    last_cat: "Ultima utilizare de",
+    litter_weight: "Greutatea nisipului",
+    deodorizer: "Odorizant",
+    show_illustration: "Afișează ilustrațiile dispozitivelor",
+    bin_almost_full: "Recipient deșeuri aproape plin",
+    cycles: "Cicluri",
+    cat_weight: "Greutatea pisicii",
+    illustration_color: "Culoarea Litter-Robot",
+    color_auto: "Automat",
+    color_black: "Negru",
+    color_white: "Alb",
   },
   da: {
     title: "Kæledyr",
@@ -846,6 +1147,33 @@ const STRINGS = {
     zoom_helper: "Skifter minikortet til hele kortet og tilbage",
     language: "Sprog",
     lang_auto: "Automatisk",
+    litter: "Grus",
+    waste_bin: "Affaldsbeholder",
+    full: "Fuld",
+    not_full: "Ikke fuld",
+    bin_full: "Affaldsbeholder fuld",
+    litter_low: "Lidt grus",
+    replace_deodorizer: "Udskift deodorant",
+    cleaning: "Rengøring",
+    cat_inside: "Kat indeni",
+    paused: "På pause",
+    maintenance: "Vedligeholdelse",
+    ready: "Klar",
+    clean: "Rengør",
+    deodorize: "Fjern lugt",
+    uses: "Besøg i dag",
+    last_use: "Seneste besøg",
+    last_cat: "Senest brugt af",
+    litter_weight: "Grusvægt",
+    deodorizer: "Deodorant",
+    show_illustration: "Vis enhedsillustrationer",
+    bin_almost_full: "Affaldsbeholder næsten fuld",
+    cycles: "Cyklusser",
+    cat_weight: "Kattens vægt",
+    illustration_color: "Litter-Robot-farve",
+    color_auto: "Automatisk",
+    color_black: "Sort",
+    color_white: "Hvid",
   },
   sv: {
     title: "Husdjur",
@@ -913,6 +1241,33 @@ const STRINGS = {
     zoom_helper: "Växlar minikortet till hela kortet och tillbaka",
     language: "Språk",
     lang_auto: "Automatiskt",
+    litter: "Strö",
+    waste_bin: "Avfallsbehållare",
+    full: "Full",
+    not_full: "Inte full",
+    bin_full: "Avfallsbehållare full",
+    litter_low: "Lite strö",
+    replace_deodorizer: "Byt luktborttagare",
+    cleaning: "Rengöring",
+    cat_inside: "Katt inne",
+    paused: "Pausad",
+    maintenance: "Underhåll",
+    ready: "Redo",
+    clean: "Rengör",
+    deodorize: "Ta bort lukt",
+    uses: "Besök i dag",
+    last_use: "Senaste besök",
+    last_cat: "Senast använd av",
+    litter_weight: "Ströets vikt",
+    deodorizer: "Luktborttagare",
+    show_illustration: "Visa enhetsillustrationer",
+    bin_almost_full: "Avfallsbehållare nästan full",
+    cycles: "Cykler",
+    cat_weight: "Kattens vikt",
+    illustration_color: "Litter-Robot-färg",
+    color_auto: "Automatisk",
+    color_black: "Svart",
+    color_white: "Vit",
   },
   bg: {
     title: "Любимци",
@@ -980,6 +1335,33 @@ const STRINGS = {
     zoom_helper: "Превключва мини картата към цялата карта и обратно",
     language: "Език",
     lang_auto: "Автоматично",
+    litter: "Постелка",
+    waste_bin: "Контейнер за отпадъци",
+    full: "Пълен",
+    not_full: "Не е пълен",
+    bin_full: "Контейнерът за отпадъци е пълен",
+    litter_low: "Малко постелка",
+    replace_deodorizer: "Сменете дезодоранта",
+    cleaning: "Почистване",
+    cat_inside: "Котка вътре",
+    paused: "На пауза",
+    maintenance: "Поддръжка",
+    ready: "Готова",
+    clean: "Почисти",
+    deodorize: "Дезодорирай",
+    uses: "Посещения днес",
+    last_use: "Последно посещение",
+    last_cat: "Последно използвана от",
+    litter_weight: "Тегло на постелката",
+    deodorizer: "Дезодорант",
+    show_illustration: "Показване на илюстрациите на устройствата",
+    bin_almost_full: "Контейнерът за отпадъци е почти пълен",
+    cycles: "Цикли",
+    cat_weight: "Тегло на котката",
+    illustration_color: "Цвят на Litter-Robot",
+    color_auto: "Автоматично",
+    color_black: "Черен",
+    color_white: "Бял",
   },
   ru: {
     title: "Питомцы",
@@ -1047,6 +1429,33 @@ const STRINGS = {
     zoom_helper: "Переключает мини-карточку на полную и обратно",
     language: "Язык",
     lang_auto: "Автоматически",
+    litter: "Наполнитель",
+    waste_bin: "Контейнер для отходов",
+    full: "Полон",
+    not_full: "Не полон",
+    bin_full: "Контейнер для отходов полон",
+    litter_low: "Мало наполнителя",
+    replace_deodorizer: "Замените дезодорант",
+    cleaning: "Уборка",
+    cat_inside: "Кошка внутри",
+    paused: "Пауза",
+    maintenance: "Обслуживание",
+    ready: "Готов",
+    clean: "Убрать",
+    deodorize: "Устранить запах",
+    uses: "Посещения сегодня",
+    last_use: "Последнее посещение",
+    last_cat: "Последний посетитель",
+    litter_weight: "Вес наполнителя",
+    deodorizer: "Дезодорант",
+    show_illustration: "Показывать иллюстрации устройств",
+    bin_almost_full: "Контейнер для отходов почти полон",
+    cycles: "Циклы",
+    cat_weight: "Вес кошки",
+    illustration_color: "Цвет Litter-Robot",
+    color_auto: "Автоматически",
+    color_black: "Чёрный",
+    color_white: "Белый",
   },
   uk: {
     title: "Улюбленці",
@@ -1114,6 +1523,33 @@ const STRINGS = {
     zoom_helper: "Перемикає міні-картку на повну і назад",
     language: "Мова",
     lang_auto: "Автоматично",
+    litter: "Наповнювач",
+    waste_bin: "Контейнер для відходів",
+    full: "Повний",
+    not_full: "Не повний",
+    bin_full: "Контейнер для відходів повний",
+    litter_low: "Мало наповнювача",
+    replace_deodorizer: "Замініть дезодорант",
+    cleaning: "Прибирання",
+    cat_inside: "Кіт усередині",
+    paused: "Пауза",
+    maintenance: "Обслуговування",
+    ready: "Готово",
+    clean: "Прибрати",
+    deodorize: "Усунути запах",
+    uses: "Відвідування сьогодні",
+    last_use: "Останнє відвідування",
+    last_cat: "Останній відвідувач",
+    litter_weight: "Вага наповнювача",
+    deodorizer: "Дезодорант",
+    show_illustration: "Показувати ілюстрації пристроїв",
+    bin_almost_full: "Контейнер для відходів майже повний",
+    cycles: "Цикли",
+    cat_weight: "Вага кота",
+    illustration_color: "Колір Litter-Robot",
+    color_auto: "Автоматично",
+    color_black: "Чорний",
+    color_white: "Білий",
   },
   hu: {
     title: "Háziállatok",
@@ -1181,6 +1617,33 @@ const STRINGS = {
     zoom_helper: "A mini kártyát a teljes kártyára váltja és vissza",
     language: "Nyelv",
     lang_auto: "Automatikus",
+    litter: "Alom",
+    waste_bin: "Hulladéktartály",
+    full: "Tele",
+    not_full: "Nincs tele",
+    bin_full: "Hulladéktartály tele",
+    litter_low: "Kevés alom",
+    replace_deodorizer: "Cserélje a szagtalanítót",
+    cleaning: "Tisztítás folyamatban",
+    cat_inside: "Macska bent",
+    paused: "Szüneteltetve",
+    maintenance: "Karbantartás",
+    ready: "Kész",
+    clean: "Tisztítás",
+    deodorize: "Szagtalanítás",
+    uses: "Mai használatok",
+    last_use: "Utolsó használat",
+    last_cat: "Utoljára használta",
+    litter_weight: "Alom súlya",
+    deodorizer: "Szagtalanító",
+    show_illustration: "Eszközillusztrációk megjelenítése",
+    bin_almost_full: "Hulladéktartály majdnem tele",
+    cycles: "Ciklusok",
+    cat_weight: "Macska súlya",
+    illustration_color: "Litter-Robot színe",
+    color_auto: "Automatikus",
+    color_black: "Fekete",
+    color_white: "Fehér",
   },
   sk: {
     title: "Zvieratá",
@@ -1248,6 +1711,33 @@ const STRINGS = {
     zoom_helper: "Prepne minikartu na celú kartu a späť",
     language: "Jazyk",
     lang_auto: "Automaticky",
+    litter: "Podstielka",
+    waste_bin: "Nádoba na odpad",
+    full: "Plná",
+    not_full: "Nie je plná",
+    bin_full: "Nádoba na odpad plná",
+    litter_low: "Málo podstielky",
+    replace_deodorizer: "Vymeňte dezodorant",
+    cleaning: "Čistenie",
+    cat_inside: "Mačka vnútri",
+    paused: "Pozastavené",
+    maintenance: "Údržba",
+    ready: "Pripravená",
+    clean: "Vyčistiť",
+    deodorize: "Odstrániť zápach",
+    uses: "Návštevy dnes",
+    last_use: "Posledná návšteva",
+    last_cat: "Naposledy použil",
+    litter_weight: "Hmotnosť podstielky",
+    deodorizer: "Dezodorant",
+    show_illustration: "Zobraziť ilustrácie zariadení",
+    bin_almost_full: "Nádoba na odpad takmer plná",
+    cycles: "Cykly",
+    cat_weight: "Hmotnosť mačky",
+    illustration_color: "Farba Litter-Robot",
+    color_auto: "Automaticky",
+    color_black: "Čierna",
+    color_white: "Biela",
   },
   cs: {
     title: "Zvířata",
@@ -1315,6 +1805,33 @@ const STRINGS = {
     zoom_helper: "Přepne minikartu na celou kartu a zpět",
     language: "Jazyk",
     lang_auto: "Automaticky",
+    litter: "Stelivo",
+    waste_bin: "Nádoba na odpad",
+    full: "Plná",
+    not_full: "Není plná",
+    bin_full: "Nádoba na odpad plná",
+    litter_low: "Málo steliva",
+    replace_deodorizer: "Vyměňte deodorant",
+    cleaning: "Čištění",
+    cat_inside: "Kočka uvnitř",
+    paused: "Pozastaveno",
+    maintenance: "Údržba",
+    ready: "Připravena",
+    clean: "Vyčistit",
+    deodorize: "Odstranit zápach",
+    uses: "Návštěvy dnes",
+    last_use: "Poslední návštěva",
+    last_cat: "Naposledy použil",
+    litter_weight: "Hmotnost steliva",
+    deodorizer: "Deodorant",
+    show_illustration: "Zobrazit ilustrace zařízení",
+    bin_almost_full: "Nádoba na odpad téměř plná",
+    cycles: "Cykly",
+    cat_weight: "Hmotnost kočky",
+    illustration_color: "Barva Litter-Robot",
+    color_auto: "Automaticky",
+    color_black: "Černá",
+    color_white: "Bílá",
   },
   sl: {
     title: "Ljubljenčki",
@@ -1382,6 +1899,33 @@ const STRINGS = {
     zoom_helper: "Preklopi mini kartico na celotno kartico in nazaj",
     language: "Jezik",
     lang_auto: "Samodejno",
+    litter: "Posip",
+    waste_bin: "Posoda za odpadke",
+    full: "Polna",
+    not_full: "Ni polna",
+    bin_full: "Posoda za odpadke polna",
+    litter_low: "Malo posipa",
+    replace_deodorizer: "Zamenjajte dezodorant",
+    cleaning: "Čiščenje",
+    cat_inside: "Mačka v notranjosti",
+    paused: "Začasno ustavljeno",
+    maintenance: "Vzdrževanje",
+    ready: "Pripravljena",
+    clean: "Očisti",
+    deodorize: "Odstrani vonj",
+    uses: "Obiski danes",
+    last_use: "Zadnji obisk",
+    last_cat: "Nazadnje uporabil",
+    litter_weight: "Teža posipa",
+    deodorizer: "Dezodorant",
+    show_illustration: "Prikaži ilustracije naprav",
+    bin_almost_full: "Posoda za odpadke skoraj polna",
+    cycles: "Cikli",
+    cat_weight: "Teža mačke",
+    illustration_color: "Barva Litter-Robot",
+    color_auto: "Samodejno",
+    color_black: "Črna",
+    color_white: "Bela",
   },
   lv: {
     title: "Mājdzīvnieki",
@@ -1449,6 +1993,33 @@ const STRINGS = {
     zoom_helper: "Pārslēdz mini karti uz pilno karti un atpakaļ",
     language: "Valoda",
     lang_auto: "Automātiski",
+    litter: "Pakaiši",
+    waste_bin: "Atkritumu tvertne",
+    full: "Pilna",
+    not_full: "Nav pilna",
+    bin_full: "Atkritumu tvertne pilna",
+    litter_low: "Maz pakaišu",
+    replace_deodorizer: "Nomainiet dezodorantu",
+    cleaning: "Tīrīšana",
+    cat_inside: "Kaķis iekšā",
+    paused: "Pauzēts",
+    maintenance: "Apkope",
+    ready: "Gatava",
+    clean: "Notīrīt",
+    deodorize: "Dezodorēt",
+    uses: "Apmeklējumi šodien",
+    last_use: "Pēdējais apmeklējums",
+    last_cat: "Pēdējais lietotājs",
+    litter_weight: "Pakaišu svars",
+    deodorizer: "Dezodorants",
+    show_illustration: "Rādīt ierīču ilustrācijas",
+    bin_almost_full: "Atkritumu tvertne gandrīz pilna",
+    cycles: "Cikli",
+    cat_weight: "Kaķa svars",
+    illustration_color: "Litter-Robot krāsa",
+    color_auto: "Automātiski",
+    color_black: "Melna",
+    color_white: "Balta",
   },
   el: {
     title: "Κατοικίδια",
@@ -1516,6 +2087,33 @@ const STRINGS = {
     zoom_helper: "Εναλλάσσει τη μίνι κάρτα στην πλήρη κάρτα και πίσω",
     language: "Γλώσσα",
     lang_auto: "Αυτόματα",
+    litter: "Άμμος",
+    waste_bin: "Δοχείο απορριμμάτων",
+    full: "Γεμάτο",
+    not_full: "Όχι γεμάτο",
+    bin_full: "Δοχείο απορριμμάτων γεμάτο",
+    litter_low: "Λίγη άμμος",
+    replace_deodorizer: "Αντικαταστήστε το αποσμητικό",
+    cleaning: "Καθαρισμός",
+    cat_inside: "Γάτα μέσα",
+    paused: "Σε παύση",
+    maintenance: "Συντήρηση",
+    ready: "Έτοιμη",
+    clean: "Καθάρισε",
+    deodorize: "Απόσμηση",
+    uses: "Χρήσεις σήμερα",
+    last_use: "Τελευταία χρήση",
+    last_cat: "Τελευταία χρήση από",
+    litter_weight: "Βάρος άμμου",
+    deodorizer: "Αποσμητικό",
+    show_illustration: "Εμφάνιση εικόνων συσκευών",
+    bin_almost_full: "Δοχείο απορριμμάτων σχεδόν γεμάτο",
+    cycles: "Κύκλοι",
+    cat_weight: "Βάρος γάτας",
+    illustration_color: "Χρώμα Litter-Robot",
+    color_auto: "Αυτόματο",
+    color_black: "Μαύρο",
+    color_white: "Λευκό",
   },
 };
 
@@ -1710,6 +2308,8 @@ const PLATFORMS = {
           call_pet: "button:call_pet",
           camera: "camera:camera",
           camera_switch: "switch:camera",
+          // Jezza34000: on while the feeder dispenses.
+          feeding: "binary_sensor:feeding",
         },
       },
       fountain: {
@@ -1724,6 +2324,8 @@ const PLATFORMS = {
           pump: "binary_sensor:pump_running",
           light: ["switch:light", "switch:indicator_light"],
           dnd: "switch:do_not_disturb",
+          // Jezza34000: on while the do not disturb period runs (the switch only enables it).
+          dnd_state: "binary_sensor:do_not_disturb_state",
           purified: ["sensor:purified_water_today", "sensor:purified_water"],
           energy: ["sensor:energy_usage", "sensor:today_pump_run_time"],
           battery_pct: "sensor:battery",
@@ -1731,10 +2333,51 @@ const PLATFORMS = {
           reset_filter: "button:reset_filter",
         },
       },
+      // Pura X / Pura MAX (RobertD502), every PetKit litter box (Jezza34000: Pura X, Pura MAX 1/2, Purobot…).
+      litter: {
+        detect: ["sensor:litter_level", "sensor:max_work_state", "sensor:litter_state", "binary_sensor:wastebin", "binary_sensor:waste_bin", "binary_sensor:sand_lack"],
+        roles: {
+          state: ["sensor:max_work_state", "sensor:litter_state"],
+          status: "sensor:device_status",
+          error: ["sensor:error", "sensor:error_message"],
+          litter: "sensor:litter_level",
+          litter_low: ["binary_sensor:litter", "binary_sensor:sand_lack"],
+          litter_weight: "sensor:litter_weight",
+          bin_full: ["binary_sensor:wastebin", "binary_sensor:waste_bin"],
+          occupied: "binary_sensor:toilet_occupied",
+          times_used: "sensor:times_used",
+          last_used_by: "sensor:last_used_by",
+          deodorizer: ["sensor:n50_odor_eliminator", "sensor:odor_eliminator_n50_left_days", "sensor:odor_eliminator_n60_left_days"],
+          deodorizer_pct: "sensor:deodorizer_level",
+          clean: ["button:start_cleaning", "button:start_scoop"],
+          deodorize: ["button:odor_removal", "button:deodorize"],
+          camera: "camera:camera",
+        },
+      },
+    },
+  },
+  // Whisker's Litter-Robot integration (Home Assistant core): Litter-Robot 3 Connect, 4 and 5. Its Feeder-Robot
+  // and pets are left out.
+  litterrobot: {
+    name: "Litter-Robot",
+    kinds: {
+      litter: {
+        detect: ["vacuum:litter_box", "sensor:waste_drawer", "sensor:status_code"],
+        roles: {
+          vacuum: "vacuum:litter_box",
+          status_code: "sensor:status_code",
+          waste: "sensor:waste_drawer",
+          litter: "sensor:litter_level",
+          pet_weight: "sensor:pet_weight",
+          cycles: "sensor:total_cycles",
+          night: ["light:night_light", "select:globe_light", "switch:night_light_mode"],
+        },
+      },
     },
   },
 };
-const KIND_ORDER = ["feeder", "fountain"];
+const KIND_ORDER = ["feeder", "fountain", "litter"];
+const KIND_ICONS = { feeder: ICONS.bowl, fountain: ICONS.fountain, litter: ICONS.cat };
 
 // Supported devices, from the registries: { id, kind, platform, name, model, entities: { role: entity_id } }.
 const _cache = new WeakMap();
@@ -1784,6 +2427,33 @@ const findDevices = (hass, config) => {
 const filterLevel = (v) => (v === null ? "" : v <= 5 ? "crit" : v <= 20 ? "warn" : "ok");
 const desiccantLevel = (v) => (v === null ? "" : v <= 0 ? "crit" : v <= 5 ? "warn" : "ok");
 const batteryLevel = (v) => (v === null ? "" : v <= 10 ? "crit" : v <= 25 ? "warn" : "");
+
+// What a litter box is doing, from its work state (RobertD502's max_work_state, Jezza34000's litter_state): idle,
+// cleaning (also dumping, levelling, resetting, calibrating), cat (a pet approaching, using it or inside while it
+// works), paused, maintenance or error (a system error stopped it).
+const litterActivity = (state) => {
+  const s = String(state ?? "").toLowerCase();
+  if (!s || s === "idle" || BAD.has(state)) return "idle";
+  if (/system_error/.test(s)) return "error";
+  if (/pet_(using|entered|approach)/.test(s)) return "cat";
+  if (/paus/.test(s)) return "paused";
+  if (/maint/.test(s)) return "maintenance";
+  if (/clean|dump|level|reset|calibrat/.test(s)) return "cleaning";
+  return "idle";
+};
+
+// What a Litter-Robot is doing, from its status code: a clean or empty cycle (powering up runs one), a cat detected
+// or the cat sensor timing / interrupted, paused, off, a fault (bonnet removed, pinch, position or sensor fault).
+const LR_FAULTS = new Set(["br", "csf", "scf", "dhf", "dpf", "hpf", "otf", "pd", "spf"]);
+const robotActivity = (code) => {
+  if (!code) return "idle";
+  if (LR_FAULTS.has(code)) return "error";
+  if (["ccp", "ec", "pwru"].includes(code)) return "cleaning";
+  if (["cd", "cst", "csi"].includes(code)) return "cat";
+  if (code === "p") return "paused";
+  if (code === "off" || code === "pwrd") return "off";
+  return "idle";
+};
 
 // Default amount of a manual feed: about 10 g, on the entity's own steps.
 const feedDefault = (min, max, step) => {
@@ -1843,6 +2513,185 @@ const listDefault = (spec) => {
   const i = spec.values.findIndex((v) => v >= 10);
   return i < 0 ? spec.values.length - 1 : i;
 };
+
+// ---------------------------------------------------------------------------
+// Illustrations
+// ---------------------------------------------------------------------------
+
+// Drawn pictures of the devices (no photos), animated by what the device does: kibbles fall into the bowl while a
+// feeder dispenses, the fountain's water flows and ripples while its pump runs, the litter box's drum turns while it
+// cleans and a cat peeks out while one is inside. The hoppers, the fountain's tank and the litter show their level;
+// the status LED takes the device's status colour. The shape follows the model: one or two hoppers, a camera (YumShare
+// feeders, camera litter boxes). Gradient and clip ids get a per-device suffix (several devices in one card).
+const ART_DEFS =
+  '<linearGradient id="pa-b" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#d5dbe2"/><stop offset=".45" stop-color="#ffffff"/><stop offset="1" stop-color="#c9d0d8"/></linearGradient>' +
+  '<linearGradient id="pa-st" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#9aa4ae"/><stop offset=".5" stop-color="#f1f4f7"/><stop offset="1" stop-color="#8f9aa6"/></linearGradient>' +
+  '<linearGradient id="pa-dk" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#1b2129"/><stop offset="1" stop-color="#39424d"/></linearGradient>' +
+  '<linearGradient id="pa-sd" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#e6d3ad"/><stop offset="1" stop-color="#c9b083"/></linearGradient>' +
+  '<radialGradient id="pa-fl" cx=".5" cy=".5" r=".5"><stop offset="0" stop-color="#000" stop-opacity=".22"/><stop offset="1" stop-color="#000" stop-opacity="0"/></radialGradient>' +
+  '<radialGradient id="pa-gw" cx=".5" cy=".5" r=".5"><stop offset=".6" stop-color="#7fb3ff" stop-opacity=".9"/><stop offset="1" stop-color="#7fb3ff" stop-opacity="0"/></radialGradient>';
+const KIBBLE = ["#a8662c", "#c27d3c"];
+
+// Kibbles of a hopper window (x, width; y 12 to 44), up to its level (0 to 1).
+const kibbles = (x, w, level) => {
+  const top = 44 - Math.max(0.06, Math.min(1, level)) * 32;
+  let s = "";
+  for (let row = 0, y = 41.4; y >= 14; row++, y -= 3.2) {
+    if (y < top) break;
+    for (let cx = x + 2.6 + (row % 2) * 1.6; cx < x + w - 1.4; cx += 3.2) s += `<circle cx="${cx.toFixed(1)}" cy="${y.toFixed(1)}" r="1.4" fill="${KIBBLE[(row + Math.round(cx)) % 2]}"/>`;
+  }
+  return s;
+};
+
+const hopper = (x, w, level, low) =>
+  `<rect class="win${low ? " low" : ""}" x="${x}" y="12" width="${w}" height="32" rx="6" fill="rgba(29,38,50,.08)" stroke="#c3cad2" stroke-width="1"/>` +
+  `<clipPath id="pa-h${x}"><rect x="${x}" y="12" width="${w}" height="32" rx="6"/></clipPath><g clip-path="url(#pa-h${x})">${kibbles(x, w, level)}</g>` +
+  `<path d="M${x + 3} 15v14" stroke="#fff" stroke-width="1.6" stroke-linecap="round" opacity=".7"/>`;
+
+const drops = (cx) =>
+  [0, 0.25, 0.5, 0.75].map((d, i) => `<circle class="drop" cx="${cx - 1.5 + (i % 2) * 3}" cy="63.5" r="1.8" fill="${KIBBLE[i % 2]}" style="animation-delay:${d}s"/>`).join("");
+
+// o: { dual, camera, levels: [0..1, 0..1], lows: [bool, bool], bowl: bool }
+const feederArt = (o) => {
+  const d = o.dual;
+  let s = '<ellipse cx="40" cy="88" rx="32" ry="4" fill="url(#pa-fl)"/>';
+  s += `<rect x="${d ? 9 : 17}" y="5" width="${d ? 62 : 46}" height="70" rx="12" fill="url(#pa-b)" stroke="#c3cad2" stroke-width="1.1"/>`;
+  s += '<circle class="led" cx="40" cy="8.6" r="1.3"/>';
+  s += d ? hopper(14, 24, o.levels[0], o.lows[0]) + hopper(42, 24, o.levels[1], o.lows[1]) : hopper(23, 34, o.levels[0], o.lows[0]);
+  if (o.camera)
+    s += '<circle cx="40" cy="51" r="4.2" fill="#1d2632" stroke="#8f9aa6" stroke-width=".8"/><circle cx="38.8" cy="49.8" r="1.1" fill="#7fa7d9"/><circle class="rec" cx="46" cy="49" r=".9" fill="#db4437"/>';
+  s += d
+    ? `<rect x="23" y="57" width="8" height="5" rx="2" fill="#3a434e"/><rect x="49" y="57" width="8" height="5" rx="2" fill="#3a434e"/>${drops(27)}${drops(53)}`
+    : `<rect x="35" y="57" width="10" height="5" rx="2" fill="#3a434e"/>${drops(40)}`;
+  s += '<ellipse cx="40" cy="79" rx="25" ry="7" fill="url(#pa-st)" stroke="#8f9aa6" stroke-width=".6"/><ellipse cx="40" cy="78" rx="19" ry="4.3" fill="#6b7682"/>';
+  if (o.bowl)
+    s += [35, 38.5, 42, 45].map((x, i) => `<circle cx="${x}" cy="${i % 2 ? 77.6 : 78.4}" r="1.3" fill="${KIBBLE[(i + 1) % 2]}"/>`).join("");
+  return s;
+};
+
+// Drawn smaller than the others (y 27 to 92): scaled up to the same height.
+const fountainArt = () =>
+  '<g transform="translate(-8 -24) scale(1.2)">' +
+  '<ellipse cx="40" cy="88" rx="30" ry="4" fill="url(#pa-fl)"/>' +
+  '<clipPath id="pa-tk"><rect x="15" y="42" width="50" height="40" rx="11"/></clipPath>' +
+  '<rect x="15" y="42" width="50" height="40" rx="11" fill="rgba(205,222,236,.55)" stroke="#c3cad2" stroke-width="1"/>' +
+  '<g clip-path="url(#pa-tk)"><g class="wl"><path class="wave" d="M8 56q5-2.5 10 0t10 0 10 0 10 0 10 0 10 0 10 0V84H8Z" fill="#2f8fd8" opacity=".45"/></g></g>' +
+  '<path d="M19 47v26" stroke="#fff" stroke-width="1.8" stroke-linecap="round" opacity=".7"/>' +
+  '<ellipse cx="40" cy="42" rx="27" ry="6.5" fill="url(#pa-b)" stroke="#c3cad2" stroke-width="1"/>' +
+  '<ellipse cx="40" cy="41.2" rx="21" ry="4.2" fill="#d8e8f5"/>' +
+  '<ellipse class="rp" cx="40" cy="41.2" rx="20" ry="4" fill="none" stroke="#2f8fd8" stroke-width=".8"/>' +
+  '<ellipse class="rp" cx="40" cy="41.2" rx="20" ry="4" fill="none" stroke="#2f8fd8" stroke-width=".8" style="animation-delay:.9s"/>' +
+  '<path d="M35 40q0-8 5-8t5 8Z" fill="url(#pa-b)" stroke="#c3cad2" stroke-width=".8"/>' +
+  '<path class="stream" d="M40 31q-1-5-5-4t-5 12" fill="none" stroke="#2f8fd8" stroke-width="1.5" stroke-linecap="round"/>' +
+  '<path class="stream" d="M40 31q1-5 5-4t5 12" fill="none" stroke="#2f8fd8" stroke-width="1.5" stroke-linecap="round"/>' +
+  '<path class="stream" d="M40 31v-3" fill="none" stroke="#2f8fd8" stroke-width="1.5" stroke-linecap="round"/>' +
+  '<circle class="led" cx="40" cy="76" r="1.3"/></g>';
+
+const catHead = (cx, cy) =>
+  `<g class="cat"><path class="ear" d="M${cx - 9} ${cy - 4}l1.5-9 6 5Z" fill="#6b5a4a"/><path d="M${cx + 9} ${cy - 4}l-1.5-9-6 5Z" fill="#6b5a4a"/>` +
+  `<ellipse cx="${cx}" cy="${cy}" rx="10.5" ry="8.5" fill="#7d6a58"/><ellipse class="eye" cx="${cx - 4}" cy="${cy - 1}" rx="1.6" ry="2" fill="#e8d36a"/>` +
+  `<ellipse class="eye" cx="${cx + 4}" cy="${cy - 1}" rx="1.6" ry="2" fill="#e8d36a"/><path d="M${cx - 1.2} ${cy + 3}h2.4L${cx} ${cy + 4.4}Z" fill="#f2b8b0"/>` +
+  `<path d="M${cx - 13} ${cy + 3}h6M${cx + 13} ${cy + 3}h-6" stroke="#ddd" stroke-width=".6"/></g>`;
+
+// o: { camera, level: 0..1 }: the litter's surface in the drum rises with its level.
+const litterArt = (o) => {
+  const top = 61 - Math.max(0.1, Math.min(1, o.level)) * 9;
+  return (
+    '<ellipse cx="40" cy="89" rx="34" ry="4" fill="url(#pa-fl)"/>' +
+    '<rect x="6" y="12" width="68" height="72" rx="20" fill="url(#pa-b)" stroke="#c3cad2" stroke-width="1.1"/>' +
+    '<rect x="30" y="16" width="20" height="5" rx="2.5" fill="#1d2632"/><circle class="led" cx="40" cy="18.5" r="1.2"/>' +
+    (o.camera ? '<circle cx="62" cy="20" r="2.6" fill="#1d2632" stroke="#8f9aa6" stroke-width=".6"/><circle class="rec" cx="66" cy="18" r=".8" fill="#db4437"/>' : "") +
+    '<clipPath id="pa-op"><ellipse cx="40" cy="45" rx="23" ry="20"/></clipPath>' +
+    '<ellipse cx="40" cy="45" rx="24.5" ry="21.5" fill="#e3e8ed" stroke="#c3cad2" stroke-width=".8"/>' +
+    '<g clip-path="url(#pa-op)"><rect x="14" y="22" width="52" height="46" fill="url(#pa-dk)"/>' +
+    `<g class="drum"><path d="M17 44a23 20 0 0 0 46 0" fill="none" stroke="#4b5560" stroke-width="1"/>` +
+    `<path d="M17 ${top.toFixed(1)}q23-5 46 0V68H17Z" fill="url(#pa-sd)"/><path d="M22 34l6 4M58 34l-6 4" stroke="#4b5560" stroke-width="1.2"/></g>` +
+    `${catHead(40, 48)}</g>` +
+    '<path d="M18 40a23 20 0 0 1 14-15" stroke="#fff" stroke-width="1.6" fill="none" stroke-linecap="round" opacity=".5"/>' +
+    [0, 1, 2].map((i) => `<circle class="grit" cx="${37 + i * 3}" cy="68" r="1.1" fill="#9c8457" style="animation-delay:${(i * 0.12).toFixed(2)}s"/>`).join("") +
+    '<rect class="bin" x="16" y="70" width="48" height="9" rx="3" fill="#eef1f4" stroke="#aab3bd" stroke-width=".8"/>' +
+    '<rect x="34" y="73.5" width="12" height="2" rx="1" fill="#aab3bd"/>'
+  );
+};
+
+// Litter-Robot: [body edge, body light, outline, details] of the black and white LR4 / LR5 and the LR3 Connect.
+const ROBOT_COLORS = {
+  black: ["#2b3139", "#4c5560", "#1f252c", "#59636e"],
+  white: ["#d5dbe2", "#ffffff", "#c3cad2", "#aab3bd"],
+  lr3: ["#cfc9bb", "#ece8de", "#b8b1a1", "#9a9384"],
+};
+
+// The waste drawer's fill (%), on the drawer: green, orange from 80 %, red when full.
+const drawerGauge = (y, waste, track) =>
+  waste === null
+    ? ""
+    : `<rect x="20" y="${y}" width="40" height="2.2" rx="1.1" fill="${track}" opacity=".5"/>` +
+      `<rect x="20" y="${y}" width="${(40 * Math.max(0, Math.min(1, waste / 100))).toFixed(1)}" height="2.2" rx="1.1" style="fill:var(--pc-${waste >= 100 ? "crit" : waste >= 80 ? "warn" : "ok"})"/>`;
+
+const robotGrit = (y) => [0, 1, 2].map((i) => `<circle class="grit" cx="${37 + i * 3}" cy="${y}" r="1.2" fill="#9c8457" style="animation-delay:${(i * 0.12).toFixed(2)}s"/>`).join("");
+
+// o: { lr3, color: "black" | "white", level: 0..1, waste: % or null }. The LR4 / LR5: a hood with an arched entry
+// on its base, the panel on top, the step and the waste drawer below; the LR3 Connect: a round globe on its base.
+// The globe turns while it cycles; the night light rings the entry.
+const robotArt = (o) => {
+  const c = ROBOT_COLORS[o.lr3 ? "lr3" : o.color];
+  const body = `<linearGradient id="pa-rb" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="${c[0]}"/><stop offset=".45" stop-color="${c[1]}"/><stop offset="1" stop-color="${c[0]}"/></linearGradient>`;
+  const sand = (top, x, w) => `<path d="M${x} ${top.toFixed(1)}q${w / 2}-5 ${w} 0V70H${x}Z" fill="url(#pa-sd)"/>`;
+  if (o.lr3)
+    return (
+      `${body}<ellipse cx="40" cy="89" rx="34" ry="4" fill="url(#pa-fl)"/>` +
+      '<path d="M8 58h64l-3 24a5 5 0 0 1-5 4H16a5 5 0 0 1-5-4Z" fill="#5b5e63" stroke="#46494d" stroke-width=".8"/>' +
+      `<circle cx="40" cy="37" r="30" fill="url(#pa-rb)" stroke="${c[2]}" stroke-width=".9"/>` +
+      '<ellipse class="halo" cx="40" cy="40" rx="22" ry="20" fill="url(#pa-gw)"/>' +
+      '<clipPath id="pa-op"><ellipse cx="40" cy="41" rx="17" ry="16"/></clipPath>' +
+      '<g clip-path="url(#pa-op)"><rect x="20" y="22" width="40" height="38" fill="url(#pa-dk)"/>' +
+      `<g class="drum lr3"><circle cx="40" cy="37" r="22" fill="none" stroke="#3f4852" stroke-width="1"/>${sand(52 - o.level * 8, 16, 48)}</g>${catHead(40, 46)}</g>` +
+      '<ellipse class="ring" cx="40" cy="41" rx="18" ry="17" fill="none" stroke="#7fb3ff" stroke-width="1.6"/>' +
+      `<ellipse cx="40" cy="41" rx="18.5" ry="17.5" fill="none" stroke="${c[2]}" stroke-width="1"/>` +
+      '<path d="M18 26a30 30 0 0 1 16-14" stroke="#fff" stroke-width="1.6" fill="none" stroke-linecap="round" opacity=".5"/>' +
+      '<rect x="28" y="60" width="24" height="5" rx="2" fill="#3f4246"/><circle class="led" cx="33" cy="62.5" r="1.1"/><circle cx="40" cy="62.5" r=".9" fill="#7c8086"/><circle cx="46" cy="62.5" r=".9" fill="#7c8086"/>' +
+      robotGrit(66) +
+      '<rect class="bin" x="17" y="68" width="46" height="13" rx="3" fill="#4b4e53" stroke="#6c7076" stroke-width=".7"/>' +
+      drawerGauge(76, o.waste, "#6c7076")
+    );
+  return (
+    `${body}<ellipse cx="40" cy="89" rx="34" ry="4" fill="url(#pa-fl)"/>` +
+    `<rect x="9" y="52" width="62" height="34" rx="9" fill="url(#pa-rb)" stroke="${c[2]}" stroke-width=".9"/>` +
+    `<path d="M9 54V33a31 31 0 0 1 62 0v21Z" fill="url(#pa-rb)" stroke="${c[2]}" stroke-width=".9"/>` +
+    `<rect x="31" y="5.5" width="18" height="4.5" rx="2.2" fill="${c[2]}"/><circle cx="35" cy="7.7" r=".9" fill="${c[3]}"/><circle class="led" cx="40" cy="7.7" r="1.1"/><circle cx="45" cy="7.7" r=".9" fill="${c[3]}"/>` +
+    '<ellipse class="halo" cx="40" cy="38" rx="25" ry="24" fill="url(#pa-gw)"/>' +
+    '<clipPath id="pa-op"><path d="M22 54V36a18 18 0 0 1 36 0v18Z"/></clipPath>' +
+    `<path d="M20.5 55V36a19.5 19.5 0 0 1 39 0v19Z" fill="${c[2]}" opacity=".6"/>` +
+    '<g clip-path="url(#pa-op)"><rect x="18" y="14" width="44" height="42" fill="url(#pa-dk)"/>' +
+    `<g class="drum lr4"><circle cx="40" cy="40" r="24" fill="none" stroke="#3f4852" stroke-width="1"/>${sand(54 - o.level * 8, 14, 52)}<path d="M27 26l5 4M53 26l-5 4" stroke="#4b5560" stroke-width="1.2"/></g>${catHead(40, 45)}</g>` +
+    '<path class="ring" d="M20.5 55V36a19.5 19.5 0 0 1 39 0v19" fill="none" stroke="#7fb3ff" stroke-width="1.6"/>' +
+    '<path d="M24 34a16 16 0 0 1 9-11" stroke="#fff" stroke-width="1.5" fill="none" stroke-linecap="round" opacity=".35"/>' +
+    `<path d="M21 56h38l-2.5 6h-33Z" fill="${c[2]}" stroke="${c[3]}" stroke-width=".5"/>` +
+    robotGrit(64) +
+    `<rect class="bin" x="15" y="66" width="50" height="14" rx="3" fill="${c[0]}" stroke="${c[3]}" stroke-width=".7"/>` +
+    `<rect x="34" y="68.5" width="12" height="2" rx="1" fill="${c[3]}"/>` +
+    drawerGauge(75, o.waste, c[3])
+  );
+};
+
+const ARTS = { feeder: feederArt, fountain: fountainArt, litter: litterArt, robot: robotArt };
+
+// The picture of a device: `cls` are its animation classes (feeding, on, dry, cleaning, cat, full) and the LED's
+// colour (ok, warn, crit, idle, busy); `uid` keeps its ids apart from the other devices' in the same card.
+const art = (kind, o, cls, uid) =>
+  `<div class="art ${esc(cls)}" aria-hidden="true"><svg viewBox="0 0 80 94"><defs>${ART_DEFS}</defs>${ARTS[kind](o)}</svg></div>`.replace(
+    /(id="|url\(#)(pa-[a-z0-9]+)/g,
+    `$1$2-${uid}`
+  );
+
+// Camera models: the YumShare feeders (D4H, D4SH) and the camera litter boxes (Purobot Ultra / Max Pro, T5 to T7).
+const hasCamera = (dev) => !!dev.entities.camera || /yumshare|camera|cam\b|d4h|d4sh|ultra|max pro|\bt[567]\b/i.test(dev.model);
+// Dual-hopper feeders: the Gemini (D4S) and the YumShare Dual-hopper (D4SH).
+const isDual = (dev) => !!(dev.entities.food1 || dev.entities.food2) || /gemini|dual|d4sh?\b/i.test(dev.model);
+
+// How long a feeder shows its dispensing after a manual feed or a meal counted (no integration reports the
+// dispensing itself, but Jezza34000's `feeding` sensor).
+const FEED_ANIM_MS = 15000;
 
 // ---------------------------------------------------------------------------
 // Styles
@@ -2041,6 +2890,8 @@ class PetBase extends HTMLElement {
     window.removeEventListener("keydown", this._onKey);
     clearInterval(this._tick);
     this._tick = null;
+    clearTimeout(this._redrawTimer);
+    this._redrawTimer = null;
   }
 
   setConfig(config) {
@@ -2123,12 +2974,173 @@ class PetBase extends HTMLElement {
       if (status === "on_batteries" || status === "online_battery" || power === "on_battery") alerts.push({ cls: "warn", key: "on_batteries" });
       return alerts.length ? { ...alerts[0], alerts } : { cls: "ok", key: "normal", alerts };
     }
+    if (dev.kind === "litter") return this._litterStatus(dev);
     if (this._s(e.water)?.state === "on") alerts.push({ cls: "warn", key: "water_low" });
     const filter = num(this._s(e.filter));
     if ((filter !== null && filter <= 5) || this._s(e.filter_warning)?.state === "on") alerts.push({ cls: "warn", key: "replace_filter" });
     if (this._s(e.battery_low)?.state === "on") alerts.push({ cls: "warn", key: "battery_low" });
     if (this._s(e.power)?.state === "off") return { cls: "idle", key: "off", alerts };
     return alerts.length ? { ...alerts[0], alerts } : { cls: "ok", key: "running", alerts };
+  }
+
+  // A litter box, whatever its integration: { act, level, low, waste (%), binFull, binNear, occupied, offline,
+  // error (null, or its message), night }.
+  _litterInfo(dev) {
+    const e = dev.entities;
+    const level = num(this._s(e.litter));
+    if (dev.platform === "litterrobot") {
+      const code = known(this._s(e.status_code));
+      const vac = known(this._s(e.vacuum));
+      const act = code ? robotActivity(code) : ["cleaning", "error", "paused"].includes(vac) ? vac : "idle";
+      const waste = num(this._s(e.waste));
+      const night = this._s(e.night);
+      return {
+        act,
+        level,
+        low: false,
+        waste,
+        binFull: code === "dfs" || code === "sdf" || (waste !== null && waste >= 100),
+        binNear: code === "df1" || code === "df2" || (waste !== null && waste >= 80),
+        occupied: false,
+        offline: code === "offline",
+        error: act === "error" ? this._fmt(this._s(e.status_code)) || "" : null,
+        // The night light lit: the light (LR5), the globe light set to on (LR4) or the night light mode (LR3).
+        night: night?.state === "on",
+      };
+    }
+    const act = litterActivity(known(this._s(e.state)));
+    const err = known(this._s(e.error));
+    const errOn = err && err.toLowerCase().replace(/\s+/g, "_") !== "no_error";
+    return {
+      act,
+      level,
+      low: this._s(e.litter_low)?.state === "on",
+      waste: null,
+      binFull: this._s(e.bin_full)?.state === "on",
+      binNear: false,
+      occupied: this._s(e.occupied)?.state === "on",
+      offline: known(this._s(e.status)) === "offline",
+      error: errOn ? err : act === "error" ? "" : null,
+      night: false,
+    };
+  }
+
+  // An entity's state as Home Assistant shows it (translated), else its raw state.
+  _fmt(s) {
+    if (!s) return "";
+    try {
+      return this._hass.formatEntityState?.(s) || s.state;
+    } catch {
+      return s.state;
+    }
+  }
+
+  // A litter box: offline or an error first, then a full waste bin, low litter and a spent deodorizer; else what
+  // it does (cleaning, a cat inside, paused, maintenance, off) or ready.
+  _litterStatus(dev) {
+    const i = this._litterInfo(dev);
+    const alerts = [];
+    if (i.offline) alerts.push({ cls: "crit", key: "offline" });
+    if (i.error !== null) alerts.push({ cls: "crit", key: "error", ...(i.error ? { title: i.error } : {}) });
+    if (i.binFull) alerts.push({ cls: "warn", key: "bin_full" });
+    else if (i.binNear) alerts.push({ cls: "warn", key: "bin_almost_full" });
+    if (i.low || (i.level !== null && i.level <= 20)) alerts.push({ cls: "warn", key: "litter_low" });
+    const deodorizer = num(this._s(dev.entities.deodorizer));
+    if (deodorizer !== null && deodorizer <= 0) alerts.push({ cls: "warn", key: "replace_deodorizer" });
+    if (alerts.length) return { ...alerts[0], alerts };
+    if (i.act === "cleaning") return { cls: "ok", key: "cleaning", alerts };
+    if (i.act === "cat" || i.occupied) return { cls: "ok", key: "cat_inside", alerts };
+    if (i.act === "paused") return { cls: "idle", key: "paused", alerts };
+    if (i.act === "maintenance") return { cls: "idle", key: "maintenance", alerts };
+    if (i.act === "off") return { cls: "idle", key: "off", alerts };
+    return { cls: "ok", key: "ready", alerts };
+  }
+
+  // A feeder dispensing: Jezza34000's `feeding` sensor, else for a while after a manual feed sent from the card or
+  // a rise of its meals or amounts dispensed today (the first values read only set the reference).
+  _feeding(dev) {
+    const e = dev.entities;
+    if (this._s(e.feeding)?.state === "on") return true;
+    this._counts ??= new Map();
+    this._feedUntil ??= new Map();
+    const now = Date.now();
+    const values = ["times", "dispensed", "dispensed1", "dispensed2"].map((r) => num(this._s(e[r]))).filter((v) => v !== null);
+    if (values.length) {
+      const total = values.reduce((a, b) => a + b, 0);
+      const prev = this._counts.get(dev.id);
+      if (prev !== undefined && total > prev) this._feedUntil.set(dev.id, now + FEED_ANIM_MS);
+      this._counts.set(dev.id, total);
+    }
+    const until = this._feedUntil.get(dev.id) ?? 0;
+    if (now >= until) return false;
+    this._redrawIn(until - now);
+    return true;
+  }
+
+  _feedStarted(id) {
+    (this._feedUntil ??= new Map()).set(id, Date.now() + FEED_ANIM_MS);
+    this._update();
+  }
+
+  // One timer for the next redraw a timed state needs (the end of a dispensing): the earliest one is kept.
+  _redrawIn(ms) {
+    const at = Date.now() + ms;
+    if (this._redrawTimer && this._redrawAt <= at) return;
+    clearTimeout(this._redrawTimer);
+    this._redrawAt = at;
+    this._redrawTimer = setTimeout(() => {
+      this._redrawTimer = null;
+      this._update();
+    }, ms + 50);
+    this._redrawTimer?.unref?.();
+  }
+
+  // The device's illustration and its animation classes; "" with show_illustration: false.
+  _art(dev, st) {
+    if (this._config.show_illustration === false) return "";
+    const e = dev.entities;
+    const live = st.key !== "unavailable";
+    const led = ["crit", "warn", "idle"].includes(st.cls) ? st.cls : "ok";
+    const uid = String(Math.max(0, this._devices?.indexOf(dev) ?? 0));
+    if (dev.kind === "feeder") {
+      // A food level sensor: on when low; no state yet draws a hopper half full.
+      const level = (id) => {
+        const s = this._s(id);
+        if (!known(s)) return [0.6, false];
+        return s.state === "on" ? [0.15, true] : [0.85, false];
+      };
+      const dual = isDual(dev);
+      let hoppers;
+      if (this._hasHoppers(dev)) hoppers = [level(e.food1), level(e.food2)];
+      else {
+        const left = num(this._s(e.food_left));
+        const one = left !== null ? [left / 100, left <= 10] : level(e.food);
+        hoppers = dual ? [one, one] : [one];
+      }
+      const bowl = num(this._s(e.bowl)) ?? num(this._s(e.bowl_pct));
+      const feeding = live && this._feeding(dev);
+      const o = { dual, camera: hasCamera(dev), levels: hoppers.map((h) => h[0]), lows: hoppers.map((h) => h[1]), bowl: bowl === null || bowl > 0 };
+      return art("feeder", o, feeding && led !== "crit" ? "feeding busy" : led, uid);
+    }
+    if (dev.kind === "fountain") {
+      const dry = this._s(e.water)?.state === "on";
+      const pump = this._s(e.pump);
+      const flowing = pump
+        ? pump.state === "on"
+        : this._s(e.power)?.state !== "off" && this._s(e.dnd_state)?.state !== "on" && !/pause/i.test(known(this._s(e.mode)) || "");
+      return art("fountain", {}, [led, live && !dry && flowing ? "on" : "", dry ? "dry" : ""].filter(Boolean).join(" "), uid);
+    }
+    const i = this._litterInfo(dev);
+    const cleaning = live && i.act === "cleaning";
+    const cat = live && !cleaning && (i.act === "cat" || i.occupied);
+    const cls = [cleaning && led !== "crit" ? "cleaning busy" : cat && led === "ok" ? "warn" : led, cat ? "cat" : "", i.binFull ? "full" : "", live && i.night ? "night" : ""];
+    const level = i.level !== null ? i.level / 100 : i.low ? 0.15 : 0.7;
+    if (dev.platform === "litterrobot") {
+      // The colour of a Litter-Robot 4 / 5 is not reported: black unless illustration_color says white.
+      const o = { lr3: /\b3\b|lr3/i.test(dev.model), color: this._config.illustration_color === "white" ? "white" : "black", level, waste: i.waste };
+      return art("robot", o, cls.filter(Boolean).join(" "), uid);
+    }
+    return art("litter", { camera: hasCamera(dev), level }, cls.filter(Boolean).join(" "), uid);
   }
 
   // A feeder with two hoppers shows each of them (and not food_left, which is one level for the whole feeder).
@@ -2218,6 +3230,8 @@ class PetBase extends HTMLElement {
         return this._call("switch", "toggle", { entity_id: entity });
       case "press":
         return this._call("button", "press", { entity_id: entity });
+      case "start":
+        return this._call("vacuum", "start", { entity_id: entity });
       case "mode":
         return this._call("select", "select_option", { entity_id: entity, option: el.dataset.option });
     }
@@ -2270,6 +3284,7 @@ class PetBase extends HTMLElement {
         text: this._t("feed_title", { name: dev.name }),
         ok: this._t("feed"),
         run: () => {
+          this._feedStarted(dev.id);
           if (spec.domain === "select") return this._call("select", "select_option", { entity_id: feed.entity, option: feed.option });
           if (spec.domain === "number") return this._call("number", "set_value", { entity_id: feed.entity, value: feed.values[0] });
           if (spec.domain === "list") return this._call("text", "set_value", { entity_id: spec.entity, value: String(spec.values[feed.values[0]]) });
@@ -2393,6 +3408,48 @@ const FULL_STYLE = `
   .toggles { display: flex; flex-wrap: wrap; gap: 6px; }
   .cam { border-radius: 10px; overflow: hidden; aspect-ratio: 16 / 9; background: var(--secondary-background-color, rgba(127,127,127,.08)); }
   .cam img { display: block; width: 100%; height: 100%; object-fit: cover; }
+  /* Illustration on the left of the device's levels (show_illustration). */
+  .hero { display: flex; gap: 12px; align-items: center; }
+  .hero-rows { flex: 1 1 0; min-width: 0; display: flex; flex-direction: column; gap: 10px; }
+  .art { flex: none; width: 88px; height: 103px; }
+  .art svg { display: block; width: 100%; height: 100%; overflow: visible; }
+  @container (max-width: 299px) { .art { width: 64px; height: 75px; } .hero { gap: 8px; } }
+  .art .led { fill: var(--pc-ok); }
+  .art.warn .led { fill: var(--pc-warn); }
+  .art.idle .led { fill: var(--pc-idle); }
+  .art.busy .led { fill: var(--pc-water); animation: pc-blink 1s steps(2) infinite; }
+  .art.crit .led { fill: var(--pc-crit); animation: pc-blink 1s steps(2) infinite; }
+  .art .rec { animation: pc-blink 1.6s steps(2) infinite; }
+  .art .win.low { stroke: var(--pc-warn); stroke-width: 1.4; animation: pc-blink 1.2s steps(2) infinite; }
+  .art .drop, .art .stream, .art .rp, .art .grit, .art .cat { opacity: 0; }
+  .art.feeding .drop { animation: pc-fall 1s ease-in infinite; }
+  .art.on .stream { opacity: 1; stroke-dasharray: 3 2; animation: pc-flow .5s linear infinite; }
+  .art.on .rp { transform-box: fill-box; transform-origin: center; animation: pc-ripple 1.8s ease-out infinite; }
+  .art.on .wave { animation: pc-wave 1.4s ease-in-out infinite alternate; }
+  .art .wl { transition: transform .6s ease; }
+  .art.dry .wl { transform: translateY(20px); }
+  .art .drum { transform-box: view-box; transform-origin: 40px 45px; }
+  .art.cleaning .drum { animation: pc-turn 4s ease-in-out infinite; }
+  .art.cleaning .grit { animation: pc-grit 4s ease-in infinite; }
+  .art.cat .cat { opacity: 1; }
+  .art .eye { transform-box: fill-box; transform-origin: center; animation: pc-wink 3.4s infinite; }
+  .art .ear { transform-box: fill-box; transform-origin: bottom center; animation: pc-ear 3s infinite; }
+  .art.full .bin { stroke: var(--pc-crit); stroke-width: 1.2; animation: pc-blink 1.2s steps(2) infinite; }
+  .art .drum.lr4 { transform-origin: 40px 40px; }
+  .art .drum.lr3 { transform-origin: 40px 37px; }
+  .art .ring, .art .halo { opacity: 0; transition: opacity .4s ease; }
+  .art.night .ring { opacity: 1; animation: pc-glow 2.4s ease-in-out infinite alternate; }
+  .art.night .halo { opacity: .35; }
+  @keyframes pc-blink { 50% { opacity: .25; } }
+  @keyframes pc-glow { to { opacity: .55; } }
+  @keyframes pc-fall { 0% { transform: translateY(0); opacity: 0; } 15% { opacity: 1; } 80% { opacity: 1; } 100% { transform: translateY(13px); opacity: 0; } }
+  @keyframes pc-flow { to { stroke-dashoffset: -10; } }
+  @keyframes pc-ripple { 0% { transform: scale(.3); opacity: .9; } 100% { transform: scale(1.15); opacity: 0; } }
+  @keyframes pc-wave { to { transform: translateX(-3px); } }
+  @keyframes pc-turn { 0%, 10% { transform: rotate(0); } 45%, 55% { transform: rotate(-135deg); } 90%, 100% { transform: rotate(0); } }
+  @keyframes pc-grit { 0%, 40% { opacity: 0; transform: translateY(0); } 48% { opacity: 1; } 62% { opacity: 0; transform: translateY(12px); } 100% { opacity: 0; } }
+  @keyframes pc-wink { 0%, 46%, 52%, 100% { transform: scaleY(1); } 49% { transform: scaleY(.1); } }
+  @keyframes pc-ear { 0%, 78%, 100% { transform: rotate(0); } 84% { transform: rotate(-14deg); } 90% { transform: rotate(5deg); } }
 `;
 
 class PetCard extends PetBase {
@@ -2429,6 +3486,15 @@ class PetCard extends PetBase {
     </div>`;
   }
 
+  // A weight in its entity's unit: kg or lb.
+  _weight(s) {
+    const v = num(s);
+    if (v === null) return "—";
+    const unit = String(s.attributes?.unit_of_measurement || "kg");
+    const named = { kg: "kilogram", g: "gram", lb: "pound", lbs: "pound" }[unit.toLowerCase()];
+    return named ? fmtUnit(v, named, this._loc()) : `${fmtNum(v, this._loc(), 1)} ${unit}`;
+  }
+
   _grams(s) {
     const v = num(s);
     return v === null ? "—" : fmtUnit(v, "gram", this._loc());
@@ -2460,7 +3526,7 @@ class PetCard extends PetBase {
   }
 
   _devHead(dev, st, acts) {
-    const icon = dev.kind === "feeder" ? ICONS.bowl : ICONS.fountain;
+    const icon = KIND_ICONS[dev.kind];
     const title = st.alerts.map((a) => a.title || this._t(a.key)).join(" · ");
     return `<div class="dev-head">
       <span class="dicon ${st.cls === "ok" ? "" : st.cls}">${svgIcon(icon)}</span>
@@ -2468,6 +3534,24 @@ class PetCard extends PetBase {
       ${this._chip(st.cls, this._t(st.key), title)}
       ${acts ? `<div class="acts">${acts}</div>` : ""}
     </div>`;
+  }
+
+  // A device: its head, the camera picture, its levels next to its illustration, its figures and its toggles.
+  _devBlock(dev, st, acts, rows, tiles, extra = "") {
+    return `<div class="dev" data-key="${esc(dev.id)}">
+      ${this._devHead(dev, st, acts)}
+      ${this._camera(dev)}
+      ${this._hero(dev, st, rows)}
+      ${tiles ? `<div class="tiles">${tiles}</div>` : ""}
+      ${extra}
+    </div>`;
+  }
+
+  // The device's levels, with its illustration on their left (show_illustration).
+  _hero(dev, st, rows) {
+    const body = rows.filter(Boolean).join("");
+    const pic = this._art(dev, st);
+    return pic ? `<div class="hero">${pic}<div class="hero-rows">${body}</div></div>` : body;
   }
 
   _feeder(dev) {
@@ -2528,12 +3612,7 @@ class PetCard extends PetBase {
         battery === null ? "" : this._tile(e.battery_pct, this._t("battery"), fmtPct(battery, loc), { cls: batteryLevel(battery) }),
       ].join("");
     }
-    return `<div class="dev" data-key="${esc(dev.id)}">
-      ${this._devHead(dev, st, acts)}
-      ${this._camera(dev)}
-      ${rows.join("")}
-      ${tiles ? `<div class="tiles">${tiles}</div>` : ""}
-    </div>`;
+    return this._devBlock(dev, st, acts, rows, tiles);
   }
 
   // A fountain mode in the card's language: "normal" / "smart" (RobertD502), "Normal" / "Smart" (Jezza34000's
@@ -2604,22 +3683,74 @@ class PetCard extends PetBase {
           );
       }
     }
-    return `<div class="dev" data-key="${esc(dev.id)}">
-      ${this._devHead(dev, st, acts)}
-      ${rows.join("")}
-      ${tiles ? `<div class="tiles">${tiles}</div>` : ""}
-      ${toggles.length ? `<div class="toggles">${toggles.join("")}</div>` : ""}
-    </div>`;
+    return this._devBlock(dev, st, acts, rows, tiles, toggles.length ? `<div class="toggles">${toggles.join("")}</div>` : "");
+  }
+
+  // A litter box: litter level and waste bin, then today's uses, the last one, the litter weight and the
+  // deodorizer; buttons to clean now and to deodorize.
+  _litter(dev) {
+    const c = this._config;
+    const e = dev.entities;
+    const st = this._status(dev);
+    const loc = this._loc();
+    const controls = c.show_controls !== false;
+    const press = (id, icon, key, round) =>
+      id
+        ? `<button type="button" class="act${round ? " round" : ""}" data-action="press" data-entity="${esc(id)}" data-device="${esc(dev.id)}" title="${esc(this._t(key))}"${round ? ` aria-label="${esc(this._t(key))}"` : ""}${!this._s(id) || this._s(id).state === "unavailable" ? ' aria-disabled="true"' : ""}>${svgIcon(icon)}${round ? "" : `<span class="lbl">${esc(this._t(key))}</span>`}</button>`
+        : "";
+    // A Litter-Robot cleans through its vacuum entity (vacuum.start runs a clean cycle).
+    const start = e.vacuum
+      ? `<button type="button" class="act" data-action="start" data-entity="${esc(e.vacuum)}" data-device="${esc(dev.id)}" title="${esc(this._t("clean"))}"${known(this._s(e.vacuum)) ? "" : ' aria-disabled="true"'}>${svgIcon(ICONS.broom)}<span class="lbl">${esc(this._t("clean"))}</span></button>`
+      : "";
+    const acts = controls ? press(e.deodorize, ICONS.spray, "deodorize", true) + press(e.clean, ICONS.broom, "clean", false) + start : "";
+    const rows = [];
+    const level = num(this._s(e.litter));
+    const lowS = this._s(e.litter_low);
+    if (level !== null) rows.push(this._level(e.litter, ICONS.litter, this._t("litter"), level, fmtPct(level, loc), level <= 20 || lowS?.state === "on" ? "warn" : "ok"));
+    else if (lowS) {
+      const low = lowS.state === "on";
+      rows.push(this._level(e.litter_low, ICONS.litter, this._t("litter"), known(lowS) ? (low ? 15 : 100) : null, known(lowS) ? this._t(low ? "low" : "enough") : "—", known(lowS) ? (low ? "warn" : "ok") : "idle"));
+    }
+    const waste = num(this._s(e.waste));
+    if (waste !== null) rows.push(this._level(e.waste, ICONS.bin, this._t("waste_bin"), waste, fmtPct(waste, loc), waste >= 100 ? "crit" : waste >= 80 ? "warn" : "ok"));
+    const bin = this._s(e.bin_full);
+    if (bin) {
+      const full = bin.state === "on";
+      rows.push(this._level(e.bin_full, ICONS.bin, this._t("waste_bin"), known(bin) ? (full ? 100 : 25) : null, known(bin) ? this._t(full ? "full" : "not_full") : "—", known(bin) ? (full ? "crit" : "ok") : "idle"));
+    }
+    let tiles = "";
+    if (c.show_stats !== false) {
+      const times = this._s(e.times_used);
+      const who = known(this._s(e.last_used_by));
+      const last = num(times) ? fmtAgo(times.last_changed, loc) : null;
+      const weight = num(this._s(e.litter_weight));
+      const deodorizer = num(this._s(e.deodorizer));
+      const deodorizerPct = num(this._s(e.deodorizer_pct));
+      tiles = [
+        this._tile(e.times_used, this._t("uses"), num(times) === null ? "—" : fmtNum(num(times), loc), { sub: last ? `${this._t("last_use")} ${last}` : "" }),
+        // RobertD502 reads "no_record_yet" / "unknown_pet" before any visit or for a pet it does not know.
+        this._tile(e.last_used_by, this._t("last_cat"), who && !/^(no_record_yet|unknown_pet)$/.test(who) ? who : "—"),
+        this._tile(e.litter_weight, this._t("litter_weight"), weight === null ? "—" : fmtUnit(weight, "kilogram", loc)),
+        e.deodorizer
+          ? this._tile(e.deodorizer, this._t("deodorizer"), deodorizer === null ? "—" : fmtUnit(deodorizer, "day", loc), { cls: desiccantLevel(deodorizer) })
+          : this._tile(e.deodorizer_pct, this._t("deodorizer"), deodorizerPct === null ? "—" : fmtPct(deodorizerPct, loc), { cls: filterLevel(deodorizerPct) }),
+        // Litter-Robot: the cat's last weight (in the unit system's unit) and the cycles since the drawer was reset.
+        this._tile(e.pet_weight, this._t("cat_weight"), this._weight(this._s(e.pet_weight))),
+        this._tile(e.cycles, this._t("cycles"), num(this._s(e.cycles)) === null ? "—" : fmtNum(num(this._s(e.cycles)), loc)),
+      ].join("");
+    }
+    return this._devBlock(dev, st, acts, rows, tiles);
   }
 
   _render() {
     const { devices, error } = findDevices(this._hass, this._config);
     if (error) return this._error(error);
     this._devices = devices;
+    const body = { feeder: (d) => this._feeder(d), fountain: (d) => this._fountain(d), litter: (d) => this._litter(d) };
     return `<style>${BASE_STYLE}${DIALOG_STYLE}${FULL_STYLE}${MOTION_STYLE}</style>
       <ha-card>
         ${this._header(devices)}
-        <div class="content">${devices.map((d) => (d.kind === "feeder" ? this._feeder(d) : this._fountain(d))).join("")}</div>
+        <div class="content">${devices.map((d) => body[d.kind](d)).join("")}</div>
       </ha-card>`;
   }
 }
@@ -2726,6 +3857,26 @@ class PetMiniCard extends PetCard {
         pct = low ? 15 : 100;
         value = this._t(low ? "low" : "enough");
       }
+    } else if (dev.kind === "litter") {
+      const i = this._litterInfo(dev);
+      const binId = e.waste || e.bin_full;
+      if (i.binFull || i.binNear) {
+        id = binId;
+        pct = i.waste ?? 100;
+        value = this._t(i.binFull ? "bin_full" : "bin_almost_full");
+      } else if (i.level !== null) {
+        id = e.litter;
+        pct = i.level;
+        value = `${this._t("litter")} ${fmtPct(i.level, loc)}`;
+      } else if (i.waste !== null) {
+        id = e.waste;
+        pct = i.waste;
+        value = `${this._t("waste_bin")} ${fmtPct(i.waste, loc)}`;
+      } else {
+        id = e.litter_low || binId || e.vacuum;
+        pct = known(this._s(e.litter_low)) ? (i.low ? 15 : 100) : null;
+        value = i.low ? this._t("litter_low") : this._t(st.key);
+      }
     } else {
       const filter = num(this._s(e.filter));
       const waterLow = this._s(e.water)?.state === "on";
@@ -2735,7 +3886,7 @@ class PetMiniCard extends PetCard {
       if (!waterLow && st.cls === "ok") cls = filterLevel(filter) || "ok";
     }
     if (st.key === "unavailable") value = this._t("unavailable");
-    const icon = dev.kind === "feeder" ? ICONS.bowl : ICONS.fountain;
+    const icon = KIND_ICONS[dev.kind];
     return `<div class="row clickable ${cls}" role="button" tabindex="0" data-key="${esc(dev.id)}" data-entity="${esc(id || "")}" aria-label="${esc(`${dev.name} ${value}`)}">
       ${svgIcon(icon)}<span class="lbl">${esc(dev.name)}</span>
       <div class="bar"><div style="width:${pct === null ? 0 : Math.max(0, Math.min(100, pct))}%"></div></div>
@@ -2795,6 +3946,10 @@ class PetEditorBase extends HTMLElement {
       { name: "title", selector: { text: {} } },
       { type: "grid", name: "", schema: this.constructor.toggles.map(([name]) => ({ name, selector: { boolean: {} } })) },
       {
+        name: "illustration_color",
+        selector: { select: { mode: "dropdown", options: ["auto", "black", "white"].map((value) => ({ value, label: tr(`color_${value}`) })) } },
+      },
+      {
         name: "language",
         selector: { select: { mode: "dropdown", options: [{ value: "", label: tr("lang_auto") }, ...LANG_NAMES.map(([value, label]) => ({ value, label }))] } },
       },
@@ -2814,7 +3969,8 @@ class PetEditorBase extends HTMLElement {
         const defaults = Object.fromEntries(this.constructor.toggles);
         for (const [k, v] of Object.entries(config)) {
           // Keep the YAML minimal: drop empty values and toggles left at their default.
-          if (v === "" || v === undefined || v === null || (Array.isArray(v) && !v.length) || (k in defaults && v === defaults[k])) delete config[k];
+          if (v === "" || v === undefined || v === null || (Array.isArray(v) && !v.length) || (k in defaults && v === defaults[k]) || (k === "illustration_color" && v === "auto"))
+            delete config[k];
         }
         this._config = config;
         this.dispatchEvent(new CustomEvent("config-changed", { detail: { config }, bubbles: true, composed: true }));
@@ -2823,6 +3979,7 @@ class PetEditorBase extends HTMLElement {
     }
     const data = { ...this._config };
     for (const [name, def] of this.constructor.toggles) if (data[name] === undefined) data[name] = def;
+    data.illustration_color ??= "auto";
     this._form.hass = this._hass;
     // hass is pushed on every state change while the editor is open: reassign only what changed.
     const dataKey = JSON.stringify(data);
@@ -2846,6 +4003,7 @@ class PetCardEditor extends PetEditorBase {
       ["show_stats", true],
       ["show_controls", true],
       ["show_camera", true],
+      ["show_illustration", true],
     ];
   }
 }
@@ -2859,6 +4017,7 @@ class PetMiniCardEditor extends PetEditorBase {
       ["show_stats", true],
       ["show_controls", true],
       ["show_camera", true],
+      ["show_illustration", true],
       ["zoom", true],
     ];
   }
@@ -2878,8 +4037,8 @@ define("pet-mini-card-editor", PetMiniCardEditor);
 
 window.customCards = window.customCards || [];
 for (const card of [
-  { type: "pet-card", name: "Pet Card", description: "Smart pet devices (PetKit feeders and water fountains): food, water, filter, desiccant, manual feed." },
-  { type: "pet-mini-card", name: "Pet Mini Card", description: "Compact overview of smart pet devices (PetKit feeders and water fountains)." },
+  { type: "pet-card", name: "Pet Card", description: "Smart pet devices (PetKit feeders, water fountains and litter boxes, Litter-Robot): food, water, filter, litter, waste bin, manual feed." },
+  { type: "pet-mini-card", name: "Pet Mini Card", description: "Compact overview of smart pet devices (PetKit feeders, water fountains and litter boxes, Litter-Robot)." },
 ]) {
   if (!window.customCards.some((c) => c.type === card.type))
     window.customCards.push({ ...card, preview: true, documentationURL: "https://github.com/juju35/ha-pet-card" });
