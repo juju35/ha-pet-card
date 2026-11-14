@@ -18,6 +18,7 @@ const lightShots = [
   { file: "card-alerts", type: "pet-card", theme: "light", width: 460, config: { devices: pair }, states: alerts },
   { file: "card-feed", type: "pet-card", theme: "light", width: 460, config: { devices: pair }, clicks: ['[data-action="feed"]'] },
   { file: "card-feed-gemini", type: "pet-card", theme: "light", width: 460, config: { devices: ["gemini"] }, clicks: ['[data-action="feed"]'] },
+  { file: "card-litter", type: "pet-card", theme: "light", width: 460, config: { devices: ["t4", "litter"] } },
   { file: "mini-card", type: "pet-mini-card", theme: "light", width: 380, config: {} },
   { file: "mini-card-zoom", type: "pet-mini-card", theme: "light", width: 460, config: { devices: pair }, clicks: [".zoom"] },
 ];
@@ -65,6 +66,45 @@ const lightGifs = [
     events: [
       { at: 0.5, states: { "binary_sensor.fontaine_salon_niveau_eau": { state: "on" }, "sensor.fontaine_salon_filtre": { state: "4" } } },
       { at: 2.3, states: { "binary_sensor.fontaine_salon_niveau_eau": { state: "off" }, "sensor.fontaine_salon_filtre": { state: "100" } } },
+    ],
+  },
+  // The illustrations' animations, driven by the integrations' own sensors: the YumShare dispensing (Jezza34000's
+  // `feeding`), the Eversweet's pump stopping and starting again, the litter box cleaning then a cat coming in.
+  {
+    file: "card-dispense",
+    type: "pet-card",
+    theme: "light",
+    width: 460,
+    config: { devices: ["d4sh"], show_camera: false, show_stats: false },
+    seconds: 4,
+    events: [
+      { at: 0.6, states: { "binary_sensor.distributeur_couloir_distribution": { state: "on" } } },
+      { at: 3.2, states: { "binary_sensor.distributeur_couloir_distribution": { state: "off" }, "sensor.distributeur_couloir_distribue_1": { state: "4" } } },
+    ],
+  },
+  {
+    file: "card-fountain",
+    type: "pet-card",
+    theme: "light",
+    width: 460,
+    config: { devices: ["ctw3"], show_stats: false, show_controls: false },
+    seconds: 4,
+    events: [
+      { at: 1.6, states: { "binary_sensor.fontaine_chambre_pompe": { state: "off" } } },
+      { at: 2.8, states: { "binary_sensor.fontaine_chambre_pompe": { state: "on" } } },
+    ],
+  },
+  {
+    file: "card-litter-clean",
+    type: "pet-card",
+    theme: "light",
+    width: 460,
+    config: { devices: ["t4"], show_stats: false },
+    seconds: 7,
+    events: [
+      { at: 0.5, states: { "sensor.litiere_sdb_etat": { state: "cleaning" } } },
+      { at: 4.6, states: { "sensor.litiere_sdb_etat": { state: "idle" }, "binary_sensor.litiere_sdb_occupee": { state: "on" } } },
+      { at: 6.4, states: { "binary_sensor.litiere_sdb_occupee": { state: "off" } } },
     ],
   },
 ];

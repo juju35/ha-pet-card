@@ -107,10 +107,44 @@ entity("switch.fontaine_chambre_ne_pas_deranger", "ctw3", "do_not_disturb", "off
 entity("button.fontaine_chambre_reinit_filtre", "ctw3", "reset_filter", "unknown");
 entity("button.fontaine_chambre_pause", "ctw3", "pause", "unknown");
 
-// A PetKit litter box: not supported yet, the cards leave it out.
+// Jezza34000's feeder also reports the dispensing itself.
+entity("binary_sensor.distributeur_couloir_distribution", "d4sh", "feeding", "off", { device_class: "running" });
+// Jezza34000's fountain: the do not disturb period running.
+entity("binary_sensor.fontaine_chambre_ne_pas_deranger_actif", "ctw3", "do_not_disturb_state", "off");
+
+// Pura MAX litter box, RobertD502's integration: work state, litter level and weight, waste bin, uses, deodorizer.
 device("litter", "Litter box", "PURA MAX / PURA MAX 2");
+entity("sensor.litiere_etat", "litter", "max_work_state", "idle");
 entity("sensor.litiere_niveau", "litter", "litter_level", "80", { unit_of_measurement: "%" });
-entity("binary_sensor.litiere_bac_plein", "litter", "wastebin", "off");
-// Entities every device of Jezza34000's integration has: they do not make a feeder or a fountain.
-entity("sensor.litiere_statut", "litter", "device_status", "online_ac");
-entity("sensor.litiere_erreur", "litter", "error_message", "No error");
+entity("sensor.litiere_poids", "litter", "litter_weight", "4.6", { unit_of_measurement: "kg" });
+entity("binary_sensor.litiere_bac_plein", "litter", "wastebin", "off", { device_class: "problem" });
+entity("binary_sensor.litiere_manque", "litter", "litter", "off", { device_class: "problem" });
+entity("sensor.litiere_erreur", "litter", "error", "no_error");
+entity("sensor.litiere_passages", "litter", "times_used", "3", {}, 2 * 3600 + 1200);
+entity("sensor.litiere_dernier_passage", "litter", "last_used_by", "Cat");
+entity("sensor.litiere_desodorisant", "litter", "n50_odor_eliminator", "12", { unit_of_measurement: "d" });
+entity("button.litiere_nettoyer", "litter", "start_cleaning", "unknown");
+entity("button.litiere_desodoriser", "litter", "odor_removal", "unknown");
+
+// Pura MAX 2 litter box, Jezza34000's integration: its own keys, occupancy sensor.
+device("t4", "Bathroom litter box", "Pura MAX 2");
+entity("sensor.litiere_sdb_etat", "t4", "litter_state", "idle");
+entity("sensor.litiere_sdb_statut", "t4", "device_status", "online_ac", { options: ["offline", "online_ac", "online_battery", "unknown"] });
+entity("sensor.litiere_sdb_erreur", "t4", "error_message", "No error");
+entity("sensor.litiere_sdb_niveau", "t4", "litter_level", "65", { unit_of_measurement: "%" });
+entity("sensor.litiere_sdb_poids", "t4", "litter_weight", "3.9", { unit_of_measurement: "kg" });
+entity("binary_sensor.litiere_sdb_bac_plein", "t4", "waste_bin", "off", { device_class: "problem" });
+entity("binary_sensor.litiere_sdb_manque", "t4", "sand_lack", "off", { device_class: "problem" });
+entity("binary_sensor.litiere_sdb_occupee", "t4", "toilet_occupied", "off", { device_class: "occupancy" });
+entity("sensor.litiere_sdb_passages", "t4", "times_used", "5", {}, 40 * 60);
+entity("sensor.litiere_sdb_dernier_passage", "t4", "last_used_by", "Cat");
+entity("sensor.litiere_sdb_desodorisant", "t4", "odor_eliminator_n50_left_days", "20", { unit_of_measurement: "d" });
+entity("button.litiere_sdb_nettoyer", "t4", "start_scoop", "unknown");
+entity("button.litiere_sdb_desodoriser", "t4", "deodorize", "unknown");
+
+// An Air Magicube purifier: not supported, the cards leave it out.
+device("k2", "Purifier", "Air Magicube");
+entity("sensor.purificateur_air_purifie", "k2", "air_purified", "120");
+// Entities every device of Jezza34000's integration has: they do not make a feeder, a fountain or a litter box.
+entity("sensor.purificateur_statut", "k2", "device_status", "online_ac");
+entity("sensor.purificateur_erreur", "k2", "error_message", "No error");

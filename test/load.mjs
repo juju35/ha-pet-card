@@ -28,6 +28,9 @@ export const load = (file, names) => {
     // connectedCallback starts the "2 hours ago" timer (cleared again by disconnectedCallback in the tests).
     setInterval,
     clearInterval,
+    // The end of a feeder's dispensing schedules one redraw (unref'd: it never holds the test run).
+    setTimeout,
+    clearTimeout,
   };
   vm.createContext(context);
   return vm.runInContext(`${src}\n;({ ${names.join(", ")} })`, context);
