@@ -12,14 +12,16 @@
 
 <p align="center">
   <img src="https://raw.githubusercontent.com/juju35/ha-pet-card/main/images/petkit.png" alt="PetKit" width="64">
+  <img src="https://brands.home-assistant.io/litterrobot/icon.png" alt="Litter-Robot" width="64">
 </p>
 
-Lovelace cards for Home Assistant to keep an eye on smart pet devices: food and water levels, filter and desiccant, the litter box's litter and waste bin, today's meals and visits, and a manual feed in two taps. Each device is drawn and animated by what it does.
+Lovelace cards for Home Assistant to keep an eye on smart pet devices (PetKit, Litter-Robot): food and water levels, filter and desiccant, the litter box's litter and waste bin, today's meals and visits, and a manual feed in two taps. Each device is drawn and animated by what it does.
 
 Supported integrations:
 
 - [PetKit](https://github.com/RobertD502/home-assistant-petkit) (RobertD502) — PetKit feeders (Fresh Element Infinity, Solo, Gemini, Mini Pro), Eversweet water fountains and litter boxes (Pura X, Pura MAX).
 - [Petkit](https://github.com/Jezza34000/homeassistant_petkit) (Jezza34000) — PetKit feeders, including the YumShare dual-hopper feeder with camera (D4SH), Eversweet water fountains, including the Eversweet Max Cordless (CTW3), and litter boxes (Pura X, Pura MAX, Pura MAX 2, Purobot).
+- [Litter-Robot](https://www.home-assistant.io/integrations/litterrobot/) (Home Assistant core) — Whisker's Litter-Robot 3 Connect, 4 and 5 litter boxes.
 
 Entities are **discovered automatically**, you don't have to pick them one by one, and it works whatever your Home Assistant language.
 
@@ -35,15 +37,15 @@ Entities are **discovered automatically**, you don't have to pick them one by on
 ## Features
 
 - Two cards: a full **Pet Card** and a compact **Pet Mini Card**
-- Automatic discovery of the PetKit feeders, water fountains and litter boxes (all of them by default, or the ones you pick)
-- **Animated illustration** of each device next to its levels: kibbles fall into the bowl while a feeder dispenses, the fountain's water flows while its pump runs, the litter box's drum turns while it cleans and a cat peeks out while one is inside; the hoppers, the tank and the litter show their level, a full waste bin or a low hopper blinks and the LED takes the status colour (one or two hoppers, a camera, from the model)
+- Automatic discovery of the PetKit feeders, water fountains and litter boxes and of the Litter-Robots (all of them by default, or the ones you pick)
+- **Animated illustration** of each device next to its levels: kibbles fall into the bowl while a feeder dispenses, the fountain's water flows while its pump runs, the litter box's drum turns while it cleans and a cat peeks out while one is inside; the hoppers, the tank and the litter show their level, a full waste bin or a low hopper blinks and the LED takes the status colour (one or two hoppers, a camera, from the model; a Litter-Robot gets its own drawing, LR4 / LR5 in black or white or LR3 Connect, with its waste drawer gauge and its night light)
 - Feeders: food level (or each hopper of a dual-hopper feeder), status, errors, food dispensed today against the planned amount, meals today and the time of the last one, amount eaten and food left in the bowl when the feeder reports them, desiccant days left, battery level while on batteries
 - Feeder camera (YumShare feeders): the latest picture, a click opens the live stream
 - **Manual feed** in an in-card popup: the feeder's fixed amounts (Solo, Mini Pro, single-hopper feeders), a gram stepper (Infinity, Fresh Element) or one portion stepper per hopper (Gemini, YumShare dual-hopper)
 - Water fountains: water level, filter left, mode (normal / smart), pump, water purified and energy used today, battery, power, light and do not disturb switches
-- Litter boxes: litter level, waste bin, what the box does (cleaning, a cat inside, paused, maintenance), uses today and the last one, the last cat, litter weight, deodorizer days left; **Clean** and deodorize buttons
+- Litter boxes: litter level, waste bin, what the box does (cleaning, a cat inside, paused, maintenance), uses today and the last one, the last cat, litter weight, deodorizer days left; **Clean** and deodorize buttons. Litter-Robot: waste drawer and litter level (%), cat weight, cycles, a fault or a cat detected from its status code, **Clean** (a clean cycle)
 - Filter and desiccant reset buttons, with a confirmation, once you have replaced them
-- Status chip per device and for the whole card: *Food low*, *Low water*, *Replace filter*, *Replace desiccant*, *Waste bin full*, *Litter low*, *Replace deodorizer*, *Battery low*, *Offline*, the device's own error message
+- Status chip per device and for the whole card: *Food low*, *Low water*, *Replace filter*, *Replace desiccant*, *Waste bin full*, *Waste bin almost full*, *Litter low*, *Replace deodorizer*, *Battery low*, *Offline*, the device's own error message
 - Click any value to open its Home Assistant history (more-info dialog)
 - Detail button at the top right of the mini card: it switches to the full card and back; a click anywhere outside the card brings the compact view back (the full card's options, `show_stats`, `show_controls`, `show_camera` and `show_illustration`, are set on the mini card too, in its visual editor as well)
 - Visual editor in the dashboard UI for both cards (no YAML needed)
@@ -57,7 +59,9 @@ Entities are **discovered automatically**, you don't have to pick them one by on
 | <img src="https://raw.githubusercontent.com/juju35/ha-pet-card/main/images/petkit.png" alt="" width="16"> [PetKit](https://github.com/RobertD502/home-assistant-petkit) by RobertD502 (Marketplace) | Feeders: food level or hoppers, status, error, dispensed / planned today, meals, eaten, food in bowl, desiccant with reset, battery, manual feed, call pet. Fountains: water level, filter with reset, mode, purified water, energy, power, light and do not disturb. Litter boxes (Pura X, Pura MAX): work state, litter level and weight, litter low, waste bin, uses today, last cat, deodorizer, clean and deodorize. Details in [PetKit](#petkit) |
 | <img src="https://raw.githubusercontent.com/juju35/ha-pet-card/main/images/petkit.png" alt="" width="16"> [Petkit](https://github.com/Jezza34000/homeassistant_petkit) by Jezza34000 (Marketplace) | Feeders: food level or each hopper (YumShare dual-hopper D4SH, Gemini D4S), camera picture, status, error, power type and battery, dispensed / planned today (per hopper on dual-hopper feeders), meals, eaten, bowl fill, desiccant with reset, manual feed (one text per hopper, or the feeder's amounts). Fountains (Eversweet Max Cordless CTW3…): water shortage, filter (% and days) with reset, pump, purified water, energy, battery, power, indicator light and do not disturb. Litter boxes (Pura X, Pura MAX 1 and 2, Purobot): work state, litter level and weight, sand lack, waste bin, a cat inside, uses today, last cat, deodorizer (N50 / N60), camera picture, clean and deodorize; the feeder's own dispensing sensor drives its animation. Details in [PetKit](#petkit) |
 
-Both integrations use the `petkit` domain: install one of them, not both. PetKit purifiers and pets are left out for now: they are not shown, and do not get in the way.
+| <img src="https://brands.home-assistant.io/litterrobot/icon.png" alt="" width="16"> [Litter-Robot](https://www.home-assistant.io/integrations/litterrobot/) (Home Assistant core) | Litter-Robot 3 Connect, 4 and 5: status code (cycle, cat detected, paused, off, faults, drawer full), waste drawer (%), litter level (%, LR4 / LR5), cat weight, cycles, night light, clean cycle. Details in [Litter-Robot](#litter-robot) |
+
+Both PetKit integrations use the `petkit` domain: install one of them, not both. PetKit purifiers and pets are left out for now: they are not shown, and do not get in the way.
 
 ## Prerequisites
 
@@ -119,6 +123,7 @@ show_stats: true
 show_controls: true
 show_camera: true
 show_illustration: true
+illustration_color: white
 language: fr
 ```
 
@@ -148,6 +153,7 @@ language: fr
 | `show_controls` | both | `true` | Buttons: feed, call pet, power, mode, light, do not disturb, filter and desiccant resets, clean and deodorize |
 | `show_camera` | both | `true` | The camera's latest picture (YumShare feeders and camera litter boxes, Jezza34000's integration); a click opens the live stream |
 | `show_illustration` | both | `true` | The animated illustration of each device, next to its levels |
+| `illustration_color` | both | `auto` | Colour of the Litter-Robot 4 / 5 drawing, which the integration does not report: `auto` (black), `black` or `white` |
 | `zoom` | mini | `true` | Detail button at the top right: switches to the full card and back (`false` removes it). The full card shown follows `show_stats`, `show_controls`, `show_camera` and `show_illustration`, also set on the mini card |
 | `language` | both | Auto | Force language: `en`, `fr`, `de`, `es`, `sr`, `sr-Latn`, `it`, `nl`, `pt`, `pl`, `ro`, `da`, `sv`, `bg`, `ru`, `uk`, `hu`, `sk`, `cs`, `sl`, `lv` or `el` (auto-detects from HA settings) |
 
@@ -188,6 +194,19 @@ Turning a fountain off and resetting a filter or a desiccant ask for a confirmat
 
 **Last meal**: PetKit has no "last meal" sensor, so the card shows when the count of meals of the day last changed. After a Home Assistant restart, that time is the restart until the next meal.
 
+## Litter-Robot
+
+The cards read the entities of Home Assistant's [Litter-Robot integration](https://www.home-assistant.io/integrations/litterrobot/) (`platform: litterrobot`) the same way: a device is a Litter-Robot when it has the `litter_box` vacuum, a `waste_drawer` or a `status_code` sensor. Its Feeder-Robot and pets are left out.
+
+| Card | `translation_key` |
+|---|---|
+| State | `status_code`: `ccp`, `ec` (and powering up) → *Cleaning*; `cd`, `cst`, `csi` → *Cat inside*; `p` → *Paused*; `off` → *Off*; `offline`; `br`, `csf`, `scf`, `dhf`, `dpf`, `hpf`, `otf`, `pd`, `spf` → *Error* with the fault as Home Assistant names it; else the `litter_box` vacuum's state |
+| Waste bin | `waste_drawer` (%, orange from 80 %, red at 100 %); `df1` / `df2` → *Waste bin almost full*, `dfs` / `sdf` → *Waste bin full* |
+| Litter | `litter_level` (%, LR4 / LR5, orange from 20 %) |
+| Cat weight, Cycles | `pet_weight` (in its unit), `total_cycles` |
+| Night light (illustration) | `night_light` light (LR5), `globe_light` select set to *on* (LR4), `night_light_mode` switch (LR3) |
+| Clean | `vacuum.start` on the `litter_box` vacuum (a clean cycle) |
+
 ### Manual feed
 
 The **Feed** button opens a popup at the top of the card with the amounts the feeder accepts, then **Feed** dispenses them:
@@ -223,6 +242,12 @@ Litter boxes: Pura MAX 2 with Jezza34000's integration (a cat inside) and Pura M
 |---|---|
 | <img src="https://raw.githubusercontent.com/juju35/ha-pet-card/main/screenshots/card-litter.png" alt="litter boxes" width="400"> | <img src="https://raw.githubusercontent.com/juju35/ha-pet-card/main/screenshots/card-litter-dark.png" alt="litter boxes dark" width="400"> |
 
+Litter-Robot 4 and Litter-Robot 3 Connect: waste drawer gauge, litter level, cat weight and cycles:
+
+| Light | Dark |
+|---|---|
+| <img src="https://raw.githubusercontent.com/juju35/ha-pet-card/main/screenshots/card-litter-robot.png" alt="Litter-Robots" width="400"> | <img src="https://raw.githubusercontent.com/juju35/ha-pet-card/main/screenshots/card-litter-robot-dark.png" alt="Litter-Robots dark" width="400"> |
+
 Things to do: food low, desiccant to replace, low water and filter to replace:
 
 | Light | Dark |
@@ -248,6 +273,12 @@ A litter box: its drum turns while it cleans, then a cat comes in (the LED turns
 | Light | Dark |
 |---|---|
 | <img src="https://raw.githubusercontent.com/juju35/ha-pet-card/main/screenshots/card-litter-clean.gif" alt="litter box cleaning animation" width="400"> | <img src="https://raw.githubusercontent.com/juju35/ha-pet-card/main/screenshots/card-litter-clean-dark.gif" alt="litter box cleaning animation dark" width="400"> |
+
+A Litter-Robot 4: its globe turns through a clean cycle, the drawer gauge rises, then a cat is detected under the night light:
+
+| Light | Dark |
+|---|---|
+| <img src="https://raw.githubusercontent.com/juju35/ha-pet-card/main/screenshots/card-litter-robot-cycle.gif" alt="Litter-Robot cycle animation" width="400"> | <img src="https://raw.githubusercontent.com/juju35/ha-pet-card/main/screenshots/card-litter-robot-cycle-dark.gif" alt="Litter-Robot cycle animation dark" width="400"> |
 
 The feed popup: an amount is picked, then the popup is cancelled.
 
@@ -277,7 +308,7 @@ The mini card's detail button: the full card, then back to the compact view.
 | Desiccant | 5 days and less | 0 days |
 | Feeder | on batteries, battery low | offline, error |
 | Litter | 20 % and less, or low | — |
-| Waste bin | — | full |
+| Waste bin | almost full (Litter-Robot: 80 %) | full |
 | Deodorizer | 5 days and less | 0 days |
 | Litter box | — | offline, error |
 | Battery | 25 % and less | 10 % and less |

@@ -57,6 +57,8 @@ test("discovery: feeders first, then fountains, then litter boxes; unsupported P
       ["ctw3", "fountain"],
       ["fountain", "fountain"],
       ["t4", "litter"],
+      ["lr3", "litter"],
+      ["lr4", "litter"],
       ["litter", "litter"],
     ]
   );
@@ -80,7 +82,7 @@ test("discovery follows the registries, not the entity ids", () => {
 
 test("devices option: ids or names, unknown ones reported", () => {
   const h = hassWith();
-  assert.equal(findDevices(h, {}).devices.length, 7);
+  assert.equal(findDevices(h, {}).devices.length, 9);
   assert.deepEqual(
     plain(findDevices(h, { devices: ["fountain", "kitchen FEEDER"] }).devices.map((d) => d.id)),
     ["fountain", "solo"]
@@ -125,7 +127,7 @@ test("render: full card shows the devices, the mini card one row each and the al
   for (const text of ["Kitchen feeder", "Twin feeder", "Living room fountain", "Hopper 2", "Dispensed today", "of 60 g planned", "72%"]) assert.ok(full.includes(text), text);
   assert.ok(full.includes("Litter box") && !full.includes("Purifier"));
   const mini = card(PetMiniCard)._render();
-  assert.equal((mini.match(/class="row /g) || []).length, 7);
+  assert.equal((mini.match(/class="row /g) || []).length, 9);
   assert.ok(mini.includes("Twin feeder: Food low"));
   assert.ok(mini.includes('class="zoom"'));
   assert.ok(!card(PetMiniCard, { zoom: false })._render().includes('class="zoom"'));
@@ -519,7 +521,7 @@ const artOf = (html, key) => {
 
 test("illustrations: one per device with its own ids, none with show_illustration: false", () => {
   const html = card(PetCard)._render();
-  assert.equal((html.match(/<div class="art /g) || []).length, 7);
+  assert.equal((html.match(/<div class="art /g) || []).length, 9);
   const clips = [...html.matchAll(/<clipPath id="([^"]+)"/g)].map((m) => m[1]);
   assert.equal(new Set(clips).size, clips.length);
   assert.ok(!card(PetCard, { show_illustration: false })._render().includes('class="art '));
@@ -574,4 +576,84 @@ test("illustrations: the litter box turns while cleaning, shows a cat inside and
   assert.ok(cls({ "sensor.litiere_etat": { state: "cleaning_paused_pet_approach" } }, "litter").includes("cat"));
   const full = cls({ "binary_sensor.litiere_sdb_bac_plein": { state: "on" } });
   assert.ok(full.includes("full") && full.includes("warn"));
+});
+
+// Litter-Robot (Home Assistant core integration): a Litter-Robot 4 ("lr4") and a 3 Connect ("lr3").
+test("Litter-Robot: discovered by its own keys, the Feeder-Robot left out", () => {
+  const h = hassWith();
+  const lr4 = byId(h, "lr4");
+  assert.equal(lr4.kind, "litter");
+  assert.equal(lr4.platform, "litterrobot");
+  const e = lr4.entities;
+  assert.equal(e.vacuum, "vacuum.litter_robot_buanderie");
+  assert.equal(e.status_code, "sensor.litter_robot_buanderie_statut");
+  assert.equal(e.waste, "sensor.litter_robot_buanderie_tiroir");
+  assert.equal(e.litter, "sensor.litter_robot_buanderie_litiere");
+  assert.equal(e.pet_weight, "sensor.litter_robot_buanderie_poids");
+  assert.equal(e.night, "select.litter_robot_buanderie_veilleuse");
+  assert.equal(byId(h, "lr3").entities.night, "switch.litter_robot_garage_veilleuse");
+  assert.equal(byId(h, "feeder_robot"), undefined);
+});
+
+test("Litter-Robot: status from its status code and waste drawer", () => {
+  const st = (overrides, id = "lr4") => {
+    const c = card(PetCard, {}, overrides);
+    return c._status(byId(c.hass, id));
+  };
+  const code = (v) => ({ "sensor.litter_robot_buanderie_statut": { state: v } });
+  assert.equal(st({}).key, "ready");
+  assert.equal(st(code("ccp")).key, "cleaning");
+  assert.equal(st(code("ec")).key, "cleaning");
+  assert.equal(st(code("cd")).key, "cat_inside");
+  assert.equal(st(code("cst")).key, "cat_inside");
+  assert.equal(st(code("p")).key, "paused");
+  assert.equal(st(code("off")).key, "off");
+  assert.equal(st(code("offline")).key, "offline");
+  const fault = st(code("pd"));
+  assert.equal(fault.cls, "crit");
+  assert.equal(fault.key, "error");
+  assert.equal(fault.title, "pd");
+  assert.equal(st(code("dfs")).key, "bin_full");
+  assert.equal(st(code("df1")).key, "bin_almost_full");
+  assert.equal(st({ "sensor.litter_robot_garage_tiroir": { state: "85" } }, "lr3").key, "bin_almost_full");
+  assert.equal(st({ "sensor.litter_robot_buanderie_litiere": { state: "15" } }).key, "litter_low");
+  // Without its status code: the vacuum's state.
+  assert.equal(st({ "sensor.litter_robot_buanderie_statut": { state: "unavailable" }, "vacuum.litter_robot_buanderie": { state: "cleaning" } }).key, "cleaning");
+});
+
+test("Litter-Robot: drawer and litter levels, cat weight, cycles, clean through vacuum.start", async () => {
+  const c = card(PetCard, { devices: ["lr4"] });
+  const html = c._render();
+  for (const text of ["Laundry Litter-Robot", "Ready", "Waste bin", "45%", "Litter", "78%", "Cat weight", "4.6 kg", "Cycles", "14", "Clean"]) assert.ok(html.includes(text), text);
+  click(c, { action: "start", device: "lr4", entity: "vacuum.litter_robot_buanderie" });
+  await settle();
+  assert.deepEqual(plain(c.hass.calls), [["vacuum", "start", { entity_id: "vacuum.litter_robot_buanderie" }]]);
+  const mini = card(PetMiniCard, { devices: ["lr3", "lr4"] }, { "sensor.litter_robot_garage_tiroir": { state: "100" } })._render();
+  assert.ok(mini.includes("Garage Litter-Robot: Waste bin full"));
+  assert.ok(mini.includes("Litter 78%"));
+});
+
+test("Litter-Robot: its own drawing (LR4 black or white, LR3), cycling, cat, full drawer and night light", () => {
+  const html = (config, overrides) => card(PetCard, config, overrides)._render();
+  const lr4 = html({ devices: ["lr4"] });
+  assert.ok(lr4.includes('class="drum lr4"') && lr4.includes("#4c5560") && !lr4.includes("Pura"));
+  assert.ok(html({ devices: ["lr4"], illustration_color: "white" }).includes('stop-color="#ffffff"'));
+  assert.ok(html({ devices: ["lr3"] }).includes('class="drum lr3"'));
+  const cls = (overrides, key = "lr4") => artOf(html({}, overrides), key);
+  assert.deepEqual(plain(cls({})), ["ok"]);
+  assert.ok(cls({ "sensor.litter_robot_buanderie_statut": { state: "ccp" } }).includes("cleaning"));
+  assert.ok(cls({ "sensor.litter_robot_buanderie_statut": { state: "cd" } }).includes("cat"));
+  assert.ok(cls({ "sensor.litter_robot_buanderie_statut": { state: "dfs" } }).includes("full"));
+  assert.ok(cls({ "select.litter_robot_buanderie_veilleuse": { state: "on" } }).includes("night"));
+  assert.ok(!cls({}).includes("night"));
+  assert.ok(cls({ "switch.litter_robot_garage_veilleuse": { state: "on" } }, "lr3").includes("night"));
+});
+
+test("editor: the Litter-Robot colour picker", () => {
+  const ed = new PetCardEditor();
+  ed.hass = hassWith();
+  const schema = ed._schema([]);
+  const color = schema.find((f) => f.name === "illustration_color");
+  assert.deepEqual(plain(color.selector.select.options.map((o) => o.value)), ["auto", "black", "white"]);
+  assert.equal(color.selector.select.options[1].label, "Black");
 });

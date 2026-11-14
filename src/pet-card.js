@@ -133,6 +133,13 @@ const STRINGS = {
     litter_weight: "Litter weight",
     deodorizer: "Deodorizer",
     show_illustration: "Show the device illustrations",
+    bin_almost_full: "Waste bin almost full",
+    cycles: "Cycles",
+    cat_weight: "Cat weight",
+    illustration_color: "Litter-Robot colour",
+    color_auto: "Automatic",
+    color_black: "Black",
+    color_white: "White",
   },
   fr: {
     title: "Animaux",
@@ -220,6 +227,13 @@ const STRINGS = {
     litter_weight: "Poids de litière",
     deodorizer: "Désodorisant",
     show_illustration: "Afficher les illustrations des appareils",
+    bin_almost_full: "Bac à déchets presque plein",
+    cycles: "Cycles",
+    cat_weight: "Poids du chat",
+    illustration_color: "Couleur de la Litter-Robot",
+    color_auto: "Automatique",
+    color_black: "Noire",
+    color_white: "Blanche",
   },
   de: {
     title: "Haustiere",
@@ -307,6 +321,13 @@ const STRINGS = {
     litter_weight: "Streugewicht",
     deodorizer: "Desodorierer",
     show_illustration: "Geräteabbildungen anzeigen",
+    bin_almost_full: "Abfallbehälter fast voll",
+    cycles: "Zyklen",
+    cat_weight: "Katzengewicht",
+    illustration_color: "Farbe des Litter-Robot",
+    color_auto: "Automatisch",
+    color_black: "Schwarz",
+    color_white: "Weiß",
   },
   es: {
     title: "Mascotas",
@@ -394,6 +415,13 @@ const STRINGS = {
     litter_weight: "Peso de la arena",
     deodorizer: "Desodorizante",
     show_illustration: "Mostrar las ilustraciones de los dispositivos",
+    bin_almost_full: "Cubo de residuos casi lleno",
+    cycles: "Ciclos",
+    cat_weight: "Peso del gato",
+    illustration_color: "Color del Litter-Robot",
+    color_auto: "Automático",
+    color_black: "Negro",
+    color_white: "Blanco",
   },
   sr: {
     title: "Љубимци",
@@ -481,6 +509,13 @@ const STRINGS = {
     litter_weight: "Тежина посипа",
     deodorizer: "Дезодоранс",
     show_illustration: "Прикажи илустрације уређаја",
+    bin_almost_full: "Посуда за отпад је скоро пуна",
+    cycles: "Циклуси",
+    cat_weight: "Тежина мачке",
+    illustration_color: "Боја Litter-Robot-а",
+    color_auto: "Аутоматски",
+    color_black: "Црна",
+    color_white: "Бела",
   },
   "sr-Latn": {
     title: "Ljubimci",
@@ -568,6 +603,13 @@ const STRINGS = {
     litter_weight: "Težina posipa",
     deodorizer: "Dezodorans",
     show_illustration: "Prikaži ilustracije uređaja",
+    bin_almost_full: "Posuda za otpad je skoro puna",
+    cycles: "Ciklusi",
+    cat_weight: "Težina mačke",
+    illustration_color: "Boja Litter-Robot-a",
+    color_auto: "Automatski",
+    color_black: "Crna",
+    color_white: "Bela",
   },
   it: {
     title: "Animali",
@@ -655,6 +697,13 @@ const STRINGS = {
     litter_weight: "Peso della sabbia",
     deodorizer: "Deodorante",
     show_illustration: "Mostra le illustrazioni dei dispositivi",
+    bin_almost_full: "Cassetto rifiuti quasi pieno",
+    cycles: "Cicli",
+    cat_weight: "Peso del gatto",
+    illustration_color: "Colore del Litter-Robot",
+    color_auto: "Automatico",
+    color_black: "Nero",
+    color_white: "Bianco",
   },
   nl: {
     title: "Huisdieren",
@@ -742,6 +791,13 @@ const STRINGS = {
     litter_weight: "Gewicht vulling",
     deodorizer: "Geurverdrijver",
     show_illustration: "Apparaatillustraties tonen",
+    bin_almost_full: "Afvalbak bijna vol",
+    cycles: "Cycli",
+    cat_weight: "Gewicht kat",
+    illustration_color: "Kleur van de Litter-Robot",
+    color_auto: "Automatisch",
+    color_black: "Zwart",
+    color_white: "Wit",
   },
   pt: {
     title: "Animais",
@@ -829,6 +885,13 @@ const STRINGS = {
     litter_weight: "Peso da areia",
     deodorizer: "Desodorizante",
     show_illustration: "Mostrar as ilustrações dos dispositivos",
+    bin_almost_full: "Recipiente de resíduos quase cheio",
+    cycles: "Ciclos",
+    cat_weight: "Peso do gato",
+    illustration_color: "Cor do Litter-Robot",
+    color_auto: "Automático",
+    color_black: "Preto",
+    color_white: "Branco",
   },
   pl: {
     title: "Zwierzęta",
@@ -916,6 +979,13 @@ const STRINGS = {
     litter_weight: "Waga żwirku",
     deodorizer: "Odświeżacz",
     show_illustration: "Pokaż ilustracje urządzeń",
+    bin_almost_full: "Pojemnik na odpady prawie pełny",
+    cycles: "Cykle",
+    cat_weight: "Waga kota",
+    illustration_color: "Kolor Litter-Robot",
+    color_auto: "Automatycznie",
+    color_black: "Czarny",
+    color_white: "Biały",
   },
   ro: {
     title: "Animale",
@@ -1003,6 +1073,13 @@ const STRINGS = {
     litter_weight: "Greutatea nisipului",
     deodorizer: "Odorizant",
     show_illustration: "Afișează ilustrațiile dispozitivelor",
+    bin_almost_full: "Recipient deșeuri aproape plin",
+    cycles: "Cicluri",
+    cat_weight: "Greutatea pisicii",
+    illustration_color: "Culoarea Litter-Robot",
+    color_auto: "Automat",
+    color_black: "Negru",
+    color_white: "Alb",
   },
   da: {
     title: "Kæledyr",
@@ -1090,6 +1167,13 @@ const STRINGS = {
     litter_weight: "Grusvægt",
     deodorizer: "Deodorant",
     show_illustration: "Vis enhedsillustrationer",
+    bin_almost_full: "Affaldsbeholder næsten fuld",
+    cycles: "Cyklusser",
+    cat_weight: "Kattens vægt",
+    illustration_color: "Litter-Robot-farve",
+    color_auto: "Automatisk",
+    color_black: "Sort",
+    color_white: "Hvid",
   },
   sv: {
     title: "Husdjur",
@@ -1177,6 +1261,13 @@ const STRINGS = {
     litter_weight: "Ströets vikt",
     deodorizer: "Luktborttagare",
     show_illustration: "Visa enhetsillustrationer",
+    bin_almost_full: "Avfallsbehållare nästan full",
+    cycles: "Cykler",
+    cat_weight: "Kattens vikt",
+    illustration_color: "Litter-Robot-färg",
+    color_auto: "Automatisk",
+    color_black: "Svart",
+    color_white: "Vit",
   },
   bg: {
     title: "Любимци",
@@ -1264,6 +1355,13 @@ const STRINGS = {
     litter_weight: "Тегло на постелката",
     deodorizer: "Дезодорант",
     show_illustration: "Показване на илюстрациите на устройствата",
+    bin_almost_full: "Контейнерът за отпадъци е почти пълен",
+    cycles: "Цикли",
+    cat_weight: "Тегло на котката",
+    illustration_color: "Цвят на Litter-Robot",
+    color_auto: "Автоматично",
+    color_black: "Черен",
+    color_white: "Бял",
   },
   ru: {
     title: "Питомцы",
@@ -1351,6 +1449,13 @@ const STRINGS = {
     litter_weight: "Вес наполнителя",
     deodorizer: "Дезодорант",
     show_illustration: "Показывать иллюстрации устройств",
+    bin_almost_full: "Контейнер для отходов почти полон",
+    cycles: "Циклы",
+    cat_weight: "Вес кошки",
+    illustration_color: "Цвет Litter-Robot",
+    color_auto: "Автоматически",
+    color_black: "Чёрный",
+    color_white: "Белый",
   },
   uk: {
     title: "Улюбленці",
@@ -1438,6 +1543,13 @@ const STRINGS = {
     litter_weight: "Вага наповнювача",
     deodorizer: "Дезодорант",
     show_illustration: "Показувати ілюстрації пристроїв",
+    bin_almost_full: "Контейнер для відходів майже повний",
+    cycles: "Цикли",
+    cat_weight: "Вага кота",
+    illustration_color: "Колір Litter-Robot",
+    color_auto: "Автоматично",
+    color_black: "Чорний",
+    color_white: "Білий",
   },
   hu: {
     title: "Háziállatok",
@@ -1525,6 +1637,13 @@ const STRINGS = {
     litter_weight: "Alom súlya",
     deodorizer: "Szagtalanító",
     show_illustration: "Eszközillusztrációk megjelenítése",
+    bin_almost_full: "Hulladéktartály majdnem tele",
+    cycles: "Ciklusok",
+    cat_weight: "Macska súlya",
+    illustration_color: "Litter-Robot színe",
+    color_auto: "Automatikus",
+    color_black: "Fekete",
+    color_white: "Fehér",
   },
   sk: {
     title: "Zvieratá",
@@ -1612,6 +1731,13 @@ const STRINGS = {
     litter_weight: "Hmotnosť podstielky",
     deodorizer: "Dezodorant",
     show_illustration: "Zobraziť ilustrácie zariadení",
+    bin_almost_full: "Nádoba na odpad takmer plná",
+    cycles: "Cykly",
+    cat_weight: "Hmotnosť mačky",
+    illustration_color: "Farba Litter-Robot",
+    color_auto: "Automaticky",
+    color_black: "Čierna",
+    color_white: "Biela",
   },
   cs: {
     title: "Zvířata",
@@ -1699,6 +1825,13 @@ const STRINGS = {
     litter_weight: "Hmotnost steliva",
     deodorizer: "Deodorant",
     show_illustration: "Zobrazit ilustrace zařízení",
+    bin_almost_full: "Nádoba na odpad téměř plná",
+    cycles: "Cykly",
+    cat_weight: "Hmotnost kočky",
+    illustration_color: "Barva Litter-Robot",
+    color_auto: "Automaticky",
+    color_black: "Černá",
+    color_white: "Bílá",
   },
   sl: {
     title: "Ljubljenčki",
@@ -1786,6 +1919,13 @@ const STRINGS = {
     litter_weight: "Teža posipa",
     deodorizer: "Dezodorant",
     show_illustration: "Prikaži ilustracije naprav",
+    bin_almost_full: "Posoda za odpadke skoraj polna",
+    cycles: "Cikli",
+    cat_weight: "Teža mačke",
+    illustration_color: "Barva Litter-Robot",
+    color_auto: "Samodejno",
+    color_black: "Črna",
+    color_white: "Bela",
   },
   lv: {
     title: "Mājdzīvnieki",
@@ -1873,6 +2013,13 @@ const STRINGS = {
     litter_weight: "Pakaišu svars",
     deodorizer: "Dezodorants",
     show_illustration: "Rādīt ierīču ilustrācijas",
+    bin_almost_full: "Atkritumu tvertne gandrīz pilna",
+    cycles: "Cikli",
+    cat_weight: "Kaķa svars",
+    illustration_color: "Litter-Robot krāsa",
+    color_auto: "Automātiski",
+    color_black: "Melna",
+    color_white: "Balta",
   },
   el: {
     title: "Κατοικίδια",
@@ -1960,6 +2107,13 @@ const STRINGS = {
     litter_weight: "Βάρος άμμου",
     deodorizer: "Αποσμητικό",
     show_illustration: "Εμφάνιση εικόνων συσκευών",
+    bin_almost_full: "Δοχείο απορριμμάτων σχεδόν γεμάτο",
+    cycles: "Κύκλοι",
+    cat_weight: "Βάρος γάτας",
+    illustration_color: "Χρώμα Litter-Robot",
+    color_auto: "Αυτόματο",
+    color_black: "Μαύρο",
+    color_white: "Λευκό",
   },
 };
 
@@ -2202,6 +2356,25 @@ const PLATFORMS = {
       },
     },
   },
+  // Whisker's Litter-Robot integration (Home Assistant core): Litter-Robot 3 Connect, 4 and 5. Its Feeder-Robot
+  // and pets are left out.
+  litterrobot: {
+    name: "Litter-Robot",
+    kinds: {
+      litter: {
+        detect: ["vacuum:litter_box", "sensor:waste_drawer", "sensor:status_code"],
+        roles: {
+          vacuum: "vacuum:litter_box",
+          status_code: "sensor:status_code",
+          waste: "sensor:waste_drawer",
+          litter: "sensor:litter_level",
+          pet_weight: "sensor:pet_weight",
+          cycles: "sensor:total_cycles",
+          night: ["light:night_light", "select:globe_light", "switch:night_light_mode"],
+        },
+      },
+    },
+  },
 };
 const KIND_ORDER = ["feeder", "fountain", "litter"];
 const KIND_ICONS = { feeder: ICONS.bowl, fountain: ICONS.fountain, litter: ICONS.cat };
@@ -2266,6 +2439,19 @@ const litterActivity = (state) => {
   if (/paus/.test(s)) return "paused";
   if (/maint/.test(s)) return "maintenance";
   if (/clean|dump|level|reset|calibrat/.test(s)) return "cleaning";
+  return "idle";
+};
+
+// What a Litter-Robot is doing, from its status code: a clean or empty cycle (powering up runs one), a cat detected
+// or the cat sensor timing / interrupted, paused, off, a fault (bonnet removed, pinch, position or sensor fault).
+const LR_FAULTS = new Set(["br", "csf", "scf", "dhf", "dpf", "hpf", "otf", "pd", "spf"]);
+const robotActivity = (code) => {
+  if (!code) return "idle";
+  if (LR_FAULTS.has(code)) return "error";
+  if (["ccp", "ec", "pwru"].includes(code)) return "cleaning";
+  if (["cd", "cst", "csi"].includes(code)) return "cat";
+  if (code === "p") return "paused";
+  if (code === "off" || code === "pwrd") return "off";
   return "idle";
 };
 
@@ -2342,7 +2528,8 @@ const ART_DEFS =
   '<linearGradient id="pa-st" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#9aa4ae"/><stop offset=".5" stop-color="#f1f4f7"/><stop offset="1" stop-color="#8f9aa6"/></linearGradient>' +
   '<linearGradient id="pa-dk" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#1b2129"/><stop offset="1" stop-color="#39424d"/></linearGradient>' +
   '<linearGradient id="pa-sd" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#e6d3ad"/><stop offset="1" stop-color="#c9b083"/></linearGradient>' +
-  '<radialGradient id="pa-fl" cx=".5" cy=".5" r=".5"><stop offset="0" stop-color="#000" stop-opacity=".22"/><stop offset="1" stop-color="#000" stop-opacity="0"/></radialGradient>';
+  '<radialGradient id="pa-fl" cx=".5" cy=".5" r=".5"><stop offset="0" stop-color="#000" stop-opacity=".22"/><stop offset="1" stop-color="#000" stop-opacity="0"/></radialGradient>' +
+  '<radialGradient id="pa-gw" cx=".5" cy=".5" r=".5"><stop offset=".6" stop-color="#7fb3ff" stop-opacity=".9"/><stop offset="1" stop-color="#7fb3ff" stop-opacity="0"/></radialGradient>';
 const KIBBLE = ["#a8662c", "#c27d3c"];
 
 // Kibbles of a hopper window (x, width; y 12 to 44), up to its level (0 to 1).
@@ -2427,7 +2614,67 @@ const litterArt = (o) => {
   );
 };
 
-const ARTS = { feeder: feederArt, fountain: fountainArt, litter: litterArt };
+// Litter-Robot: [body edge, body light, outline, details] of the black and white LR4 / LR5 and the LR3 Connect.
+const ROBOT_COLORS = {
+  black: ["#2b3139", "#4c5560", "#1f252c", "#59636e"],
+  white: ["#d5dbe2", "#ffffff", "#c3cad2", "#aab3bd"],
+  lr3: ["#cfc9bb", "#ece8de", "#b8b1a1", "#9a9384"],
+};
+
+// The waste drawer's fill (%), on the drawer: green, orange from 80 %, red when full.
+const drawerGauge = (y, waste, track) =>
+  waste === null
+    ? ""
+    : `<rect x="20" y="${y}" width="40" height="2.2" rx="1.1" fill="${track}" opacity=".5"/>` +
+      `<rect x="20" y="${y}" width="${(40 * Math.max(0, Math.min(1, waste / 100))).toFixed(1)}" height="2.2" rx="1.1" style="fill:var(--pc-${waste >= 100 ? "crit" : waste >= 80 ? "warn" : "ok"})"/>`;
+
+const robotGrit = (y) => [0, 1, 2].map((i) => `<circle class="grit" cx="${37 + i * 3}" cy="${y}" r="1.2" fill="#9c8457" style="animation-delay:${(i * 0.12).toFixed(2)}s"/>`).join("");
+
+// o: { lr3, color: "black" | "white", level: 0..1, waste: % or null }. The LR4 / LR5: a hood with an arched entry
+// on its base, the panel on top, the step and the waste drawer below; the LR3 Connect: a round globe on its base.
+// The globe turns while it cycles; the night light rings the entry.
+const robotArt = (o) => {
+  const c = ROBOT_COLORS[o.lr3 ? "lr3" : o.color];
+  const body = `<linearGradient id="pa-rb" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="${c[0]}"/><stop offset=".45" stop-color="${c[1]}"/><stop offset="1" stop-color="${c[0]}"/></linearGradient>`;
+  const sand = (top, x, w) => `<path d="M${x} ${top.toFixed(1)}q${w / 2}-5 ${w} 0V70H${x}Z" fill="url(#pa-sd)"/>`;
+  if (o.lr3)
+    return (
+      `${body}<ellipse cx="40" cy="89" rx="34" ry="4" fill="url(#pa-fl)"/>` +
+      '<path d="M8 58h64l-3 24a5 5 0 0 1-5 4H16a5 5 0 0 1-5-4Z" fill="#5b5e63" stroke="#46494d" stroke-width=".8"/>' +
+      `<circle cx="40" cy="37" r="30" fill="url(#pa-rb)" stroke="${c[2]}" stroke-width=".9"/>` +
+      '<ellipse class="halo" cx="40" cy="40" rx="22" ry="20" fill="url(#pa-gw)"/>' +
+      '<clipPath id="pa-op"><ellipse cx="40" cy="41" rx="17" ry="16"/></clipPath>' +
+      '<g clip-path="url(#pa-op)"><rect x="20" y="22" width="40" height="38" fill="url(#pa-dk)"/>' +
+      `<g class="drum lr3"><circle cx="40" cy="37" r="22" fill="none" stroke="#3f4852" stroke-width="1"/>${sand(52 - o.level * 8, 16, 48)}</g>${catHead(40, 46)}</g>` +
+      '<ellipse class="ring" cx="40" cy="41" rx="18" ry="17" fill="none" stroke="#7fb3ff" stroke-width="1.6"/>' +
+      `<ellipse cx="40" cy="41" rx="18.5" ry="17.5" fill="none" stroke="${c[2]}" stroke-width="1"/>` +
+      '<path d="M18 26a30 30 0 0 1 16-14" stroke="#fff" stroke-width="1.6" fill="none" stroke-linecap="round" opacity=".5"/>' +
+      '<rect x="28" y="60" width="24" height="5" rx="2" fill="#3f4246"/><circle class="led" cx="33" cy="62.5" r="1.1"/><circle cx="40" cy="62.5" r=".9" fill="#7c8086"/><circle cx="46" cy="62.5" r=".9" fill="#7c8086"/>' +
+      robotGrit(66) +
+      '<rect class="bin" x="17" y="68" width="46" height="13" rx="3" fill="#4b4e53" stroke="#6c7076" stroke-width=".7"/>' +
+      drawerGauge(76, o.waste, "#6c7076")
+    );
+  return (
+    `${body}<ellipse cx="40" cy="89" rx="34" ry="4" fill="url(#pa-fl)"/>` +
+    `<rect x="9" y="52" width="62" height="34" rx="9" fill="url(#pa-rb)" stroke="${c[2]}" stroke-width=".9"/>` +
+    `<path d="M9 54V33a31 31 0 0 1 62 0v21Z" fill="url(#pa-rb)" stroke="${c[2]}" stroke-width=".9"/>` +
+    `<rect x="31" y="5.5" width="18" height="4.5" rx="2.2" fill="${c[2]}"/><circle cx="35" cy="7.7" r=".9" fill="${c[3]}"/><circle class="led" cx="40" cy="7.7" r="1.1"/><circle cx="45" cy="7.7" r=".9" fill="${c[3]}"/>` +
+    '<ellipse class="halo" cx="40" cy="38" rx="25" ry="24" fill="url(#pa-gw)"/>' +
+    '<clipPath id="pa-op"><path d="M22 54V36a18 18 0 0 1 36 0v18Z"/></clipPath>' +
+    `<path d="M20.5 55V36a19.5 19.5 0 0 1 39 0v19Z" fill="${c[2]}" opacity=".6"/>` +
+    '<g clip-path="url(#pa-op)"><rect x="18" y="14" width="44" height="42" fill="url(#pa-dk)"/>' +
+    `<g class="drum lr4"><circle cx="40" cy="40" r="24" fill="none" stroke="#3f4852" stroke-width="1"/>${sand(54 - o.level * 8, 14, 52)}<path d="M27 26l5 4M53 26l-5 4" stroke="#4b5560" stroke-width="1.2"/></g>${catHead(40, 45)}</g>` +
+    '<path class="ring" d="M20.5 55V36a19.5 19.5 0 0 1 39 0v19" fill="none" stroke="#7fb3ff" stroke-width="1.6"/>' +
+    '<path d="M24 34a16 16 0 0 1 9-11" stroke="#fff" stroke-width="1.5" fill="none" stroke-linecap="round" opacity=".35"/>' +
+    `<path d="M21 56h38l-2.5 6h-33Z" fill="${c[2]}" stroke="${c[3]}" stroke-width=".5"/>` +
+    robotGrit(64) +
+    `<rect class="bin" x="15" y="66" width="50" height="14" rx="3" fill="${c[0]}" stroke="${c[3]}" stroke-width=".7"/>` +
+    `<rect x="34" y="68.5" width="12" height="2" rx="1" fill="${c[3]}"/>` +
+    drawerGauge(75, o.waste, c[3])
+  );
+};
+
+const ARTS = { feeder: feederArt, fountain: fountainArt, litter: litterArt, robot: robotArt };
 
 // The picture of a device: `cls` are its animation classes (feeding, on, dry, cleaning, cat, full) and the LED's
 // colour (ok, warn, crit, idle, busy); `uid` keeps its ids apart from the other devices' in the same card.
@@ -2736,26 +2983,76 @@ class PetBase extends HTMLElement {
     return alerts.length ? { ...alerts[0], alerts } : { cls: "ok", key: "running", alerts };
   }
 
-  // A litter box: offline or an error first, then a full waste bin, low litter and a spent deodorizer; else what
-  // it does (cleaning, a cat inside, paused, maintenance) or ready.
-  _litterStatus(dev) {
+  // A litter box, whatever its integration: { act, level, low, waste (%), binFull, binNear, occupied, offline,
+  // error (null, or its message), night }.
+  _litterInfo(dev) {
     const e = dev.entities;
-    const alerts = [];
+    const level = num(this._s(e.litter));
+    if (dev.platform === "litterrobot") {
+      const code = known(this._s(e.status_code));
+      const vac = known(this._s(e.vacuum));
+      const act = code ? robotActivity(code) : ["cleaning", "error", "paused"].includes(vac) ? vac : "idle";
+      const waste = num(this._s(e.waste));
+      const night = this._s(e.night);
+      return {
+        act,
+        level,
+        low: false,
+        waste,
+        binFull: code === "dfs" || code === "sdf" || (waste !== null && waste >= 100),
+        binNear: code === "df1" || code === "df2" || (waste !== null && waste >= 80),
+        occupied: false,
+        offline: code === "offline",
+        error: act === "error" ? this._fmt(this._s(e.status_code)) || "" : null,
+        // The night light lit: the light (LR5), the globe light set to on (LR4) or the night light mode (LR3).
+        night: night?.state === "on",
+      };
+    }
     const act = litterActivity(known(this._s(e.state)));
     const err = known(this._s(e.error));
-    if (known(this._s(e.status)) === "offline") alerts.push({ cls: "crit", key: "offline" });
-    if (err && err.toLowerCase().replace(/\s+/g, "_") !== "no_error") alerts.push({ cls: "crit", key: "error", title: err });
-    else if (act === "error") alerts.push({ cls: "crit", key: "error" });
-    if (this._s(e.bin_full)?.state === "on") alerts.push({ cls: "warn", key: "bin_full" });
-    const level = num(this._s(e.litter));
-    if (this._s(e.litter_low)?.state === "on" || (level !== null && level <= 20)) alerts.push({ cls: "warn", key: "litter_low" });
-    const deodorizer = num(this._s(e.deodorizer));
+    const errOn = err && err.toLowerCase().replace(/\s+/g, "_") !== "no_error";
+    return {
+      act,
+      level,
+      low: this._s(e.litter_low)?.state === "on",
+      waste: null,
+      binFull: this._s(e.bin_full)?.state === "on",
+      binNear: false,
+      occupied: this._s(e.occupied)?.state === "on",
+      offline: known(this._s(e.status)) === "offline",
+      error: errOn ? err : act === "error" ? "" : null,
+      night: false,
+    };
+  }
+
+  // An entity's state as Home Assistant shows it (translated), else its raw state.
+  _fmt(s) {
+    if (!s) return "";
+    try {
+      return this._hass.formatEntityState?.(s) || s.state;
+    } catch {
+      return s.state;
+    }
+  }
+
+  // A litter box: offline or an error first, then a full waste bin, low litter and a spent deodorizer; else what
+  // it does (cleaning, a cat inside, paused, maintenance, off) or ready.
+  _litterStatus(dev) {
+    const i = this._litterInfo(dev);
+    const alerts = [];
+    if (i.offline) alerts.push({ cls: "crit", key: "offline" });
+    if (i.error !== null) alerts.push({ cls: "crit", key: "error", ...(i.error ? { title: i.error } : {}) });
+    if (i.binFull) alerts.push({ cls: "warn", key: "bin_full" });
+    else if (i.binNear) alerts.push({ cls: "warn", key: "bin_almost_full" });
+    if (i.low || (i.level !== null && i.level <= 20)) alerts.push({ cls: "warn", key: "litter_low" });
+    const deodorizer = num(this._s(dev.entities.deodorizer));
     if (deodorizer !== null && deodorizer <= 0) alerts.push({ cls: "warn", key: "replace_deodorizer" });
     if (alerts.length) return { ...alerts[0], alerts };
-    if (act === "cleaning") return { cls: "ok", key: "cleaning", alerts };
-    if (act === "cat" || this._s(e.occupied)?.state === "on") return { cls: "ok", key: "cat_inside", alerts };
-    if (act === "paused") return { cls: "idle", key: "paused", alerts };
-    if (act === "maintenance") return { cls: "idle", key: "maintenance", alerts };
+    if (i.act === "cleaning") return { cls: "ok", key: "cleaning", alerts };
+    if (i.act === "cat" || i.occupied) return { cls: "ok", key: "cat_inside", alerts };
+    if (i.act === "paused") return { cls: "idle", key: "paused", alerts };
+    if (i.act === "maintenance") return { cls: "idle", key: "maintenance", alerts };
+    if (i.act === "off") return { cls: "idle", key: "off", alerts };
     return { cls: "ok", key: "ready", alerts };
   }
 
@@ -2833,13 +3130,17 @@ class PetBase extends HTMLElement {
         : this._s(e.power)?.state !== "off" && this._s(e.dnd_state)?.state !== "on" && !/pause/i.test(known(this._s(e.mode)) || "");
       return art("fountain", {}, [led, live && !dry && flowing ? "on" : "", dry ? "dry" : ""].filter(Boolean).join(" "), uid);
     }
-    const act = litterActivity(known(this._s(e.state)));
-    const level = num(this._s(e.litter));
-    const cleaning = live && act === "cleaning";
-    const cat = live && !cleaning && (act === "cat" || this._s(e.occupied)?.state === "on");
-    const cls = [cleaning && led !== "crit" ? "cleaning busy" : cat && led === "ok" ? "warn" : led, cat ? "cat" : "", this._s(e.bin_full)?.state === "on" ? "full" : ""];
-    const o = { camera: hasCamera(dev), level: level !== null ? level / 100 : this._s(e.litter_low)?.state === "on" ? 0.15 : 0.7 };
-    return art("litter", o, cls.filter(Boolean).join(" "), uid);
+    const i = this._litterInfo(dev);
+    const cleaning = live && i.act === "cleaning";
+    const cat = live && !cleaning && (i.act === "cat" || i.occupied);
+    const cls = [cleaning && led !== "crit" ? "cleaning busy" : cat && led === "ok" ? "warn" : led, cat ? "cat" : "", i.binFull ? "full" : "", live && i.night ? "night" : ""];
+    const level = i.level !== null ? i.level / 100 : i.low ? 0.15 : 0.7;
+    if (dev.platform === "litterrobot") {
+      // The colour of a Litter-Robot 4 / 5 is not reported: black unless illustration_color says white.
+      const o = { lr3: /\b3\b|lr3/i.test(dev.model), color: this._config.illustration_color === "white" ? "white" : "black", level, waste: i.waste };
+      return art("robot", o, cls.filter(Boolean).join(" "), uid);
+    }
+    return art("litter", { camera: hasCamera(dev), level }, cls.filter(Boolean).join(" "), uid);
   }
 
   // A feeder with two hoppers shows each of them (and not food_left, which is one level for the whole feeder).
@@ -2929,6 +3230,8 @@ class PetBase extends HTMLElement {
         return this._call("switch", "toggle", { entity_id: entity });
       case "press":
         return this._call("button", "press", { entity_id: entity });
+      case "start":
+        return this._call("vacuum", "start", { entity_id: entity });
       case "mode":
         return this._call("select", "select_option", { entity_id: entity, option: el.dataset.option });
     }
@@ -3132,7 +3435,13 @@ const FULL_STYLE = `
   .art .eye { transform-box: fill-box; transform-origin: center; animation: pc-wink 3.4s infinite; }
   .art .ear { transform-box: fill-box; transform-origin: bottom center; animation: pc-ear 3s infinite; }
   .art.full .bin { stroke: var(--pc-crit); stroke-width: 1.2; animation: pc-blink 1.2s steps(2) infinite; }
+  .art .drum.lr4 { transform-origin: 40px 40px; }
+  .art .drum.lr3 { transform-origin: 40px 37px; }
+  .art .ring, .art .halo { opacity: 0; transition: opacity .4s ease; }
+  .art.night .ring { opacity: 1; animation: pc-glow 2.4s ease-in-out infinite alternate; }
+  .art.night .halo { opacity: .35; }
   @keyframes pc-blink { 50% { opacity: .25; } }
+  @keyframes pc-glow { to { opacity: .55; } }
   @keyframes pc-fall { 0% { transform: translateY(0); opacity: 0; } 15% { opacity: 1; } 80% { opacity: 1; } 100% { transform: translateY(13px); opacity: 0; } }
   @keyframes pc-flow { to { stroke-dashoffset: -10; } }
   @keyframes pc-ripple { 0% { transform: scale(.3); opacity: .9; } 100% { transform: scale(1.15); opacity: 0; } }
@@ -3175,6 +3484,15 @@ class PetCard extends PetBase {
     return `<div class="tile clickable ${cls}" role="button" tabindex="0" data-key="${esc(id)}" data-entity="${esc(id)}" aria-label="${esc(`${label} ${value}`)}">
       <span class="tl">${esc(label)}</span><span class="tv">${esc(value)}</span>${sub ? `<span class="ts">${esc(sub)}</span>` : ""}${act}
     </div>`;
+  }
+
+  // A weight in its entity's unit: kg or lb.
+  _weight(s) {
+    const v = num(s);
+    if (v === null) return "—";
+    const unit = String(s.attributes?.unit_of_measurement || "kg");
+    const named = { kg: "kilogram", g: "gram", lb: "pound", lbs: "pound" }[unit.toLowerCase()];
+    return named ? fmtUnit(v, named, this._loc()) : `${fmtNum(v, this._loc(), 1)} ${unit}`;
   }
 
   _grams(s) {
@@ -3380,7 +3698,11 @@ class PetCard extends PetBase {
       id
         ? `<button type="button" class="act${round ? " round" : ""}" data-action="press" data-entity="${esc(id)}" data-device="${esc(dev.id)}" title="${esc(this._t(key))}"${round ? ` aria-label="${esc(this._t(key))}"` : ""}${!this._s(id) || this._s(id).state === "unavailable" ? ' aria-disabled="true"' : ""}>${svgIcon(icon)}${round ? "" : `<span class="lbl">${esc(this._t(key))}</span>`}</button>`
         : "";
-    const acts = controls ? press(e.deodorize, ICONS.spray, "deodorize", true) + press(e.clean, ICONS.broom, "clean", false) : "";
+    // A Litter-Robot cleans through its vacuum entity (vacuum.start runs a clean cycle).
+    const start = e.vacuum
+      ? `<button type="button" class="act" data-action="start" data-entity="${esc(e.vacuum)}" data-device="${esc(dev.id)}" title="${esc(this._t("clean"))}"${known(this._s(e.vacuum)) ? "" : ' aria-disabled="true"'}>${svgIcon(ICONS.broom)}<span class="lbl">${esc(this._t("clean"))}</span></button>`
+      : "";
+    const acts = controls ? press(e.deodorize, ICONS.spray, "deodorize", true) + press(e.clean, ICONS.broom, "clean", false) + start : "";
     const rows = [];
     const level = num(this._s(e.litter));
     const lowS = this._s(e.litter_low);
@@ -3389,6 +3711,8 @@ class PetCard extends PetBase {
       const low = lowS.state === "on";
       rows.push(this._level(e.litter_low, ICONS.litter, this._t("litter"), known(lowS) ? (low ? 15 : 100) : null, known(lowS) ? this._t(low ? "low" : "enough") : "—", known(lowS) ? (low ? "warn" : "ok") : "idle"));
     }
+    const waste = num(this._s(e.waste));
+    if (waste !== null) rows.push(this._level(e.waste, ICONS.bin, this._t("waste_bin"), waste, fmtPct(waste, loc), waste >= 100 ? "crit" : waste >= 80 ? "warn" : "ok"));
     const bin = this._s(e.bin_full);
     if (bin) {
       const full = bin.state === "on";
@@ -3410,6 +3734,9 @@ class PetCard extends PetBase {
         e.deodorizer
           ? this._tile(e.deodorizer, this._t("deodorizer"), deodorizer === null ? "—" : fmtUnit(deodorizer, "day", loc), { cls: desiccantLevel(deodorizer) })
           : this._tile(e.deodorizer_pct, this._t("deodorizer"), deodorizerPct === null ? "—" : fmtPct(deodorizerPct, loc), { cls: filterLevel(deodorizerPct) }),
+        // Litter-Robot: the cat's last weight (in the unit system's unit) and the cycles since the drawer was reset.
+        this._tile(e.pet_weight, this._t("cat_weight"), this._weight(this._s(e.pet_weight))),
+        this._tile(e.cycles, this._t("cycles"), num(this._s(e.cycles)) === null ? "—" : fmtNum(num(this._s(e.cycles)), loc)),
       ].join("");
     }
     return this._devBlock(dev, st, acts, rows, tiles);
@@ -3531,12 +3858,25 @@ class PetMiniCard extends PetCard {
         value = this._t(low ? "low" : "enough");
       }
     } else if (dev.kind === "litter") {
-      const level = num(this._s(e.litter));
-      const binFull = this._s(e.bin_full)?.state === "on";
-      const low = this._s(e.litter_low)?.state === "on";
-      id = binFull ? e.bin_full : e.litter || e.litter_low || e.bin_full;
-      pct = binFull ? 100 : level ?? (known(this._s(e.litter_low)) ? (low ? 15 : 100) : null);
-      value = binFull ? this._t("bin_full") : level !== null ? `${this._t("litter")} ${fmtPct(level, loc)}` : low ? this._t("litter_low") : this._t(st.key);
+      const i = this._litterInfo(dev);
+      const binId = e.waste || e.bin_full;
+      if (i.binFull || i.binNear) {
+        id = binId;
+        pct = i.waste ?? 100;
+        value = this._t(i.binFull ? "bin_full" : "bin_almost_full");
+      } else if (i.level !== null) {
+        id = e.litter;
+        pct = i.level;
+        value = `${this._t("litter")} ${fmtPct(i.level, loc)}`;
+      } else if (i.waste !== null) {
+        id = e.waste;
+        pct = i.waste;
+        value = `${this._t("waste_bin")} ${fmtPct(i.waste, loc)}`;
+      } else {
+        id = e.litter_low || binId || e.vacuum;
+        pct = known(this._s(e.litter_low)) ? (i.low ? 15 : 100) : null;
+        value = i.low ? this._t("litter_low") : this._t(st.key);
+      }
     } else {
       const filter = num(this._s(e.filter));
       const waterLow = this._s(e.water)?.state === "on";
@@ -3606,6 +3946,10 @@ class PetEditorBase extends HTMLElement {
       { name: "title", selector: { text: {} } },
       { type: "grid", name: "", schema: this.constructor.toggles.map(([name]) => ({ name, selector: { boolean: {} } })) },
       {
+        name: "illustration_color",
+        selector: { select: { mode: "dropdown", options: ["auto", "black", "white"].map((value) => ({ value, label: tr(`color_${value}`) })) } },
+      },
+      {
         name: "language",
         selector: { select: { mode: "dropdown", options: [{ value: "", label: tr("lang_auto") }, ...LANG_NAMES.map(([value, label]) => ({ value, label }))] } },
       },
@@ -3625,7 +3969,8 @@ class PetEditorBase extends HTMLElement {
         const defaults = Object.fromEntries(this.constructor.toggles);
         for (const [k, v] of Object.entries(config)) {
           // Keep the YAML minimal: drop empty values and toggles left at their default.
-          if (v === "" || v === undefined || v === null || (Array.isArray(v) && !v.length) || (k in defaults && v === defaults[k])) delete config[k];
+          if (v === "" || v === undefined || v === null || (Array.isArray(v) && !v.length) || (k in defaults && v === defaults[k]) || (k === "illustration_color" && v === "auto"))
+            delete config[k];
         }
         this._config = config;
         this.dispatchEvent(new CustomEvent("config-changed", { detail: { config }, bubbles: true, composed: true }));
@@ -3634,6 +3979,7 @@ class PetEditorBase extends HTMLElement {
     }
     const data = { ...this._config };
     for (const [name, def] of this.constructor.toggles) if (data[name] === undefined) data[name] = def;
+    data.illustration_color ??= "auto";
     this._form.hass = this._hass;
     // hass is pushed on every state change while the editor is open: reassign only what changed.
     const dataKey = JSON.stringify(data);
@@ -3691,8 +4037,8 @@ define("pet-mini-card-editor", PetMiniCardEditor);
 
 window.customCards = window.customCards || [];
 for (const card of [
-  { type: "pet-card", name: "Pet Card", description: "Smart pet devices (PetKit feeders, water fountains and litter boxes): food, water, filter, litter, waste bin, manual feed." },
-  { type: "pet-mini-card", name: "Pet Mini Card", description: "Compact overview of smart pet devices (PetKit feeders, water fountains and litter boxes)." },
+  { type: "pet-card", name: "Pet Card", description: "Smart pet devices (PetKit feeders, water fountains and litter boxes, Litter-Robot): food, water, filter, litter, waste bin, manual feed." },
+  { type: "pet-mini-card", name: "Pet Mini Card", description: "Compact overview of smart pet devices (PetKit feeders, water fountains and litter boxes, Litter-Robot)." },
 ]) {
   if (!window.customCards.some((c) => c.type === card.type))
     window.customCards.push({ ...card, preview: true, documentationURL: "https://github.com/juju35/ha-pet-card" });

@@ -148,3 +148,30 @@ entity("sensor.purificateur_air_purifie", "k2", "air_purified", "120");
 // Entities every device of Jezza34000's integration has: they do not make a feeder, a fountain or a litter box.
 entity("sensor.purificateur_statut", "k2", "device_status", "online_ac");
 entity("sensor.purificateur_erreur", "k2", "error_message", "No error");
+
+// Whisker's Litter-Robot integration (Home Assistant core, `litterrobot` platform): a Litter-Robot 4 and a
+// Litter-Robot 3 Connect. Its Feeder-Robot is left out by the cards.
+const lr = mockRegistry("litterrobot");
+lr.device("lr4", "Laundry Litter-Robot", "Litter-Robot 4");
+lr.entity("vacuum.litter_robot_buanderie", "lr4", "litter_box", "docked");
+lr.entity("sensor.litter_robot_buanderie_statut", "lr4", "status_code", "rdy", { device_class: "enum" });
+lr.entity("sensor.litter_robot_buanderie_tiroir", "lr4", "waste_drawer", "45", { unit_of_measurement: "%" });
+lr.entity("sensor.litter_robot_buanderie_litiere", "lr4", "litter_level", "78", { unit_of_measurement: "%" });
+lr.entity("sensor.litter_robot_buanderie_poids", "lr4", "pet_weight", "4.6", { unit_of_measurement: "kg", device_class: "weight" });
+lr.entity("sensor.litter_robot_buanderie_cycles", "lr4", "total_cycles", "14");
+lr.entity("select.litter_robot_buanderie_veilleuse", "lr4", "globe_light", "auto", { options: ["off", "on", "auto"] });
+lr.entity("binary_sensor.litter_robot_buanderie_sommeil", "lr4", "sleeping", "off");
+lr.entity("button.litter_robot_buanderie_reinit", "lr4", "reset", "unknown");
+lr.device("lr3", "Garage Litter-Robot", "Litter-Robot 3 Connect");
+lr.entity("vacuum.litter_robot_garage", "lr3", "litter_box", "docked");
+lr.entity("sensor.litter_robot_garage_statut", "lr3", "status_code", "rdy", { device_class: "enum" });
+lr.entity("sensor.litter_robot_garage_tiroir", "lr3", "waste_drawer", "60", { unit_of_measurement: "%" });
+lr.entity("sensor.litter_robot_garage_cycles", "lr3", "total_cycles", "23");
+lr.entity("switch.litter_robot_garage_veilleuse", "lr3", "night_light_mode", "off");
+lr.entity("button.litter_robot_garage_reinit_tiroir", "lr3", "reset_waste_drawer", "unknown");
+lr.device("feeder_robot", "Feeder-Robot", "Feeder-Robot");
+lr.entity("sensor.feeder_robot_niveau", "feeder_robot", "food_level", "70", { unit_of_measurement: "%" });
+lr.entity("switch.feeder_robot_gravite", "feeder_robot", "gravity_mode", "off");
+Object.assign(states, lr.states);
+Object.assign(entities, lr.entities);
+Object.assign(devices, lr.devices);

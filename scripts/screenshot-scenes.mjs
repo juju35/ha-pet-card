@@ -19,6 +19,7 @@ const lightShots = [
   { file: "card-feed", type: "pet-card", theme: "light", width: 460, config: { devices: pair }, clicks: ['[data-action="feed"]'] },
   { file: "card-feed-gemini", type: "pet-card", theme: "light", width: 460, config: { devices: ["gemini"] }, clicks: ['[data-action="feed"]'] },
   { file: "card-litter", type: "pet-card", theme: "light", width: 460, config: { devices: ["t4", "litter"] } },
+  { file: "card-litter-robot", type: "pet-card", theme: "light", width: 460, config: { devices: ["lr4", "lr3"] } },
   { file: "mini-card", type: "pet-mini-card", theme: "light", width: 380, config: {} },
   { file: "mini-card-zoom", type: "pet-mini-card", theme: "light", width: 460, config: { devices: pair }, clicks: [".zoom"] },
 ];
@@ -105,6 +106,27 @@ const lightGifs = [
       { at: 0.5, states: { "sensor.litiere_sdb_etat": { state: "cleaning" } } },
       { at: 4.6, states: { "sensor.litiere_sdb_etat": { state: "idle" }, "binary_sensor.litiere_sdb_occupee": { state: "on" } } },
       { at: 6.4, states: { "binary_sensor.litiere_sdb_occupee": { state: "off" } } },
+    ],
+  },
+  {
+    file: "card-litter-robot-cycle",
+    type: "pet-card",
+    theme: "light",
+    width: 460,
+    config: { devices: ["lr4"], show_stats: false },
+    seconds: 7,
+    events: [
+      { at: 0.5, states: { "sensor.litter_robot_buanderie_statut": { state: "ccp" }, "vacuum.litter_robot_buanderie": { state: "cleaning" } } },
+      {
+        at: 4.7,
+        states: {
+          "sensor.litter_robot_buanderie_statut": { state: "cd" },
+          "vacuum.litter_robot_buanderie": { state: "docked" },
+          "sensor.litter_robot_buanderie_tiroir": { state: "52" },
+          "select.litter_robot_buanderie_veilleuse": { state: "on" },
+        },
+      },
+      { at: 6.3, states: { "sensor.litter_robot_buanderie_statut": { state: "rdy" } } },
     ],
   },
 ];
