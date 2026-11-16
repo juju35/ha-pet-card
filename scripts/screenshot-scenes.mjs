@@ -129,5 +129,69 @@ const lightGifs = [
       { at: 6.3, states: { "sensor.litter_robot_buanderie_statut": { state: "rdy" } } },
     ],
   },
+  // The Litter-Robot 3 Connect's own drawing: its round globe turns through a clean cycle, the waste drawer fills up
+  // (the gauge turns red, the drawer blinks), then the night light comes on.
+  {
+    file: "card-litter-robot-lr3-cycle",
+    type: "pet-card",
+    theme: "light",
+    width: 460,
+    config: { devices: ["lr3"], show_stats: false },
+    seconds: 7,
+    events: [
+      { at: 0.5, states: { "sensor.litter_robot_garage_statut": { state: "ccp" }, "vacuum.litter_robot_garage": { state: "cleaning" } } },
+      {
+        at: 4.6,
+        states: {
+          "sensor.litter_robot_garage_statut": { state: "dfs" },
+          "vacuum.litter_robot_garage": { state: "docked" },
+          "sensor.litter_robot_garage_tiroir": { state: "100" },
+        },
+      },
+      { at: 5.8, states: { "switch.litter_robot_garage_veilleuse": { state: "on" } } },
+    ],
+  },
+  // A litter box needing care: its waste bin fills up (it blinks), the litter runs low, then both are dealt with.
+  {
+    file: "card-litter-full",
+    type: "pet-card",
+    theme: "light",
+    width: 460,
+    config: { devices: ["litter"], show_stats: false },
+    seconds: 5,
+    events: [
+      { at: 0.6, states: { "binary_sensor.litiere_bac_plein": { state: "on" } } },
+      { at: 2.0, states: { "sensor.litiere_niveau": { state: "15" }, "binary_sensor.litiere_manque": { state: "on" } } },
+      {
+        at: 3.8,
+        states: {
+          "binary_sensor.litiere_bac_plein": { state: "off" },
+          "sensor.litiere_niveau": { state: "80" },
+          "binary_sensor.litiere_manque": { state: "off" },
+        },
+      },
+    ],
+  },
+  // A dual-hopper feeder running low: each hopper's window blinks in turn, then both are refilled.
+  {
+    file: "card-feeder-low",
+    type: "pet-card",
+    theme: "light",
+    width: 460,
+    config: { devices: ["gemini"], show_stats: false, show_controls: false },
+    states: { "binary_sensor.distributeur_double_reservoir_2": { state: "off" } },
+    seconds: 5,
+    events: [
+      { at: 0.6, states: { "binary_sensor.distributeur_double_reservoir_1": { state: "on" } } },
+      { at: 2.0, states: { "binary_sensor.distributeur_double_reservoir_2": { state: "on" } } },
+      {
+        at: 3.8,
+        states: {
+          "binary_sensor.distributeur_double_reservoir_1": { state: "off" },
+          "binary_sensor.distributeur_double_reservoir_2": { state: "off" },
+        },
+      },
+    ],
+  },
 ];
 export const gifs = withDarkTwins(lightGifs);
