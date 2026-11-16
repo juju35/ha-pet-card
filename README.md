@@ -280,6 +280,30 @@ A Litter-Robot 4: its globe turns through a clean cycle, the drawer gauge rises,
 |---|---|
 | <img src="https://raw.githubusercontent.com/juju35/ha-pet-card/main/screenshots/card-litter-robot-cycle.gif" alt="Litter-Robot cycle animation" width="400"> | <img src="https://raw.githubusercontent.com/juju35/ha-pet-card/main/screenshots/card-litter-robot-cycle-dark.gif" alt="Litter-Robot cycle animation dark" width="400"> |
 
+A cat in the litter box: it comes in (the LED turns orange), blinks and twitches an ear, then leaves:
+
+| Light | Dark |
+|---|---|
+| <img src="https://raw.githubusercontent.com/juju35/ha-pet-card/main/screenshots/card-litter-cat.gif" alt="cat in the litter box animation" width="400"> | <img src="https://raw.githubusercontent.com/juju35/ha-pet-card/main/screenshots/card-litter-cat-dark.gif" alt="cat in the litter box animation dark" width="400"> |
+
+A Litter-Robot 3 Connect: its round globe turns through a clean cycle, the waste drawer fills up (the gauge turns red and the drawer blinks), then the night light comes on:
+
+| Light | Dark |
+|---|---|
+| <img src="https://raw.githubusercontent.com/juju35/ha-pet-card/main/screenshots/card-litter-robot-lr3-cycle.gif" alt="Litter-Robot 3 Connect cycle animation" width="400"> | <img src="https://raw.githubusercontent.com/juju35/ha-pet-card/main/screenshots/card-litter-robot-lr3-cycle-dark.gif" alt="Litter-Robot 3 Connect cycle animation dark" width="400"> |
+
+A litter box needing care: the waste bin fills up and blinks, the litter runs low, then both are dealt with:
+
+| Light | Dark |
+|---|---|
+| <img src="https://raw.githubusercontent.com/juju35/ha-pet-card/main/screenshots/card-litter-full.gif" alt="litter box full waste bin animation" width="400"> | <img src="https://raw.githubusercontent.com/juju35/ha-pet-card/main/screenshots/card-litter-full-dark.gif" alt="litter box full waste bin animation dark" width="400"> |
+
+A dual-hopper feeder running low: each hopper's window blinks in turn, then both are refilled:
+
+| Light | Dark |
+|---|---|
+| <img src="https://raw.githubusercontent.com/juju35/ha-pet-card/main/screenshots/card-feeder-low.gif" alt="feeder low hopper animation" width="400"> | <img src="https://raw.githubusercontent.com/juju35/ha-pet-card/main/screenshots/card-feeder-low-dark.gif" alt="feeder low hopper animation dark" width="400"> |
+
 The feed popup: an amount is picked, then the popup is cancelled.
 
 | Light | Dark |
