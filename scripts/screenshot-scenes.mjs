@@ -129,6 +129,19 @@ const lightGifs = [
       { at: 6.3, states: { "sensor.litter_robot_buanderie_statut": { state: "rdy" } } },
     ],
   },
+  // A cat in the litter box: it comes in (the LED turns orange), blinks and twitches an ear, then leaves.
+  {
+    file: "card-litter-cat",
+    type: "pet-card",
+    theme: "light",
+    width: 460,
+    config: { devices: ["t4"], show_stats: false },
+    seconds: 6,
+    events: [
+      { at: 0.6, states: { "binary_sensor.litiere_sdb_occupee": { state: "on" } } },
+      { at: 5.0, states: { "binary_sensor.litiere_sdb_occupee": { state: "off" } } },
+    ],
+  },
   // The Litter-Robot 3 Connect's own drawing: its round globe turns through a clean cycle, the waste drawer fills up
   // (the gauge turns red, the drawer blinks), then the night light comes on.
   {

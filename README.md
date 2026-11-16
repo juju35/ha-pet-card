@@ -280,6 +280,12 @@ A Litter-Robot 4: its globe turns through a clean cycle, the drawer gauge rises,
 |---|---|
 | <img src="https://raw.githubusercontent.com/juju35/ha-pet-card/main/screenshots/card-litter-robot-cycle.gif" alt="Litter-Robot cycle animation" width="400"> | <img src="https://raw.githubusercontent.com/juju35/ha-pet-card/main/screenshots/card-litter-robot-cycle-dark.gif" alt="Litter-Robot cycle animation dark" width="400"> |
 
+A cat in the litter box: it comes in (the LED turns orange), blinks and twitches an ear, then leaves:
+
+| Light | Dark |
+|---|---|
+| <img src="https://raw.githubusercontent.com/juju35/ha-pet-card/main/screenshots/card-litter-cat.gif" alt="cat in the litter box animation" width="400"> | <img src="https://raw.githubusercontent.com/juju35/ha-pet-card/main/screenshots/card-litter-cat-dark.gif" alt="cat in the litter box animation dark" width="400"> |
+
 A Litter-Robot 3 Connect: its round globe turns through a clean cycle, the waste drawer fills up (the gauge turns red and the drawer blinks), then the night light comes on:
 
 | Light | Dark |
