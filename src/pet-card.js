@@ -2893,7 +2893,7 @@ const BASE_STYLE = `
   :host { --pc-accent: #ef8f3a; --pc-ok: var(--success-color, #43a047); --pc-warn: var(--warning-color, #ffa600);
           --pc-crit: var(--error-color, #db4437); --pc-idle: var(--disabled-text-color, #9e9e9e); --pc-water: #2f8fd8; }
   :host { display: block; }
-  ha-card { overflow: hidden; container-type: inline-size; }
+  ha-card { overflow: hidden; container-type: inline-size; container-name: pc-card; }
   /* A size container has no content width: this empty grid gives the card a natural width of 300 px with no
      minimum, so it still shrinks to its track in a grid or a flex row (as in the other ha-* cards). */
   :host::before { content: ""; display: grid; grid-template-columns: minmax(0, 300px); height: 0; }
@@ -2915,6 +2915,10 @@ const BASE_STYLE = `
   .logo { position: relative; height: 40px; width: 40px; flex: none; border-radius: 50%; display: grid; place-items: center;
           color: var(--c, var(--pc-accent)); background: color-mix(in srgb, var(--c, var(--pc-accent)) 16%, transparent); }
   .logo .icon { width: 24px; height: 24px; }
+  /* Brand badge on the icon: the logo on a white tile, readable on any theme (both headers). */
+  .badge { position: absolute; right: -4px; bottom: -4px; width: 18px; height: 18px; border-radius: 5px; padding: 2px; box-sizing: border-box;
+           display: grid; place-items: center; background: #fff; box-shadow: 0 0 0 1px rgba(13,42,69,.16), 0 1px 3px rgba(13,42,69,.18); }
+  .badge img { width: 100%; height: 100%; object-fit: contain; }
   .titles { flex: 1 1 0; min-width: 5ch; }
   :host([hide-title]) .titles > .name, :host([hide-subtitle]) .titles > .sub { display: none; }
   .header > .chip { flex: 0 1 auto; }
@@ -2933,6 +2937,9 @@ const BASE_STYLE = `
   .zoom .icon { width: 16px; height: 16px; }
   .zoom:hover { background: color-mix(in srgb, var(--secondary-text-color) 16%, transparent); color: var(--primary-text-color); }
   .zoom:focus-visible { outline: 2px solid var(--primary-color, #03a9f4); outline-offset: 1px; }
+  /* Classic header: the detail button in the card's top right corner, out of the title row. */
+  .header:has(> .zoom) { position: relative; padding-right: 44px; }
+  .header > .zoom { position: absolute; top: 12px; right: 12px; margin: 0; box-shadow: inset 0 0 0 1px var(--divider-color, rgba(127,127,127,.3)); }
   /* Outlined buttons only (no filled button in the ha-* cards): the accent colour names the action. */
   .act { all: unset; box-sizing: border-box; display: inline-flex; align-items: center; justify-content: center; gap: 4px; cursor: pointer;
          height: 28px; padding: 0 10px; border-radius: 14px; font-size: 12px; font-weight: 500; white-space: nowrap;
@@ -3402,12 +3409,14 @@ class PetBase extends HTMLElement {
       </div>`;
     const night = isNight(this._hass, c);
     const items = devices.map((d) => this._artSpec(d, this._status(d)));
-    // On the banner the chip only shows what needs a look (the illustration shows the rest).
-    const chip = all.cls === "ok" ? "" : this._chip(all.cls, this._t(all.key));
+    // The status pill right after the title, in the header icon's colour.
+    const chip = this._chip(this._iconCls(devices) || "accent", this._t(all.key));
     return `
       <div class="banner${night ? " night" : ""}">
         ${bannerSvg(items, night, this._uid, this._zoomButton() ? 168 : 192)}<div class="ground"></div>
-        <div class="htext">${icon}${titles}${chip}</div></div>
+        <div class="htext">${icon}<div class="titles">
+          <div class="trow"><div class="name">${esc(c.title || this._t("title"))}</div>${chip}</div>
+          ${sub ? `<div class="sub">${esc(sub)}</div>` : ""}</div></div>
         ${this._zoomButton()}
       </div>`;
   }
@@ -3606,32 +3615,57 @@ class PetBase extends HTMLElement {
 
 // The illustrated header (illustration: false keeps the classic one).
 const BANNER_STYLE = `
-  .banner { position: relative; overflow: hidden; height: 90px; --g: 10px; color: #0d2a45; background: #f6efe6; }
+  /* The corner takes at most 200 px or 58 % of the banner, and narrows on a small card to leave the title its pill. */
+  .banner { position: relative; overflow: hidden; height: 90px; --g: 10px; color: #0d2a45; background: #f6efe6;
+            --scene-w: min(200px, 58%, max(100% - 190px, 40%)); }
   .banner.night { color: #fff; background: #2c2a36; }
-  .banner .scene { position: absolute; right: 0; bottom: var(--g); height: calc(100% - var(--g)); width: min(200px, 58%);
+  .banner .scene { position: absolute; right: 0; bottom: var(--g); height: calc(100% - var(--g)); width: var(--scene-w);
                    -webkit-mask-image: linear-gradient(90deg, transparent 0, #000 14%); mask-image: linear-gradient(90deg, transparent 0, #000 14%); }
   .banner .pb-tail { transform-box: fill-box; transform-origin: 100% 100%; animation: pb-swing 2s ease-in-out infinite; }
   .banner .ground { position: absolute; left: 0; right: 0; bottom: 0; height: var(--g);
                     background: repeating-linear-gradient(90deg, #c99a6b 0 38px, #b98a5c 38px 40px); box-shadow: inset 0 2px 0 #a97c50; }
   .banner.night .ground { background: repeating-linear-gradient(90deg, #4a3a2c 0 38px, #3e3024 38px 40px); box-shadow: inset 0 2px 0 #3a2c20; }
-  .banner .htext { position: absolute; z-index: 1; left: 0; top: 0; bottom: var(--g); right: min(200px, 58%);
+  .banner .htext { position: absolute; z-index: 1; left: 0; top: 0; bottom: var(--g); right: var(--scene-w);
                    display: flex; align-items: center; gap: 10px; padding: 6px 4px 6px 14px; min-width: 0; }
-  :host([mini]) .banner .htext { right: calc(min(200px, 58%) - 8px); }
+  :host([mini]) .banner .htext { right: calc(var(--scene-w) - 8px); }
   /* The round icon on a white disc, in the status colour (accent, grey when idle or off, amber, red). */
   .banner .logo { position: relative; background: rgba(255,255,255,.72); box-shadow: inset 0 0 0 1px color-mix(in srgb, var(--c, var(--pc-accent)) 28%, transparent); }
   .banner.night .logo { background: rgba(255,255,255,.12); box-shadow: inset 0 0 0 1px rgba(255,255,255,.14); }
   .banner .titles { display: flex; flex-direction: column; gap: 1px; align-self: center !important; }
   .banner .sub { color: #3b5b78; font-size: 13px; }
   .banner.night .sub { color: rgba(255,255,255,.78); }
-  .banner .chip { align-self: flex-start; margin-top: 3px; background: rgba(255,255,255,.75); }
-  .banner.night .chip { background: rgba(10,20,40,.45); color: color-mix(in srgb, var(--c) 55%, #fff); }
-  .banner .zoom { position: absolute; z-index: 2; top: 6px; right: 6px; margin: 0; color: #0d2a45; background: rgba(255,255,255,.6); }
-  .banner.night .zoom { color: #fff; background: rgba(10,20,40,.45); }
+  /* Title row: the name, then the status pill right after it (the name gives way first, down to four characters).
+     When the row is too narrow for both, the pill takes a line of its own under the subtitle; on the narrowest
+     cards only its dot stays (its label in its title). */
+  .banner .titles { flex: 1 1 0; min-width: 0; container: pc-titles / inline-size; overflow: visible; }
+  .banner .trow { display: flex; align-items: center; gap: 8px; min-width: 0; }
+  .banner .trow > .name { flex: 0 1 auto; min-width: 4ch; }
+  .banner .chip.accent { --c: var(--pc-accent); }
+  .banner .chip { flex: none; max-width: 51%; color: color-mix(in srgb, var(--c) 45%, #0d2a45);
+                  background: color-mix(in srgb, var(--c) 18%, rgba(255,255,255,.78)); }
+  .banner.night .chip { color: color-mix(in srgb, var(--c) 35%, #ffffff); background: color-mix(in srgb, var(--c) 30%, rgba(8,18,38,.55)); }
+  .banner .chip .dot { width: 7px; height: 7px; background: var(--c); }
+  @container pc-titles (max-width: 190px) {
+    .banner .trow { display: contents; }
+    .banner .titles > .sub { order: 1; }
+    .banner .trow > .chip { order: 2; align-self: flex-start; max-width: none; margin-top: 2px; }
+  }
+  @container pc-card (max-width: 260px) {
+    .banner .trow { display: contents; }
+    .banner .titles > .sub { order: 1; }
+    .banner .trow > .chip { order: 2; align-self: flex-start; max-width: none; margin-top: 2px; }
+  }
+  @container pc-card (max-width: 200px) {
+    .banner .chip { padding: 0; width: 16px; height: 16px; justify-content: center; }
+    .banner .chip .chip-label { display: none; }
+  }
+  /* Detail button (mini card): a small frosted round button in the banner's top right corner. */
+  .banner .zoom { position: absolute; z-index: 2; top: 5px; right: 5px; margin: 0; width: 24px; height: 24px; color: #33506b;
+                  background: rgba(255,255,255,.55); box-shadow: inset 0 0 0 1px rgba(255,255,255,.7); backdrop-filter: blur(4px); }
+  .banner.night .zoom { color: #fff; background: rgba(255,255,255,.12); box-shadow: inset 0 0 0 1px rgba(255,255,255,.2); }
+  .banner .zoom:hover { background: rgba(255,255,255,.75); color: #33506b; }
+  .banner.night .zoom:hover { background: rgba(255,255,255,.22); color: #fff; }
   @container (max-width: 219px) { .banner .scene { display: none; } .banner .htext { right: 30px; } }
-  /* Brand badge on the icon: the logo on a white tile, readable on any theme. */
-  .badge { position: absolute; right: -4px; bottom: -4px; width: 18px; height: 18px; border-radius: 5px; padding: 2px; box-sizing: border-box;
-           display: grid; place-items: center; background: #fff; box-shadow: 0 0 0 1px rgba(13,42,69,.16), 0 1px 3px rgba(13,42,69,.18); }
-  .badge img { width: 100%; height: 100%; object-fit: contain; }
   @keyframes pb-swing { 0%, 100% { transform: rotate(-14deg); } 50% { transform: rotate(14deg); } }
 `;
 
