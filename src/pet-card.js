@@ -2921,7 +2921,7 @@ const BASE_STYLE = `
            display: grid; place-items: center; background: #fff; box-shadow: 0 0 0 1px rgba(13,42,69,.16), 0 1px 3px rgba(13,42,69,.18); }
   .badge img { width: 100%; height: 100%; object-fit: contain; }
   .titles { flex: 1 1 0; min-width: 5ch; }
-  :host([hide-title]) .titles > .name, :host([hide-subtitle]) .titles > .sub { display: none; }
+  :host([hide-title]) .titles .name, :host([hide-subtitle]) .titles > .sub { display: none; }
   /* Title row (both headers): the name, then the status pill right after it, only when the whole name and the whole
      label fit there (measured by the card, see _fitPill); else the pill takes a line of its own under the subtitle,
      and when even that does not fit, only its dot stays (its label in its title). */
