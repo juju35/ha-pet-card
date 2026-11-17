@@ -524,9 +524,9 @@ test("illustrations: one per device with its own ids, none with show_illustratio
   assert.equal((html.match(/<div class="art /g) || []).length, 9);
   const clips = [...html.matchAll(/<clipPath id="([^"]+)"/g)].map((m) => m[1]);
   assert.equal(new Set(clips).size, clips.length);
-  assert.ok(!card(PetCard, { show_illustration: false })._render().includes('class="art '));
+  assert.ok(!card(PetCard, { show_illustration: false })._render().includes('<div class="art '));
   // The mini card only draws them in its detail view.
-  assert.ok(!card(PetMiniCard)._render().includes('class="art '));
+  assert.ok(!card(PetMiniCard)._render().includes('<div class="art '));
   // Two hoppers on the Gemini and the YumShare, one on the Solo; a camera on the YumShare.
   const dual = (key) => (html.slice(html.indexOf(`data-key="${key}"`)).split('<div class="dev"')[0].match(/class="win/g) || []).length;
   assert.equal(dual("gemini"), 2);
@@ -656,4 +656,47 @@ test("editor: the Litter-Robot colour picker", () => {
   const color = schema.find((f) => f.name === "illustration_color");
   assert.deepEqual(plain(color.selector.select.options.map((o) => o.value)), ["auto", "black", "white"]);
   assert.equal(color.selector.select.options[1].label, "Black");
+});
+
+test("illustrated header: banner with the devices, night mode, classic header and unique ids", () => {
+  const html = card(PetCard, { devices: ["solo", "fountain"] })._render();
+  assert.ok(html.includes('class="banner'));
+  assert.equal((html.match(/<g class="art /g) || []).length, 2);
+  assert.ok(html.includes('class="ground"'));
+  // Day unless forced to night (no sun.sun, no dark mode in the mock).
+  assert.ok(!/class="banner night/.test(html));
+  assert.ok(/class="banner night/.test(card(PetCard, { illustration_theme: "night" })._render()));
+  const dark = card(PetCard);
+  dark.hass = { ...dark.hass, themes: { darkMode: true } };
+  assert.ok(/class="banner night/.test(dark._render()));
+  const sun = card(PetCard, {}, { "sun.sun": { state: "above_horizon" } });
+  sun.hass = { ...sun.hass, themes: { darkMode: true } };
+  // The dark theme gives the night picture even while the sun is up; a light theme with the sun up keeps the day.
+  assert.ok(/class="banner night/.test(sun._render()));
+  const light = card(PetCard, {}, { "sun.sun": { state: "above_horizon" } });
+  light.hass = { ...light.hass, themes: { darkMode: false } };
+  assert.ok(!/class="banner night/.test(light._render()));
+  const forcedDay = card(PetCard, { illustration_theme: "day" }, { "sun.sun": { state: "above_horizon" } });
+  forcedDay.hass = { ...forcedDay.hass, themes: { darkMode: true } };
+  assert.ok(!/class="banner night/.test(forcedDay._render()));
+  assert.ok(!/class="banner night/.test(card(PetCard, { illustration_theme: "day" }, { "sun.sun": { state: "below_horizon" } })._render()));
+  // illustration: false keeps the classic header.
+  const classic = card(PetCard, { illustration: false })._render();
+  assert.ok(!classic.includes('class="banner') && classic.includes('class="header"'));
+  // The mini card has the banner too, at most three devices in it.
+  const mini = card(PetMiniCard)._render();
+  assert.ok(mini.includes('class="banner'));
+  assert.ok((mini.match(/<g class="art /g) || []).length <= 3);
+  // Ids stay unique in the card and across two cards.
+  const two = card(PetCard)._render() + card(PetCard)._render();
+  const ids = [...two.matchAll(/ id="([^"]+)"/g)].map((m) => m[1]);
+  assert.equal(new Set(ids).size, ids.length);
+});
+
+test("illustrated header: the icon colour follows the status", () => {
+  const icon = (c) => c._render().match(/<div class="logo([^"]*)"/)[1].trim();
+  assert.equal(icon(card(PetCard, { devices: ["fountain"] })), "");
+  assert.equal(icon(card(PetCard, { devices: ["fountain"] }, { "binary_sensor.fontaine_salon_niveau_eau": { state: "on" } })), "warn");
+  const off = Object.fromEntries(Object.keys(card(PetCard).hass.states).map((id) => [id, { state: "unavailable" }]));
+  assert.equal(icon(card(PetCard, {}, off)), "idle");
 });

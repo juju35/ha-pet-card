@@ -1,5 +1,17 @@
 # Changelog
 
+## 1.3.0 - 2026-11-17
+
+### Features
+- **Illustrated header** on both cards (90 px): the devices (up to three, with their own drawings and animations) stand in a pet corner (window with a cat on its sill, paw prints, a pink bowl left of them) over an edge-to-edge parquet strip, the title on the left. Night picture with `sun.sun` below the horizon or in dark mode, forced with the new `illustration_theme` option (`auto`, `day`, `night`); `illustration: false` keeps the classic header. Both options are in the visual editors.
+- The header's round icon always takes the status colour: the accent while the devices work, grey when they are all idle, off or unavailable, orange with a warning, red with an error; PetKit devices get the PetKit badge on it.
+- **Status pill back on the illustrated header**, always shown (all good included): in the header icon's colour, right after the title only when the whole title and its whole label fit there (the title is never cut for it), else on a line of its own under the subtitle (kept to one line); when even that does not fit in the header, and on cards 200 px wide or less, only its dot stays (the status in its tooltip). Measured on the rendered header, so it holds in every language, in both headers. The mini card's detail button is a small frosted round button in the banner's top right corner (in the card's corner with the classic header).
+
+### Fixes
+- `show_title: false` hides the title again in the illustrated header, where it sits in the title row with the status pill.
+- With `illustration: false`, the PetKit logo badge on the header icon was drawn at full size over the card: it keeps its small tile in both headers.
+- Night picture with the dark theme even while the sun is up (`illustration_theme: auto`): the header is night when `sun.sun` is below the horizon or Home Assistant's theme is dark; `day` / `night` still force it.
+
 ## 1.2.0 - 2026-11-14
 
 ### Features
