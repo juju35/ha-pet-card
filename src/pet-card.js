@@ -2922,15 +2922,24 @@ const BASE_STYLE = `
   .badge img { width: 100%; height: 100%; object-fit: contain; }
   .titles { flex: 1 1 0; min-width: 5ch; }
   :host([hide-title]) .titles > .name, :host([hide-subtitle]) .titles > .sub { display: none; }
-  .header > .chip { flex: 0 1 auto; }
-  .header:has(.sub) .titles { align-self: flex-start; }
-  .header:has(.sub) > .chip { align-self: flex-start; margin-top: 1px; }
+  /* Title row (both headers): the name, then the status pill right after it, only when the whole name and the whole
+     label fit there (measured by the card, see _fitPill); else the pill takes a line of its own under the subtitle,
+     and when even that does not fit, only its dot stays (its label in its title). */
+  .trow { display: flex; align-items: center; gap: 8px; min-width: 0; }
+  .trow > .name { flex: 0 1 auto; min-width: 4ch; }
+  .trow > .chip { flex: none; max-width: none; }
+  .titles.below { display: flex; flex-direction: column; }
+  .titles.below .trow { display: contents; }
+  .titles.below > .sub { order: 1; }
+  .titles.below .trow > .chip { order: 2; align-self: flex-start; max-width: 100%; margin-top: 2px; }
+  .titles.dot-only .chip { padding: 0; width: 16px; height: 16px; justify-content: center; }
+  .titles.dot-only .chip .chip-label { display: none; }
   .name { font-size: 16px; font-weight: 500; line-height: 1.25; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
   .sub { font-size: 12px; color: var(--secondary-text-color); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
-  @container (max-width: 239px) {
-    .header { gap: 6px; }
-    .header > .chip { flex: none; padding: 6px; }
-    .header > .chip .chip-label { display: none; }
+  @container (max-width: 239px) { .header { gap: 6px; } }
+  @container (max-width: 200px) {
+    .trow > .chip { padding: 0; width: 16px; height: 16px; justify-content: center; }
+    .trow > .chip .chip-label { display: none; }
   }
   .warning { padding: 16px; color: var(--pc-warn); }
   .zoom { all: unset; flex: none; cursor: pointer; width: 24px; height: 24px; margin: -4px;
@@ -3077,6 +3086,18 @@ class PetBase extends HTMLElement {
       this._closeDialog(false);
     };
     (this._onOutsideWatch ??= watchOutside(this, (ev) => this._onOutside(ev))).on();
+    // A new width (or the web font loaded): the status pill is fitted again, in the next frame.
+    if (typeof ResizeObserver === "function") {
+      this._resize ??= new ResizeObserver((entries) => {
+        const w = Math.round(entries.at(-1).contentRect.width);
+        if (w === this._fitWidth) return;
+        this._fitWidth = w;
+        cancelAnimationFrame(this._fitFrame);
+        this._fitFrame = requestAnimationFrame(() => this._fitPill());
+      });
+      this._resize.observe(this);
+    }
+    document.fonts?.ready?.then(() => this._fitPill());
     // Back on the page after leaving it: rendered again in its default state.
     this._update?.();
     if (this._dialog) window.addEventListener("keydown", this._onKey);
@@ -3086,6 +3107,8 @@ class PetBase extends HTMLElement {
 
   disconnectedCallback() {
     this._onOutsideWatch?.off();
+    this._resize?.disconnect();
+    this._fitWidth = null;
     // Left (another dashboard view, a conditional card hidden): back to the default state, so that the card does
     // not come back unfolded or with its popup open.
     this._dialog = null;
@@ -3133,6 +3156,48 @@ class PetBase extends HTMLElement {
     if (html !== this._html) {
       this._html = html;
       morph(this.shadowRoot, html);
+    }
+    this._fitPill();
+  }
+
+  // The status pill goes right after the title only when the whole title and the whole label fit there; otherwise it
+  // takes a line of its own under the subtitle (.below, the subtitle kept to one line, its whole text in its tooltip).
+  // When the label does not fit that line either, or the banner has no room for the lines above its ground strip, the
+  // pill keeps its dot only (.dot-only, back beside the title when the dot fits there). Measured after render, so that
+  // it holds in every language.
+  _fitPill() {
+    const root = this.shadowRoot;
+    if (!root?.querySelectorAll || typeof getComputedStyle !== "function") return;
+    for (const t of root.querySelectorAll(".titles")) {
+      const chip = t.querySelector(".trow > .chip");
+      t.classList.remove("below", "dot-only");
+      if (!chip?.getClientRects().length) continue;
+      const row = chip.parentElement;
+      const name = row.querySelector(".name");
+      const fits = () => {
+        let title = 0;
+        if (name && getComputedStyle(name).display !== "none") {
+          const range = document.createRange();
+          range.selectNodeContents(name);
+          const cs = getComputedStyle(name);
+          title = Math.max(name.scrollWidth, range.getBoundingClientRect().width) + (parseFloat(cs.marginLeft) || 0) + (parseFloat(cs.marginRight) || 0) +
+            (parseFloat(getComputedStyle(row).columnGap) || 0);
+        }
+        return title + chip.getBoundingClientRect().width <= row.getBoundingClientRect().width + 0.5;
+      };
+      if (fits()) continue;
+      t.classList.add("below");
+      for (const sub of t.querySelectorAll(".sub")) sub.title = sub.scrollWidth > sub.clientWidth ? sub.textContent.trim() : "";
+      const text = chip.querySelector(".chip-label");
+      const banner = t.closest(".banner");
+      const tb = t.getBoundingClientRect();
+      const bb = banner?.getBoundingClientRect();
+      const ground = banner ? parseFloat(getComputedStyle(banner).getPropertyValue("--g")) || 0 : 0;
+      const tall = !!bb && (tb.top < bb.top - 0.5 || tb.bottom > bb.bottom - ground + 0.5);
+      if (!tall && !(text && text.scrollWidth > text.clientWidth + 0.5)) continue;
+      t.classList.add("dot-only");
+      t.classList.remove("below");
+      if (!fits()) t.classList.add("below");
     }
   }
 
@@ -3396,16 +3461,14 @@ class PetBase extends HTMLElement {
     const all = this._overall(devices);
     const sub = devices.map((d) => d.name).join(" · ");
     const icon = `<div class="logo ${this._iconCls(devices)}" title="${esc(PLATFORMS[devices[0].platform].name)}">${svgIcon(ICONS.paw)}${this._badge(devices)}</div>`;
-    const titles = `<div class="titles">
-          <div class="name">${esc(c.title || this._t("title"))}</div>
-          ${sub ? `<div class="sub">${esc(sub)}</div>` : ""}`;
     if (c.illustration === false)
       return `
       <div class="header">
         ${icon}
-        ${titles}
+        <div class="titles">
+          <div class="trow"><div class="name">${esc(c.title || this._t("title"))}</div>${this._chip(all.cls, this._t(all.key))}</div>
+          ${sub ? `<div class="sub">${esc(sub)}</div>` : ""}
         </div>
-        ${this._chip(all.cls, this._t(all.key))}
         ${this._zoomButton()}
       </div>`;
     const night = isNight(this._hass, c);
@@ -3635,31 +3698,11 @@ const BANNER_STYLE = `
   .banner .titles { display: flex; flex-direction: column; gap: 1px; align-self: center !important; }
   .banner .sub { color: #3b5b78; font-size: 13px; }
   .banner.night .sub { color: rgba(255,255,255,.78); }
-  /* Title row: the name, then the status pill right after it (the name gives way first, down to four characters).
-     When the row is too narrow for both, the pill takes a line of its own under the subtitle; on the narrowest
-     cards only its dot stays (its label in its title). */
-  .banner .titles { flex: 1 1 0; min-width: 0; container: pc-titles / inline-size; overflow: visible; }
-  .banner .trow { display: flex; align-items: center; gap: 8px; min-width: 0; }
-  .banner .trow > .name { flex: 0 1 auto; min-width: 4ch; }
+  .banner .titles { flex: 1 1 0; min-width: 0; overflow: visible; }
   .banner .chip.accent { --c: var(--pc-accent); }
-  .banner .chip { flex: none; max-width: 51%; color: color-mix(in srgb, var(--c) 45%, #0d2a45);
-                  background: color-mix(in srgb, var(--c) 18%, rgba(255,255,255,.78)); }
+  .banner .chip { color: color-mix(in srgb, var(--c) 45%, #0d2a45); background: color-mix(in srgb, var(--c) 18%, rgba(255,255,255,.78)); }
   .banner.night .chip { color: color-mix(in srgb, var(--c) 35%, #ffffff); background: color-mix(in srgb, var(--c) 30%, rgba(8,18,38,.55)); }
   .banner .chip .dot { width: 7px; height: 7px; background: var(--c); }
-  @container pc-titles (max-width: 190px) {
-    .banner .trow { display: contents; }
-    .banner .titles > .sub { order: 1; }
-    .banner .trow > .chip { order: 2; align-self: flex-start; max-width: none; margin-top: 2px; }
-  }
-  @container pc-card (max-width: 260px) {
-    .banner .trow { display: contents; }
-    .banner .titles > .sub { order: 1; }
-    .banner .trow > .chip { order: 2; align-self: flex-start; max-width: none; margin-top: 2px; }
-  }
-  @container pc-card (max-width: 200px) {
-    .banner .chip { padding: 0; width: 16px; height: 16px; justify-content: center; }
-    .banner .chip .chip-label { display: none; }
-  }
   /* Detail button (mini card): a small frosted round button in the banner's top right corner. */
   .banner .zoom { position: absolute; z-index: 2; top: 5px; right: 5px; margin: 0; width: 24px; height: 24px; color: #33506b;
                   background: rgba(255,255,255,.55); box-shadow: inset 0 0 0 1px rgba(255,255,255,.7); backdrop-filter: blur(4px); }
