@@ -37,7 +37,7 @@ Entities are **discovered automatically**, you don't have to pick them one by on
 ## Features
 
 - Two cards: a full **Pet Card** and a compact **Pet Mini Card**
-- **Illustrated header** (both cards): the devices stand in a pet corner (window with a cat on its sill, pink bowl, parquet floor) with their own animations, day or night (follows `sun.sun`, else the dark mode; `illustration_theme` forces it); the round icon takes the status colour (accent, grey when idle or off, orange, red) and carries the PetKit badge
+- **Illustrated header** (both cards): the devices stand in a pet corner (window with a cat on its sill, pink bowl, parquet floor) with their own animations, day or night (night after sunset or in dark mode, even with the sun up; `illustration_theme` forces it); the round icon takes the status colour (accent, grey when idle or off, orange, red) and carries the PetKit badge
 - Automatic discovery of the PetKit feeders, water fountains and litter boxes and of the Litter-Robots (all of them by default, or the ones you pick)
 - **Animated illustration** of each device next to its levels: kibbles fall into the bowl while a feeder dispenses, the fountain's water flows while its pump runs, the litter box's drum turns while it cleans and a cat peeks out while one is inside; the hoppers, the tank and the litter show their level, a full waste bin or a low hopper blinks and the LED takes the status colour (one or two hoppers, a camera, from the model; a Litter-Robot gets its own drawing, LR4 / LR5 in black or white or LR3 Connect, with its waste drawer gauge and its night light)
 - Feeders: food level (or each hopper of a dual-hopper feeder), status, errors, food dispensed today against the planned amount, meals today and the time of the last one, amount eaten and food left in the bowl when the feeder reports them, desiccant days left, battery level while on batteries
@@ -153,7 +153,7 @@ language: fr
 | `devices` | both | All | Devices to show, in this order: their name (as in Home Assistant) or their device id (set by the visual editor). Feeders first, then fountains, then litter boxes, when left out |
 | `title` | both | `Pets` (translated) | Card title |
 | `illustration` | both | `true` | Illustrated header: the devices (up to three) in a pet corner with their animations; `false` keeps the classic header |
-| `illustration_theme` | both | `auto` | Header picture: `auto` (night when `sun.sun` is below the horizon, else with the dark mode), `day` or `night` |
+| `illustration_theme` | both | `auto` | Header picture: `auto` (night when `sun.sun` is below the horizon or with the dark mode, even with the sun up), `day` or `night` |
 | `show_title` | both | `true` | Show the title in the header (e.g. `false` under a section heading of your own) |
 | `show_subtitle` | both | `true` | Show the subtitle (the devices' names) under the title |
 | `show_stats` | both | `true` | Today's figures: dispensed, meals, eaten, in the bowl, desiccant; purified water and energy for the fountains; uses, last cat, litter weight and deodorizer for the litter boxes |

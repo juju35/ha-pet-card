@@ -671,7 +671,14 @@ test("illustrated header: banner with the devices, night mode, classic header an
   assert.ok(/class="banner night/.test(dark._render()));
   const sun = card(PetCard, {}, { "sun.sun": { state: "above_horizon" } });
   sun.hass = { ...sun.hass, themes: { darkMode: true } };
-  assert.ok(!/class="banner night/.test(sun._render()));
+  // The dark theme gives the night picture even while the sun is up; a light theme with the sun up keeps the day.
+  assert.ok(/class="banner night/.test(sun._render()));
+  const light = card(PetCard, {}, { "sun.sun": { state: "above_horizon" } });
+  light.hass = { ...light.hass, themes: { darkMode: false } };
+  assert.ok(!/class="banner night/.test(light._render()));
+  const forcedDay = card(PetCard, { illustration_theme: "day" }, { "sun.sun": { state: "above_horizon" } });
+  forcedDay.hass = { ...forcedDay.hass, themes: { darkMode: true } };
+  assert.ok(!/class="banner night/.test(forcedDay._render()));
   assert.ok(!/class="banner night/.test(card(PetCard, { illustration_theme: "day" }, { "sun.sun": { state: "below_horizon" } })._render()));
   // illustration: false keeps the classic header.
   const classic = card(PetCard, { illustration: false })._render();
