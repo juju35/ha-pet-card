@@ -59,19 +59,19 @@ const openCard = async (browser, s) => {
   await page.addScriptTag({ content: HA_CARD });
   await page.addScriptTag({ content: cardJs });
   await page.evaluate(
-    ({ type, config, states, entities, devices, overrides, clicks }) => {
+    ({ type, config, states, entities, devices, overrides, clicks, dark }) => {
       const el = document.createElement(type);
       el.setConfig({ type: `custom:${type}`, ...config });
       const next = { ...states };
       for (const [id, o] of Object.entries(overrides || {})) next[id] = { ...next[id], ...o, attributes: { ...next[id].attributes, ...o.attributes } };
-      el.hass = { states: next, entities, devices, language: "en", locale: { language: "en" }, callService: () => {} };
+      el.hass = { states: next, entities, devices, language: "en", locale: { language: "en" }, themes: { darkMode: dark }, callService: () => {} };
       document.getElementById("root").appendChild(el);
       window.__card = el;
       // Mouse clicks (detail 1) on the card: an open popup or the zoomed-in view, without a keyboard focus ring.
       for (const sel of clicks || [])
         el.shadowRoot.querySelector(sel)?.dispatchEvent(new MouseEvent("click", { bubbles: true, composed: true, detail: 1 }));
     },
-    { type: s.type, config: s.config, states, entities, devices, overrides: s.states ?? null, clicks: s.clicks ?? [] }
+    { type: s.type, config: s.config, states, entities, devices, overrides: s.states ?? null, clicks: s.clicks ?? [], dark: s.theme === "dark" }
   );
   return page;
 };

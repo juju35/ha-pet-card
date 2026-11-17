@@ -1,5 +1,11 @@
 # Changelog
 
+## 1.3.0 - 2026-11-17
+
+### Features
+- **Illustrated header** on both cards (90 px): the devices (up to three, with their own drawings and animations) stand in a pet corner (window with a cat on its sill, paw prints, a pink bowl left of them) over an edge-to-edge parquet strip, the title on the left. Night picture with `sun.sun` below the horizon (else the dark mode), forced with the new `illustration_theme` option (`auto`, `day`, `night`); `illustration: false` keeps the classic header. Both options are in the visual editors.
+- The header's round icon always takes the status colour: the accent while the devices work, grey when they are all idle, off or unavailable, orange with a warning, red with an error; PetKit devices get the PetKit badge on it.
+
 ## 1.2.0 - 2026-11-14
 
 ### Features

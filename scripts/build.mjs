@@ -8,7 +8,9 @@ const root = fileURLToPath(new URL("..", import.meta.url));
 const pkg = JSON.parse(readFileSync(`${root}package.json`, "utf8"));
 
 const out = readFileSync(`${root}src/pet-card.js`, "utf8")
-  .replace("__VERSION__", pkg.version);
+  .replace("__VERSION__", pkg.version)
+  // PetKit's logo for the brand badge of the header icon.
+  .replace("__PETKIT_LOGO__", `data:image/png;base64,${readFileSync(`${root}images/petkit.png`).toString("base64")}`);
 
 const target = `${root}dist/pet-card.js`;
 mkdirSync(`${root}dist`, { recursive: true });

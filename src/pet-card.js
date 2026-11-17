@@ -140,6 +140,11 @@ const STRINGS = {
     color_auto: "Automatic",
     color_black: "Black",
     color_white: "White",
+    illustration: "Illustrated header",
+    illustration_theme: "Illustration theme",
+    theme_auto: "Automatic (sun, dark mode)",
+    theme_day: "Day",
+    theme_night: "Night",
   },
   fr: {
     title: "Animaux",
@@ -234,6 +239,11 @@ const STRINGS = {
     color_auto: "Automatique",
     color_black: "Noire",
     color_white: "Blanche",
+    illustration: "En-tête illustré",
+    illustration_theme: "Thème de l'illustration",
+    theme_auto: "Automatique (soleil, mode sombre)",
+    theme_day: "Jour",
+    theme_night: "Nuit",
   },
   de: {
     title: "Haustiere",
@@ -328,6 +338,11 @@ const STRINGS = {
     color_auto: "Automatisch",
     color_black: "Schwarz",
     color_white: "Weiß",
+    illustration: "Illustrierte Kopfzeile",
+    illustration_theme: "Thema der Illustration",
+    theme_auto: "Automatisch (Sonne, dunkler Modus)",
+    theme_day: "Tag",
+    theme_night: "Nacht",
   },
   es: {
     title: "Mascotas",
@@ -422,6 +437,11 @@ const STRINGS = {
     color_auto: "Automático",
     color_black: "Negro",
     color_white: "Blanco",
+    illustration: "Encabezado ilustrado",
+    illustration_theme: "Tema de la ilustración",
+    theme_auto: "Automático (sol, modo oscuro)",
+    theme_day: "Día",
+    theme_night: "Noche",
   },
   sr: {
     title: "Љубимци",
@@ -516,6 +536,11 @@ const STRINGS = {
     color_auto: "Аутоматски",
     color_black: "Црна",
     color_white: "Бела",
+    illustration: "Илустровано заглавље",
+    illustration_theme: "Тема илустрације",
+    theme_auto: "Аутоматски (сунце, тамни режим)",
+    theme_day: "Дан",
+    theme_night: "Ноћ",
   },
   "sr-Latn": {
     title: "Ljubimci",
@@ -610,6 +635,11 @@ const STRINGS = {
     color_auto: "Automatski",
     color_black: "Crna",
     color_white: "Bela",
+    illustration: "Ilustrovano zaglavlje",
+    illustration_theme: "Tema ilustracije",
+    theme_auto: "Automatski (sunce, tamni režim)",
+    theme_day: "Dan",
+    theme_night: "Noć",
   },
   it: {
     title: "Animali",
@@ -704,6 +734,11 @@ const STRINGS = {
     color_auto: "Automatico",
     color_black: "Nero",
     color_white: "Bianco",
+    illustration: "Intestazione illustrata",
+    illustration_theme: "Tema dell'illustrazione",
+    theme_auto: "Automatico (sole, modalità scura)",
+    theme_day: "Giorno",
+    theme_night: "Notte",
   },
   nl: {
     title: "Huisdieren",
@@ -798,6 +833,11 @@ const STRINGS = {
     color_auto: "Automatisch",
     color_black: "Zwart",
     color_white: "Wit",
+    illustration: "Geïllustreerde koptekst",
+    illustration_theme: "Thema van de illustratie",
+    theme_auto: "Automatisch (zon, donkere modus)",
+    theme_day: "Dag",
+    theme_night: "Nacht",
   },
   pt: {
     title: "Animais",
@@ -892,6 +932,11 @@ const STRINGS = {
     color_auto: "Automático",
     color_black: "Preto",
     color_white: "Branco",
+    illustration: "Cabeçalho ilustrado",
+    illustration_theme: "Tema da ilustração",
+    theme_auto: "Automático (sol, modo escuro)",
+    theme_day: "Dia",
+    theme_night: "Noite",
   },
   pl: {
     title: "Zwierzęta",
@@ -986,6 +1031,11 @@ const STRINGS = {
     color_auto: "Automatycznie",
     color_black: "Czarny",
     color_white: "Biały",
+    illustration: "Ilustrowany nagłówek",
+    illustration_theme: "Motyw ilustracji",
+    theme_auto: "Automatyczny (słońce, tryb ciemny)",
+    theme_day: "Dzień",
+    theme_night: "Noc",
   },
   ro: {
     title: "Animale",
@@ -1080,6 +1130,11 @@ const STRINGS = {
     color_auto: "Automat",
     color_black: "Negru",
     color_white: "Alb",
+    illustration: "Antet ilustrat",
+    illustration_theme: "Tema ilustrației",
+    theme_auto: "Automat (soare, mod întunecat)",
+    theme_day: "Zi",
+    theme_night: "Noapte",
   },
   da: {
     title: "Kæledyr",
@@ -1174,6 +1229,11 @@ const STRINGS = {
     color_auto: "Automatisk",
     color_black: "Sort",
     color_white: "Hvid",
+    illustration: "Illustreret overskrift",
+    illustration_theme: "Illustrationens tema",
+    theme_auto: "Automatisk (sol, mørk tilstand)",
+    theme_day: "Dag",
+    theme_night: "Nat",
   },
   sv: {
     title: "Husdjur",
@@ -1268,6 +1328,11 @@ const STRINGS = {
     color_auto: "Automatisk",
     color_black: "Svart",
     color_white: "Vit",
+    illustration: "Illustrerad rubrik",
+    illustration_theme: "Illustrationens tema",
+    theme_auto: "Automatiskt (sol, mörkt läge)",
+    theme_day: "Dag",
+    theme_night: "Natt",
   },
   bg: {
     title: "Любимци",
@@ -1362,6 +1427,11 @@ const STRINGS = {
     color_auto: "Автоматично",
     color_black: "Черен",
     color_white: "Бял",
+    illustration: "Илюстрирано заглавие",
+    illustration_theme: "Тема на илюстрацията",
+    theme_auto: "Автоматично (слънце, тъмен режим)",
+    theme_day: "Ден",
+    theme_night: "Нощ",
   },
   ru: {
     title: "Питомцы",
@@ -1456,6 +1526,11 @@ const STRINGS = {
     color_auto: "Автоматически",
     color_black: "Чёрный",
     color_white: "Белый",
+    illustration: "Иллюстрированный заголовок",
+    illustration_theme: "Тема иллюстрации",
+    theme_auto: "Автоматически (солнце, тёмный режим)",
+    theme_day: "День",
+    theme_night: "Ночь",
   },
   uk: {
     title: "Улюбленці",
@@ -1550,6 +1625,11 @@ const STRINGS = {
     color_auto: "Автоматично",
     color_black: "Чорний",
     color_white: "Білий",
+    illustration: "Ілюстрований заголовок",
+    illustration_theme: "Тема ілюстрації",
+    theme_auto: "Автоматично (сонце, темний режим)",
+    theme_day: "День",
+    theme_night: "Ніч",
   },
   hu: {
     title: "Háziállatok",
@@ -1644,6 +1724,11 @@ const STRINGS = {
     color_auto: "Automatikus",
     color_black: "Fekete",
     color_white: "Fehér",
+    illustration: "Illusztrált fejléc",
+    illustration_theme: "Az illusztráció témája",
+    theme_auto: "Automatikus (nap, sötét mód)",
+    theme_day: "Nappal",
+    theme_night: "Éjszaka",
   },
   sk: {
     title: "Zvieratá",
@@ -1738,6 +1823,11 @@ const STRINGS = {
     color_auto: "Automaticky",
     color_black: "Čierna",
     color_white: "Biela",
+    illustration: "Ilustrovaná hlavička",
+    illustration_theme: "Téma ilustrácie",
+    theme_auto: "Automaticky (slnko, tmavý režim)",
+    theme_day: "Deň",
+    theme_night: "Noc",
   },
   cs: {
     title: "Zvířata",
@@ -1832,6 +1922,11 @@ const STRINGS = {
     color_auto: "Automaticky",
     color_black: "Černá",
     color_white: "Bílá",
+    illustration: "Ilustrované záhlaví",
+    illustration_theme: "Motiv ilustrace",
+    theme_auto: "Automaticky (slunce, tmavý režim)",
+    theme_day: "Den",
+    theme_night: "Noc",
   },
   sl: {
     title: "Ljubljenčki",
@@ -1926,6 +2021,11 @@ const STRINGS = {
     color_auto: "Samodejno",
     color_black: "Črna",
     color_white: "Bela",
+    illustration: "Ilustrirana glava",
+    illustration_theme: "Tema ilustracije",
+    theme_auto: "Samodejno (sonce, temni način)",
+    theme_day: "Dan",
+    theme_night: "Noč",
   },
   lv: {
     title: "Mājdzīvnieki",
@@ -2020,6 +2120,11 @@ const STRINGS = {
     color_auto: "Automātiski",
     color_black: "Melna",
     color_white: "Balta",
+    illustration: "Ilustrēta galvene",
+    illustration_theme: "Ilustrācijas tēma",
+    theme_auto: "Automātiski (saule, tumšais režīms)",
+    theme_day: "Diena",
+    theme_night: "Nakts",
   },
   el: {
     title: "Κατοικίδια",
@@ -2114,6 +2219,11 @@ const STRINGS = {
     color_auto: "Αυτόματο",
     color_black: "Μαύρο",
     color_white: "Λευκό",
+    illustration: "Εικονογραφημένη κεφαλίδα",
+    illustration_theme: "Θέμα εικονογράφησης",
+    theme_auto: "Αυτόματο (ήλιος, σκοτεινή λειτουργία)",
+    theme_day: "Ημέρα",
+    theme_night: "Νύχτα",
   },
 };
 
@@ -2689,6 +2799,88 @@ const hasCamera = (dev) => !!dev.entities.camera || /yumshare|camera|cam\b|d4h|d
 // Dual-hopper feeders: the Gemini (D4S) and the YumShare Dual-hopper (D4SH).
 const isDual = (dev) => !!(dev.entities.food1 || dev.entities.food2) || /gemini|dual|d4sh?\b/i.test(dev.model);
 
+// ---------------------------------------------------------------------------
+// Illustrated header: a pet corner (wall, window with a cat on its sill, paw prints, a pink bowl) drawn at the
+// right of a 90 px banner, over a 10 px parquet strip edge to edge, with the card's devices standing on it (their
+// own pictures and animations). The left of the banner holds the icon and the title.
+// ---------------------------------------------------------------------------
+
+// PetKit's logo, embedded by the build from images/petkit.png (left as is in the source).
+const PETKIT_LOGO = "__PETKIT_LOGO__";
+
+// The scene's 200 × 80 background, day or night; `bowl`: the pink bowl's x (null: no bowl).
+const petCornerSvg = (n, bowl) =>
+  `<rect width="200" height="80" fill="${n ? "#2c2a36" : "#f6efe6"}"/><rect x="0" y="50" width="200" height="1.4" fill="${n ? "#3a3848" : "#e6d8c4"}"/>` +
+  `<rect x="20" y="8" width="34" height="30" rx="1.5" fill="${n ? "#1b2f52" : "#bfe0f7"}" stroke="${n ? "#4a5568" : "#fff"}" stroke-width="1.6"/>` +
+  (n ? '<circle cx="45" cy="16" r="2.4" fill="#f3eed2"/><g fill="#fff" opacity=".8"><circle cx="27" cy="14" r=".5"/><circle cx="34" cy="24" r=".4"/><circle cx="48" cy="28" r=".4"/></g>' : "") +
+  `<rect x="16" y="38" width="42" height="3" fill="${n ? "#4a4860" : "#e2d2bc"}"/>` +
+  `<g transform="translate(30 38)" fill="${n ? "#5c5a70" : "#7d6b5a"}"><ellipse cx="6" cy="-4" rx="7" ry="4.5"/><circle cx="12" cy="-9" r="3.4"/>` +
+  `<path d="M10 -12 l1 -3 l2 2.4z M13 -12 l1.6 -3 l1 3z"/><path class="pb-tail" d="M-1 -3 q-6 -2 -5 -9" stroke="${n ? "#5c5a70" : "#7d6b5a"}" stroke-width="1.6" fill="none"/></g>` +
+  `<g fill="${n ? "#4a4860" : "#e6d8c4"}" opacity=".9"><circle cx="40" cy="62" r="1.6"/><circle cx="46" cy="58" r="1.6"/><circle cx="52" cy="62" r="1.6"/><ellipse cx="46" cy="66" rx="3" ry="2.4"/></g>` +
+  (bowl === null
+    ? ""
+    : `<ellipse cx="${bowl.toFixed(1)}" cy="76" rx="26" ry="5" fill="${n ? "#4a3a50" : "#d4537e"}" opacity=".9"/><ellipse cx="${bowl.toFixed(1)}" cy="74" rx="20" ry="3" fill="${n ? "#5a4a60" : "#f4c0d1"}"/>`);
+
+// Each picture's drawn area in its 80 × 94 box (its floor at the bottom) and its largest size in the scene.
+const BANNER_ART = {
+  feeder: { vb: [14, 4, 52, 83], box: [62, 76] },
+  dual: { vb: [7, 4, 66, 83], box: [70, 76] },
+  fountain: { vb: [7, 7, 66, 70], box: [56, 58] },
+  litter: { vb: [4, 11, 72, 74], box: [96, 72] },
+  robot: { vb: [6, 4, 68, 83], box: [96, 72] },
+};
+
+// The devices side by side up to `right` (x 192, or left of the mini card's detail button): up to three, drawn
+// smaller when they would not fit; the pink bowl stays on the floor left of them when there is room.
+const bannerLayout = (items, right = 192) => {
+  const gap = 3;
+  const sized = items.slice(0, 3).map((it) => {
+    const a = BANNER_ART[it.kind === "feeder" && it.o.dual ? "dual" : it.kind];
+    let h = a.box[1];
+    let w = (h * a.vb[2]) / a.vb[3];
+    if (w > a.box[0]) {
+      w = a.box[0];
+      h = (w * a.vb[3]) / a.vb[2];
+    }
+    return { ...it, vb: a.vb, w, h };
+  });
+  const gaps = gap * (sized.length - 1);
+  const natural = sized.reduce((t, it) => t + it.w, 0);
+  const k = Math.min(sized.length > 2 ? 0.8 : 1, (right - 40 - gaps) / natural);
+  let x = right - natural * k - gaps;
+  const start = x;
+  for (const it of sized) {
+    it.w *= k;
+    it.h *= k;
+    it.x = x;
+    x += it.w + gap;
+  }
+  const bowl = Math.min(74, start - 28);
+  return { items: sized, bowl: bowl >= 44 ? bowl : null };
+};
+
+// The banner's picture: the corner and the devices (`items`: { kind, o, cls }), ids suffixed with `uid`.
+const bannerSvg = (items, night, uid, right) => {
+  const l = bannerLayout(items, right);
+  const devs = l.items
+    .map((it, i) => {
+      const svg = `<svg viewBox="${it.vb.join(" ")}" x="${it.x.toFixed(1)}" y="${(80 - it.h).toFixed(1)}" width="${it.w.toFixed(1)}" height="${it.h.toFixed(1)}" style="width:${it.w.toFixed(1)}px;height:${it.h.toFixed(1)}px" preserveAspectRatio="xMidYMax meet" overflow="visible"><defs>${ART_DEFS}</defs>${ARTS[it.kind](it.o)}</svg>`;
+      return `<g class="art ${esc(it.cls)}">${svg.replace(/(id="|url\(#)(pa-[a-z0-9]+)/g, `$1$2-${uid}-h${i}`)}</g>`;
+    })
+    .join("");
+  return `<svg class="scene" viewBox="0 0 200 80" preserveAspectRatio="xMaxYMax meet" aria-hidden="true" focusable="false">${petCornerSvg(night, l.bowl)}${devs}</svg>`;
+};
+
+// Night picture: forced by illustration_theme, else the sun below the horizon, else Home Assistant's dark mode.
+const isNight = (hass, config) => {
+  const theme = config.illustration_theme;
+  if (theme === "night") return true;
+  if (theme === "day") return false;
+  const sun = hass?.states?.["sun.sun"];
+  if (sun && !BAD.has(sun.state)) return sun.state === "below_horizon";
+  return !!hass?.themes?.darkMode;
+};
+
 // How long a feeder shows its dispensing after a manual feed or a meal counted (no integration reports the
 // dispensing itself, but Jezza34000's `feeding` sensor).
 const FEED_ANIM_MS = 15000;
@@ -2720,7 +2912,7 @@ const BASE_STYLE = `
   .bar > div { height: 100%; border-radius: 3px; background: var(--c, var(--pc-accent)); transition: width .6s ease; }
   .header { display: flex; align-items: center; gap: 10px; padding: 12px 12px 8px; }
   /* Tinted round icon, in the overall status colour like the chip. */
-  .logo { height: 40px; width: 40px; flex: none; border-radius: 50%; display: grid; place-items: center;
+  .logo { position: relative; height: 40px; width: 40px; flex: none; border-radius: 50%; display: grid; place-items: center;
           color: var(--c, var(--pc-accent)); background: color-mix(in srgb, var(--c, var(--pc-accent)) 16%, transparent); }
   .logo .icon { width: 24px; height: 24px; }
   .titles { flex: 1 1 0; min-width: 5ch; }
@@ -2833,6 +3025,8 @@ class PetBase extends HTMLElement {
     super();
     this.attachShadow({ mode: "open" });
     this._html = "";
+    // Keeps the SVG ids of this card apart from the other cards' on the same page.
+    this._uid = Math.random().toString(36).slice(2, 8);
     this.shadowRoot.addEventListener("click", (ev) => this._onClick(ev));
     // Keyboard access: Enter or Space on a focusable non-button element acts as a click.
     this.shadowRoot.addEventListener("keydown", (ev) => {
@@ -3098,10 +3292,16 @@ class PetBase extends HTMLElement {
   // The device's illustration and its animation classes; "" with show_illustration: false.
   _art(dev, st) {
     if (this._config.show_illustration === false) return "";
+    const a = this._artSpec(dev, st);
+    return art(a.kind, a.o, a.cls, `${this._uid}-${Math.max(0, this._devices?.indexOf(dev) ?? 0)}`);
+  }
+
+  // What the device's picture shows: { kind, o (its drawing options), cls (its animation and LED classes) }, for
+  // the device's own illustration and the header's.
+  _artSpec(dev, st) {
     const e = dev.entities;
     const live = st.key !== "unavailable";
     const led = ["crit", "warn", "idle"].includes(st.cls) ? st.cls : "ok";
-    const uid = String(Math.max(0, this._devices?.indexOf(dev) ?? 0));
     if (dev.kind === "feeder") {
       // A food level sensor: on when low; no state yet draws a hopper half full.
       const level = (id) => {
@@ -3120,7 +3320,7 @@ class PetBase extends HTMLElement {
       const bowl = num(this._s(e.bowl)) ?? num(this._s(e.bowl_pct));
       const feeding = live && this._feeding(dev);
       const o = { dual, camera: hasCamera(dev), levels: hoppers.map((h) => h[0]), lows: hoppers.map((h) => h[1]), bowl: bowl === null || bowl > 0 };
-      return art("feeder", o, feeding && led !== "crit" ? "feeding busy" : led, uid);
+      return { kind: "feeder", o, cls: feeding && led !== "crit" ? "feeding busy" : led };
     }
     if (dev.kind === "fountain") {
       const dry = this._s(e.water)?.state === "on";
@@ -3128,7 +3328,7 @@ class PetBase extends HTMLElement {
       const flowing = pump
         ? pump.state === "on"
         : this._s(e.power)?.state !== "off" && this._s(e.dnd_state)?.state !== "on" && !/pause/i.test(known(this._s(e.mode)) || "");
-      return art("fountain", {}, [led, live && !dry && flowing ? "on" : "", dry ? "dry" : ""].filter(Boolean).join(" "), uid);
+      return { kind: "fountain", o: {}, cls: [led, live && !dry && flowing ? "on" : "", dry ? "dry" : ""].filter(Boolean).join(" ") };
     }
     const i = this._litterInfo(dev);
     const cleaning = live && i.act === "cleaning";
@@ -3138,9 +3338,9 @@ class PetBase extends HTMLElement {
     if (dev.platform === "litterrobot") {
       // The colour of a Litter-Robot 4 / 5 is not reported: black unless illustration_color says white.
       const o = { lr3: /\b3\b|lr3/i.test(dev.model), color: this._config.illustration_color === "white" ? "white" : "black", level, waste: i.waste };
-      return art("robot", o, cls.filter(Boolean).join(" "), uid);
+      return { kind: "robot", o, cls: cls.filter(Boolean).join(" ") };
     }
-    return art("litter", { camera: hasCamera(dev), level }, cls.filter(Boolean).join(" "), uid);
+    return { kind: "litter", o: { camera: hasCamera(dev), level }, cls: cls.filter(Boolean).join(" ") };
   }
 
   // A feeder with two hoppers shows each of them (and not food_left, which is one level for the whole feeder).
@@ -3161,19 +3361,53 @@ class PetBase extends HTMLElement {
     return `<span class="chip ${cls}" title="${esc(title || text)}"><span class="dot"></span><span class="chip-label">${esc(text)}</span></span>`;
   }
 
+  // The colour of the header icon: red or amber with an alert, grey when every device is idle, off or
+  // unavailable, else the accent (devices at work).
+  _iconCls(devices) {
+    const st = devices.map((d) => this._status(d));
+    if (st.some((s) => s.alerts.some((a) => a.cls === "crit"))) return "crit";
+    if (st.some((s) => s.alerts.length)) return "warn";
+    if (st.every((s) => s.cls === "idle")) return "idle";
+    return "";
+  }
+
+  // The brand's logo in a badge on the header icon (PetKit; no logo for the other integrations).
+  _badge(devices) {
+    const p = devices[0]?.platform;
+    return p === "petkit" && PETKIT_LOGO.startsWith("data:") ? `<span class="badge" title="${esc(PLATFORMS[p].name)}"><img src="${PETKIT_LOGO}" alt=""></span>` : "";
+  }
+
+  _bannerStyle() {
+    return this._config.illustration === false ? "" : BANNER_STYLE;
+  }
+
+  // The header: the illustrated banner (title on the left, the devices in their corner on the right), or the
+  // classic header with illustration: false.
   _header(devices) {
     const c = this._config;
     const all = this._overall(devices);
-    const text = this._t(all.key);
     const sub = devices.map((d) => d.name).join(" · ");
-    return `
-      <div class="header">
-        <div class="logo ${all.cls === "ok" ? "" : all.cls}" title="${esc(PLATFORMS[devices[0].platform].name)}">${svgIcon(ICONS.paw)}</div>
-        <div class="titles">
+    const icon = `<div class="logo ${this._iconCls(devices)}" title="${esc(PLATFORMS[devices[0].platform].name)}">${svgIcon(ICONS.paw)}${this._badge(devices)}</div>`;
+    const titles = `<div class="titles">
           <div class="name">${esc(c.title || this._t("title"))}</div>
-          ${sub ? `<div class="sub">${esc(sub)}</div>` : ""}
+          ${sub ? `<div class="sub">${esc(sub)}</div>` : ""}`;
+    if (c.illustration === false)
+      return `
+      <div class="header">
+        ${icon}
+        ${titles}
         </div>
-        ${this._chip(all.cls, text)}
+        ${this._chip(all.cls, this._t(all.key))}
+        ${this._zoomButton()}
+      </div>`;
+    const night = isNight(this._hass, c);
+    const items = devices.map((d) => this._artSpec(d, this._status(d)));
+    // On the banner the chip only shows what needs a look (the illustration shows the rest).
+    const chip = all.cls === "ok" ? "" : this._chip(all.cls, this._t(all.key));
+    return `
+      <div class="banner${night ? " night" : ""}">
+        ${bannerSvg(items, night, this._uid, this._zoomButton() ? 168 : 192)}<div class="ground"></div>
+        <div class="htext">${icon}${titles}${chip}</div></div>
         ${this._zoomButton()}
       </div>`;
   }
@@ -3370,6 +3604,77 @@ class PetBase extends HTMLElement {
 // Full card
 // ---------------------------------------------------------------------------
 
+// The illustrated header (illustration: false keeps the classic one).
+const BANNER_STYLE = `
+  .banner { position: relative; overflow: hidden; height: 90px; --g: 10px; color: #0d2a45; background: #f6efe6; }
+  .banner.night { color: #fff; background: #2c2a36; }
+  .banner .scene { position: absolute; right: 0; bottom: var(--g); height: calc(100% - var(--g)); width: min(200px, 58%);
+                   -webkit-mask-image: linear-gradient(90deg, transparent 0, #000 14%); mask-image: linear-gradient(90deg, transparent 0, #000 14%); }
+  .banner .pb-tail { transform-box: fill-box; transform-origin: 100% 100%; animation: pb-swing 2s ease-in-out infinite; }
+  .banner .ground { position: absolute; left: 0; right: 0; bottom: 0; height: var(--g);
+                    background: repeating-linear-gradient(90deg, #c99a6b 0 38px, #b98a5c 38px 40px); box-shadow: inset 0 2px 0 #a97c50; }
+  .banner.night .ground { background: repeating-linear-gradient(90deg, #4a3a2c 0 38px, #3e3024 38px 40px); box-shadow: inset 0 2px 0 #3a2c20; }
+  .banner .htext { position: absolute; z-index: 1; left: 0; top: 0; bottom: var(--g); right: min(200px, 58%);
+                   display: flex; align-items: center; gap: 10px; padding: 6px 4px 6px 14px; min-width: 0; }
+  :host([mini]) .banner .htext { right: calc(min(200px, 58%) - 8px); }
+  /* The round icon on a white disc, in the status colour (accent, grey when idle or off, amber, red). */
+  .banner .logo { position: relative; background: rgba(255,255,255,.72); box-shadow: inset 0 0 0 1px color-mix(in srgb, var(--c, var(--pc-accent)) 28%, transparent); }
+  .banner.night .logo { background: rgba(255,255,255,.12); box-shadow: inset 0 0 0 1px rgba(255,255,255,.14); }
+  .banner .titles { display: flex; flex-direction: column; gap: 1px; align-self: center !important; }
+  .banner .sub { color: #3b5b78; font-size: 13px; }
+  .banner.night .sub { color: rgba(255,255,255,.78); }
+  .banner .chip { align-self: flex-start; margin-top: 3px; background: rgba(255,255,255,.75); }
+  .banner.night .chip { background: rgba(10,20,40,.45); color: color-mix(in srgb, var(--c) 55%, #fff); }
+  .banner .zoom { position: absolute; z-index: 2; top: 6px; right: 6px; margin: 0; color: #0d2a45; background: rgba(255,255,255,.6); }
+  .banner.night .zoom { color: #fff; background: rgba(10,20,40,.45); }
+  @container (max-width: 219px) { .banner .scene { display: none; } .banner .htext { right: 30px; } }
+  /* Brand badge on the icon: the logo on a white tile, readable on any theme. */
+  .badge { position: absolute; right: -4px; bottom: -4px; width: 18px; height: 18px; border-radius: 5px; padding: 2px; box-sizing: border-box;
+           display: grid; place-items: center; background: #fff; box-shadow: 0 0 0 1px rgba(13,42,69,.16), 0 1px 3px rgba(13,42,69,.18); }
+  .badge img { width: 100%; height: 100%; object-fit: contain; }
+  @keyframes pb-swing { 0%, 100% { transform: rotate(-14deg); } 50% { transform: rotate(14deg); } }
+`;
+
+// The devices' pictures: LED colours and animations (the full card's devices and the header).
+const ART_STYLE = `
+  .art .led { fill: var(--pc-ok); }
+  .art.warn .led { fill: var(--pc-warn); }
+  .art.idle .led { fill: var(--pc-idle); }
+  .art.busy .led { fill: var(--pc-water); animation: pc-blink 1s steps(2) infinite; }
+  .art.crit .led { fill: var(--pc-crit); animation: pc-blink 1s steps(2) infinite; }
+  .art .rec { animation: pc-blink 1.6s steps(2) infinite; }
+  .art .win.low { stroke: var(--pc-warn); stroke-width: 1.4; animation: pc-blink 1.2s steps(2) infinite; }
+  .art .drop, .art .stream, .art .rp, .art .grit, .art .cat { opacity: 0; }
+  .art.feeding .drop { animation: pc-fall 1s ease-in infinite; }
+  .art.on .stream { opacity: 1; stroke-dasharray: 3 2; animation: pc-flow .5s linear infinite; }
+  .art.on .rp { transform-box: fill-box; transform-origin: center; animation: pc-ripple 1.8s ease-out infinite; }
+  .art.on .wave { animation: pc-wave 1.4s ease-in-out infinite alternate; }
+  .art .wl { transition: transform .6s ease; }
+  .art.dry .wl { transform: translateY(20px); }
+  .art .drum { transform-box: view-box; transform-origin: 40px 45px; }
+  .art.cleaning .drum { animation: pc-turn 4s ease-in-out infinite; }
+  .art.cleaning .grit { animation: pc-grit 4s ease-in infinite; }
+  .art.cat .cat { opacity: 1; }
+  .art .eye { transform-box: fill-box; transform-origin: center; animation: pc-wink 3.4s infinite; }
+  .art .ear { transform-box: fill-box; transform-origin: bottom center; animation: pc-ear 3s infinite; }
+  .art.full .bin { stroke: var(--pc-crit); stroke-width: 1.2; animation: pc-blink 1.2s steps(2) infinite; }
+  .art .drum.lr4 { transform-origin: 40px 40px; }
+  .art .drum.lr3 { transform-origin: 40px 37px; }
+  .art .ring, .art .halo { opacity: 0; transition: opacity .4s ease; }
+  .art.night .ring { opacity: 1; animation: pc-glow 2.4s ease-in-out infinite alternate; }
+  .art.night .halo { opacity: .35; }
+  @keyframes pc-blink { 50% { opacity: .25; } }
+  @keyframes pc-glow { to { opacity: .55; } }
+  @keyframes pc-fall { 0% { transform: translateY(0); opacity: 0; } 15% { opacity: 1; } 80% { opacity: 1; } 100% { transform: translateY(13px); opacity: 0; } }
+  @keyframes pc-flow { to { stroke-dashoffset: -10; } }
+  @keyframes pc-ripple { 0% { transform: scale(.3); opacity: .9; } 100% { transform: scale(1.15); opacity: 0; } }
+  @keyframes pc-wave { to { transform: translateX(-3px); } }
+  @keyframes pc-turn { 0%, 10% { transform: rotate(0); } 45%, 55% { transform: rotate(-135deg); } 90%, 100% { transform: rotate(0); } }
+  @keyframes pc-grit { 0%, 40% { opacity: 0; transform: translateY(0); } 48% { opacity: 1; } 62% { opacity: 0; transform: translateY(12px); } 100% { opacity: 0; } }
+  @keyframes pc-wink { 0%, 46%, 52%, 100% { transform: scaleY(1); } 49% { transform: scaleY(.1); } }
+  @keyframes pc-ear { 0%, 78%, 100% { transform: rotate(0); } 84% { transform: rotate(-14deg); } 90% { transform: rotate(5deg); } }
+`;
+
 const FULL_STYLE = `
   .content { padding: 0 12px 12px; display: flex; flex-direction: column; gap: 12px; }
   .dev { display: flex; flex-direction: column; gap: 10px; }
@@ -3414,42 +3719,6 @@ const FULL_STYLE = `
   .art { flex: none; width: 88px; height: 103px; }
   .art svg { display: block; width: 100%; height: 100%; overflow: visible; }
   @container (max-width: 299px) { .art { width: 64px; height: 75px; } .hero { gap: 8px; } }
-  .art .led { fill: var(--pc-ok); }
-  .art.warn .led { fill: var(--pc-warn); }
-  .art.idle .led { fill: var(--pc-idle); }
-  .art.busy .led { fill: var(--pc-water); animation: pc-blink 1s steps(2) infinite; }
-  .art.crit .led { fill: var(--pc-crit); animation: pc-blink 1s steps(2) infinite; }
-  .art .rec { animation: pc-blink 1.6s steps(2) infinite; }
-  .art .win.low { stroke: var(--pc-warn); stroke-width: 1.4; animation: pc-blink 1.2s steps(2) infinite; }
-  .art .drop, .art .stream, .art .rp, .art .grit, .art .cat { opacity: 0; }
-  .art.feeding .drop { animation: pc-fall 1s ease-in infinite; }
-  .art.on .stream { opacity: 1; stroke-dasharray: 3 2; animation: pc-flow .5s linear infinite; }
-  .art.on .rp { transform-box: fill-box; transform-origin: center; animation: pc-ripple 1.8s ease-out infinite; }
-  .art.on .wave { animation: pc-wave 1.4s ease-in-out infinite alternate; }
-  .art .wl { transition: transform .6s ease; }
-  .art.dry .wl { transform: translateY(20px); }
-  .art .drum { transform-box: view-box; transform-origin: 40px 45px; }
-  .art.cleaning .drum { animation: pc-turn 4s ease-in-out infinite; }
-  .art.cleaning .grit { animation: pc-grit 4s ease-in infinite; }
-  .art.cat .cat { opacity: 1; }
-  .art .eye { transform-box: fill-box; transform-origin: center; animation: pc-wink 3.4s infinite; }
-  .art .ear { transform-box: fill-box; transform-origin: bottom center; animation: pc-ear 3s infinite; }
-  .art.full .bin { stroke: var(--pc-crit); stroke-width: 1.2; animation: pc-blink 1.2s steps(2) infinite; }
-  .art .drum.lr4 { transform-origin: 40px 40px; }
-  .art .drum.lr3 { transform-origin: 40px 37px; }
-  .art .ring, .art .halo { opacity: 0; transition: opacity .4s ease; }
-  .art.night .ring { opacity: 1; animation: pc-glow 2.4s ease-in-out infinite alternate; }
-  .art.night .halo { opacity: .35; }
-  @keyframes pc-blink { 50% { opacity: .25; } }
-  @keyframes pc-glow { to { opacity: .55; } }
-  @keyframes pc-fall { 0% { transform: translateY(0); opacity: 0; } 15% { opacity: 1; } 80% { opacity: 1; } 100% { transform: translateY(13px); opacity: 0; } }
-  @keyframes pc-flow { to { stroke-dashoffset: -10; } }
-  @keyframes pc-ripple { 0% { transform: scale(.3); opacity: .9; } 100% { transform: scale(1.15); opacity: 0; } }
-  @keyframes pc-wave { to { transform: translateX(-3px); } }
-  @keyframes pc-turn { 0%, 10% { transform: rotate(0); } 45%, 55% { transform: rotate(-135deg); } 90%, 100% { transform: rotate(0); } }
-  @keyframes pc-grit { 0%, 40% { opacity: 0; transform: translateY(0); } 48% { opacity: 1; } 62% { opacity: 0; transform: translateY(12px); } 100% { opacity: 0; } }
-  @keyframes pc-wink { 0%, 46%, 52%, 100% { transform: scaleY(1); } 49% { transform: scaleY(.1); } }
-  @keyframes pc-ear { 0%, 78%, 100% { transform: rotate(0); } 84% { transform: rotate(-14deg); } 90% { transform: rotate(5deg); } }
 `;
 
 class PetCard extends PetBase {
@@ -3747,7 +4016,7 @@ class PetCard extends PetBase {
     if (error) return this._error(error);
     this._devices = devices;
     const body = { feeder: (d) => this._feeder(d), fountain: (d) => this._fountain(d), litter: (d) => this._litter(d) };
-    return `<style>${BASE_STYLE}${DIALOG_STYLE}${FULL_STYLE}${MOTION_STYLE}</style>
+    return `<style>${BASE_STYLE}${DIALOG_STYLE}${FULL_STYLE}${ART_STYLE}${this._bannerStyle()}${MOTION_STYLE}</style>
       <ha-card>
         ${this._header(devices)}
         <div class="content">${devices.map((d) => body[d.kind](d)).join("")}</div>
@@ -3905,7 +4174,7 @@ class PetMiniCard extends PetCard {
           .map((a) => `<span class="${a.cls}" title="${esc(a.title || "")}">${svgIcon(ICONS.alert)}${esc(`${a.dev.name}: ${this._t(a.key)}`)}</span>`)
           .join("")}</div>`
       : "";
-    return `<style>${BASE_STYLE}${DIALOG_STYLE}${MINI_STYLE}${MOTION_STYLE}</style>
+    return `<style>${BASE_STYLE}${DIALOG_STYLE}${MINI_STYLE}${ART_STYLE}${this._bannerStyle()}${MOTION_STYLE}</style>
       <ha-card>
         ${this._header(devices)}
         <div class="content">${devices.map((d) => this._row(d)).join("")}${foot}</div>
@@ -3946,6 +4215,10 @@ class PetEditorBase extends HTMLElement {
       { name: "title", selector: { text: {} } },
       { type: "grid", name: "", schema: this.constructor.toggles.map(([name]) => ({ name, selector: { boolean: {} } })) },
       {
+        name: "illustration_theme",
+        selector: { select: { mode: "dropdown", options: ["auto", "day", "night"].map((value) => ({ value, label: tr(`theme_${value}`) })) } },
+      },
+      {
         name: "illustration_color",
         selector: { select: { mode: "dropdown", options: ["auto", "black", "white"].map((value) => ({ value, label: tr(`color_${value}`) })) } },
       },
@@ -3969,7 +4242,7 @@ class PetEditorBase extends HTMLElement {
         const defaults = Object.fromEntries(this.constructor.toggles);
         for (const [k, v] of Object.entries(config)) {
           // Keep the YAML minimal: drop empty values and toggles left at their default.
-          if (v === "" || v === undefined || v === null || (Array.isArray(v) && !v.length) || (k in defaults && v === defaults[k]) || (k === "illustration_color" && v === "auto"))
+          if (v === "" || v === undefined || v === null || (Array.isArray(v) && !v.length) || (k in defaults && v === defaults[k]) || (k === "illustration_color" && v === "auto") || (k === "illustration_theme" && v === "auto"))
             delete config[k];
         }
         this._config = config;
@@ -3980,6 +4253,7 @@ class PetEditorBase extends HTMLElement {
     const data = { ...this._config };
     for (const [name, def] of this.constructor.toggles) if (data[name] === undefined) data[name] = def;
     data.illustration_color ??= "auto";
+    data.illustration_theme ??= "auto";
     this._form.hass = this._hass;
     // hass is pushed on every state change while the editor is open: reassign only what changed.
     const dataKey = JSON.stringify(data);
@@ -3998,6 +4272,7 @@ class PetEditorBase extends HTMLElement {
 class PetCardEditor extends PetEditorBase {
   static get toggles() {
     return [
+      ["illustration", true],
       ["show_title", true],
       ["show_subtitle", true],
       ["show_stats", true],
@@ -4009,17 +4284,9 @@ class PetCardEditor extends PetEditorBase {
 }
 
 class PetMiniCardEditor extends PetEditorBase {
+  // The full card's options (used by the full card the detail button switches to), then the detail button.
   static get toggles() {
-    return [
-      ["show_title", true],
-      ["show_subtitle", true],
-      // Used by the full card the detail button switches to.
-      ["show_stats", true],
-      ["show_controls", true],
-      ["show_camera", true],
-      ["show_illustration", true],
-      ["zoom", true],
-    ];
+    return [...PetCardEditor.toggles, ["zoom", true]];
   }
 }
 
