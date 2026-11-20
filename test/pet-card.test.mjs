@@ -704,3 +704,24 @@ test("illustrated header: the icon colour follows the status", () => {
   const off = Object.fromEntries(Object.keys(card(PetCard).hass.states).map((id) => [id, { state: "unavailable" }]));
   assert.equal(icon(card(PetCard, {}, off)), "idle");
 });
+
+test("a new hass is drawn only when a state the card shows changed", () => {
+  const c = new PetCard();
+  let renders = 0;
+  c._update = () => renders++;
+  c.setConfig({});
+  const h = hassWith();
+  c.hass = h;
+  assert.equal(renders, 2);
+  // Another entity of the instance changed: nothing to draw.
+  c.hass = { ...h, states: { ...h.states, "light.kitchen": { entity_id: "light.kitchen", state: "on" } } };
+  assert.equal(renders, 2);
+  // A device's state changed: drawn again.
+  const id = Object.values(resolve(h)[0].entities)[0];
+  c.hass = { ...h, states: { ...h.states, [id]: { ...h.states[id], state: "changed" } } };
+  assert.equal(renders, 3);
+  // A new configuration is drawn whatever the states.
+  c.setConfig({ title: "x" });
+  c.hass = { ...h, states: { ...h.states, [id]: { ...h.states[id], state: "changed" } } };
+  assert.equal(renders, 5);
+});
