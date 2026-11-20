@@ -1,5 +1,14 @@
 # Changelog
 
+## 1.3.2 - 2026-11-20
+
+### Performance
+- The cards are drawn again only when something they show changed (the registries, the language, the theme, the states of the pet devices), instead of on every state change of Home Assistant.
+
+### Maintenance
+- The commit-msg hook works again (the commitlint config is an ES module, as `package.json` declares).
+- The pending status pill frame is cancelled when the card leaves the page.
+
 ## 1.3.1 - 2026-11-18
 
 ### Fixes
