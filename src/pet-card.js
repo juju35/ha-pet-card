@@ -4276,6 +4276,12 @@ class PetMiniCard extends PetCard {
 // Visual editors (ha-form)
 // ---------------------------------------------------------------------------
 
+// The `devices` option as device ids: names (any case) are mapped to their device, unknown entries kept as given.
+const deviceIds = (all, wanted) => {
+  const low = (v) => String(v ?? "").toLowerCase();
+  return [].concat(wanted ?? []).filter(Boolean).map((w) => (all.find((d) => d.id === w) || all.find((d) => low(d.name) === low(w)))?.id ?? w);
+};
+
 // Editor fields whose label is another key than their name.
 const LABEL_KEYS = { title: "title_label" };
 
@@ -4341,6 +4347,8 @@ class PetEditorBase extends HTMLElement {
       this.appendChild(this._form);
     }
     const data = { ...this._config };
+    // `devices` may be written by name in YAML: show them as the ids the select lists, so they appear ticked.
+    if (data.devices !== undefined) data.devices = deviceIds(devices, data.devices);
     for (const [name, def] of this.constructor.toggles) if (data[name] === undefined) data[name] = def;
     data.illustration_color ??= "auto";
     data.illustration_theme ??= "auto";

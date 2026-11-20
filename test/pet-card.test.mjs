@@ -5,7 +5,7 @@ import { test } from "node:test";
 import { devices, entities, FEEDER_OPTIONS, states } from "../scripts/mock-states.mjs";
 import { load } from "./load.mjs";
 
-const { resolve, findDevices, feedSpec, feedDefault, feedListSpec, feedDualSpec, PetCard, PetMiniCard, PetCardEditor, PetMiniCardEditor, STRINGS } = load("pet-card.js", [
+const { resolve, findDevices, feedSpec, feedDefault, feedListSpec, feedDualSpec, PetCard, PetMiniCard, PetCardEditor, PetMiniCardEditor, STRINGS, deviceIds } = load("pet-card.js", [
   "resolve",
   "findDevices",
   "feedSpec",
@@ -16,6 +16,7 @@ const { resolve, findDevices, feedSpec, feedDefault, feedListSpec, feedDualSpec,
   "PetMiniCard",
   "PetCardEditor",
   "PetMiniCardEditor",
+  "deviceIds",
   "STRINGS",
 ]);
 
@@ -724,4 +725,17 @@ test("a new hass is drawn only when a state the card shows changed", () => {
   c.setConfig({ title: "x" });
   c.hass = { ...h, states: { ...h.states, [id]: { ...h.states[id], state: "changed" } } };
   assert.equal(renders, 5);
+});
+
+test("editor: devices written by name in YAML show up ticked (as their ids)", () => {
+  const all = resolve(hassWith());
+  assert.deepEqual(plain(deviceIds(all, ["kitchen FEEDER", "fountain", "Nope"])), ["solo", "fountain", "Nope"]);
+  assert.deepEqual(plain(deviceIds(all, "Kitchen feeder")), ["solo"]);
+  const ed = new PetCardEditor();
+  ed._form = { addEventListener() {} };
+  ed._config = { devices: ["Kitchen feeder"] };
+  ed.hass = hassWith();
+  assert.deepEqual(plain(ed._form.data.devices), ["solo"]);
+  // The card's own config is left as written until the user changes something.
+  assert.deepEqual(plain(ed._config.devices), ["Kitchen feeder"]);
 });
