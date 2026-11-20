@@ -3067,10 +3067,22 @@ class PetBase extends HTMLElement {
     };
   }
 
+  // Home Assistant pushes a new hass on every state change of the whole instance: the card is only drawn again when
+  // something it shows changed (the registries, the language, the theme, the states of the supported devices).
   set hass(hass) {
     this._hass = hass;
     if (!this._config) return;
+    const deps = this._deps();
+    const prev = this._lastDeps;
+    if (prev && deps.length === prev.length && deps.every((d, i) => d === prev[i])) return;
+    this._lastDeps = deps;
     this._update();
+  }
+
+  _deps() {
+    const h = this._hass;
+    const ids = (resolve(h) || []).flatMap((d) => Object.values(d.entities));
+    return [h.entities, h.devices, h.language, h.locale, h.themes?.darkMode, h.localize, ...ids.map((id) => h.states?.[id])];
   }
 
   get hass() {
@@ -3106,6 +3118,7 @@ class PetBase extends HTMLElement {
   disconnectedCallback() {
     this._onOutsideWatch?.off();
     this._resize?.disconnect();
+    if (this._fitFrame) cancelAnimationFrame(this._fitFrame);
     this._fitWidth = null;
     // Left (another dashboard view, a conditional card hidden): back to the default state, so that the card does
     // not come back unfolded or with its popup open.
@@ -3123,6 +3136,7 @@ class PetBase extends HTMLElement {
     this.toggleAttribute?.("hide-title", config.show_title === false);
     this.toggleAttribute?.("hide-subtitle", config.show_subtitle === false);
     this._html = "";
+    this._lastDeps = null;
     this._update();
   }
 
@@ -4262,6 +4276,12 @@ class PetMiniCard extends PetCard {
 // Visual editors (ha-form)
 // ---------------------------------------------------------------------------
 
+// The `devices` option as device ids: names (any case) are mapped to their device, unknown entries kept as given.
+const deviceIds = (all, wanted) => {
+  const low = (v) => String(v ?? "").toLowerCase();
+  return [].concat(wanted ?? []).filter(Boolean).map((w) => (all.find((d) => d.id === w) || all.find((d) => low(d.name) === low(w)))?.id ?? w);
+};
+
 // Editor fields whose label is another key than their name.
 const LABEL_KEYS = { title: "title_label" };
 
@@ -4327,6 +4347,8 @@ class PetEditorBase extends HTMLElement {
       this.appendChild(this._form);
     }
     const data = { ...this._config };
+    // `devices` may be written by name in YAML: show them as the ids the select lists, so they appear ticked.
+    if (data.devices !== undefined) data.devices = deviceIds(devices, data.devices);
     for (const [name, def] of this.constructor.toggles) if (data[name] === undefined) data[name] = def;
     data.illustration_color ??= "auto";
     data.illustration_theme ??= "auto";
