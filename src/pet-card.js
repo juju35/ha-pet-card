@@ -4406,7 +4406,7 @@ for (const card of [
   { type: "pet-mini-card", name: "Pet Mini Card", description: "Compact overview of smart pet devices (PetKit feeders, water fountains and litter boxes, Litter-Robot)." },
 ]) {
   if (!window.customCards.some((c) => c.type === card.type))
-    window.customCards.push({ ...card, preview: true, documentationURL: "https://github.com/juju35/ha-pet-card" });
+    window.customCards.push({ ...card, preview: false, documentationURL: "https://github.com/juju35/ha-pet-card" });
 }
 
 console.info(`%c PET-CARD %c v${VERSION} `, "color: white; background: #ef8f3a; font-weight: 700;", "color: #ef8f3a; background: white; font-weight: 700;");
