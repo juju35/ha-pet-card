@@ -4,7 +4,7 @@
 
 export const BASE_STYLE = `
   :host { --pc-accent: #ef8f3a; --pc-ok: var(--success-color, #43a047); --pc-warn: var(--warning-color, #ffa600);
-          --pc-crit: var(--error-color, #db4437); --pc-idle: var(--disabled-text-color, #9e9e9e); --pc-water: #2f8fd8; }
+          --pc-crit: var(--error-color, #db4437); --pc-idle: var(--secondary-text-color, #9e9e9e); --pc-water: #2f8fd8; }
   :host { display: block; }
   ha-card { overflow: hidden; container-type: inline-size; container-name: pc-card; }
   /* A size container has no content width: this empty grid gives the card a natural width of 300 px with no
