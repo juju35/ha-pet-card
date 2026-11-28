@@ -44,6 +44,7 @@ export default {
   reset: "Επαναφορά",
   confirm_reset_filter: "Επαναφορά του φίλτρου του {name}; Κάντε το αφού αλλάξετε το φίλτρο.",
   confirm_reset_desiccant: "Επαναφορά του αφυγραντικού του {name}; Κάντε το αφού το αλλάξετε.",
+  confirm_reset_food: "Επαναφορά του δοχείου του {name}; Κάντε το αφού το γεμίσετε.",
   turn_off: "Απενεργοποίηση",
   confirm_off: "Απενεργοποίηση του {name};",
   cancel: "Άκυρο",

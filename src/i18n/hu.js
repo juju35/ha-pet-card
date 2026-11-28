@@ -44,6 +44,7 @@ export default {
   reset: "Visszaállítás",
   confirm_reset_filter: "Visszaállítja a(z) {name} szűrőjét? A szűrő cseréje után tegye.",
   confirm_reset_desiccant: "Visszaállítja a(z) {name} nedvszívóját? A nedvszívó cseréje után tegye.",
+  confirm_reset_food: "Visszaállítja a(z) {name} tartályát? A tartály feltöltése után tegye.",
   turn_off: "Kikapcsolás",
   confirm_off: "Kikapcsolja: {name}?",
   cancel: "Mégse",

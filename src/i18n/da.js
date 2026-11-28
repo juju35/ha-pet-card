@@ -44,6 +44,7 @@ export default {
   reset: "Nulstil",
   confirm_reset_filter: "Nulstil filteret på {name}? Gør det, når filteret er skiftet.",
   confirm_reset_desiccant: "Nulstil tørremidlet på {name}? Gør det, når tørremidlet er skiftet.",
+  confirm_reset_food: "Nulstil foderbeholderen på {name}? Gør det, når beholderen er fyldt op.",
   turn_off: "Sluk",
   confirm_off: "Sluk {name}?",
   cancel: "Annuller",

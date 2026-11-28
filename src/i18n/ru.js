@@ -44,6 +44,7 @@ export default {
   reset: "Сбросить",
   confirm_reset_filter: "Сбросить фильтр {name}? Сделайте это после замены фильтра.",
   confirm_reset_desiccant: "Сбросить влагопоглотитель {name}? Сделайте это после его замены.",
+  confirm_reset_food: "Сбросить резервуар {name}? Сделайте это после его наполнения.",
   turn_off: "Выключить",
   confirm_off: "Выключить {name}?",
   cancel: "Отмена",

@@ -44,6 +44,7 @@ export default {
   reset: "Скинути",
   confirm_reset_filter: "Скинути фільтр {name}? Зробіть це після заміни фільтра.",
   confirm_reset_desiccant: "Скинути вологопоглинач {name}? Зробіть це після його заміни.",
+  confirm_reset_food: "Скинути резервуар {name}? Зробіть це після його наповнення.",
   turn_off: "Вимкнути",
   confirm_off: "Вимкнути {name}?",
   cancel: "Скасувати",

@@ -44,6 +44,7 @@ export default {
   reset: "Réinitialiser",
   confirm_reset_filter: "Réinitialiser le filtre de {name} ? À faire une fois le filtre changé.",
   confirm_reset_desiccant: "Réinitialiser le déshydratant de {name} ? À faire une fois le déshydratant changé.",
+  confirm_reset_food: "Réinitialiser le réservoir de {name} ? À faire une fois le réservoir rempli.",
   turn_off: "Éteindre",
   confirm_off: "Éteindre {name} ?",
   cancel: "Annuler",

@@ -44,6 +44,7 @@ export default {
   reset: "Resetten",
   confirm_reset_filter: "Filter van {name} resetten? Doe dit nadat het filter is vervangen.",
   confirm_reset_desiccant: "Droogmiddel van {name} resetten? Doe dit nadat het droogmiddel is vervangen.",
+  confirm_reset_food: "Voerreservoir van {name} resetten? Doe dit nadat het reservoir is bijgevuld.",
   turn_off: "Uitzetten",
   confirm_off: "{name} uitzetten?",
   cancel: "Annuleren",

@@ -44,6 +44,7 @@ export default {
   reset: "Återställ",
   confirm_reset_filter: "Återställa filtret på {name}? Gör det när filtret är bytt.",
   confirm_reset_desiccant: "Återställa torkmedlet på {name}? Gör det när torkmedlet är bytt.",
+  confirm_reset_food: "Återställa foderbehållaren på {name}? Gör det när behållaren är påfylld.",
   turn_off: "Stäng av",
   confirm_off: "Stänga av {name}?",
   cancel: "Avbryt",

@@ -44,6 +44,7 @@ export default {
   reset: "Zurücksetzen",
   confirm_reset_filter: "Filter von {name} zurücksetzen? Erst nach dem Filterwechsel.",
   confirm_reset_desiccant: "Trockenmittel von {name} zurücksetzen? Erst nach dem Wechsel des Trockenmittels.",
+  confirm_reset_food: "Futterbehälter von {name} zurücksetzen? Erst nach dem Auffüllen des Behälters.",
   turn_off: "Ausschalten",
   confirm_off: "{name} ausschalten?",
   cancel: "Abbrechen",

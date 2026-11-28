@@ -44,6 +44,7 @@ export default {
   reset: "Ресетуј",
   confirm_reset_filter: "Ресетовати филтер уређаја {name}? Урадите то након замене филтера.",
   confirm_reset_desiccant: "Ресетовати сушач уређаја {name}? Урадите то након замене сушача.",
+  confirm_reset_food: "Ресетовати резервоар уређаја {name}? Урадите то након пуњења резервоара.",
   turn_off: "Искључи",
   confirm_off: "Искључити {name}?",
   cancel: "Откажи",

@@ -97,7 +97,14 @@ export class PetMiniCard extends PetCard {
       const left = this._hasHoppers(dev) ? null : num(this._s(e.food_left));
       const foods = [e.food, e.food1, e.food2].filter((x) => this._s(x));
       id = left !== null ? e.food_left : foods[0];
-      if (left !== null) {
+      const weight = this._hasHoppers(dev) ? null : this._s(e.food_weight);
+      if (weight && num(weight) !== null) {
+        // The food left by its weight (#29): its share of the tank's capacity, else the weight alone.
+        id = e.food_weight;
+        pct = this._foodPct(dev);
+        value = this._amount(weight);
+        if (pct !== null && pct <= 10) cls = "warn";
+      } else if (left !== null) {
         pct = left;
         value = fmtPct(left, loc);
       } else if (foods.some((x) => known(this._s(x)))) {

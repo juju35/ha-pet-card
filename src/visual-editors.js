@@ -8,10 +8,20 @@ import { STRINGS } from "./i18n/strings.js";
 // The `devices` option as device ids: names (any case) are mapped to their device, unknown entries kept as given.
 export const deviceIds = (all, wanted) => {
   const low = (v) => String(v ?? "").toLowerCase();
-  return [].concat(wanted ?? []).filter(Boolean).map((w) => (all.find((d) => d.id === w) || all.find((d) => low(d.name) === low(w)))?.id ?? w);
+  return [].concat(wanted ?? []).filter((w) => w && typeof w !== "object").map((w) => (all.find((d) => d.id === w) || all.find((d) => low(d.name) === low(w)))?.id ?? w);
 };
 
 // Editor fields whose label is another key than their name.
+// The `devices` written as objects in YAML (entities of a device set by hand, #29): not in the select, kept as they are.
+export const yamlDevices = (config) => [].concat(config?.devices ?? []).filter((w) => w && typeof w === "object");
+
+// The edited config gets the previous one's object devices back, after the devices picked in the select.
+export const withYamlDevices = (config, prev) => {
+  const kept = yamlDevices(prev);
+  if (kept.length) config.devices = [...[].concat(config.devices ?? []), ...kept];
+  return config;
+};
+
 export const LABEL_KEYS = { title: "title_label" };
 
 export class PetEditorBase extends HTMLElement {
@@ -64,6 +74,7 @@ export class PetEditorBase extends HTMLElement {
       this._form.addEventListener("value-changed", (ev) => {
         ev.stopPropagation();
         const config = { ...ev.detail.value };
+        withYamlDevices(config, this._config);
         const defaults = Object.fromEntries(this.constructor.toggles);
         for (const [k, v] of Object.entries(config)) {
           // Keep the YAML minimal: drop empty values and toggles left at their default.

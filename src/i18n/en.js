@@ -44,6 +44,7 @@ export default {
   reset: "Reset",
   confirm_reset_filter: "Reset the filter of {name}? Do it once the filter is replaced.",
   confirm_reset_desiccant: "Reset the desiccant of {name}? Do it once the desiccant is replaced.",
+  confirm_reset_food: "Reset the food tank of {name}? Do it once the tank is refilled.",
   turn_off: "Turn off",
   confirm_off: "Turn off {name}?",
   cancel: "Cancel",

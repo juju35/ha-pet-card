@@ -62,6 +62,8 @@ Entities are **discovered automatically**, you don't have to pick them one by on
 
 | <img src="https://brands.home-assistant.io/litterrobot/icon.png" alt="" width="16"> [Litter-Robot](https://www.home-assistant.io/integrations/litterrobot/) (Home Assistant core) | Litter-Robot 3 Connect, 4 and 5: status code (cycle, cat detected, paused, off, faults, drawer full), waste drawer (%), litter level (%, LR4 / LR5), cat weight, cycles, night light, clean cycle. Details in [Litter-Robot](#litter-robot) |
 
+Any other feeder, fountain or litter box (Tuya, Xiaomi, ESPHome…) can be shown from its entities: see [Devices set by hand](#devices-set-by-hand).
+
 Both PetKit integrations use the `petkit` domain: install one of them, not both. PetKit purifiers and pets are left out for now: they are not shown, and do not get in the way.
 
 ## Prerequisites
@@ -150,7 +152,7 @@ language: fr
 
 | Option | Card | Default | Description |
 |---|---|---|---|
-| `devices` | both | All | Devices to show, in this order: their name (as in Home Assistant) or their device id (set by the visual editor). Feeders first, then fountains, then litter boxes, when left out |
+| `devices` | both | All | Devices to show, in this order: their name (as in Home Assistant) or their device id (set by the visual editor). Feeders first, then fountains, then litter boxes, when left out. An item can also be a device set by hand (YAML only, see [Devices set by hand](#devices-set-by-hand)) |
 | `title` | both | `Pets` (translated) | Card title |
 | `illustration` | both | `true` | Illustrated header: the devices (up to three) in a pet corner with their animations; `false` keeps the classic header |
 | `illustration_theme` | both | `auto` | Header picture: `auto` (follows the Home Assistant theme: night with a dark theme, day with a light theme), `day` or `night` |
@@ -213,6 +215,41 @@ The cards read the entities of Home Assistant's [Litter-Robot integration](https
 | Cat weight, Cycles | `pet_weight` (in its unit), `total_cycles` |
 | Night light (illustration) | `night_light` light (LR5), `globe_light` select set to *on* (LR4), `night_light_mode` switch (LR3) |
 | Clean | `vacuum.start` on the `litter_box` vacuum (a clean cycle) |
+
+## Devices set by hand
+
+A `devices` item can be an object (YAML only, [#29](https://github.com/juju35/ha-pet-card/issues/29)): a device made of any entities — a Tuya feeder, say — or entities added to (or replacing those of) a device the card found, with `device:` its name or id. Each key of `entities` is a role the card reads; the visual editor keeps these items as written.
+
+```yaml
+type: custom:pet-card
+devices:
+  - name: Kitchen feeder
+    kind: feeder                 # feeder (default), fountain or litter
+    capacity: 1500               # the tank's weight when full, for the food bar (optional)
+    entities:
+      camera: camera.feeder
+      food_weight: input_number.feeder_food_left   # a sensor or an input_number, in g
+      reset_food: button.feeder_reset_tank         # a button, an input_button or a script
+      feed: number.feeder_portions                 # a number / input_number (amount picked in the popup), a select, or a button
+    feed_buttons:                # buttons that dispense at once, labelled with their name
+      - entity: button.feeder_feed_1
+        name: "1"
+      - entity: script.feeder_feed_2
+        name: "2"
+  - device: Hallway feeder       # a found device, with a camera of another integration
+    entities:
+      camera: camera.hallway
+```
+
+| Role | Kind | Entity |
+|---|---|---|
+| `camera` | feeder, litter | Camera: its latest picture, a click opens the stream (`camera_switch`: a switch that turns it off) |
+| `food_weight` | feeder | Food left by its weight (a sensor or an `input_number`): a bar against `capacity` (orange at 10 %), the weight alone without it |
+| `reset_food` | feeder | Reset of the tank once refilled, on the food row, asked first |
+| `feed` | feeder | Manual feed: a `number` / `input_number` (an amount picked in the popup), a `select`, or a `button` / `input_button` / `script` (dispenses at once) |
+| `food`, `food_left`, `desiccant`, `reset_desiccant`, `dispensed`, `planned`, `times`, `eaten`, `bowl`, `bowl_pct`, `battery_pct`, `call_pet` | feeder | As for the PetKit feeders: food low (binary sensor), food left (%), desiccant days and its reset button, today's figures, battery (%), call pet button |
+| `water`, `filter`, `reset_filter`, `mode`, `power`, `pump`, `light`, `dnd`, `purified`, `energy`, `battery_pct` | fountain | As for the PetKit fountains |
+| `state`, `litter`, `litter_low`, `bin_full`, `occupied`, `times_used`, `deodorizer`, `clean`, `deodorize` | litter | As for the PetKit litter boxes |
 
 ### Manual feed
 

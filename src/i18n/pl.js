@@ -44,6 +44,7 @@ export default {
   reset: "Resetuj",
   confirm_reset_filter: "Zresetować filtr {name}? Zrób to po wymianie filtra.",
   confirm_reset_desiccant: "Zresetować pochłaniacz wilgoci {name}? Zrób to po jego wymianie.",
+  confirm_reset_food: "Zresetować zbiornik {name}? Zrób to po jego napełnieniu.",
   turn_off: "Wyłącz",
   confirm_off: "Wyłączyć {name}?",
   cancel: "Anuluj",

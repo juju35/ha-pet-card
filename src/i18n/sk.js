@@ -44,6 +44,7 @@ export default {
   reset: "Resetovať",
   confirm_reset_filter: "Resetovať filter {name}? Urobte to po výmene filtra.",
   confirm_reset_desiccant: "Resetovať vysúšadlo {name}? Urobte to po výmene vysúšadla.",
+  confirm_reset_food: "Resetovať zásobník {name}? Urobte to po jeho naplnení.",
   turn_off: "Vypnúť",
   confirm_off: "Vypnúť {name}?",
   cancel: "Zrušiť",

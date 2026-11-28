@@ -44,6 +44,7 @@ export default {
   reset: "Repor",
   confirm_reset_filter: "Repor o filtro de {name}? Faça-o depois de substituir o filtro.",
   confirm_reset_desiccant: "Repor o dessecante de {name}? Faça-o depois de substituir o dessecante.",
+  confirm_reset_food: "Repor o reservatório de {name}? Faça-o depois de encher o reservatório.",
   turn_off: "Desligar",
   confirm_off: "Desligar {name}?",
   cancel: "Cancelar",

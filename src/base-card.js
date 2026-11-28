@@ -2,7 +2,7 @@
 // Base card: state, status of each device, popups and actions
 // ---------------------------------------------------------------------------
 import { ICONS } from "./core.js";
-import { PLATFORMS, esc, feedDefault, feedDualSpec, feedListSpec, feedSpec, fmtLang, fmtNum, fmtUnit, known, listDefault, litterActivity, morph, num, resolve, robotActivity, svgIcon, t } from "./helpers.js";
+import { PLATFORMS, configEntityIds, deviceLabel, esc, feedDefault, feedDualSpec, feedListSpec, feedSpec, fmtLang, fmtNum, fmtUnit, known, listDefault, litterActivity, morph, num, pressService, resolve, robotActivity, svgIcon, t } from "./helpers.js";
 import { FEED_ANIM_MS, PETKIT_LOGO, art, bannerSvg, hasCamera, isDual, isNight } from "./illustrations.js";
 import { BASE_STYLE, CONFIRM_GUARD_MS, MOTION_STYLE, inDialog } from "./styles.js";
 import { BANNER_STYLE } from "./full-card.js";
@@ -89,7 +89,7 @@ export class PetBase extends HTMLElement {
 
   _deps() {
     const h = this._hass;
-    const ids = (resolve(h) || []).flatMap((d) => Object.values(d.entities));
+    const ids = [...(resolve(h) || []).flatMap((d) => Object.values(d.entities)), ...configEntityIds(this._config)];
     return [h.entities, h.devices, h.language, h.locale, h.themes?.darkMode, h.localize, ...ids.map((id) => h.states?.[id])];
   }
 
@@ -238,6 +238,12 @@ export class PetBase extends HTMLElement {
   }
 
   // { cls, key, title, alerts: [{ cls, key }] }: the device's status chip and what needs doing.
+  // The food left in the tank as a share of a full one, from its weight (`food_weight` and the device's `capacity`).
+  _foodPct(dev) {
+    const w = num(this._s(dev.entities.food_weight));
+    return w === null || !dev.capacity ? null : Math.max(0, Math.min(100, (w / dev.capacity) * 100));
+  }
+
   _status(dev) {
     if (this._unavailable(dev)) return { cls: "idle", key: "unavailable", alerts: [] };
     const e = dev.entities;
@@ -251,7 +257,7 @@ export class PetBase extends HTMLElement {
       const power = known(this._s(e.power_type));
       if (status === "offline") alerts.push({ cls: "crit", key: "offline" });
       if (err && err.toLowerCase().replace(/\s+/g, "_") !== "no_error") alerts.push({ cls: "crit", key: "error", title: err });
-      const left = num(this._s(e.food_left));
+      const left = this._foodPct(dev) ?? num(this._s(e.food_left));
       const hoppers = this._hasHoppers(dev);
       if ([e.food, e.food1, e.food2].some((id) => this._s(id)?.state === "on") || (!hoppers && left !== null && left <= 10))
         alerts.push({ cls: "warn", key: "food_low" });
@@ -480,7 +486,7 @@ export class PetBase extends HTMLElement {
     const c = this._config;
     const all = this._overall(devices);
     const sub = devices.map((d) => d.name).join(" · ");
-    const icon = `<div class="logo ${this._iconCls(devices)}" title="${esc(PLATFORMS[devices[0].platform].name)}">${svgIcon(ICONS.paw)}${this._badge(devices)}</div>`;
+    const icon = `<div class="logo ${this._iconCls(devices)}" title="${esc(PLATFORMS[devices[0].platform]?.name ?? "")}">${svgIcon(ICONS.paw)}${this._badge(devices)}</div>`;
     if (c.illustration === false)
       return `
       <div class="header">
@@ -512,7 +518,7 @@ export class PetBase extends HTMLElement {
 
   _error(key) {
     return `<style>${BASE_STYLE}${MOTION_STYLE}</style><ha-card><div class="warning">${esc(
-      key === "unknown_device" ? `${this._t(key)}: ${[].concat(this._config.devices ?? []).join(", ")}` : this._t(key)
+      key === "unknown_device" ? `${this._t(key)}: ${[].concat(this._config.devices ?? []).map(deviceLabel).join(", ")}` : this._t(key)
     )}</div></ha-card>`;
   }
 
@@ -543,8 +549,9 @@ export class PetBase extends HTMLElement {
         return this._openFeed(dev, from);
       case "reset_filter":
       case "reset_desiccant":
+      case "reset_food":
         return this._openDialog(
-          { text: this._t(`confirm_${action}`, { name }), ok: this._t("reset"), run: () => this._call("button", "press", { entity_id: entity }) },
+          { text: this._t(`confirm_${action}`, { name }), ok: this._t("reset"), run: () => this._press(entity) },
           from
         );
       case "power":
@@ -556,12 +563,18 @@ export class PetBase extends HTMLElement {
       case "toggle":
         return this._call("switch", "toggle", { entity_id: entity });
       case "press":
-        return this._call("button", "press", { entity_id: entity });
+        return this._press(entity);
       case "start":
         return this._call("vacuum", "start", { entity_id: entity });
       case "mode":
         return this._call("select", "select_option", { entity_id: entity, option: el.dataset.option });
     }
+  }
+
+  // Presses a button, an input_button or a script.
+  _press(entity) {
+    const [domain, service] = pressService(entity);
+    return this._call(domain, service, { entity_id: entity });
   }
 
   _dialogClick(el, path) {
@@ -600,6 +613,11 @@ export class PetBase extends HTMLElement {
   _openFeed(dev, from) {
     const { spec, states } = this._feedOf(dev);
     if (!spec) return;
+    // A feed button dispenses at once, with no amount to pick.
+    if (spec.domain === "press") {
+      this._feedStarted(dev.id);
+      return this._press(states[0].entity_id);
+    }
     const feed = { entity: states[0]?.entity_id, spec };
     if (spec.domain === "select") feed.option = spec.options[0];
     else if (spec.domain === "number") feed.values = [feedDefault(spec.min, spec.max, spec.step)];
@@ -613,7 +631,7 @@ export class PetBase extends HTMLElement {
         run: () => {
           this._feedStarted(dev.id);
           if (spec.domain === "select") return this._call("select", "select_option", { entity_id: feed.entity, option: feed.option });
-          if (spec.domain === "number") return this._call("number", "set_value", { entity_id: feed.entity, value: feed.values[0] });
+          if (spec.domain === "number") return this._call(spec.service || "number", "set_value", { entity_id: feed.entity, value: feed.values[0] });
           if (spec.domain === "list") return this._call("text", "set_value", { entity_id: spec.entity, value: String(spec.values[feed.values[0]]) });
           // One feed per hopper, each with its own entity (the integration sends the other hopper's amount as 0).
           if (spec.domain === "dual")
