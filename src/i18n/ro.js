@@ -44,6 +44,7 @@ export default {
   reset: "Resetează",
   confirm_reset_filter: "Resetați filtrul pentru {name}? Faceți-o după înlocuirea filtrului.",
   confirm_reset_desiccant: "Resetați desicantul pentru {name}? Faceți-o după înlocuirea desicantului.",
+  confirm_reset_food: "Resetați rezervorul pentru {name}? Faceți-o după umplerea rezervorului.",
   turn_off: "Oprește",
   confirm_off: "Opriți {name}?",
   cancel: "Anulează",

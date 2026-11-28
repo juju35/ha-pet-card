@@ -5,7 +5,7 @@ import { test } from "node:test";
 import { devices, entities, FEEDER_OPTIONS, states } from "../scripts/mock-states.mjs";
 import { load } from "./load.mjs";
 
-const { resolve, findDevices, feedSpec, feedDefault, feedListSpec, feedDualSpec, PetCard, PetMiniCard, PetCardEditor, PetMiniCardEditor, STRINGS, deviceIds } = load("pet-card.js", [
+const { resolve, findDevices, feedSpec, feedDefault, feedListSpec, feedDualSpec, PetCard, PetMiniCard, PetCardEditor, PetMiniCardEditor, STRINGS, deviceIds, withYamlDevices } = load("pet-card.js", [
   "resolve",
   "findDevices",
   "feedSpec",
@@ -17,6 +17,7 @@ const { resolve, findDevices, feedSpec, feedDefault, feedListSpec, feedDualSpec,
   "PetCardEditor",
   "PetMiniCardEditor",
   "deviceIds",
+  "withYamlDevices",
   "STRINGS",
 ]);
 
@@ -165,7 +166,7 @@ test("feed: select options, picked then dispensed", async () => {
   click(c, { action: "confirm_ok" });
   await settle();
   assert.deepEqual(plain(c.hass.calls), [["select", "select_option", { entity_id: "select.distributeur_cuisine_repas_manuel", option: "1/2 Cup (50g)" }]]);
-  assert.equal(c._dialog, null);
+  assert.ok(!c._dialog);
 });
 
 test("feed: two hoppers as portions, sent as text", async () => {
@@ -204,7 +205,7 @@ test("cancel and Escape close the popup without acting", async () => {
   c._render();
   click(c, { action: "feed", device: "solo" });
   click(c, { action: "confirm_cancel" });
-  assert.equal(c._dialog, null);
+  assert.ok(!c._dialog);
   await settle();
   assert.deepEqual(plain(c.hass.calls), []);
 });
@@ -256,12 +257,12 @@ test("folding: a tap elsewhere (pointer) closes the popup, not a press in the ca
   assert.ok(c._dialog);
   // A tap on a spot that sends no click (iOS): the pointer alone closes it.
   c._onOutsideWatch.tap(outside);
-  assert.equal(c._dialog, null);
+  assert.ok(!c._dialog);
   // Left with the popup open and back on the page: closed.
   click(c, { action: "power", device: "fountain", entity: "switch.fontaine_salon_alimentation" });
   c.disconnectedCallback();
   c.connectedCallback();
-  assert.equal(c._dialog, null);
+  assert.ok(!c._dialog);
   c.disconnectedCallback();
   // The mini card comes back compact.
   const m = card(PetMiniCard);
@@ -738,4 +739,84 @@ test("editor: devices written by name in YAML show up ticked (as their ids)", ()
   assert.deepEqual(plain(ed._form.data.devices), ["solo"]);
   // The card's own config is left as written until the user changes something.
   assert.deepEqual(plain(ed._config.devices), ["Kitchen feeder"]);
+});
+
+// #29: a feeder made of any entities (Tuya…), set by hand.
+const TUYA = {
+  "camera.tuya_feeder": { entity_id: "camera.tuya_feeder", state: "idle", attributes: { friendly_name: "Tuya feeder camera", entity_picture: "/api/camera_proxy/camera.tuya_feeder" } },
+  "input_number.tuya_food": { entity_id: "input_number.tuya_food", state: "150", attributes: { friendly_name: "Food left", unit_of_measurement: "g", min: 0, max: 2000 } },
+  "button.tuya_reset": { entity_id: "button.tuya_reset", state: "unknown", attributes: { friendly_name: "Reset tank" } },
+  "number.tuya_portions": { entity_id: "number.tuya_portions", state: "0", attributes: { min: 1, max: 3, step: 1, unit_of_measurement: "portions" } },
+  "button.tuya_one": { entity_id: "button.tuya_one", state: "unknown", attributes: { friendly_name: "Feed 1" } },
+  "script.tuya_two": { entity_id: "script.tuya_two", state: "off", attributes: { friendly_name: "Feed 2" } },
+};
+const TUYA_DEV = {
+  name: "Tuya feeder",
+  capacity: 1500,
+  entities: { camera: "camera.tuya_feeder", food_weight: "input_number.tuya_food", reset_food: "button.tuya_reset", feed: "number.tuya_portions", junk: "not an entity" },
+  feed_buttons: [{ entity: "button.tuya_one", name: "1" }, "script.tuya_two", 3],
+};
+
+test("devices set by hand: a feeder made of any entities, with its camera, weight, tank reset and feed buttons (#29)", async () => {
+  const c = card(PetCard, { devices: [TUYA_DEV] }, TUYA);
+  const { devices: list } = findDevices(c.hass, c._config);
+  assert.equal(list.length, 1);
+  assert.equal(list[0].kind, "feeder");
+  assert.equal(list[0].entities.junk, undefined);
+  const html = c._render();
+  for (const text of ["Tuya feeder", 'class="cam clickable"', "150 g", 'data-action="reset_food"', 'data-entity="button.tuya_one"', '<span class="lbl">1</span>', '<span class="lbl">Feed 2</span>'])
+    assert.ok(html.includes(text), text);
+  // 150 g of 1500 g: 10 %, low.
+  assert.match(html, /class="level clickable warn has-act"[^>]*data-entity="input_number.tuya_food"/);
+  assert.ok(c._status(list[0]).alerts.some((a) => a.key === "food_low"));
+  // The tank's reset asks first; the feed buttons press at once (a script is turned on).
+  click(c, { action: "reset_food", entity: "button.tuya_reset", device: list[0].id });
+  assert.ok(c._dialog.text.includes("Tuya feeder"));
+  click(c, { action: "confirm_ok" });
+  click(c, { action: "press", entity: "button.tuya_one", device: list[0].id });
+  click(c, { action: "press", entity: "script.tuya_two", device: list[0].id });
+  // A portion number: picked in the popup.
+  click(c, { action: "feed", device: list[0].id, entity: "number.tuya_portions" });
+  click(c, { action: "feed_step", index: "0", delta: "1" });
+  click(c, { action: "confirm_ok" });
+  await settle();
+  assert.deepEqual(plain(c.hass.calls), [
+    ["button", "press", { entity_id: "button.tuya_reset" }],
+    ["button", "press", { entity_id: "button.tuya_one" }],
+    ["script", "turn_on", { entity_id: "script.tuya_two" }],
+    ["number", "set_value", { entity_id: "number.tuya_portions", value: 3 }],
+  ]);
+  // Its entities are followed.
+  assert.ok(c._deps().includes(c.hass.states["input_number.tuya_food"]));
+});
+
+test("devices set by hand: a feed button or input_number as `feed`, entities added to a found device, no capacity: no bar", async () => {
+  assert.deepEqual(plain(feedSpec({ entity_id: "button.x", state: "unknown", attributes: {} })), { domain: "press" });
+  assert.equal(feedSpec({ entity_id: "input_number.x", state: "0", attributes: { min: 0, max: 50, step: 5 } }).service, "input_number");
+  const c = card(PetCard, { devices: [{ name: "Tuya", entities: { feed: "button.tuya_one", food_weight: "input_number.tuya_food" } }] }, TUYA);
+  const html = c._render();
+  assert.match(html, /class="level clickable ok nobar"/);
+  click(c, { action: "feed", device: "yaml:0", entity: "button.tuya_one" });
+  assert.ok(!c._dialog);
+  await settle();
+  assert.deepEqual(plain(c.hass.calls), [["button", "press", { entity_id: "button.tuya_one" }]]);
+  // `device` + `entities`: the found feeder with a camera of another integration.
+  const merged = findDevices(hassWith(TUYA), { devices: [{ device: "Kitchen feeder", entities: { camera: "camera.tuya_feeder" } }] }).devices[0];
+  assert.equal(merged.id, "solo");
+  assert.equal(merged.entities.camera, "camera.tuya_feeder");
+  assert.ok(merged.entities.feed);
+  assert.equal(findDevices(hassWith(), { devices: [{ device: "Nope" }] }).error, "unknown_device");
+  // The mini card reads the weight too.
+  const mini = card(PetMiniCard, { devices: [TUYA_DEV] }, TUYA)._render();
+  assert.ok(mini.includes("150 g"));
+});
+
+test("editor: devices written as objects stay in the YAML, out of the select", () => {
+  const ed = new PetCardEditor();
+  ed._form = { addEventListener() {} };
+  ed._config = { devices: ["solo", TUYA_DEV] };
+  ed.hass = hassWith();
+  assert.deepEqual(plain(ed._form.data.devices), ["solo"]);
+  assert.deepEqual(plain(withYamlDevices({ devices: ["solo", "fountain"] }, ed._config).devices), ["solo", "fountain", plain(TUYA_DEV)]);
+  assert.deepEqual(plain(withYamlDevices({}, { devices: ["solo"] })), {});
 });

@@ -44,6 +44,7 @@ export default {
   reset: "Restablecer",
   confirm_reset_filter: "¿Restablecer el filtro de {name}? Hazlo una vez cambiado el filtro.",
   confirm_reset_desiccant: "¿Restablecer el desecante de {name}? Hazlo una vez cambiado el desecante.",
+  confirm_reset_food: "¿Restablecer el depósito de {name}? Hazlo una vez rellenado el depósito.",
   turn_off: "Apagar",
   confirm_off: "¿Apagar {name}?",
   cancel: "Cancelar",

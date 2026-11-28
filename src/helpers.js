@@ -268,16 +268,48 @@ export const resolve = (hass) => {
   return list;
 };
 
-// The devices a card shows: `devices` (ids or names, as listed) or every supported device.
+// The devices a card shows: `devices` (ids or names, as listed) or every supported device. An item may also be an
+// object (#29): `{ device, entities }` adds or replaces entities of a found device; `{ name, kind, entities }` (no
+// `device`) is a device of its own, made of any entities (a Tuya feeder, say), each role naming its entity. Its
+// `feed_buttons` are buttons that dispense at once (1, 2, 3 portions…), `capacity` the tank's weight when full.
+export const YAML_PLATFORM = "yaml";
+const isId = (v) => typeof v === "string" && /^[a-z_]+\.[\w-]+$/.test(v);
+const entitiesOf = (o) => Object.fromEntries(Object.entries(o && typeof o === "object" ? o : {}).filter(([, v]) => isId(v)));
+const feedButtonsOf = (v) =>
+  [].concat(v ?? []).flatMap((b) => (isId(b) ? [{ entity: b }] : b && isId(b.entity) ? [{ entity: b.entity, ...(typeof b.name === "string" ? { name: b.name } : {}) }] : []));
+// The entities of the `devices` objects, for the card to follow them.
+export const configEntityIds = (config) =>
+  [].concat(config?.devices ?? []).flatMap((w) => (w && typeof w === "object" ? [...Object.values(entitiesOf(w.entities)), ...feedButtonsOf(w.feed_buttons).map((b) => b.entity)] : []));
+export const deviceLabel = (w) => (w && typeof w === "object" ? (w.device ?? w.name ?? "") : w);
 export const findDevices = (hass, config) => {
   const all = resolve(hass);
   if (!all) return { error: "no_registry" };
-  if (!all.length) return { error: "no_devices" };
   const wanted = [].concat(config?.devices ?? []).filter(Boolean);
-  if (!wanted.length) return { devices: all };
+  if (!wanted.length) return all.length ? { devices: all } : { error: "no_devices" };
   const low = (v) => String(v).toLowerCase();
-  const devices = wanted.map((w) => all.find((d) => d.id === w || low(d.name) === low(w))).filter(Boolean);
+  const find = (w) => all.find((d) => d.id === w || low(d.name) === low(w));
+  const devices = wanted
+    .map((w, i) => {
+      if (typeof w !== "object") return find(w);
+      const entities = entitiesOf(w.entities);
+      const extra = { feedButtons: feedButtonsOf(w.feed_buttons), capacity: Number(w.capacity) > 0 ? Number(w.capacity) : null };
+      if (w.device !== undefined) {
+        const base = find(w.device);
+        return base && { ...base, ...extra, name: typeof w.name === "string" && w.name ? w.name : base.name, entities: { ...base.entities, ...entities } };
+      }
+      if (!Object.keys(entities).length && !extra.feedButtons.length) return null;
+      const kind = KIND_ORDER.includes(w.kind) ? w.kind : "feeder";
+      const name = typeof w.name === "string" && w.name ? w.name : hass.states?.[Object.values(entities)[0]]?.attributes?.friendly_name || kind;
+      return { id: `${YAML_PLATFORM}:${i}`, kind, platform: YAML_PLATFORM, name, model: typeof w.model === "string" ? w.model : "", entities, ...extra };
+    })
+    .filter(Boolean);
   return devices.length ? { devices } : { error: "unknown_device" };
+};
+
+// The service that presses a button-like entity: a button, an input_button or a script.
+export const pressService = (id) => {
+  const domain = String(id).split(".")[0];
+  return domain === "script" ? ["script", "turn_on"] : domain === "input_button" ? ["input_button", "press"] : ["button", "press"];
 };
 
 // Filter and desiccant levels: orange then red as they run out.
@@ -329,11 +361,13 @@ export const feedSpec = (s) => {
     const options = (a.options || []).filter((o) => o !== "");
     return options.length ? { domain, options } : null;
   }
-  if (domain === "number") {
+  // A button (or an input_button, a script) dispenses at once; an input_number is set like a number (#29).
+  if (["button", "input_button", "script"].includes(domain)) return { domain: "press" };
+  if (domain === "number" || domain === "input_number") {
     const min = Number(a.min ?? 0);
     const max = Number(a.max ?? 100);
     const step = Number(a.step ?? 1);
-    return { domain, min, max, step, unit: a.unit_of_measurement || "g" };
+    return { domain: "number", ...(domain === "input_number" ? { service: domain } : {}), min, max, step, unit: a.unit_of_measurement || "g" };
   }
   if (domain === "text") return { domain, hoppers: 2, min: 0, max: 10 };
   return null;

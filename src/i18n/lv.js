@@ -44,6 +44,7 @@ export default {
   reset: "Atiestatīt",
   confirm_reset_filter: "Atiestatīt {name} filtru? Dariet to pēc filtra nomaiņas.",
   confirm_reset_desiccant: "Atiestatīt {name} mitruma absorbētāju? Dariet to pēc tā nomaiņas.",
+  confirm_reset_food: "Atiestatīt {name} tvertni? Dariet to pēc tās uzpildīšanas.",
   turn_off: "Izslēgt",
   confirm_off: "Izslēgt {name}?",
   cancel: "Atcelt",

@@ -44,6 +44,7 @@ export default {
   reset: "Azzera",
   confirm_reset_filter: "Azzerare il filtro di {name}? Fallo dopo aver sostituito il filtro.",
   confirm_reset_desiccant: "Azzerare l'essiccante di {name}? Fallo dopo aver sostituito l'essiccante.",
+  confirm_reset_food: "Azzerare il serbatoio di {name}? Fallo dopo aver riempito il serbatoio.",
   turn_off: "Spegni",
   confirm_off: "Spegnere {name}?",
   cancel: "Annulla",

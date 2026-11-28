@@ -1,5 +1,12 @@
 # Changelog
 
+## 1.4.0 - 2026-11-28
+
+### Features
+- Devices set by hand (#29): a `devices` item can be an object — a feeder, fountain or litter box made of any entities (a Tuya feeder, say), or entities added to a found device (`device:` + `entities`); the visual editor keeps these items as written.
+- Feeders: `food_weight` (a sensor or an `input_number`) shows the food left by its weight, as a bar against the tank's `capacity`; `reset_food` resets the tank once refilled (asked first); `feed_buttons` dispense at once (1, 2, 3 portions…).
+- Manual feed: the `feed` entity can also be an `input_number`, or a button, an `input_button` or a script (dispenses at once); buttons and resets press scripts and input buttons too.
+
 ## 1.3.6 - 2026-11-27
 
 ### Fixes

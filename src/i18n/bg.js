@@ -44,6 +44,7 @@ export default {
   reset: "Нулирай",
   confirm_reset_filter: "Нулиране на филтъра на {name}? Направете го след смяна на филтъра.",
   confirm_reset_desiccant: "Нулиране на сушителя на {name}? Направете го след смяна на сушителя.",
+  confirm_reset_food: "Нулиране на резервоара на {name}? Направете го след пълнене на резервоара.",
   turn_off: "Изключи",
   confirm_off: "Изключване на {name}?",
   cancel: "Отказ",

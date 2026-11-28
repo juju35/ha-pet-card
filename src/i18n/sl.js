@@ -44,6 +44,7 @@ export default {
   reset: "Ponastavi",
   confirm_reset_filter: "Ponastavim filter naprave {name}? Storite to po zamenjavi filtra.",
   confirm_reset_desiccant: "Ponastavim sušilno sredstvo naprave {name}? Storite to po njegovi zamenjavi.",
+  confirm_reset_food: "Ponastavim posodo naprave {name}? Storite to po njenem polnjenju.",
   turn_off: "Izklopi",
   confirm_off: "Izklopim {name}?",
   cancel: "Prekliči",

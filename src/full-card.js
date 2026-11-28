@@ -98,7 +98,7 @@ export const FULL_STYLE = `
   .acts { display: flex; gap: 6px; flex: none; }
   @container (max-width: 299px) {
     .dev-head .chip { padding: 6px; } .dev-head .chip .chip-label { display: none; }
-    .acts .act:not(.round) .lbl { display: none; } .acts .act:not(.round) { width: 28px; padding: 0; }
+    .acts .act:not(.round):not(.portion) .lbl { display: none; } .acts .act:not(.round):not(.portion) { width: 28px; padding: 0; }
   }
   .level { display: grid; grid-template-columns: 18px minmax(0, 96px) minmax(24px, 1fr) minmax(52px, auto); align-items: center; gap: 8px; font-size: 13px; }
   .level .icon { color: var(--c, var(--secondary-text-color)); }
@@ -107,6 +107,8 @@ export const FULL_STYLE = `
   .level .v.warn, .level .v.crit { color: var(--c); }
   .level.has-act { grid-template-columns: 18px minmax(0, 96px) minmax(24px, 1fr) minmax(52px, auto) 24px; }
   .level .act { height: 24px; width: 24px; }
+  /* A weight with no tank capacity to compare it with: no bar. */
+  .level.nobar .bar { visibility: hidden; }
   .level .act .icon { width: 14px; height: 14px; }
   .tiles { display: grid; grid-template-columns: repeat(auto-fill, minmax(104px, 1fr)); gap: 6px; }
   .tile { position: relative; display: flex; flex-direction: column; gap: 2px; padding: 8px 10px; border-radius: 10px; min-width: 0;
@@ -148,12 +150,12 @@ export class PetCard extends PetBase {
   }
 
   // Food row of a feeder without a percentage: a binary "enough / low" shown as a full or short bar.
-  _foodRow(id, label) {
+  _foodRow(id, label, act = "") {
     const s = this._s(id);
     if (!s) return "";
     const low = s.state === "on";
     const unknown = !known(s);
-    return this._level(id, ICONS.bowl, label, unknown ? null : low ? 15 : 100, unknown ? "—" : this._t(low ? "low" : "enough"), unknown ? "idle" : low ? "warn" : "ok");
+    return this._level(id, ICONS.bowl, label, unknown ? null : low ? 15 : 100, unknown ? "—" : this._t(low ? "low" : "enough"), unknown ? "idle" : low ? "warn" : "ok", act);
   }
 
   _tile(id, label, value, { cls = "", sub = "", act = "" } = {}) {
@@ -249,15 +251,33 @@ export class PetCard extends PetBase {
           feedEntity
             ? `<button type="button" class="act" data-action="feed" data-device="${esc(dev.id)}" data-entity="${esc(feedEntity)}" title="${esc(this._t("feed"))}"${feedable ? "" : ' aria-disabled="true"'}>${svgIcon(ICONS.feed)}<span class="lbl">${esc(this._t("feed"))}</span></button>`
             : "",
+          // Feed buttons (#29): each dispenses at once (1, 2, 3 portions…), labelled with its name.
+          ...(dev.feedButtons || []).map((b) => {
+            const s = this._s(b.entity);
+            const label = b.name ?? s?.attributes?.friendly_name ?? b.entity;
+            return `<button type="button" class="act portion" data-action="press" data-entity="${esc(b.entity)}" data-device="${esc(dev.id)}" title="${esc(`${this._t("feed")} · ${label}`)}"${!s || s.state === "unavailable" ? ' aria-disabled="true"' : ""}>${svgIcon(ICONS.feed)}<span class="lbl">${esc(label)}</span></button>`;
+          }),
         ].join("")
       : "";
     const rows = [];
     const left = num(this._s(e.food_left));
+    // Reset of the food tank once refilled (#29), on its food row.
+    const resetFood =
+      controls && e.reset_food
+        ? `<button type="button" class="act round" data-action="reset_food" data-entity="${esc(e.reset_food)}" data-device="${esc(dev.id)}" title="${esc(this._t("reset"))}" aria-label="${esc(this._t("reset"))}">${svgIcon(ICONS.reset)}</button>`
+        : "";
+    const weight = this._s(e.food_weight);
     if (this._hasHoppers(dev)) {
       rows.push(this._foodRow(e.food1, this._t("hopper", { n: 1 })));
       rows.push(this._foodRow(e.food2, this._t("hopper", { n: 2 })));
-    } else if (left !== null) rows.push(this._level(e.food_left, ICONS.bowl, this._t("food"), left, fmtPct(left, loc), left <= 10 ? "warn" : "ok"));
-    else rows.push(this._foodRow(e.food, this._t("food")));
+    } else if (weight) {
+      // The food left by its weight (a sensor or an input_number): a bar with the tank's capacity, the weight alone without.
+      const pct = this._foodPct(dev);
+      const w = num(weight);
+      const cls = w === null ? "idle" : pct !== null && pct <= 10 ? "warn" : "ok";
+      rows.push(this._level(e.food_weight, ICONS.bowl, this._t("food"), pct, w === null ? "—" : this._amount(weight), pct === null ? `${cls} nobar` : cls, resetFood));
+    } else if (left !== null) rows.push(this._level(e.food_left, ICONS.bowl, this._t("food"), left, fmtPct(left, loc), left <= 10 ? "warn" : "ok", resetFood));
+    else rows.push(this._foodRow(e.food, this._t("food"), resetFood));
     let tiles = "";
     if (c.show_stats !== false) {
       const times = this._s(e.times);
